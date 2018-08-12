@@ -239,6 +239,282 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/28/shell学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/28/shell学习/" itemprop="url">shell学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T15:43:44+08:00">
+                2018-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一-硬件，核心与shell的关系"><a href="#一-硬件，核心与shell的关系" class="headerlink" title="一. 硬件，核心与shell的关系"></a>一. 硬件，核心与shell的关系</h4><p><img src="/image/shell.jpg" alt=""></p>
+<p>shell是一个程序，他接受从键盘输入的命令，然后把命令传递给操作系统去执行。</p>
+<p>也就是说，我们必须要透过『 Shell 』将我们输入的命令与 Kernel 沟通，好让 Kernel 可以控制硬件来正确无误的工作！</p>
+<h4 id="二-shell相关操作"><a href="#二-shell相关操作" class="headerlink" title="二. shell相关操作"></a>二. shell相关操作</h4><p>1.查看shell的种类： 合法shell的类型放在/etc/shells文件里面</p>
+<p>2.查看当前shell类型：<code>echo $SHELL</code> 或者 <code>echo $0</code> 或者 <code>或者  ps -p $$</code></p>
+<p>($$表示当前进程id.    $0表示当前进程名字,  $?表示上个运行命令的回传值)</p>
+<p>3.切换shell类型：切换shell  ：chsh -s /bin/bash</p>
+<p>4.<strong>PS1</strong>设置<strong>shell</strong>命令提示字符串</p>
+<p>5.<code>export PATH=&quot;$PATH :/usr/bin&quot;</code> 将变量export出去，这样子程序就能使用这个变量</p>
+<h4 id="三-常用命令"><a href="#三-常用命令" class="headerlink" title="三. 常用命令"></a>三. 常用命令</h4><p>type查看命令类型</p>
+<p>which和whereis查看可执行程序位置</p>
+<p>file查看文件类型</p>
+<h4 id="四-shell的执行顺序"><a href="#四-shell的执行顺序" class="headerlink" title="四. shell的执行顺序"></a>四. shell的执行顺序</h4><p>命令运行的顺序可以这样看：</p>
+<ol>
+<li><p>以相对/绝对路径运行命令，例如『 /bin/ls 』或『 ./ls 』；</p>
+</li>
+<li><p>由 alias 找到该命令来运行；</p>
+</li>
+<li><p>由 bash 内建的 (builtin) 命令来运行；</p>
+</li>
+<li><p>透过 $PATH 这个变量的顺序搜寻到的第一个命令来运行。</p>
+<p>注意：使用source或者. 来执行的脚本是在当前shell环境中，如 source b.sh 或者 ./ b.sh</p>
+<p>使用shell b.sh 命令来执行的脚本是在自己的shell环境下执行的</p>
+</li>
+</ol>
+<h4 id="五-bash-环境中的特殊符号"><a href="#五-bash-环境中的特殊符号" class="headerlink" title="五. bash 环境中的特殊符号"></a>五. bash 环境中的特殊符号</h4><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#</td>
+<td>批注符号：这个最常被使用在 script 当中，视为说明！在后的数据均不运行</td>
+</tr>
+<tr>
+<td>\</td>
+<td>跳脱符号：将『特殊字符或通配符』还原成一般字符</td>
+</tr>
+<tr>
+<td>&#124;</td>
+<td>管线 (pipe)：分隔两个管线命令的界定(后两节介绍)</td>
+</tr>
+<tr>
+<td>;</td>
+<td>连续命令下达分隔符：连续性命令的界定 (注意！与管线命令并不相同)</td>
+</tr>
+<tr>
+<td>~</td>
+<td>用户的家目录</td>
+</tr>
+<tr>
+<td>$</td>
+<td>取用变量前导符：亦即是变量之前需要加的变量取代值</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>工作控制 (job control)：将命令变成背景下工作</td>
+</tr>
+<tr>
+<td>!</td>
+<td>逻辑运算意义上的『非』 not 的意思！</td>
+</tr>
+<tr>
+<td>/</td>
+<td>目录符号：路径分隔的符号</td>
+</tr>
+<tr>
+<td>&gt;, &gt;&gt;</td>
+<td>数据流重导向：输出导向，分别是『取代』与『累加』</td>
+</tr>
+<tr>
+<td>&lt;, &lt;&lt;</td>
+<td>数据流重导向：输入导向 (这两个留待下节介绍)</td>
+</tr>
+<tr>
+<td>‘ ‘</td>
+<td>单引号，不具有变量置换的功能</td>
+</tr>
+<tr>
+<td>“ “</td>
+<td>具有变量置换的功能！</td>
+</tr>
+<tr>
+<td>``</td>
+<td>两个『 ` 』中间为可以先运行的命令，亦可使用 $( )</td>
+</tr>
+<tr>
+<td>( )</td>
+<td>在中间为子 shell 的起始与结束</td>
+</tr>
+<tr>
+<td>{ }</td>
+<td>在中间为命令区块的组合！</td>
+</tr>
+</tbody>
+</table>
+<p>关于减号 - 的用途</p>
+<p>管线命令在 bash 的连续的处理程序中是相当重要的！另外，在 log file 的分析当中也是相当重要的一环， 所以请特别留意！另外，在管线命令当中，常常会使用到前一个命令的 stdout 作为这次的 stdin ， 某些命令需要用到文件名 (例如 tar) 来进行处理时，该 stdin 与 stdout 可以利用减号 “-“ 来替代， 举例来说：</p>
+<p><code>tar -cvf - /home | tar -xvf -</code></p>
+<p>上面这个例子是说：『我将 /home 里面的文件给他打包，但打包的数据不是纪录到文件，而是传送到 stdout； 经过管线后，将 tar -cvf - /home 传送给后面的 tar -xvf - 』。后面的这个 - 则是取用前一个命令的 stdout， 因此，我们就不需要使用 file 了！这是很常见的例子喔！注意注意！</p>
+<h4 id="六-文件压缩命令"><a href="#六-文件压缩命令" class="headerlink" title="六. 文件压缩命令"></a>六. 文件压缩命令</h4><h5 id="1-zip和unzip"><a href="#1-zip和unzip" class="headerlink" title="1. zip和unzip"></a>1. zip和unzip</h5><ol>
+<li>我想把一个文件abc.txt和一个目录dir1压缩成为yasuo.zip：</li>
+</ol>
+<p><code>＃ zip -r yasuo.zip abc.txt dir1</code></p>
+<p>2.我下载了一个yasuo.zip文件，想解压缩：</p>
+<p><code># unzip yasuo.zip</code></p>
+<p>3.我当前目录下有abc1.zip，abc2.zip和abc3.zip，我想一起解压缩它们：</p>
+<p><code>＃ unzip abc\?.zip</code></p>
+<p>4.我有一个很大的压缩文件large.zip，我不想解压缩，只想看看它里面有什么：(v:verbose)</p>
+<p><code># unzip -v large.zip</code></p>
+<p>5.我下载了一个压缩文件large.zip，想验证一下这个压缩文件是否下载完全了(t:test)</p>
+<p><code># unzip -t large.zip</code></p>
+<h5 id="2-tar"><a href="#2-tar" class="headerlink" title="2.tar"></a>2.tar</h5><p>-c 建立压缩文档（create）</p>
+<p>-x 解压（extract）</p>
+<p>-t 查看内容（list）</p>
+<p>-r 向压缩归档文件末尾添加文件（accretion）</p>
+<p>-u 更新原压缩包中的文件（update）</p>
+<p>这5个是独立的命令，解压压缩都要用到其中的一个，可以和别的命令连用，但只能用其中一个。</p>
+<p><b>下面的参数是根据需要在压缩或者解压的时候可选用的：</b></p>
+<p>-z 带有gzip属性的</p>
+<p>-j 带有bz2属性的</p>
+<p>-v 显示所有过程（verbose）</p>
+<p>参数-f是必须的：代表使用档案的名字（就是目标文件名），切记这个参数是最后一个参数，他的后面只能跟文件名（file）</p>
+<p><strong>例子</strong></p>
+<p>解压：</p>
+<p>tar -xvf file.tar 解压file.tar</p>
+<p>tar -xzvf file.tar.gz 解压file.tar.gz</p>
+<p>tar -xjvf file.tar.bz2 解压file.tar.bz2</p>
+<p>tar -xjvf file.tar.bz2 index.html 只解压file.tar.bz2里面的index.html文件</p>
+<p>tar -xjvf file.tar.bz2 -C /etc 解压file.tar.bz2到/etc目录下</p>
+<p>压缩：</p>
+<p>tar -cvf jpg.tar *.jpg 将所有jpg文件打包压缩成tar.jpg</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/28/npm link 和npx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1814,156 +2090,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/12/css三栏布局的几种实现方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/12/css三栏布局的几种实现方法/" itemprop="url">css三栏布局的几种实现方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T10:30:39+08:00">
-                2018-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/css/" itemprop="url" rel="index">
-                    <span itemprop="name">css</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>需求：css三栏布局，左右两边宽度固定，中间宽度自适应。</p>
-<p>1 淘宝的双飞翼布局。关键点，三栏都是float：left；中间栏设置两层，外层向左浮动，设置宽度为100%，内层设置margin：0，-100px；左栏设置左浮动，<code>margin：-100%</code> ; 右栏设置左浮动，<code>margin：-100px</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div class=&quot;col-main&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;main-wrap&quot;&gt;dddd&lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;col-left&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;col-right&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    .col-main &#123;</span><br><span class="line">        width: 100%;</span><br><span class="line">        height: 100%;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line">    .main-wrap &#123;</span><br><span class="line">        margin-left: 110px;</span><br><span class="line">        margin-right: 110px;</span><br><span class="line">        height: 100%;</span><br><span class="line">        background: green;</span><br><span class="line">    &#125;</span><br><span class="line">    .col-left &#123;</span><br><span class="line">        float: left;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100%;</span><br><span class="line">        margin-left: -100%;</span><br><span class="line">        background: red;</span><br><span class="line">    &#125;</span><br><span class="line">    .col-right &#123;</span><br><span class="line">        float: left;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100%;</span><br><span class="line">        margin-left: -100px;</span><br><span class="line">        background: pink;</span><br><span class="line">    &#125;</span><br><span class="line">    html, body &#123;</span><br><span class="line">        height: 100%;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<p>2 左栏左浮动，右栏右浮动，中间栏处于文档流占满整行，通过margin为负值给两边留出距离。注意三个栏目的放置顺序：先放置浮动元素，再放置文档流元素。如果先放置文档流元素，那么浮动元素会换行，而先放置浮动元素，再放置文档流元素则不会换行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div class=&quot;col-left&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;col-right&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;col-main&quot;&gt;</span><br><span class="line">                dddd</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    html, body &#123;</span><br><span class="line">        height: 100%;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .col-main &#123;</span><br><span class="line">        margin: 0 110px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: green;</span><br><span class="line">    &#125;</span><br><span class="line">    .col-left &#123;</span><br><span class="line">        float: left;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: red;</span><br><span class="line">    &#125;</span><br><span class="line">    .col-right &#123;</span><br><span class="line">        float: right;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: pink;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<p>3 另外一种是position：absolute的定位</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;col-main&quot;&gt;</span><br><span class="line">                    dddd</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;col-left&quot;&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;col-right&quot;&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    html, body &#123;</span><br><span class="line">        height: 100%;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .wrapper &#123;</span><br><span class="line">        position: relative;</span><br><span class="line">    &#125;</span><br><span class="line">    .col-main &#123;</span><br><span class="line">        margin: 0 110px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: green;</span><br><span class="line">    &#125;</span><br><span class="line">    .col-left &#123;</span><br><span class="line">        position: absolute;</span><br><span class="line">        left: 0;</span><br><span class="line">        top: 0;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: red;</span><br><span class="line">    &#125;</span><br><span class="line">    .col-right &#123;</span><br><span class="line">        position: absolute;</span><br><span class="line">        right: 0;</span><br><span class="line">        top: 0;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: pink;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<p>4 还有一种display：flex的布局</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;col-left&quot;&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;col-main&quot;&gt;</span><br><span class="line">                    dddd</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;col-right&quot;&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    html, body &#123;</span><br><span class="line">        height: 100%;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .wrapper &#123;</span><br><span class="line">        display: flex;</span><br><span class="line">        flex-wrap: nowrap;</span><br><span class="line">    &#125;</span><br><span class="line">    .col-main &#123;</span><br><span class="line">        flex-grow: 1;</span><br><span class="line">        margin: 0 10px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: green;</span><br><span class="line">    &#125;</span><br><span class="line">    .col-left &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: red;</span><br><span class="line">    &#125;</span><br><span class="line">    .col-right &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: pink;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2014,7 +2140,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
