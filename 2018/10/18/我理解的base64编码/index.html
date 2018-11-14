@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一.  为什么需要base64编码ASCII表里面0到32是控制字符，33开始的才是可见字符。一些只支持纯文本的协议（比如smtp协议）在传输不可见字符的过程中会出现问题，所以为了保险起见，将所有的字符转化成可见字符，这样就不会出错了。 注意：使用命令  man ascii 可以在终端查看ascii码表 二. base64编码的过程​    举一个具体的实例，演示英语单词Man如何转成Base64">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我理解的base64编码">
+<meta property="og:url" content="http://yoursite.com/2018/10/18/我理解的base64编码/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一.  为什么需要base64编码ASCII表里面0到32是控制字符，33开始的才是可见字符。一些只支持纯文本的协议（比如smtp协议）在传输不可见字符的过程中会出现问题，所以为了保险起见，将所有的字符转化成可见字符，这样就不会出错了。 注意：使用命令  man ascii 可以在终端查看ascii码表 二. base64编码的过程​    举一个具体的实例，演示英语单词Man如何转成Base64">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/image/base64.png">
+<meta property="og:image" content="http://yoursite.com/image/base64-table.png">
+<meta property="og:image" content="http://yoursite.com/image/base64-0.png">
+<meta property="og:updated_time" content="2018-10-18T07:50:45.589Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我理解的base64编码">
+<meta name="twitter:description" content="一.  为什么需要base64编码ASCII表里面0到32是控制字符，33开始的才是可见字符。一些只支持纯文本的协议（比如smtp协议）在传输不可见字符的过程中会出现问题，所以为了保险起见，将所有的字符转化成可见字符，这样就不会出错了。 注意：使用命令  man ascii 可以在终端查看ascii码表 二. base64编码的过程​    举一个具体的实例，演示英语单词Man如何转成Base64">
+<meta name="twitter:image" content="http://yoursite.com/image/base64.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/18/我理解的base64编码/"/>
+
+
+
+
+
+  <title>我理解的base64编码 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/我理解的base64编码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">我理解的base64编码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-18T14:48:13+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="一-为什么需要base64编码"><a href="#一-为什么需要base64编码" class="headerlink" title="一.  为什么需要base64编码"></a>一.  为什么需要base64编码</h4><p>ASCII表里面0到32是控制字符，33开始的才是可见字符。一些只支持纯文本的协议（比如smtp协议）在传输不可见字符的过程中会出现问题，所以为了保险起见，将所有的字符转化成可见字符，这样就不会出错了。</p>
+<p>注意：使用命令  man ascii 可以在终端查看ascii码表</p>
+<h4 id="二-base64编码的过程"><a href="#二-base64编码的过程" class="headerlink" title="二. base64编码的过程"></a>二. base64编码的过程</h4><p>​    举一个具体的实例，演示英语单词Man如何转成Base64编码。<br>​    <img src="/image/base64.png" alt=""></p>
+<p>A. 步骤： </p>
+<p>第一步，”M”、”a”、”n”的ASCII值分别是77、97、110，对应的二进制值是01001101、01100001、01101110，将它们连成一个24位的二进制字符串010011010110000101101110。</p>
+<p>第二步，将这个24位的二进制字符串分成4组，每组6个二进制位：010011、010110、000101、101110。</p>
+<p>第三步，在每组前面加两个00，扩展成32个二进制位，即四个字节：00010011、00010110、00000101、00101110。它们的十进制值分别是19、22、5、46。</p>
+<p>第四步，根据下表，得到每个值对应Base64编码，即T、W、F、u。</p>
+<p><img src="/image/base64-table.png" alt=""></p>
+<p>在传输的时候，传输的是T、W、F、u所对应的ascii码，而不是man所对应的ascii码。</p>
+<p>B. 字节不能整除3的时候：</p>
+<p>如果要编码的字节数不能被3整除，最后会多出1个或2个字节，那么可以使用下面的方法进行处理：先使用0字节值在末尾补足，使其能够被3整除，然后再进行Base64的编码。在编码后的Base64文本后加上一个或两个<code>=</code>号，代表补足的字节数。也就是说，当最后剩余两个八位字节（2个byte）时，最后一个6位的Base64字节块有四位是0值，最后附加上两个等号；如果最后剩余一个八位字节（1个byte）时，最后一个6位的base字节块有两位是0值，最后附加一个等号。 参考下表</p>
+<p><img src="/image/base64-0.png" alt=""></p>
+<p>综上所述：</p>
+<p>缺点：base64编码会让原本3个字节的字符变成4个字节来存储，加大了33%的存储空间。</p>
+<p>优点：让原本不能传输二进制，只能传输文本字符的协议能够传输二进制数据（比如文件，图片等）。</p>
+<h4 id="三-和base64编码相关的使用场景"><a href="#三-和base64编码相关的使用场景" class="headerlink" title="三. 和base64编码相关的使用场景"></a>三. 和base64编码相关的使用场景</h4><p>场景1：给后端上传一个文件</p>
+<p>第一种方法:  给后端发送base64编码的字符串。</p>
+<p>将文件利用fileRader的readAsDataUrl函数来将文件内容进行base64编码，然后将这个base64字符串发送给后端。</p>
+<p>第二种方法：给后端传送一个File文件。</p>
+<p>其实这种方法就是将选中的文件里面的内容每8位（1个字节）读取为一个ascii字符（因为一个ascii字符占一个字节），最后得到一个字符串（比如文件内容的二进制总共有24位，3个字节，那么读取得到的就是3个ascii字符组成的字符串），然后将这个字符串就可以代表文件内容（将这三个字符所对应的二进制还原一下，就可以得到真正的原始二进制数据）。前面所说的这个过程可以通过formData自动实现。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// const file = event.target.files[0]; </span></span><br><span class="line"><span class="comment">// 假设我们在type=file 的 input元素  的onchange 事件里面已经拿到了file文件，注意这个file变量其实只是</span></span><br><span class="line"><span class="comment">// 一个内存指针，里面并没有真正的文件内容。</span></span><br><span class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">formData.append(<span class="string">'fileObj'</span>, file); </span><br><span class="line"><span class="comment">// 之后我们就可以直接把这个formData传递给后端。注意前面的file变量里面没有真正的文件内容，</span></span><br><span class="line"><span class="comment">// 是因为formData帮我们将文件内容读取出来，类似于filereader.readAsBinaryString()的操作</span></span><br><span class="line"><span class="comment">// 将二进制按照上面所说的每8位读成一个ascii字符。http传输的时候就传读取出来的字符串，到了服务端之后就可以</span></span><br><span class="line"><span class="comment">// 拿到这个字符串所代表的二进制，也就是拿到了文件内容.</span></span><br><span class="line"><span class="comment">// 所以这个字符串本身没有意义，只是利用这个字符串来传输二进制。</span></span><br><span class="line"><span class="comment">// 因为http是基于ascii码传输文本的协议。我们使用这种方式让传输文本的http协议也可以传输二进制了。</span></span><br></pre></td></tr></table></figure>
+<p>场景2： 读取本地图片并且显示</p>
+<p>利用fileReader将图片读成base64编码，然后将这个base64编码直接赋值给img的src，就可以显示这张图片了</p>
+<p>场景3:</p>
+<p>window.atob   把base64字符串进行解码</p>
+<p>window.btoa   对字符串进行base64编码</p>
+<p>上面两个函数的结果都是字符串。</p>
+<p>我理解的这两个过程就是利用base64的编码表（也就是本文第二张图）来进行字符间的映射。</p>
+<p><a href="https://yangxiagithub.github.io/2018/08/20/dataURL-canvas-file-Blob-objectURL%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E5%8C%96%E5%85%B3%E7%B3%BB/" target="_blank" rel="noopener">https://yangxiagithub.github.io/2018/08/20/dataURL-canvas-file-Blob-objectURL%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E5%8C%96%E5%85%B3%E7%B3%BB/</a></p>
+<p>上面的文章中说到了将dataurl变成blob的函数，需要用到window.atob函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function dataURItoBlob(dataURI) &#123;</span><br><span class="line">    // convert base64/URLEncoded data component to raw binary data held in a string</span><br><span class="line">    var byteString;</span><br><span class="line">    if (dataURI.split(&apos;,&apos;)[0].indexOf(&apos;base64&apos;) &gt;= 0)</span><br><span class="line">    	// atob解码之后获取到每8位对应的字符串，但不一定是原始字符串。</span><br><span class="line">        byteString = atob(dataURI.split(&apos;,&apos;)[1]);</span><br><span class="line">    else</span><br><span class="line">        byteString = unescape(dataURI.split(&apos;,&apos;)[1]);</span><br><span class="line"></span><br><span class="line">    // separate out the mime component</span><br><span class="line">    var mimeString = dataURI.split(&apos;,&apos;)[0].split(&apos;:&apos;)[1].split(&apos;;&apos;)[0];</span><br><span class="line"></span><br><span class="line">    // write the bytes of the string to a typed array</span><br><span class="line">    var ia = new Uint8Array(byteString.length);</span><br><span class="line">    for (var i = 0; i &lt; byteString.length; i++) &#123;</span><br><span class="line">        ia[i] = byteString.charCodeAt(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return new Blob([ia], &#123;type:mimeString&#125;);</span><br><span class="line">&#125;</span><br><span class="line">// 使用方法如下</span><br><span class="line">var dataURL = canvas.toDataURL(&apos;image/jpeg&apos;, 0.5);</span><br><span class="line">var blob = dataURItoBlob(dataURL);</span><br><span class="line">var fd = new FormData(document.forms[0]);</span><br><span class="line">fd.append(&quot;canvasImage&quot;, blob);</span><br></pre></td></tr></table></figure>
+<p>如果原始文本只是英文的话，那么上面得的byteString就是原始字符串。</p>
+<p>如果原始文本包含中文的话，那么我们需要将byteString所对应的二进制数据还原，然后再通过二进制数据得到原始文本。因为中文在utf8里面是3个字节表示，不是像英文字符那样一个字节表示。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/13/关于浏览器的进程和线程/" rel="next" title="关于浏览器的进程和线程">
+                <i class="fa fa-chevron-left"></i> 关于浏览器的进程和线程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/12/关于视频的一些总结/" rel="prev" title="关于视频的一些总结">
+                关于视频的一些总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">yangXia</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-为什么需要base64编码"><span class="nav-number">1.</span> <span class="nav-text">一.  为什么需要base64编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-base64编码的过程"><span class="nav-number">2.</span> <span class="nav-text">二. base64编码的过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-和base64编码相关的使用场景"><span class="nav-number">3.</span> <span class="nav-text">三. 和base64编码相关的使用场景</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yangXia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

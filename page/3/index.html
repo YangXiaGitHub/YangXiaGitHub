@@ -239,6 +239,555 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/04/BFC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/04/BFC/" itemprop="url">BFC</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-04T19:57:31+08:00">
+                2018-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>定义：BFC:  块级格式化上下文，他决定了块级元素如何对他的内容进行布局，以及与其他元素关系及相对关系。BFC里面的元素与外面的元素不会发生影响。  </p>
+<p>1⃣️触发BFC的方式（一下任意一条就可以）</p>
+<p>​       1.float的值不为none</p>
+<p>​        2.overflow的值不为visible</p>
+<p>​        3.display的值为table-cell、tabble-caption和inline-block之一</p>
+<p>​        4.position的值不为static或者releative中的任何一个（即为absolute或fixed）</p>
+<p>2⃣️BFC布局与普通文档流布局的区别：</p>
+<p>普通文档流布局规则：</p>
+<p>​    A.浮动元素不会被父元素计算高度。</p>
+<p>​    B.非浮动元素会覆盖浮动元素的位置。</p>
+<p>​    C.margin会传递给父级。</p>
+<p>​    D.相邻元素margin会重叠。</p>
+<p>BFC布局规则：</p>
+<p>​    A.浮动元素会被父级元素计算高度。（父级触发BFC）    </p>
+<p>​    B.非浮动元素不会覆盖浮动元素位置。（非浮动元素触发BFC）</p>
+<p>​    C.margin 不会传递给父级。（父级触发BFC）</p>
+<p>​    D.相邻元素margin不会重叠（给其中一个元素增加一个父级，让他的父级触发BFC）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/由domContentLoaded和load事件讲浏览器渲染/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/23/由domContentLoaded和load事件讲浏览器渲染/" itemprop="url">由domContentLoaded和load事件讲浏览器渲染</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-23T20:57:08+08:00">
+                2018-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一-domContentLoaded和load事件"><a href="#一-domContentLoaded和load事件" class="headerlink" title="一 domContentLoaded和load事件"></a>一 domContentLoaded和load事件</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/学习nginx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/23/学习nginx/" itemprop="url">学习nginx</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-23T17:10:41+08:00">
+                2018-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考链接</p>
+<p><a href="https://blog.csdn.net/hzsunshine/article/details/63687054" target="_blank" rel="noopener">https://blog.csdn.net/hzsunshine/article/details/63687054</a></p>
+<p><a href="http://seanlook.com/2015/05/17/nginx-location-rewrite/" target="_blank" rel="noopener">http://seanlook.com/2015/05/17/nginx-location-rewrite/</a></p>
+<p><a href="http://seanlook.com/2015/05/17/nginx-install-and-config/" target="_blank" rel="noopener">http://seanlook.com/2015/05/17/nginx-install-and-config/</a></p>
+<h4 id="一-简介"><a href="#一-简介" class="headerlink" title="一 简介"></a>一 简介</h4><p>nginx是一个高性能的http和反向代理服务器，同时也是一个IMAP/POP3/SMTP代理服务器。</p>
+<p>nginx作为http服务器，有以下几项基本特征：（还有很多其他的特征，由于本文只是基础知识学习，还未体验过其他高端特征）</p>
+<ol>
+<li>处理静态文件，索引文件以及自动索引</li>
+<li>反向代理加速（无缓存），简单的负载均衡和容错。</li>
+</ol>
+<h4 id="二-基础"><a href="#二-基础" class="headerlink" title="二 基础"></a>二 基础</h4><ol>
+<li><p>启动和停止命令</p>
+<p>启动：nginx </p>
+<p>关闭：nginx -s stop</p>
+<p>重启： nginx -s reload</p>
+</li>
+<li><p>配置：nginx的配置可以通过<code>./configration</code>命令来配置，也可以通过配置文件来配置。nginx配置文件存放在/usr/local/etc/nginx文件夹下。</p>
+</li>
+<li><p>nginx配置文件结构</p>
+<p><img src="/image/nginx.png" alt=""></p>
+<p>nginx内层配置可以覆盖外层配置。</p>
+</li>
+</ol>
+<h4 id="三-nginx配置具体讲解"><a href="#三-nginx配置具体讲解" class="headerlink" title="三 nginx配置具体讲解"></a>三 nginx配置具体讲解</h4><p>location匹配规则</p>
+<ul>
+<li>以<code>=</code>开头表示精确匹配</li>
+<li><code>^~</code> 开头表示uri以某个常规字符串开头，不是正则匹配</li>
+<li>~ 开头表示区分大小写的正则匹配;</li>
+<li>~* 开头表示不区分大小写的正则匹配</li>
+<li>/ 通用匹配, 如果没有其它匹配,任何请求都会匹配到</li>
+</ul>
+<p>优先级:</p>
+<p>(location =) &gt; (location 完整路径) &gt; (location ^~ 路径) &gt; (location ~,~* 正则顺序) &gt; (location 部分起始路径) &gt; (/)</p>
+<h4 id="四-rewrite规则"><a href="#四-rewrite规则" class="headerlink" title="四 rewrite规则"></a>四 rewrite规则</h4><ol>
+<li><p>功能：rewrite的功能是使用nginx提供的全局变量或者自己设置的变量，结合正则表达式和标志位实现url重写和重定向。</p>
+</li>
+<li><p>作用范围：rewrite只能放在server{}，location{}，if{}中，并且只能对域名后边的出去参数外的字符串起作用。</p>
+<p>例如 <code>http://seanlook.com/a/we/index.php?id=1&amp;u=str</code> 只对/a/we/index.php重写。语法`rewrite regex replacement [flag];</p>
+<p>如果想对域名或者参数起作用，可以使用全局变量匹配，或者使用proxy—pass作反向代理</p>
+</li>
+<li><p>rewrite和location区别和联系</p>
+<p>联系：都能实现跳转</p>
+<p>区别：rewrite是在统一域名内更改获取资源的路径，location是对一类路径做控制访问或反向代理，可以proxy_pass到其他机器。</p>
+<p>很多情况rewrite也会写在location里面，他的执行顺序是：</p>
+<ol>
+<li>执行server块的rewrite指令</li>
+<li>执行location匹配</li>
+<li>执行选定的location中的rewrite指令</li>
+</ol>
+</li>
+<li><p>rewrite之flag标志位</p>
+<ul>
+<li><p><code>last</code> : 相当于Apache的[L]标记，表示完成rewrite</p>
+</li>
+<li><p><code>break</code> : 停止执行当前虚拟主机的后续rewrite指令集</p>
+</li>
+<li><p><code>redirect</code> : 返回302临时重定向，地址栏会显示跳转后的地址</p>
+</li>
+<li><p><code>permanent</code> : 返回301永久重定向，地址栏会显示跳转后的地址</p>
+<p>因为301和302不能简单的只返回状态码，还必须有重定向的URL，这就是return指令无法返回301,302的原因了。</p>
+<p>理解last和break的区别：(last和break都会阻止后续erwrite指令的执行)</p>
+<p>last：</p>
+<p>​    重新将rewrite后的地址在server标签中执行</p>
+<p>break：</p>
+<p>​    将rewrite后的地址在当前location标签中执行</p>
+</li>
+</ul>
+</li>
+<li><p>rewrite之if指令与全局变量</p>
+<h5 id="if"><a href="#if" class="headerlink" title="if"></a>if</h5><p>语法为<code>if(condition){...}</code>，对给定的条件condition进行判断。如果为真，大括号内的rewrite指令将被执行，if条件(conditon)可以是如下任何内容：</p>
+<ul>
+<li>当表达式只是一个变量时，如果值为空或任何以0开头的字符串都会当做false</li>
+<li>直接比较变量和内容时，使用<code>=</code>或<code>!=</code></li>
+<li><code>~</code>正则表达式匹配，<code>~*</code>不区分大小写的匹配，<code>!~</code>区分大小写的不匹配</li>
+</ul>
+<p><code>-f</code>和<code>!-f</code>用来判断是否存在文件<br><code>-d</code>和<code>!-d</code>用来判断是否存在目录<br><code>-e</code>和<code>!-e</code>用来判断是否存在文件或目录<br><code>-x</code>和<code>!-x</code>用来判断文件是否可执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">if ($http_user_agent ~ MSIE) &#123;</span><br><span class="line">    rewrite ^(.*)$ /msie/$1 break;</span><br><span class="line">&#125; //如果UA包含&quot;MSIE&quot;，rewrite请求到/msid/目录下</span><br><span class="line"></span><br><span class="line">if ($http_cookie ~* &quot;id=([^;]+)(?:;|$)&quot;) &#123;</span><br><span class="line">    set $id $1;</span><br><span class="line"> &#125; //如果cookie匹配正则，设置变量$id等于正则引用部分</span><br><span class="line"></span><br><span class="line">if ($request_method = POST) &#123;</span><br><span class="line">    return 405;</span><br><span class="line">&#125; //如果提交方法为POST，则返回状态405（Method not allowed）。return不能返回301,302</span><br><span class="line"></span><br><span class="line">if ($slow) &#123;</span><br><span class="line">    limit_rate 10k;</span><br><span class="line">&#125; //限速，$slow可以通过 set 指令设置</span><br><span class="line"></span><br><span class="line">if (!-f $request_filename)&#123;</span><br><span class="line">    break;</span><br><span class="line">    proxy_pass  http://127.0.0.1;</span><br><span class="line">&#125; //如果请求的文件名不存在，则反向代理到localhost 。这里的break也是停止rewrite检查</span><br><span class="line"></span><br><span class="line">if ($args ~ post=140)&#123;</span><br><span class="line">    rewrite ^ http://example.com/ permanent;</span><br><span class="line">&#125; //如果query string中包含&quot;post=140&quot;，永久重定向到example.com</span><br><span class="line"></span><br><span class="line">location ~* \.(gif|jpg|png|swf|flv)$ &#123;</span><br><span class="line">    valid_referers none blocked www.jefflei.com www.leizhenfang.com;</span><br><span class="line">    if ($invalid_referer) &#123;</span><br><span class="line">        return 404;</span><br><span class="line">    &#125; //防盗链</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h5><ul>
+<li><code>$args</code> ： #这个变量等于请求行中的参数，同<code>$query_string</code></li>
+<li><code>$content_length</code> ： 请求头中的Content-length字段。</li>
+<li><code>$content_type</code> ： 请求头中的Content-Type字段。</li>
+<li><code>$document_root</code> ： 当前请求在root指令中指定的值。</li>
+<li><code>$host</code> ： 请求主机头字段，否则为服务器名称。</li>
+<li><code>$http_user_agent</code> ： 客户端agent信息</li>
+<li><code>$http_cookie</code> ： 客户端cookie信息</li>
+<li><code>$limit_rate</code> ： 这个变量可以限制连接速率。</li>
+<li><code>$request_method</code> ： 客户端请求的动作，通常为GET或POST。</li>
+<li><code>$remote_addr</code> ： 客户端的IP地址。</li>
+<li><code>$remote_port</code> ： 客户端的端口。</li>
+<li><code>$remote_user</code> ： 已经经过Auth Basic Module验证的用户名。</li>
+<li><code>$request_filename</code> ： 当前请求的文件路径，由root或alias指令与URI请求生成。</li>
+<li><code>$scheme</code> ： HTTP方法（如http，https）。</li>
+<li><code>$server_protocol</code> ： 请求使用的协议，通常是HTTP/1.0或HTTP/1.1。</li>
+<li><code>$server_addr</code> ： 服务器地址，在完成一次系统调用后可以确定这个值。</li>
+<li><code>$server_name</code> ： 服务器名称。</li>
+<li><code>$server_port</code> ： 请求到达服务器的端口号。</li>
+<li><code>$request_uri</code> ： 包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。</li>
+<li><code>$uri</code> ： 不带请求参数的当前URI，$uri不包含主机名，如”/foo/bar.html”。</li>
+<li><code>$document_uri</code> ： 与$uri相同。</li>
+</ul>
+</li>
+</ol>
+<h4 id="五-try-file指令可以替代rewrite"><a href="#五-try-file指令可以替代rewrite" class="headerlink" title="五 try_file指令可以替代rewrite"></a>五 try_file指令可以替代rewrite</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">try_files $uri $uri/ /index.php?q=$uri&amp;$args;</span><br></pre></td></tr></table></figure>
+<p>按顺序检查文件是否存在，返回第一个找到的文件。结尾的斜线表示为文件夹 -$uri/。如果所有的文件都找不到，会进行一个内部重定向到最后一个参数。</p>
+<p>务必确认只有最后一个参数可以引起一个内部重定向，之前的参数只设置内部URI的指向。 最后一个参数是回退URI且必须存在，否则将会出现内部500错误。</p>
+<p>命名的location也可以使用在最后一个参数中。与rewrite指令不同，如果回退URI不是命名的location那么$args不会自动保留，如果你想保留​$args，必须明确声明。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">try_files /app/cache/ $uri @fallback;</span><br><span class="line">index index.php index.html;</span><br><span class="line"># 它将检测$document_root/app/cache/index.php,$document_root/app/cache/index.html 和 </span><br><span class="line"># $document_root$uri是否存在，如果不存在着内部重定向到 @fallback 。</span><br></pre></td></tr></table></figure>
+<p>需要明确的是处最后一个参数外 try_files 本身不会因为任何原因产生内部重定向。 </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/14/前端网页优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -941,16 +1490,21 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> #container &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">  .attr &#123;</span><br><span class="line">    background-color: #008b57;</span><br><span class="line">  &#125;</span><br><span class="line">  .attr img&#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: auto;</span><br><span class="line">  &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;div id=&apos;container&apos;&gt;</span><br><span class="line">  &lt;div class=&apos;attr&apos;&gt;</span><br><span class="line">    &lt;img src=&quot;1.png&quot; alt=&quot;&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <p>如果你觉得增加img标签多发了http请求，那么你可以把图片变成base64格式，由于我们的图片没有实际显示作用，我们可以大胆压缩。所以既没有http请求，还可以让图片很小。</p>
 <p>2)可以利用css3的calc函数.(利用第二种情况来实现)</p>
-<p>第一种情况 <code>position:absolute</code></p>
-<p>如果元素是position：absolute的话，那么百分比基准是相对他父级元素中第一个position：relative元素的宽和高为基准的。</p>
-<p>比如position：relative元素的width为200px，height为100px</p>
-<p>那么position：absolute元素里</p>
+<p><del>第一种情况 <code>position:absolute</code></del></p>
+<p><del>如果元素是position：absolute的话，那么百分比基准是相对他父级元素中第一个position：relative元素的宽和高为基准的。</del></p>
+<p><del>比如position：relative元素的width为200px，height为100px</del></p>
+<p><del>那么position：absolute元素里</del></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">width：calc(10%)  // 20px</span><br><span class="line">height: calc(10%) // 10px</span><br></pre></td></tr></table></figure>
-<p>第二种情况 <code>普通文档流中元素</code></p>
-<p>这种情况元素的宽和高的百分比基准都是父元素的宽度。</p>
-<p>比如一个div的父元素宽度是200px，高度是100px.</p>
-<p>这个div设置</p>
+<p><del>第二种情况 <code>普通文档流中元素</code></del></p>
+<p><del>这种情况元素的宽和高的百分比基准都是父元素的宽度。</del></p>
+<p><del>比如一个div的父元素宽度是200px，高度是100px.</del></p>
+<p><del>这个div设置</del></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">width：calc(10%)  // 20px</span><br><span class="line">height: calc(10%) // 20px</span><br></pre></td></tr></table></figure>
+<p>后来自己证实得知，calc函数不区分文档流和absolute元素</p>
+<p>加入父元素宽为200px，高为100px</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">width：calc(10%)  // 20px</span><br><span class="line">height: calc(10%) // 10px</span><br><span class="line">margin: calc(10%) // 20px</span><br><span class="line">padding: calc(10%) // 20px</span><br></pre></td></tr></table></figure>
+<p>对于宽和margin和padding值，百分比是基于父元素的宽度</p>
+<p>对于高，百分比是基于父元素的高度</p>
 <p>3）使用padding-bottom实现</p>
 <p>padding-bottom属性值百分比是按照父容器宽度来计算的，所以所以这里我们设置容器宽度为父容器的50%；padding-bottom也为50%；就都是父容器宽度的50%；显示出来就是一个完美的正方形了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">#container &#123;</span><br><span class="line">    width: 80%;</span><br><span class="line">    height: 500px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.attr &#123;</span><br><span class="line">    width: 50%;</span><br><span class="line">    height: 0;</span><br><span class="line">    padding-bottom: 50%;</span><br><span class="line">    background-color: #008b57;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&apos;container&apos;&gt;</span><br><span class="line">    &lt;div class=&apos;attr&apos;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
@@ -1349,482 +1903,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/01/转义与不转义/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/01/转义与不转义/" itemprop="url">转义与不转义</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T14:36:41+08:00">
-                2018-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">前端开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="需求-用户输入’-lt-img-gt-’-将’-lt-img-gt-’-显示在页面上-用户输入什么就显示什么"><a href="#需求-用户输入’-lt-img-gt-’-将’-lt-img-gt-’-显示在页面上-用户输入什么就显示什么" class="headerlink" title="需求: 用户输入’&lt; img&gt;’,将’&lt; img&gt;’ 显示在页面上(用户输入什么就显示什么)"></a>需求: 用户输入’&lt; img&gt;’,将’&lt; img&gt;’ 显示在页面上(用户输入什么就显示什么)</h4><p>如果我们直接将’&lt; img&gt;’ 作为html输出，那么浏览器会将其解析为一张图片，然后显示一张图片。</p>
-<p>解决方案：对用户输入进行转义，可以是后端转，也可以是前端转。</p>
-<h5 id="方法一：后端转义"><a href="#方法一：后端转义" class="headerlink" title="方法一：后端转义"></a>方法一：后端转义</h5><p>后端给前端传过来的是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;lt; img &amp;gt;</span><br></pre></td></tr></table></figure>
-<p>这时候我们直接将后端传过来的数据作为html内容输出即可。假设这个返回字段是text。</p>
-<h6 id="如果是vue开发，可以使用"><a href="#如果是vue开发，可以使用" class="headerlink" title="如果是vue开发，可以使用"></a>如果是vue开发，可以使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">###### 如果是underscore模版，可以使用&lt;%= text %&gt;</span><br><span class="line"></span><br><span class="line">##### 方法二：前端转义</span><br><span class="line"></span><br><span class="line">后端给前端传过来的是</span><br></pre></td></tr></table></figure></h6><p><img><br>```</p>
-<p>这时候我们不能直接将后端传过来的数据作为html内容输出，否则浏览器会将其解析为一张图片。需要在前端进行一次转义。</p>
-<h6 id="如果是vue开发，可以使用-1"><a href="#如果是vue开发，可以使用-1" class="headerlink" title="如果是vue开发，可以使用"></a>如果是vue开发，可以使用</h6><h6 id="如果是underscore，可以使用-lt-text-gt"><a href="#如果是underscore，可以使用-lt-text-gt" class="headerlink" title="如果是underscore，可以使用&lt;%- text %&gt;"></a>如果是underscore，可以使用&lt;%- text %&gt;</h6><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>对于用户的输入，我们必须要进行转义，否则容易造成xss攻击。</p>
-<p>前后端中有一端进行转义了，另一端就不能转义了，否则会达到没转义的效果。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/28/视频知识扫盲/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/28/视频知识扫盲/" itemprop="url">视频知识扫盲</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T17:11:58+08:00">
-                2018-02-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/视频知识/" itemprop="url" rel="index">
-                    <span itemprop="name">视频知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="一：概念解析"><a href="#一：概念解析" class="headerlink" title="一：概念解析"></a>一：概念解析</h4><p><a href="https://www.zhihu.com/question/20997688" target="_blank" rel="noopener">https://www.zhihu.com/question/20997688</a></p>
-<h5 id="1-视频文件格式-简称文件格式"><a href="#1-视频文件格式-简称文件格式" class="headerlink" title="1.视频文件格式 (简称文件格式):"></a>1.视频文件格式 (简称文件格式):</h5><p>我们知道在windows里文件都有后缀名，如1.doc，2.wps，3.psd等等。windows设置这些后缀名的目的是让系统中的应用程序来识别并关联这些文件，让相应的文件由相应的应用程序打开。所以常见的文件格式如1.avi，2.mpg这些叫做视频的文件格式，它由你电脑上安装的视频播放器关联。你可以随意改变扩展名，但是对真的视频一点影响都没有，不要以为把avi后缀改成mp4，视频就变成mp4格式了。</p>
-<h5 id="2-视频封装格式-（简称视频格式）"><a href="#2-视频封装格式-（简称视频格式）" class="headerlink" title="2.视频封装格式 （简称视频格式）"></a>2.视频封装格式 （简称视频格式）</h5><p>avi，mpeg，vob是一种视频封装格式，相当于一种存储视频信息的容器。它是由相应的公司开发出来的。我们可以在自己电脑上看到1.avi，2.mpg，3.vob这些视频文件格式的后缀名即采用相应的视频封装格式的名称。视频文件格式反映了视频封装格式。</p>
-<h5 id="3-视频编码方式-（简称视频编码）"><a href="#3-视频编码方式-（简称视频编码）" class="headerlink" title="3.视频编码方式 （简称视频编码）"></a>3.视频编码方式 （简称视频编码）</h5><p>所谓的视频编码方式就是指能够对数字视频进行压缩或者解压缩（视频解码）的程序或者设备，通常这种压缩属于有损压缩。也可以指通过特定的压缩技术，将某个视频格式转换成另一种视频格式。</p>
-<p>常见的编码方式有：</p>
-<h6 id="1-H-26X系列：H-261-H-263-H-264-H-265-……"><a href="#1-H-26X系列：H-261-H-263-H-264-H-265-……" class="headerlink" title="1. H.26X系列：H.261, H.263, H.264, H.265 ……"></a>1. H.26X系列：H.261, H.263, H.264, H.265 ……</h6><h6 id="2-MPEG系列：MPEG-1，MPEG-2-，MPEG-4第二部分，-MPEG-4第十部分……"><a href="#2-MPEG系列：MPEG-1，MPEG-2-，MPEG-4第二部分，-MPEG-4第十部分……" class="headerlink" title="2. MPEG系列：MPEG-1，MPEG-2 ，MPEG-4第二部分， MPEG-4第十部分……"></a>2. MPEG系列：MPEG-1，MPEG-2 ，MPEG-4第二部分， MPEG-4第十部分……</h6><h6 id="3-其他系列：AMV，AVS，DV……"><a href="#3-其他系列：AMV，AVS，DV……" class="headerlink" title="3. 其他系列：AMV，AVS，DV……"></a>3. 其他系列：AMV，AVS，DV……</h6><p>总之，即使同一种视频文件格式，如*.MPG，又分为MPEG-1，MPEG-2，MPEG-4几种不同的视频封装格式。就算是同一种视频封装格式，如MPEG-4又可以使用多种视频编码方式。视频的编码形式才是一个视频文件的本质所在，不要简单通过文件格式和封装形式来区分视频。</p>
-<p>mp4,rmvb,mkv,avi从形式上来说首先都是视频文件的扩展名，其次它们也是视频文件的封装格式（即容器）</p>
-<p>mp4是MPEG-4标准的第14部分所制定的容器标准。所谓容器，就是把编码器生成的多媒体内容（视频，音频，字幕，章节信息等）混合封装在一起的标准。容器使得不同多媒体内容同步播放变得很简单，而容器的另一个作用就是为多媒体内容提供索引，也就是说如果没有容器存在的话一部影片你只能从一开始看到最后，不能拖动进度条（当然这种情况下有的播放器会话比较长的时间临时创建索引），而且如果你不自己去手动另外载入音频就没有声音。</p>
-<p>关于容器的一个例子是aac/m4a”格式“的音频（这两是一回事，m4a是苹果”发明”的扩展名），这种音频采用的是AAC编码，但实际上也是被封装在MPEG4P14（即mp4）容器里的，因为没有容器的原始AAC数据流是没有索引的，不方便播放器定位。</p>
-<p>不同的容器有不同的特性，mp4是官方指定的容器，属于”太子党“，硬件支持广泛；rmvb是一种封闭标准的容器，只能用来封装realvideo编码的视频；mkv是社区设计的开放性容器，最大的特性在于几乎可以封装一切的编码格式；avi历史悠久，其陈旧的架构本身已经不能适应新的编码格式，可以入土了。</p>
-<p>流式封装可以有TS、FLV，索引式的封装有MP4等。TS/FLV/MP4等是封装格式。h.264/rm/rmvb等是视频协议，aac/mp3等是音频协议。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/28/vue开发遇到的坑/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/28/vue开发遇到的坑/" itemprop="url">vue开发遇到的坑</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T15:02:16+08:00">
-                2018-02-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>设置组件的key时最好不要使用列表的index，而是设置一个独特的值，比如相关的id或者其他能保证独特性的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;component-answer v-for=&quot;(answer, index) in answerList&quot; :key=&quot;answer.ansid&quot;&gt;&lt;/component-answer&gt;</span><br></pre></td></tr></table></figure>
-<p>最好不要像下面那样，用index作为key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;component-answer v-for=&quot;(answer, index) in answerList&quot; :key=&quot;index&quot;&gt;&lt;/component-answer&gt;</span><br></pre></td></tr></table></figure>
-<p>上面代码是显示一个回答列表。如果只是作为页面显示组件的话，两种写法都可以。但是当我要去删除其中一个的时候，并且你在删除之后（或者之前）还进行另外的操作。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deleteAnswer: <span class="function"><span class="keyword">function</span> (<span class="params">ansid</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.answerList = <span class="keyword">this</span>.answerList.filter(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> item.ansid !== ansid;</span><br><span class="line">            &#125;.bind(<span class="keyword">this</span>));</span><br><span class="line">        &#125;,</span><br></pre></td></tr></table></figure>
-<p>如果你使用index作为key，你会发现这些另外的操作所对应的this指向了你想删除的组件的下一个组件，从而影响了下一个组件。而使用特殊的id作为key则不会有这种副作用。</p>
-<p>比如，你想删除第一个组件，并且在删除第一个组件之前将第一个组件的opacity设为0，如果你使用index作为key，你会发现再删除第一个组件后，第二个组件的opacity变成了0。</p>
-<p>原因：由于删除了第一个组件之后，原来的第二个组件的key与被删除的第一个组件的key相同了，所以针对被删除组件的操作被运用到了第二个组件上，从而产生bug。</p>
-<p>总结：使用唯一而不可替代的值作为key，最好不要用index作为key。</p>
-</li>
-<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"video_container"</span> tabIndex=<span class="string">"-1"</span> @keydown=<span class="string">"keydown"</span>&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>键盘事件只能在可以聚焦的元素上触发</strong>（页面刚刚加载完成时，焦点处于<code>document</code> 元素上）。而普通div不是可获焦元素，所以如果你写成下面这样是无法捕获keydown事件的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;video_container&quot; @keydown=&quot;keydown&quot;&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>但是写上 <code>tabIndex=&quot;-1&quot;</code> 之后，再调用focues方法</strong>就可以获取焦点了，之后就可以捕捉到键盘事件了。</p>
-<p>下面我们来说一说javascript的焦点管理：</p>
-<p>![链接]<a href="https://www.cnblogs.com/xiaohuochai/p/5874447.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaohuochai/p/5874447.html</a></p>
-<p>（1）焦点元素</p>
-<p>默认情况下，只有表单元素可以获得焦点，因为只有表单元素可以交互。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; value=&quot;223&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>要让非表单元素获得焦点也是可以的，办法是先将该元素tabIndex属性设置为-1，再让该元素调用focus方法。</p>
-<p><strong>activeElement</strong></p>
-<p>document.activeElement属性用于管理焦点，保存着当前获得焦点的元素。但是IE不支持该属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;test&quot; style=&quot;height:30px;width:100px;background:lightgreen&quot;&gt;div&lt;/div&gt;</span><br><span class="line">&lt;button id=&quot;btn&quot;&gt;div元素获得焦点&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">console.log(document.activeElement);//&lt;body&gt;</span><br><span class="line">btn.onclick = function()&#123;</span><br><span class="line">    console.log(document.activeElement);//&lt;button&gt;</span><br><span class="line">    test.tabIndex = -1;</span><br><span class="line">    test.focus();    </span><br><span class="line">    console.log(document.activeElement);//&lt;div&gt;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>(2)  获得焦点</p>
-<p>元素获得焦点有4种方法：页面加载，用户输入，focus()方法，autofocus属性</p>
-<p><strong>页面加载</strong>：默认情况下，文档刚刚加载完成时，document.activeElement中保存的是body元素的引用。文档加载期间，document.activeElement的值为null</p>
-<p><strong>用户输入</strong>：用户通常使用tab键移动焦点，使用空格键激活焦点。</p>
-<p>说到tab键，就不得不提tabIndex属性。tabIndex属性用来指定当前html元素是否被tab键遍历，默认值是0。</p>
-<p>​</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1875,7 +1953,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
