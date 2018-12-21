@@ -87,7 +87,7 @@
 <meta property="og:description" content="一. 硬件，核心与shell的关系 shell是一个程序，他接受从键盘输入的命令，然后把命令传递给操作系统去执行。 也就是说，我们必须要透过『 Shell 』将我们输入的命令与 Kernel 沟通，好让 Kernel 可以控制硬件来正确无误的工作！ 二. shell相关操作1.查看shell的种类： 合法shell的类型放在/etc/shells文件里面 2.查看当前shell类型：echo $S">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/image/shell.jpg">
-<meta property="og:updated_time" content="2018-06-13T02:37:14.897Z">
+<meta property="og:updated_time" content="2018-12-20T11:14:04.644Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell学习">
 <meta name="twitter:description" content="一. 硬件，核心与shell的关系 shell是一个程序，他接受从键盘输入的命令，然后把命令传递给操作系统去执行。 也就是说，我们必须要透过『 Shell 』将我们输入的命令与 Kernel 沟通，好让 Kernel 可以控制硬件来正确无误的工作！ 二. shell相关操作1.查看shell的种类： 合法shell的类型放在/etc/shells文件里面 2.查看当前shell类型：echo $S">
@@ -342,8 +342,15 @@
 <p>3.切换shell类型：切换shell  ：chsh -s /bin/bash</p>
 <p>4.<strong>PS1</strong>设置<strong>shell</strong>命令提示字符串</p>
 <p>5.<code>export PATH=&quot;$PATH :/usr/bin&quot;</code> 将变量export出去，这样子程序就能使用这个变量</p>
-<h4 id="三-常用命令"><a href="#三-常用命令" class="headerlink" title="三. 常用命令"></a>三. 常用命令</h4><p>type查看命令类型</p>
-<p>which和whereis查看可执行程序位置</p>
+<h4 id="三-常用命令"><a href="#三-常用命令" class="headerlink" title="三. 常用命令"></a>三. 常用命令</h4><h5 id="首先说明什么是命令，命令可以是下面四种形式之一："><a href="#首先说明什么是命令，命令可以是下面四种形式之一：" class="headerlink" title="首先说明什么是命令，命令可以是下面四种形式之一："></a>首先说明什么是命令，命令可以是下面四种形式之一：</h5><ol>
+<li>是一个可执行程序。就像我们看到的位于/usr/bin中的文件一样，属于这一类的程序，可以编译成二进制文件。它可以是用c和c++写成的程序，也可以是有脚本语言写成的程序，比如shell，perl，Python，ruby等。</li>
+<li>是一个内置于shell的命令（builtins）。比如cd命令。</li>
+<li>是一个命令别名，用aliass生成的命令。</li>
+<li>是一个shell函数，把他们放到环境变量中就可以直接执行。</li>
+</ol>
+<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><p>type：查看<strong>命令</strong>类型(是上面四种的哪一种)</p>
+<p>which：显示<strong>可执行程序</strong>位置，注意只是命令里面的可执行程序的位置。</p>
+<p>Whereis: 不只可以查找命令，其他文件类型都可以, 范围比which大。但是一般使用which</p>
 <p>file查看文件类型</p>
 <h4 id="四-shell的执行顺序"><a href="#四-shell的执行顺序" class="headerlink" title="四. shell的执行顺序"></a>四. shell的执行顺序</h4><p>命令运行的顺序可以这样看：</p>
 <ol>
@@ -354,11 +361,29 @@
 <li><p>由 bash 内建的 (builtin) 命令来运行；</p>
 </li>
 <li><p>透过 $PATH 这个变量的顺序搜寻到的第一个命令来运行。</p>
-<p>注意：使用source或者. 来执行的脚本是在当前shell环境中，如 source b.sh 或者 ./ b.sh</p>
+<p>注意：使用source或者. 来执行的脚本是在当前shell环境中，如 source b.sh 或者 ./b.sh</p>
 <p>使用shell b.sh 命令来执行的脚本是在自己的shell环境下执行的</p>
 </li>
 </ol>
-<h4 id="五-bash-环境中的特殊符号"><a href="#五-bash-环境中的特殊符号" class="headerlink" title="五. bash 环境中的特殊符号"></a>五. bash 环境中的特殊符号</h4><table>
+<p><strong>注意</strong>  关于shell的执行命令 ：  . 和source是等价的，他们都是在当前shell里面执行，不会建立子shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">. ./a.sh</span><br><span class="line">source ./a.sh</span><br><span class="line">./a.sh</span><br></pre></td></tr></table></figure>
+<p>上面三个命令都可以执行当前路径下的a.sh</p>
+<p>前面已经说了. 和source是等价的。然而. ./a.sh 和./a.sh的区别在于：</p>
+<p>. ./a.sh是执行当前路径下的a脚本（ . 表示执行，<strong>文件名是参数</strong>），</p>
+<p>./a.sh是传入了一个<strong>文件名作为命令</strong>，需要在文件内部去通过#!/bin/bash 或者#!/usr/bin/env node 来指定脚本解释器</p>
+<p>而且./a.sh 是新开子shell来执行脚本，子shell里面的变量无法被父shell获取</p>
+<h4 id="五-父子shell参数传递问题"><a href="#五-父子shell参数传递问题" class="headerlink" title="五. 父子shell参数传递问题"></a>五. 父子shell参数传递问题</h4><ol>
+<li><p>父shell给子shell传参：</p>
+<p>父亲定义的变量如果使用source方式则儿子可以直接使用，如果是用./a.bash 的方式执行子shell，那么需要付shell  export 变量才能让儿子拿到数据。</p>
+</li>
+<li><p>子shell给父shell传参</p>
+<p>（1）在子shell里面将数据echo出去</p>
+<p>（2）父shell如果使用source方式执行儿子（其实使用source执行，父子之间变量都是公用的，其实他们是在同一个shell里，也没有父子之说，为了区分两个shell，我暂时这么称呼）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"><span class="comment"># 当前文件名字为father.sh</span></span><br><span class="line"><span class="built_in">export</span> fatherVar=<span class="string">"i am father"</span></span><br><span class="line">chmod +x ./son.sh</span><br><span class="line">./son.sh</span><br><span class="line">sonA=$(. ./son.sh)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"我是父亲，我打印来自儿子shell中的变量<span class="variable">$&#123;sonVar&#125;</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"我是父亲，我打印来自儿子shell echo得到的数据：<span class="variable">$&#123;sonA&#125;</span>"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"><span class="comment"># 当前文件名字为son.sh</span></span><br><span class="line">sonVar=<span class="string">"i am son"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"我是儿子，我打印来自父亲的变量<span class="variable">$&#123;fatherVar&#125;</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"abc"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="六-bash-环境中的特殊符号"><a href="#六-bash-环境中的特殊符号" class="headerlink" title="六. bash 环境中的特殊符号"></a>六. bash 环境中的特殊符号</h4><table>
 <thead>
 <tr>
 <th>符号</th>
@@ -436,7 +461,7 @@
 <p>管线命令在 bash 的连续的处理程序中是相当重要的！另外，在 log file 的分析当中也是相当重要的一环， 所以请特别留意！另外，在管线命令当中，常常会使用到前一个命令的 stdout 作为这次的 stdin ， 某些命令需要用到文件名 (例如 tar) 来进行处理时，该 stdin 与 stdout 可以利用减号 “-“ 来替代， 举例来说：</p>
 <p><code>tar -cvf - /home | tar -xvf -</code></p>
 <p>上面这个例子是说：『我将 /home 里面的文件给他打包，但打包的数据不是纪录到文件，而是传送到 stdout； 经过管线后，将 tar -cvf - /home 传送给后面的 tar -xvf - 』。后面的这个 - 则是取用前一个命令的 stdout， 因此，我们就不需要使用 file 了！这是很常见的例子喔！注意注意！</p>
-<h4 id="六-文件压缩命令"><a href="#六-文件压缩命令" class="headerlink" title="六. 文件压缩命令"></a>六. 文件压缩命令</h4><h5 id="1-zip和unzip"><a href="#1-zip和unzip" class="headerlink" title="1. zip和unzip"></a>1. zip和unzip</h5><ol>
+<h4 id="七-文件压缩命令"><a href="#七-文件压缩命令" class="headerlink" title="七. 文件压缩命令"></a>七. 文件压缩命令</h4><h5 id="1-zip和unzip"><a href="#1-zip和unzip" class="headerlink" title="1. zip和unzip"></a>1. zip和unzip</h5><ol>
 <li>我想把一个文件abc.txt和一个目录dir1压缩成为yasuo.zip：</li>
 </ol>
 <p><code>＃ zip -r yasuo.zip abc.txt dir1</code></p>
@@ -581,7 +606,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -636,7 +661,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-硬件，核心与shell的关系"><span class="nav-number">1.</span> <span class="nav-text">一. 硬件，核心与shell的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-shell相关操作"><span class="nav-number">2.</span> <span class="nav-text">二. shell相关操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-常用命令"><span class="nav-number">3.</span> <span class="nav-text">三. 常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-shell的执行顺序"><span class="nav-number">4.</span> <span class="nav-text">四. shell的执行顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五-bash-环境中的特殊符号"><span class="nav-number">5.</span> <span class="nav-text">五. bash 环境中的特殊符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六-文件压缩命令"><span class="nav-number">6.</span> <span class="nav-text">六. 文件压缩命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-zip和unzip"><span class="nav-number">6.1.</span> <span class="nav-text">1. zip和unzip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-tar"><span class="nav-number">6.2.</span> <span class="nav-text">2.tar</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-硬件，核心与shell的关系"><span class="nav-number">1.</span> <span class="nav-text">一. 硬件，核心与shell的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-shell相关操作"><span class="nav-number">2.</span> <span class="nav-text">二. shell相关操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-常用命令"><span class="nav-number">3.</span> <span class="nav-text">三. 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#首先说明什么是命令，命令可以是下面四种形式之一："><span class="nav-number">3.1.</span> <span class="nav-text">首先说明什么是命令，命令可以是下面四种形式之一：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常用命令"><span class="nav-number">3.2.</span> <span class="nav-text">常用命令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-shell的执行顺序"><span class="nav-number">4.</span> <span class="nav-text">四. shell的执行顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五-父子shell参数传递问题"><span class="nav-number">5.</span> <span class="nav-text">五. 父子shell参数传递问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六-bash-环境中的特殊符号"><span class="nav-number">6.</span> <span class="nav-text">六. bash 环境中的特殊符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#七-文件压缩命令"><span class="nav-number">7.</span> <span class="nav-text">七. 文件压缩命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-zip和unzip"><span class="nav-number">7.1.</span> <span class="nav-text">1. zip和unzip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-tar"><span class="nav-number">7.2.</span> <span class="nav-text">2.tar</span></a></li></ol></li></ol></div>
             
 
           </div>
