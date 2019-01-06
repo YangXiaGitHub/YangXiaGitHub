@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="本文内容是参照菜鸟教程写的 一.  对元字符分类正则表达式里面可以分为普通字符和元字符。 普通字符没有特殊含义，比如’a’ 就是代表 ‘a’ 字符；而元字符具有特殊含义，下面我们将元字符进行简单归类，便于记忆。（只列出平时使用较多的一些字符，不常使用的没有列出）  非打印字符 | 元字符 | 含义                                             || ——">
+<meta name="description" content="本文内容是参照菜鸟教程写的 一.  对元字符分类正则表达式里面可以分为普通字符和元字符。 普通字符没有特殊含义，比如’a’ 就是代表 ‘a’ 字符；而元字符具有特殊含义，下面我们将元字符进行简单归类，便于记忆。（只列出平时使用较多的一些字符，不常使用的没有列出）  非打印字符     元字符 含义     \s 匹配任何空白字符，包括空格，制表符，换页符等等。   \S 匹配任何非空白字符   \">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于正则表达式">
 <meta property="og:url" content="http://yoursite.com/2018/12/19/关于正则表达式/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="本文内容是参照菜鸟教程写的 一.  对元字符分类正则表达式里面可以分为普通字符和元字符。 普通字符没有特殊含义，比如’a’ 就是代表 ‘a’ 字符；而元字符具有特殊含义，下面我们将元字符进行简单归类，便于记忆。（只列出平时使用较多的一些字符，不常使用的没有列出）  非打印字符 | 元字符 | 含义                                             || ——">
+<meta property="og:description" content="本文内容是参照菜鸟教程写的 一.  对元字符分类正则表达式里面可以分为普通字符和元字符。 普通字符没有特殊含义，比如’a’ 就是代表 ‘a’ 字符；而元字符具有特殊含义，下面我们将元字符进行简单归类，便于记忆。（只列出平时使用较多的一些字符，不常使用的没有列出）  非打印字符     元字符 含义     \s 匹配任何空白字符，包括空格，制表符，换页符等等。   \S 匹配任何非空白字符   \">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-20T04:24:01.508Z">
+<meta property="og:updated_time" content="2019-01-06T07:56:12.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于正则表达式">
-<meta name="twitter:description" content="本文内容是参照菜鸟教程写的 一.  对元字符分类正则表达式里面可以分为普通字符和元字符。 普通字符没有特殊含义，比如’a’ 就是代表 ‘a’ 字符；而元字符具有特殊含义，下面我们将元字符进行简单归类，便于记忆。（只列出平时使用较多的一些字符，不常使用的没有列出）  非打印字符 | 元字符 | 含义                                             || ——">
+<meta name="twitter:description" content="本文内容是参照菜鸟教程写的 一.  对元字符分类正则表达式里面可以分为普通字符和元字符。 普通字符没有特殊含义，比如’a’ 就是代表 ‘a’ 字符；而元字符具有特殊含义，下面我们将元字符进行简单归类，便于记忆。（只列出平时使用较多的一些字符，不常使用的没有列出）  非打印字符     元字符 含义     \s 匹配任何空白字符，包括空格，制表符，换页符等等。   \S 匹配任何非空白字符   \">
 
 
 
@@ -313,17 +313,141 @@
 <h3 id="一-对元字符分类"><a href="#一-对元字符分类" class="headerlink" title="一.  对元字符分类"></a>一.  对元字符分类</h3><p>正则表达式里面可以分为普通字符和元字符。</p>
 <p>普通字符没有特殊含义，比如’a’ 就是代表 ‘a’ 字符；而元字符具有特殊含义，下面我们将元字符进行简单归类，便于记忆。（只列出平时使用较多的一些字符，不常使用的没有列出）</p>
 <ol>
-<li><p>非打印字符</p>
-<p>| 元字符 | 含义                                             |<br>| —— | ———————————————— |<br>| \s     | 匹配任何空白字符，包括空格，制表符，换页符等等。 |<br>| \S     | 匹配任何非空白字符                               |<br>| \n     | 匹配一个换行符                                   |<br>| \r     | 匹配一个回车符                                   |</p>
-</li>
-<li><p>特殊含义元字符</p>
-<p>| 元字符 | 含义                                                         |<br>| —— | ———————————————————— |<br>| $      | 匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $$ 也匹配 ‘\n’ 或 ‘\r’。要匹配 \$ 字符本身，请使用’\\$’。 |<br>| ^      | 匹配输入字符串的开始位置，除非在方括号表达式中使用，此时它表示不接受该字符集合。要匹配 ^ 字符本身，请使用 \^。 |<br>| <em>      | 匹配前面的子表达式<strong>0</strong>次或<strong>多</strong>次。要匹配 </em> 字符，请使用\ *。 |<br>| +      | 匹配前面的子表达式一次或多次。要匹配 + 字符，请使用\ +。    |<br>| ?      | 匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。 |<br>| .      | 匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用\ . 。   |<br>| {      | 标记限定符表达式的开始。要匹配 {，请使用\ {。               |<br>| [      | 标记一个中括号表达式的开始。要匹配 [，请使用\ [。           |<br>| \      | 将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘\\’ 匹配 “\”，而 ‘\(‘ 则匹配 “(“。 |<br>| |     | 指明两项之间的一个选择。要匹配 |，请使用\|。              |</p>
-</li>
-<li><p>和转义相关的元字符</p>
-<p>| 字符 | 描述                                                         |<br>| —- | ———————————————————— |<br>| \d   | 匹配一个数字字符。等价于 [0-9]。                             |<br>| \D   | 匹配一个非数字字符。等价于 [^0-9]。                        |<br>| \w   | 匹配字母、数字、下划线。等价于[A-Za-z0-9_]。                 |<br>| \W   | 匹配非字母、数字、下划线。等价于[^A-Za-z0-9]。             |<br>| \s   | 匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。 |<br>| \S   | 匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。                |<br>| \b   | 匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。 |<br>| \B   | 匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。 |<br>| \num | 匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，’(.)\1’ 匹配两个连续的相同字符。 |</p>
-</li>
-<li><p>限定符</p>
-</li>
+<li>非打印字符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">元字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\s</td>
+<td>匹配任何空白字符，包括空格，制表符，换页符等等。</td>
+</tr>
+<tr>
+<td style="text-align:left">\S</td>
+<td>匹配任何非空白字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\n</td>
+<td>匹配一个换行符</td>
+</tr>
+<tr>
+<td style="text-align:left">\r</td>
+<td>匹配一个回车符</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>特殊含义元字符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">元字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$</td>
+<td>匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $$ 也匹配 ‘\n’ 或 ‘\r’。要匹配 \$ 字符本身，请使用’\\$’。</td>
+</tr>
+<tr>
+<td style="text-align:left">^</td>
+<td>匹配输入字符串的开始位置，除非在方括号表达式中使用，此时它表示不接受该字符集合。要匹配 ^ 字符本身，请使用 \^。</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td>匹配前面的子表达式<strong>0</strong>次或<strong>多</strong>次。要匹配 <em> 字符，请使用\ \</em>。</td>
+</tr>
+<tr>
+<td style="text-align:left">+</td>
+<td>匹配前面的子表达式一次或多次。要匹配 + 字符，请使用\ +。</td>
+</tr>
+<tr>
+<td style="text-align:left">?</td>
+<td>匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。</td>
+</tr>
+<tr>
+<td style="text-align:left">.</td>
+<td>匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用\ . 。</td>
+</tr>
+<tr>
+<td style="text-align:left">{</td>
+<td>标记限定符表达式的开始。要匹配 {，请使用\ {。</td>
+</tr>
+<tr>
+<td style="text-align:left">[</td>
+<td>标记一个中括号表达式的开始。要匹配 [，请使用\ [。</td>
+</tr>
+<tr>
+<td style="text-align:left">\</td>
+<td>将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘\\’ 匹配 “\”，而 ‘\(‘ 则匹配 “(“。</td>
+</tr>
+<tr>
+<td style="text-align:left">\</td>
+<td></td>
+<td>指明两项之间的一个选择。要匹配 \</td>
+<td>，请使用\\</td>
+<td>。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>和转义相关的元字符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\d</td>
+<td>匹配一个数字字符。等价于 [0-9]。</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配一个非数字字符。等价于 [^0-9]。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母、数字、下划线。等价于[A-Za-z0-9_]。</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配非字母、数字、下划线。等价于[^A-Za-z0-9]。</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td>\num</td>
+<td>匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，’(.)\1’ 匹配两个连续的相同字符。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>限定符</li>
 </ol>
 <p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。比如 * 或 + 或 ? 或 {n} 或 {n,} 或 {n,m}。</p>
 <table>
@@ -401,14 +525,14 @@
 </tbody>
 </table>
 <ol>
-<li><p>选择</p>
+<li>选择</li>
+</ol>
 <p>用圆括号将所有选择项括起来，相邻的选择项之间用|分隔。但用圆括号会有一个副作用，使相关的匹配会被缓存，此时可用?:放在第一个选项前来消除这种副作用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var reg = /a(\w)+(f|g)/</span><br><span class="line">var str = &apos;aef&apos;</span><br><span class="line">str.match(reg)  // [&quot;aef&quot;, &quot;e&quot;, &quot;f&quot;, index: 0, input: &quot;aef&quot;, groups: undefined]</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var reg = /a(?:\w)+(f|g)/</span><br><span class="line">var str = &apos;aef&apos;</span><br><span class="line">str.match(reg)  // [&quot;aef&quot;, &quot;f&quot;, index: 0, input: &quot;aef&quot;, groups: undefined]</span><br></pre></td></tr></table></figure>
 <p>第一个例子和第二个例子相比，str.match(reg)返回的结果不包括”e”</p>
-</li>
-<li><p>反向引用</p>
-</li>
+<ol>
+<li>反向引用</li>
 </ol>
 <p>对一个正则表达式模式或部分模式两边添加圆括号将导致相关匹配存储到一个临时缓冲区中，所捕获的每个子匹配都按照在正则表达式模式中从左到右出现的顺序存储。缓冲区编号从 1 开始，最多可存储 99 个捕获的子表达式。每个缓冲区都可以使用 \n 访问，其中 n 为一个标识特定缓冲区的一位或两位十进制数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;Is is the cost of of gasoline going up up&quot;;</span><br><span class="line">var patt1 = /\b([a-z]+) \1\b/ig;</span><br><span class="line">str.match(patt1) // [&quot;Is is&quot;, &quot;of of&quot;, &quot;up up&quot;]</span><br></pre></td></tr></table></figure>
@@ -866,7 +990,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
