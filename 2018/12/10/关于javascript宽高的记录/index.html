@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="client类 offset类 scroll类     clientWidth:  元素尺寸 (注意不是内容尺寸)+内边距 offsetWidth:  元素尺寸+内边距+边框 scrollWidth: 元素尺寸 + 内边距 + 内容超出元素尺寸和内边距的部分   clientHeight：元素尺寸 (注意不是内容尺寸)+内边距 offsetHeight: 元素尺寸+内边距+边框 scroll">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-10T07:09:17.820Z">
+<meta property="og:updated_time" content="2019-01-28T09:23:38.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于javascript宽高的记录">
 <meta name="twitter:description" content="client类 offset类 scroll类     clientWidth:  元素尺寸 (注意不是内容尺寸)+内边距 offsetWidth:  元素尺寸+内边距+边框 scrollWidth: 元素尺寸 + 内边距 + 内容超出元素尺寸和内边距的部分   clientHeight：元素尺寸 (注意不是内容尺寸)+内边距 offsetHeight: 元素尺寸+内边距+边框 scroll">
@@ -341,11 +341,20 @@
 </tbody>
 </table>
 <ol>
-<li>获取<strong>元素距离视口的坐标</strong>：getBoundingClientRect方法，返回的坐标包括元素的边框和内边距，<strong>不包括外边距</strong>。</li>
-<li>获取<strong>元素距离文档的坐标</strong>：</li>
-<li>获取<strong>视口的大小</strong>，也就是窗口的大小：</li>
+<li><p>获取<strong>元素距离视口的坐标</strong>：getBoundingClientRect方法，返回的坐标包括元素的边框和内边距，<strong>不包括外边距</strong>。</p>
+</li>
+<li><p>获取<strong>元素距离文档的坐标</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function getElePos(ele)&#123;</span><br><span class="line">        var x = 0,y = 0 ;</span><br><span class="line">        while(ele != null )&#123;</span><br><span class="line">            x += ele.offsetLeft;</span><br><span class="line">            y += ele.offsetTop;</span><br><span class="line">            ele = ele.offsetParent;</span><br><span class="line">            console.log(ele);</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;x : x ,y: y &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取<strong>视口的大小</strong>，也就是窗口的大小：</p>
+</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function getViewPortSize(w) &#123;</span><br><span class="line">    var w = w || window;</span><br><span class="line">    if (w.innerWidth != null)</span><br><span class="line">    return &#123; w: w.innerWidth, h: w.innerHeight &#125;;</span><br><span class="line">    var d = w.document;</span><br><span class="line">    if (document.compatMode == &quot;CSS1Compat&quot;) </span><br><span class="line">    // 标准模式返回CSS1Compat，通过document.documentElement访问文档根元素</span><br><span class="line">    // 混杂模式返回backcompat，通过documnet.body访问文档根元素</span><br><span class="line">    return &#123; w: d.documentElement.clientWidth, h: d.documentElement.clientHeight &#125;;</span><br><span class="line">    return &#123; w: d.body.clientWidth, h: d.body.clientHeight &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getClient()&#123;</span><br><span class="line">  return &#123;</span><br><span class="line">  	width : window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,</span><br><span class="line">  	height : window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight</span><br><span class="line">	 &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>获取<strong>文档滚动高度</strong>，也就是窗口滚动条高度</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getSCroll()&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      left : window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,</span><br><span class="line">      top : window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -449,7 +458,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -471,7 +480,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

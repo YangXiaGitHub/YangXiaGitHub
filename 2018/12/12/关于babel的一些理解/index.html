@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="一. 为什么要使用babel由于有些浏览器不支持es6+ 语法，而我们在写代码的时候又希望能使用es6语法，享受其带来的简单方便。这时候我们需要babel来对我们的代码进行转换，将es6+ 语法转换成es5语法，让浏览器能识别。 二. 什么是babelbabel是一个转译器，感觉相对于编译器compiler，叫转译器transpiler更准确，因为它只是把同种语言的高版本规则翻译成低版本规则，而不">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-12T08:47:24.910Z">
+<meta property="og:updated_time" content="2019-01-06T08:20:07.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于babel的一些理解">
 <meta name="twitter:description" content="一. 为什么要使用babel由于有些浏览器不支持es6+ 语法，而我们在写代码的时候又希望能使用es6语法，享受其带来的简单方便。这时候我们需要babel来对我们的代码进行转换，将es6+ 语法转换成es5语法，让浏览器能识别。 二. 什么是babelbabel是一个转译器，感觉相对于编译器compiler，叫转译器transpiler更准确，因为它只是把同种语言的高版本规则翻译成低版本规则，而不">
@@ -325,7 +325,7 @@
 <h5 id="核心包"><a href="#核心包" class="headerlink" title="核心包"></a>核心包</h5><ol>
 <li>babel-core： babel转译器本身，提供了babel的转译API，如babel.transform等，用于对代码进行转译。像webpack的babel-loader就是调用这些API来完成转译过程的。</li>
 <li>babel-parser：babel的词法解析器</li>
-<li>babel-traverse：用于对AST抽象语法树的遍历，主要给plygin用</li>
+<li>babel-traverse：用于对AST抽象语法树的遍历，主要给plugin用</li>
 <li>babel-generator：根据AST生成代码</li>
 </ol>
 <h5 id="工具包"><a href="#工具包" class="headerlink" title="工具包"></a>工具包</h5><ol>
@@ -343,7 +343,7 @@
 <li><strong>babel-runtime</strong>：功能类似于babel-polyfill，一般用于library或plugin中，因为他不会污染全局作用域</li>
 </ol>
 <p>preset其实就是一些plugin的集合</p>
-<h3 id="三-polyfill和runtime"><a href="#三-polyfill和runtime" class="headerlink" title="三. polyfill和runtime"></a>三. polyfill和runtime</h3><p>由于babel默认只是转译新标准引入的语法，比如ES6的箭头函数转译成ES5的函数；而<strong>新标准引入的新的原生对象，部分原生对象新增的原型方法，新增的API等（如Proxy、Set等），这些babel是不会转译的。需要用户自行引入polyfill来解决</strong></p>
+<h3 id="三-polyfill和runtime"><a href="#三-polyfill和runtime" class="headerlink" title="三. polyfill和runtime"></a>三. polyfill和runtime</h3><p>由于babel默认只是转译新标准引入的语法，比如ES6的箭头函数转译成ES5的函数；而<strong>新标准引入的新的原生对象，部分原生对象新增的原型方法，新增的API（如</strong>Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象<strong>等）</strong>以及一些定义在全局对象上的方法（比如Object.assign<strong>)，这些babel是不会转译的。需要用户自行引入polyfill来解决</strong></p>
 <p>引入垫片（polyfill）有几种方式，其中他们各有优缺点：</p>
 <p><strong>方法一：使用babel-polyfill</strong></p>
 <p>​    1. 先安装包： npm install –save babel-polyfill</p>
@@ -352,11 +352,12 @@
 <p>缺点：这种方式是改变的全局作用域，也就是说污染了全局（比如在Array的prototype上添加includes方法等）</p>
 <p>打出来的包也会比较大。</p>
 <p><strong>方法二：使用transform-runtime</strong></p>
+<p>让重复定义变成重复引用，解决babel代码重复问题</p>
 <p>babel-plugin-transform-runtime插件依赖babel-runtime，babel-runtime是真正提供runtime环境的包；也就是说transform-runtime插件是把js代码中使用到的新原生对象和静态方法转换成对runtime实现包的引用，举个例子如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 输入的ES6代码</span><br><span class="line">var sym = Symbol();</span><br><span class="line">// 通过transform-runtime转换后的ES5+runtime代码 </span><br><span class="line">var _symbol = require(&quot;babel-runtime/core-js/symbol&quot;); </span><br><span class="line">// 另外，这里我们也可以隐约发现，babel-runtime其实也不是真正的实现代码所在，真正的代码实现是在core-js中</span><br><span class="line">var sym = (0, _symbol.default)();</span><br></pre></td></tr></table></figure>
-<p>优点：从上面这个例子可见，原本代码中使用的ES6新原生对象Symbol被transform-runtimec插件转换成了babel-runtime的实现，既保持了Symbol的功能，同时又没有像polyfill那样污染全局环境（因为最终生成的代码中，并没有对Symbol的引用）</p>
+<p>优点：从上面这个例子可见，原本代码中使用的ES6新原生对象Symbol被transform-runtime插件转换成了babel-runtime的实现，既保持了Symbol的功能，同时又没有像polyfill那样污染全局环境（因为最终生成的代码中，并没有对Symbol的引用）</p>
 <p>缺点：但是由于他不能污染全局环境，所以对于实例上的方法则无法使用，比如[].includes()</p>
-<p>不过对于类上的静态方法可以使用，比如Array.from方法</p>
+<p>不过对于有些类上的静态方法可以使用，比如Array.from方法</p>
 <p><strong>方法三：使用babel-preset-env插件</strong></p>
 <p>这款preset能灵活决定加载哪些插件和polyfill，不过还是得开发者手动进行一些配置。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// cnpm install -D babel-preset -env</span><br><span class="line">&#123;</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">        [&quot;env&quot;, &#123;</span><br><span class="line">            &quot;targets&quot;: &#123; //指定要转译到哪个环境</span><br><span class="line">                //浏览器环境</span><br><span class="line">                &quot;browsers&quot;: [&quot;last 2 versions&quot;, &quot;safari &gt;= 7&quot;],</span><br><span class="line">                //node环境</span><br><span class="line">                &quot;node&quot;: &quot;6.10&quot;, //&quot;current&quot;  使用当前版本的node</span><br><span class="line">                </span><br><span class="line">            &#125;,</span><br><span class="line">             //是否将ES6的模块化语法转译成其他类型</span><br><span class="line">             //参数：&quot;amd&quot; | &quot;umd&quot; | &quot;systemjs&quot; | &quot;commonjs&quot; | false，默认为&apos;commonjs&apos;</span><br><span class="line">            &quot;modules&quot;: &apos;commonjs&apos;,</span><br><span class="line">            //是否进行debug操作，会在控制台打印出所有插件中的log，已经插件的版本</span><br><span class="line">            &quot;debug&quot;: false,</span><br><span class="line">            //强制开启某些模块，默认为[]</span><br><span class="line">            &quot;include&quot;: [&quot;transform-es2015-arrow-functions&quot;],</span><br><span class="line">            //禁用某些模块，默认为[]</span><br><span class="line">            &quot;exclude&quot;: [&quot;transform-es2015-for-of&quot;],</span><br><span class="line">            //是否自动引入polyfill，开启此选项必须保证已经安装了babel-polyfill</span><br><span class="line">            //参数：Boolean，默认为false.</span><br><span class="line">            &quot;useBuiltIns&quot;: false</span><br><span class="line">        &#125;]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -498,7 +499,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -520,7 +521,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

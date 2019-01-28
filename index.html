@@ -239,6 +239,407 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/vuex源码学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/24/vuex源码学习/" itemprop="url">vuex源码学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T16:40:33+08:00">
+                2019-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>vuex</strong>源码</p>
+<h4 id="一-整体流程解析"><a href="#一-整体流程解析" class="headerlink" title="一: 整体流程解析"></a>一: 整体流程解析</h4><p>这篇文章只是自己看完之后的学习笔记，写的较为随意。</p>
+<p>如果读者没有看过vuex源码，建议对比源码和本文一起看，比较容易理解。</p>
+<p>首先放上我们使用vuex时的基本步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line">import Vuex from &apos;vuex&apos;;</span><br><span class="line">Vue.use(Vuex);</span><br><span class="line">const store = new Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        a: &apos;&apos;,</span><br><span class="line">        b: &#123;</span><br><span class="line">            b1:1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        setA: (state, data) =&gt; &#123;</span><br><span class="line">        	state.a = data;</span><br><span class="line">    	&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    action: &#123;</span><br><span class="line">        action1: (&#123;commit&#125;, data) =&gt; &#123;</span><br><span class="line">            // 省略其他步骤</span><br><span class="line">            commit(&apos;setA&apos;, 10);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    modules: &#123;</span><br><span class="line">        test1Module: &#123;</span><br><span class="line">            state: &#123;</span><br><span class="line">            	t1: 1</span><br><span class="line">			&#125;,</span><br><span class="line">			mutations: &#123;</span><br><span class="line">                m1: () =&gt; &#123;</span><br><span class="line">                    console.log(&apos;m1&apos;);</span><br><span class="line">                &#125;</span><br><span class="line">			&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        test2Module: &#123;</span><br><span class="line">            state: &#123;</span><br><span class="line">            	t2: 1</span><br><span class="line">			&#125;,</span><br><span class="line">			mutations: &#123;</span><br><span class="line">                m2: () =&gt; &#123;</span><br><span class="line">                    console.log(&apos;m2&apos;);</span><br><span class="line">                &#125;</span><br><span class="line">			&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">new Vue(&#123;</span><br><span class="line">    store,</span><br><span class="line">    el: &apos;#app&apos;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>根据上面的代码，其实也就是两个事情：首先执行的是<code>Vue.use(Vuex);</code> 之后将实例化的一个Vuex.Stored的实例当做参数传进Vue里。</p>
+<p>对于第一个事情，vue的插件都是通过在使用Vue.use()时自动调用了插件的install方法进行初始化。所以vuex只需要定义好install函数，然后业务方调用一下vue的use函数，就可以了。</p>
+<p>对于第二个事情，就得看看Vuex导出的Store构造函数干了什么。</p>
+<p>综上所述所以我们要看两个东西：一个是install函数，另一个是Store构造函数。</p>
+<ol>
+<li><h5 id="install函数"><a href="#install函数" class="headerlink" title="install函数"></a>install函数</h5></li>
+</ol>
+<p><strong>vuex的install函数里面做了两件事：</strong></p>
+<p>(1) 限定vuex只可以被安装一次</p>
+<p>(2) 给vue的每个实例注入store</p>
+<p>其中主要可以看看第二件事的代码：在beforeCreate生命周期函数里自动执行注入$store属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Vue.mixin(&#123; beforeCreate: vuexInit &#125;)</span><br><span class="line"></span><br><span class="line">function vuexInit () &#123;</span><br><span class="line">    const options = this.$options</span><br><span class="line">    // store injection</span><br><span class="line">    if (options.store) &#123;</span><br><span class="line">      this.$store = typeof options.store === &apos;function&apos;</span><br><span class="line">        ? options.store()</span><br><span class="line">        : options.store</span><br><span class="line">    &#125; else if (options.parent &amp;&amp; options.parent.$store) &#123;</span><br><span class="line">      this.$store = options.parent.$store</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>这样所有的组件只要是有options.parent属性，就能在beforeCreate的时候传入store。</p>
+<p>但是注意一点：自己new出来的组件是需要手动传入store的。</p>
+<ol>
+<li><h5 id="Store构造函数"><a href="#Store构造函数" class="headerlink" title="Store构造函数"></a>Store构造函数</h5><p>在具体学习之前，先看看执行Store构造函数生成实例的一些重要过程：</p>
+<ul>
+<li>生成一个ModuleCollection实例this._modules，得到根模块。<ul>
+<li>递归生成每个模块，并记录模块之间的层级关系（注意模块之间的层级结构是通过数组path来体现的）</li>
+</ul>
+</li>
+<li>将dispatch和commit函数绑定this为当前store实例</li>
+<li>递归安装this._modules里的每一个模块<ul>
+<li>将子模块的state放进</li>
+<li>将模块内的<code>mutaions</code> <code>actions</code> <code>getters</code> 与命名空间进行绑定</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>（1）首先可以看下Store的constructor函数(只列出重要代码)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">constructor (options = &#123;&#125;) &#123;</span><br><span class="line">   // store internal state</span><br><span class="line">   this._committing = false</span><br><span class="line">   this._actions = Object.create(null)</span><br><span class="line">   this._actionSubscribers = []</span><br><span class="line">   this._mutations = Object.create(null)</span><br><span class="line">   this._wrappedGetters = Object.create(null)</span><br><span class="line">   this._modules = new ModuleCollection(options)</span><br><span class="line">   this._modulesNamespaceMap = Object.create(null)</span><br><span class="line">   this._subscribers = []</span><br><span class="line">   this._watcherVM = new Vue()</span><br><span class="line"></span><br><span class="line">   // bind commit and dispatch to self</span><br><span class="line">   const store = this</span><br><span class="line">   const &#123; dispatch, commit &#125; = this</span><br><span class="line">   this.dispatch = function boundDispatch (type, payload) &#123;</span><br><span class="line">     return dispatch.call(store, type, payload)</span><br><span class="line">   &#125;</span><br><span class="line">   this.commit = function boundCommit (type, payload, options) &#123;</span><br><span class="line">     return commit.call(store, type, payload, options)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   const state = this._modules.root.state</span><br><span class="line">   </span><br><span class="line">   installModule(this, state, [], this._modules.root)</span><br><span class="line"></span><br><span class="line">   resetStoreVM(this, state)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>首先定义了一些实例属性，包括<code>_committing ,  _actions, _actionSubscribers, _mutations</code>等等。这里可以看一下<code>this._modules = new ModuleCollection(options)</code> 这句代码，它生成了一个ModuleCollection实例，它代表的是一个模块集合实例。我们看看ModuleCollection构造函数</p>
+<p>（2）ModuleCollection类</p>
+<p>ModuleCollection构造函数里只执行了一个register函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">register (path, rawModule, runtime = true) &#123;</span><br><span class="line">    const newModule = new Module(rawModule, runtime)</span><br><span class="line">    if (path.length === 0) &#123;</span><br><span class="line">      this.root = newModule</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      const parent = this.get(path.slice(0, -1))</span><br><span class="line">      parent.addChild(path[path.length - 1], newModule)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // register nested modules</span><br><span class="line">    if (rawModule.modules) &#123;</span><br><span class="line">      forEachValue(rawModule.modules, (rawChildModule, key) =&gt; &#123;</span><br><span class="line">        this.register(path.concat(key), rawChildModule, runtime)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>register函数里得到了一个Module实例newModule。</p>
+<p>如果是根模块的话，就将newModule赋值给root属性；否则将当前模块和父模块使用addChild方法建立关联，在module实例的_children数组上添加一个元素。</p>
+<p>接着递归处理我们之前调用Store构造函数时传的对象(rawModule)里的modules字段, 生成了子模块。在生成子模块的时候传入的path变成了path.concat(key)，之后根据path得到模块之间的层级关系。</p>
+<p>下面我们看看前面提到的Module类。</p>
+<p>（3） Module类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">constructor (rawModule, runtime) &#123;</span><br><span class="line">    this.runtime = runtime</span><br><span class="line">    // Store some children item</span><br><span class="line">    this._children = Object.create(null)</span><br><span class="line">    // Store the origin module object which passed by programmer</span><br><span class="line">    this._rawModule = rawModule</span><br><span class="line">    const rawState = rawModule.state</span><br><span class="line"></span><br><span class="line">    // Store the origin module&apos;s state</span><br><span class="line">    this.state = (typeof rawState === &apos;function&apos; ? rawState() : rawState) || &#123;&#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>这个对象有3个重要属性：</strong></p>
+<p>a. 一个模块的子模块（_children属性，一个数组）</p>
+<p>b. 传入的用于生成module的config对象（_rawModule）</p>
+<p>c.模块内的state对象</p>
+<p>其中state对象是共有属性，其他两个是内部的私有属性</p>
+<p><strong>这个对象有几个重要方法：</strong>用于操作child子模块的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">addChild (key, module) &#123;</span><br><span class="line">    this._children[key] = module</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  removeChild (key) &#123;</span><br><span class="line">    delete this._children[key]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getChild (key) &#123;</span><br><span class="line">    return this._children[key]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>（4）回到Store的构造函数</p>
+<p>所以当代码执行到Store构造函数的<code>this._modules = new ModuleCollection(options)</code> 时，已经生成了一个ModuleCollection实例(this._modules），this._modules的root属性指向了根模块。同时递归生成了各个子模块。</p>
+<p>与此同时，其他属性也通过Object.create(null)得到了一个初始值null。</p>
+<p>（5）绑定dispatch和commit函数的作用域</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Store构造函数里的代码</span><br><span class="line">const store = this</span><br><span class="line">const &#123; dispatch, commit &#125; = this</span><br><span class="line">	this.dispatch = function boundDispatch (type, payload) &#123;</span><br><span class="line">	return dispatch.call(store, type, payload)</span><br><span class="line">&#125;</span><br><span class="line">this.commit = function boundCommit (type, payload, options) &#123;</span><br><span class="line">	return commit.call(store, type, payload, options)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以commit为例：这段代码缓存了Store类原型上的commit的方法，并且将在commit方法重新复制的同时绑定this为根级store实例对象。</p>
+<p>这段代码的作用就是绑定this对象。</p>
+<p>接下来执行的是installModule方法</p>
+<p>（6）installModule方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">function installModule (store, rootState, path, module, hot) &#123;</span><br><span class="line">  const isRoot = !path.length</span><br><span class="line">  const namespace = store._modules.getNamespace(path)</span><br><span class="line"></span><br><span class="line">  // register in namespace map</span><br><span class="line">  if (module.namespaced) &#123;</span><br><span class="line">    store._modulesNamespaceMap[namespace] = module</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // set state</span><br><span class="line">  if (!isRoot &amp;&amp; !hot) &#123;</span><br><span class="line">    const parentState = getNestedState(rootState, path.slice(0, -1))</span><br><span class="line">    const moduleName = path[path.length - 1]</span><br><span class="line">    store._withCommit(() =&gt; &#123;</span><br><span class="line">      Vue.set(parentState, moduleName, module.state)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  const local = module.context = makeLocalContext(store, namespace, path)</span><br><span class="line"></span><br><span class="line">  module.forEachMutation((mutation, key) =&gt; &#123;</span><br><span class="line">    const namespacedType = namespace + key</span><br><span class="line">    registerMutation(store, namespacedType, mutation, local)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  module.forEachAction((action, key) =&gt; &#123;</span><br><span class="line">    const type = action.root ? key : namespace + key</span><br><span class="line">    const handler = action.handler || action</span><br><span class="line">    registerAction(store, type, handler, local)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  module.forEachGetter((getter, key) =&gt; &#123;</span><br><span class="line">    const namespacedType = namespace + key</span><br><span class="line">    registerGetter(store, namespacedType, getter, local)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  module.forEachChild((child, key) =&gt; &#123;</span><br><span class="line">    installModule(store, rootState, path.concat(key), child, hot)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<p>获取所安装模块的命名空间，如果命名空间存在，就在_modulesNamespaceMap对象上存起来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const local = module.context = makeLocalContext(store, namespace, path)</span><br></pre></td></tr></table></figure>
+<p>这句是生成一个与store类似的context对象，里面的commit和dispatch方法都是与当前模块的命名空间进行了关联，可以在模块内不需要关注当前命名空间是什么，state拿到的也是当前模块的state，当然如果你想拿到根级别state或者store也是可以拿到的。总之makeLocalContext的作用是让命名空间使用起来更方便，让内部代码不用关注当前命名空间。</p>
+<p>（7）注册mutation，action和getter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">module.forEachMutation((mutation, key) =&gt; &#123;</span><br><span class="line">    const namespacedType = namespace + key</span><br><span class="line">    registerMutation(store, namespacedType, mutation, local)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  module.forEachAction((action, key) =&gt; &#123;</span><br><span class="line">    const type = action.root ? key : namespace + key</span><br><span class="line">    const handler = action.handler || action</span><br><span class="line">    registerAction(store, type, handler, local)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  module.forEachGetter((getter, key) =&gt; &#123;</span><br><span class="line">    const namespacedType = namespace + key</span><br><span class="line">    registerGetter(store, namespacedType, getter, local)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<p>三个类似，这里拿mutaion举出例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">forEachMutation (fn) &#123;</span><br><span class="line">    if (this._rawModule.mutations) &#123;</span><br><span class="line">      forEachValue(this._rawModule.mutations, fn)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">function forEachValue (obj, fn) &#123;</span><br><span class="line">  Object.keys(obj).forEach(key =&gt; fn(obj[key], key))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function registerMutation (store, type, handler, local) &#123;</span><br><span class="line">  const entry = store._mutations[type] || (store._mutations[type] = [])</span><br><span class="line">  entry.push(function wrappedMutationHandler (payload) &#123;</span><br><span class="line">    handler.call(store, local.state, payload)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码其实就是对每一个mutation：先处理他的namespace，把自身type和namespace拼接得到最终名字，</p>
+<p>然后执行registerMutation，也就是在store._mutations[type]里面添加一个handle，这个handle是这个mutation被commit的时候会被调用的。并且将这个handle绑定的this为store实例对象。</p>
+<p>（7）递归调用installModule方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.forEachChild((child, key) =&gt; &#123;</span><br><span class="line">    installModule(store, rootState, path.concat(key), child, hot)</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+<p>对每一个modules对象调用installModule方法。</p>
+<p>注意在子模块执行installModule的时候下面代码会被执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if (!isRoot &amp;&amp; !hot) &#123;</span><br><span class="line">    const parentState = getNestedState(rootState, path.slice(0, -1))</span><br><span class="line">    const moduleName = path[path.length - 1]</span><br><span class="line">    store._withCommit(() =&gt; &#123;</span><br><span class="line">      Vue.set(parentState, moduleName, module.state)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码的作用是将子模块的state添加到根级state上。我们传入的state是按照模块区分的，而这个地方代码将所有的state合成了一个大的state对象。并且利用Vue.set实现数据响应式，让state改变触发视图的改变。</p>
+<p>（8）resetStoreVM函数</p>
+<p>installModulec彻底执行完之后，开始执行resetStoreVM，resetStoreVM作用是让store.getters具有响应式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">function resetStoreVM (store, state, hot) &#123;</span><br><span class="line">  const oldVm = store._vm</span><br><span class="line"></span><br><span class="line">  // bind store public getters</span><br><span class="line">  store.getters = &#123;&#125;</span><br><span class="line">  const wrappedGetters = store._wrappedGetters</span><br><span class="line">  const computed = &#123;&#125;</span><br><span class="line">  forEachValue(wrappedGetters, (fn, key) =&gt; &#123;</span><br><span class="line">    // use computed to leverage its lazy-caching mechanism</span><br><span class="line">    computed[key] = () =&gt; fn(store)</span><br><span class="line">    Object.defineProperty(store.getters, key, &#123;</span><br><span class="line">      get: () =&gt; store._vm[key],</span><br><span class="line">      enumerable: true // for local getters</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // use a Vue instance to store the state tree</span><br><span class="line">  // suppress warnings just in case the user has added</span><br><span class="line">  // some funky global mixins</span><br><span class="line">  const silent = Vue.config.silent</span><br><span class="line">  Vue.config.silent = true</span><br><span class="line">  store._vm = new Vue(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">      $$state: state</span><br><span class="line">    &#125;,</span><br><span class="line">    computed</span><br><span class="line">  &#125;)</span><br><span class="line">  Vue.config.silent = silent</span><br><span class="line"></span><br><span class="line">  // enable strict mode for new vm</span><br><span class="line">  if (store.strict) &#123;</span><br><span class="line">    enableStrictMode(store)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (oldVm) &#123;</span><br><span class="line">    if (hot) &#123;</span><br><span class="line">      // dispatch changes in all subscribed watchers</span><br><span class="line">      // to force getter re-evaluation for hot reloading.</span><br><span class="line">      store._withCommit(() =&gt; &#123;</span><br><span class="line">        oldVm._data.$$state = null</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    Vue.nextTick(() =&gt; oldVm.$destroy())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码是生成了一个名叫_vm的vue实例，利用vue实例的computed属性可以让每一个getter都能实现数据响应。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">forEachValue(wrappedGetters, (fn, key) =&gt; &#123;</span><br><span class="line">    // use computed to leverage its lazy-caching mechanism</span><br><span class="line">    computed[key] = () =&gt; fn(store)</span><br><span class="line">    Object.defineProperty(store.getters, key, &#123;</span><br><span class="line">      get: () =&gt; store._vm[key],</span><br><span class="line">      enumerable: true // for local getters</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<p>从这段代码可以看出，store.getters对象里的每一个key对应值其实就是store._vm[key]的值。</p>
+<h4 id="二-帮助函数解析"><a href="#二-帮助函数解析" class="headerlink" title="二: 帮助函数解析"></a>二: 帮助函数解析</h4><p>vuex的帮助函数有5个: mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers.</p>
+<p>具体功能就不细说了，大家可以查看官网。这里主要讲一下他们的实现。</p>
+<ol>
+<li><h5 id="以mapState为例："><a href="#以mapState为例：" class="headerlink" title="以mapState为例："></a>以mapState为例：</h5></li>
+</ol>
+<p>先说如何使用masState</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 或者</span><br><span class="line">computed: &#123;</span><br><span class="line">	...mapState(&#123;</span><br><span class="line">        &apos;a&apos;,</span><br><span class="line">        &apos;bb&apos;: &apos;b&apos;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">// 或者</span><br><span class="line">computed: &#123;</span><br><span class="line">	...mapState(&#123;</span><br><span class="line">    a: state =&gt; state.some.nested.module.a,</span><br><span class="line">    b: state =&gt; state.some.nested.module.b</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再看代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// 代码一</span><br><span class="line">export const mapState = normalizeNamespace((namespace, states) =&gt; &#123;</span><br><span class="line">  const res = &#123;&#125;</span><br><span class="line">  normalizeMap(states).forEach((&#123; key, val &#125;) =&gt; &#123;</span><br><span class="line">    res[key] = function mappedState () &#123;</span><br><span class="line">      let state = this.$store.state</span><br><span class="line">      let getters = this.$store.getters</span><br><span class="line">      if (namespace) &#123;</span><br><span class="line">        const module = getModuleByNamespace(this.$store, &apos;mapState&apos;, namespace)</span><br><span class="line">        if (!module) &#123;</span><br><span class="line">          return</span><br><span class="line">        &#125;</span><br><span class="line">        state = module.context.state</span><br><span class="line">        getters = module.context.getters</span><br><span class="line">      &#125;</span><br><span class="line">      return typeof val === &apos;function&apos;</span><br><span class="line">        ? val.call(this, state, getters)</span><br><span class="line">        : state[val]</span><br><span class="line">    &#125;</span><br><span class="line">    // mark vuex getter for devtools</span><br><span class="line">    res[key].vuex = true</span><br><span class="line">  &#125;)</span><br><span class="line">  return res</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 代码二</span><br><span class="line">function normalizeNamespace (fn) &#123;</span><br><span class="line">  return (namespace, map) =&gt; &#123;</span><br><span class="line">    if (typeof namespace !== &apos;string&apos;) &#123;</span><br><span class="line">      map = namespace</span><br><span class="line">      namespace = &apos;&apos;</span><br><span class="line">    &#125; else if (namespace.charAt(namespace.length - 1) !== &apos;/&apos;) &#123;</span><br><span class="line">      namespace += &apos;/&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    return fn(namespace, map)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 代码三</span><br><span class="line">function normalizeMap (map) &#123;</span><br><span class="line">  return Array.isArray(map)</span><br><span class="line">    ? map.map(key =&gt; (&#123; key, val: key &#125;))</span><br><span class="line">    : Object.keys(map).map(key =&gt; (&#123; key, val: map[key] &#125;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>mapState就是调用了normalizeNamespace函数。normalizeNamespace入参是一个函数fn，返回也是一个函数。normalizeNamespace功能就是将处理过的参数传入fn，这里的处理也就是绑定命名空间。所以我们使用mapState的时候可以将第一个参数设置为命名空间，也可以不设置，直接传入一个对象或者数组，这个对于命名空间的处理功能是在normalizeNamespace实现的。</p>
+<p>所以我们可以理解为mapState函数就是normalizeNamespace的入参函数fn。</p>
+<p>当我们执行mapState的时候就是执行了fn，也就是下面这个函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// 来自于代码一</span><br><span class="line">(namespace, states) =&gt; &#123;</span><br><span class="line">  const res = &#123;&#125;</span><br><span class="line">  normalizeMap(states).forEach((&#123; key, val &#125;) =&gt; &#123;</span><br><span class="line">    res[key] = function mappedState () &#123;</span><br><span class="line">      let state = this.$store.state</span><br><span class="line">      let getters = this.$store.getters</span><br><span class="line">      if (namespace) &#123;</span><br><span class="line">        const module = getModuleByNamespace(this.$store, &apos;mapState&apos;, namespace)</span><br><span class="line">        if (!module) &#123;</span><br><span class="line">          return</span><br><span class="line">        &#125;</span><br><span class="line">        state = module.context.state</span><br><span class="line">        getters = module.context.getters</span><br><span class="line">      &#125;</span><br><span class="line">      return typeof val === &apos;function&apos;</span><br><span class="line">        ? val.call(this, state, getters)</span><br><span class="line">        : state[val]</span><br><span class="line">    &#125;</span><br><span class="line">    // mark vuex getter for devtools</span><br><span class="line">    res[key].vuex = true</span><br><span class="line">  &#125;)</span><br><span class="line">  return res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个函数返回的是一个对象，完全符合我们平时在computed里面写的对象形式。</p>
+<p>再看细节，normalizeMap函数将我们传入的第二个参数（如不传命名空间，则这是第一个参数）规范化为一个数组，数组每一项都是<code>{key: xxx, val: xxx}</code> 的形式，方便之后的处理。</p>
+<p>对数组中的每一项都在返回的res里生成一个键值对，键就是我们之后作为computed对象的键，值就是computed对象的每一个key对应的值（是一个函数）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function mappedState () &#123;</span><br><span class="line">      let state = this.$store.state</span><br><span class="line">      let getters = this.$store.getters</span><br><span class="line">      if (namespace) &#123;</span><br><span class="line">        const module = getModuleByNamespace(this.$store, &apos;mapState&apos;, namespace)</span><br><span class="line">        if (!module) &#123;</span><br><span class="line">          return</span><br><span class="line">        &#125;</span><br><span class="line">        state = module.context.state</span><br><span class="line">        getters = module.context.getters</span><br><span class="line">      &#125;</span><br><span class="line">      return typeof val === &apos;function&apos;</span><br><span class="line">        ? val.call(this, state, getters)</span><br><span class="line">        : state[val]</span><br><span class="line">    &#125;</span><br><span class="line">    // mark vuex getter for devtools</span><br><span class="line">    res[key].vuex = true</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<p>上面的函数就是我们的computd对象的其中一个键值对的值。和我们平时写的computed一致。</p>
+<p>这个函数里获取到了指定命名空间的context对象里的的state和getter: </p>
+<p>​    如果val是一个函数，那就执行这个函数并将命名空间内的state和getters传进去执行；</p>
+<p>​    如果是val不是函数，就认为是一个字符串，则将这个字符串作为state的属性来获取state值返回</p>
+<ol>
+<li><h5 id="createNamespacedHelper函数"><a href="#createNamespacedHelper函数" class="headerlink" title="createNamespacedHelper函数"></a>createNamespacedHelper函数</h5><p>有了上面的基础，那么createNamespacedHelper函数简单了。</p>
+<p>首先看createNamespacedHelper的使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createNamespacedHelpers &#125; from &apos;vuex&apos;</span><br><span class="line"></span><br><span class="line">const &#123; mapState, mapActions &#125; = createNamespacedHelpers(&apos;some/nested/module&apos;)</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    // 在 `some/nested/module` 中查找</span><br><span class="line">    ...mapState(&#123;</span><br><span class="line">      a: state =&gt; state.a,</span><br><span class="line">      b: state =&gt; state.b</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    // 在 `some/nested/module` 中查找</span><br><span class="line">    ...mapActions([</span><br><span class="line">      &apos;foo&apos;,</span><br><span class="line">      &apos;bar&apos;</span><br><span class="line">    ])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再看实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export const createNamespacedHelpers = (namespace) =&gt; (&#123;</span><br><span class="line">  mapState: mapState.bind(null, namespace),</span><br><span class="line">  mapGetters: mapGetters.bind(null, namespace),</span><br><span class="line">  mapMutations: mapMutations.bind(null, namespace),</span><br><span class="line">  mapActions: mapActions.bind(null, namespace)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>就是返回了mapState， mapGetters，mapMutations， mapActions四个函数并绑定了一下命名空间而已。 </p>
+</li>
+</ol>
+<h4 id="三-插件机制"><a href="#三-插件机制" class="headerlink" title="三. 插件机制"></a>三. 插件机制</h4><p>vuex插件实质是一个函数，vuex会将store传入插件函数。在插件函数内部，可以利用store.subscribe和store.subscribeAction两个函数来达到监听commit mutaion和dispatch action的目的。</p>
+<ol>
+<li>以subscrib为例：</li>
+</ol>
+<p>store维护了一个数组_subscribers，执行subscrib函数时，将传入的参数fn放入_subscribers，当commit了一个mutation的时候，就会调用_subscribers数组里的每一个元素，也就是之前传入的每一个fn。使用这种方式可以达到监听commit mutation的作用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">commit (_type, _payload, _options) &#123;</span><br><span class="line">   	// ...省略其他的</span><br><span class="line">    this._subscribers.forEach(sub =&gt; sub(mutation, this.state))</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">subscribe (fn) &#123;</span><br><span class="line">   return genericSubscribe(fn, this._subscribers)</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">function genericSubscribe (fn, subs) &#123;</span><br><span class="line">  if (subs.indexOf(fn) &lt; 0) &#123;</span><br><span class="line">    subs.push(fn)</span><br><span class="line">  &#125;</span><br><span class="line">  return () =&gt; &#123;</span><br><span class="line">    const i = subs.indexOf(fn)</span><br><span class="line">    if (i &gt; -1) &#123;</span><br><span class="line">      subs.splice(i, 1)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>以vuex自带的logger插件为例子</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">import &#123; deepCopy &#125; from &apos;../util&apos;</span><br><span class="line"></span><br><span class="line">export default function createLogger (&#123;</span><br><span class="line">  collapsed = true,</span><br><span class="line">  filter = (mutation, stateBefore, stateAfter) =&gt; true,</span><br><span class="line">  transformer = state =&gt; state,</span><br><span class="line">  mutationTransformer = mut =&gt; mut,</span><br><span class="line">  logger = console</span><br><span class="line">&#125; = &#123;&#125;) &#123;</span><br><span class="line">  return store =&gt; &#123;</span><br><span class="line">    let prevState = deepCopy(store.state)</span><br><span class="line"></span><br><span class="line">    store.subscribe((mutation, state) =&gt; &#123;</span><br><span class="line">      if (typeof logger === &apos;undefined&apos;) &#123;</span><br><span class="line">        return</span><br><span class="line">      &#125;</span><br><span class="line">      const nextState = deepCopy(state)</span><br><span class="line"></span><br><span class="line">      if (filter(mutation, prevState, nextState)) &#123;</span><br><span class="line">        const time = new Date()</span><br><span class="line">        const formattedTime = ` @ $&#123;pad(time.getHours(), 2)&#125;:$&#123;pad(time.getMinutes(), 2)&#125;:$&#123;pad(time.getSeconds(), 2)&#125;.$&#123;pad(time.getMilliseconds(), 3)&#125;`</span><br><span class="line">        const formattedMutation = mutationTransformer(mutation)</span><br><span class="line">        const message = `mutation $&#123;mutation.type&#125;$&#123;formattedTime&#125;`</span><br><span class="line">        const startMessage = collapsed</span><br><span class="line">          ? logger.groupCollapsed</span><br><span class="line">          : logger.group</span><br><span class="line"></span><br><span class="line">        // render</span><br><span class="line">        try &#123;</span><br><span class="line">          startMessage.call(logger, message)</span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">          console.log(message)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        logger.log(&apos;%c prev state&apos;, &apos;color: #9E9E9E; font-weight: bold&apos;, transformer(prevState))</span><br><span class="line">        logger.log(&apos;%c mutation&apos;, &apos;color: #03A9F4; font-weight: bold&apos;, formattedMutation)</span><br><span class="line">        logger.log(&apos;%c next state&apos;, &apos;color: #4CAF50; font-weight: bold&apos;, transformer(nextState))</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">          logger.groupEnd()</span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">          logger.log(&apos;—— log end ——&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      prevState = nextState</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function repeat (str, times) &#123;</span><br><span class="line">  return (new Array(times + 1)).join(str)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function pad (num, maxLength) &#123;</span><br><span class="line">  return repeat(&apos;0&apos;, maxLength - num.toString().length) + num</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以发现这个插件做的事情很简单：就是之后对比一下commit mutaion之前的state和之后的state，并将新旧两个state和触发state改变的mutation打印出来，仅仅做了这些操作。</p>
+<p>由上面的例子我们可以按照自己的需求定制自己想要的vuex插件。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/09/看源码学习的技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/09/看源码学习的技巧/" itemprop="url">看源码学习的技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T16:36:57+08:00">
+                2019-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>递归调用同一个函数，在异步代码里也可以执行</p>
+<p>（来自fake-webpack对loader的处理）</p>
+<p><a href="https://github.com/youngwind/fake-webpack" target="_blank" rel="noopener">参考链接</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">function execLoaders(request, loaders, content, options) &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        if (!loaders.length) &#123;</span><br><span class="line">            resolve(content);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        let loaderFunctions = [];</span><br><span class="line">        loaders.forEach(loaderName =&gt; &#123;</span><br><span class="line">            let loader = require(loaderName);</span><br><span class="line">            loaderFunctions.push(loader);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        nextLoader(content);</span><br><span class="line"></span><br><span class="line">        /***</span><br><span class="line">         * 调用下一个 loader</span><br><span class="line">         * @param &#123;string&#125; content 上一个loader的输出字符串</span><br><span class="line">         */</span><br><span class="line">        function nextLoader(content) &#123;</span><br><span class="line">            if (!loaderFunctions.length) &#123;</span><br><span class="line">                resolve(content);</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            // 请注意: loader有同步和异步两种类型。对于异步loader,如 less-loader,</span><br><span class="line">            // 需要执行 async() 和 callback(),以修改标志位和回传字符串</span><br><span class="line">            let async = false;</span><br><span class="line">            let context = &#123;</span><br><span class="line">                request,</span><br><span class="line">                async: () =&gt; &#123;</span><br><span class="line">                    async = true;</span><br><span class="line">                &#125;,</span><br><span class="line">                callback: (content) =&gt; &#123;</span><br><span class="line">                    nextLoader(content);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            let ret = loaderFunctions.pop().call(context, content);</span><br><span class="line">            if(!async) &#123;</span><br><span class="line">                // 递归调用下一个 loader</span><br><span class="line">                nextLoader(ret);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用一个数组存放所有要执行的函数，在<strong>nextLoader</strong>函数里调用每一个数组里的函数。</p>
+<p>递归调用<strong>nextLoader</strong> 函数时，每次将数组pop出来一个区执行。</p>
+<p>当数组里某一个函数是异步函数时，设置一个标志位async，这样在<strong>nextLoader</strong>函数里面就知道里面的函数（也就是数组的某一个元素，假如是a）是异步的，这时暂停递归。当a异步结果回来的之后，再调用callback，调用callback也就是调用<strong>nextLoader</strong>，此时之前暂时停掉的递归链子又串起来了。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/20/shell编程语法学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -436,7 +837,7 @@
           
             <p>本文内容是参照菜鸟教程写的</p>
 <h3 id="一-对元字符分类"><a href="#一-对元字符分类" class="headerlink" title="一.  对元字符分类"></a>一.  对元字符分类</h3><p>正则表达式里面可以分为普通字符和元字符。</p>
-<p>普通字符没有特殊含义，比如’a’ 就是代表 ‘a’ 字符；而元字符具有特殊含义，下面我们将元字符进行简单归类，便于记忆。（只列出平时使用较多的一些字符，不常使用的没有列出）</p>
+<p>普通字符没有特殊含义，比如’a’ 就是代表 ‘a’ 字符；而元字符具有特殊含义，下面我们将元字符进行简单归类，便于记忆。（只列出平时使用较多的一些字符，不常使用的没有列出）<br>由于hexo对于表格渲染有点问题，所以有些表格显示不太好。</p>
 <ol>
 <li>非打印字符</li>
 </ol>
@@ -472,49 +873,49 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left">元字符</th>
+<th>元字符</th>
 <th>含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">$</td>
+<td>$</td>
 <td>匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $$ 也匹配 ‘\n’ 或 ‘\r’。要匹配 \$ 字符本身，请使用’\\$’。</td>
 </tr>
 <tr>
-<td style="text-align:left">^</td>
+<td>^</td>
 <td>匹配输入字符串的开始位置，除非在方括号表达式中使用，此时它表示不接受该字符集合。要匹配 ^ 字符本身，请使用 \^。</td>
 </tr>
 <tr>
-<td style="text-align:left">*</td>
+<td>*</td>
 <td>匹配前面的子表达式<strong>0</strong>次或<strong>多</strong>次。要匹配 <em> 字符，请使用\ \</em>。</td>
 </tr>
 <tr>
-<td style="text-align:left">+</td>
+<td>+</td>
 <td>匹配前面的子表达式一次或多次。要匹配 + 字符，请使用\ +。</td>
 </tr>
 <tr>
-<td style="text-align:left">?</td>
+<td>?</td>
 <td>匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。</td>
 </tr>
 <tr>
-<td style="text-align:left">.</td>
+<td>.</td>
 <td>匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用\ . 。</td>
 </tr>
 <tr>
-<td style="text-align:left">{</td>
+<td>{</td>
 <td>标记限定符表达式的开始。要匹配 {，请使用\ {。</td>
 </tr>
 <tr>
-<td style="text-align:left">[</td>
+<td>[</td>
 <td>标记一个中括号表达式的开始。要匹配 [，请使用\ [。</td>
 </tr>
 <tr>
-<td style="text-align:left">\</td>
+<td>\</td>
 <td>将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘\\’ 匹配 “\”，而 ‘\(‘ 则匹配 “(“。</td>
 </tr>
 <tr>
-<td style="text-align:left">\</td>
+<td>\</td>
 <td></td>
 <td>指明两项之间的一个选择。要匹配 \</td>
 <td>，请使用\\</td>
@@ -1062,7 +1463,7 @@
 <h5 id="核心包"><a href="#核心包" class="headerlink" title="核心包"></a>核心包</h5><ol>
 <li>babel-core： babel转译器本身，提供了babel的转译API，如babel.transform等，用于对代码进行转译。像webpack的babel-loader就是调用这些API来完成转译过程的。</li>
 <li>babel-parser：babel的词法解析器</li>
-<li>babel-traverse：用于对AST抽象语法树的遍历，主要给plygin用</li>
+<li>babel-traverse：用于对AST抽象语法树的遍历，主要给plugin用</li>
 <li>babel-generator：根据AST生成代码</li>
 </ol>
 <h5 id="工具包"><a href="#工具包" class="headerlink" title="工具包"></a>工具包</h5><ol>
@@ -1080,7 +1481,7 @@
 <li><strong>babel-runtime</strong>：功能类似于babel-polyfill，一般用于library或plugin中，因为他不会污染全局作用域</li>
 </ol>
 <p>preset其实就是一些plugin的集合</p>
-<h3 id="三-polyfill和runtime"><a href="#三-polyfill和runtime" class="headerlink" title="三. polyfill和runtime"></a>三. polyfill和runtime</h3><p>由于babel默认只是转译新标准引入的语法，比如ES6的箭头函数转译成ES5的函数；而<strong>新标准引入的新的原生对象，部分原生对象新增的原型方法，新增的API等（如Proxy、Set等），这些babel是不会转译的。需要用户自行引入polyfill来解决</strong></p>
+<h3 id="三-polyfill和runtime"><a href="#三-polyfill和runtime" class="headerlink" title="三. polyfill和runtime"></a>三. polyfill和runtime</h3><p>由于babel默认只是转译新标准引入的语法，比如ES6的箭头函数转译成ES5的函数；而<strong>新标准引入的新的原生对象，部分原生对象新增的原型方法，新增的API（如</strong>Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象<strong>等）</strong>以及一些定义在全局对象上的方法（比如Object.assign<strong>)，这些babel是不会转译的。需要用户自行引入polyfill来解决</strong></p>
 <p>引入垫片（polyfill）有几种方式，其中他们各有优缺点：</p>
 <p><strong>方法一：使用babel-polyfill</strong></p>
 <p>​    1. 先安装包： npm install –save babel-polyfill</p>
@@ -1089,11 +1490,12 @@
 <p>缺点：这种方式是改变的全局作用域，也就是说污染了全局（比如在Array的prototype上添加includes方法等）</p>
 <p>打出来的包也会比较大。</p>
 <p><strong>方法二：使用transform-runtime</strong></p>
+<p>让重复定义变成重复引用，解决babel代码重复问题</p>
 <p>babel-plugin-transform-runtime插件依赖babel-runtime，babel-runtime是真正提供runtime环境的包；也就是说transform-runtime插件是把js代码中使用到的新原生对象和静态方法转换成对runtime实现包的引用，举个例子如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 输入的ES6代码</span><br><span class="line">var sym = Symbol();</span><br><span class="line">// 通过transform-runtime转换后的ES5+runtime代码 </span><br><span class="line">var _symbol = require(&quot;babel-runtime/core-js/symbol&quot;); </span><br><span class="line">// 另外，这里我们也可以隐约发现，babel-runtime其实也不是真正的实现代码所在，真正的代码实现是在core-js中</span><br><span class="line">var sym = (0, _symbol.default)();</span><br></pre></td></tr></table></figure>
-<p>优点：从上面这个例子可见，原本代码中使用的ES6新原生对象Symbol被transform-runtimec插件转换成了babel-runtime的实现，既保持了Symbol的功能，同时又没有像polyfill那样污染全局环境（因为最终生成的代码中，并没有对Symbol的引用）</p>
+<p>优点：从上面这个例子可见，原本代码中使用的ES6新原生对象Symbol被transform-runtime插件转换成了babel-runtime的实现，既保持了Symbol的功能，同时又没有像polyfill那样污染全局环境（因为最终生成的代码中，并没有对Symbol的引用）</p>
 <p>缺点：但是由于他不能污染全局环境，所以对于实例上的方法则无法使用，比如[].includes()</p>
-<p>不过对于类上的静态方法可以使用，比如Array.from方法</p>
+<p>不过对于有些类上的静态方法可以使用，比如Array.from方法</p>
 <p><strong>方法三：使用babel-preset-env插件</strong></p>
 <p>这款preset能灵活决定加载哪些插件和polyfill，不过还是得开发者手动进行一些配置。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// cnpm install -D babel-preset -env</span><br><span class="line">&#123;</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">        [&quot;env&quot;, &#123;</span><br><span class="line">            &quot;targets&quot;: &#123; //指定要转译到哪个环境</span><br><span class="line">                //浏览器环境</span><br><span class="line">                &quot;browsers&quot;: [&quot;last 2 versions&quot;, &quot;safari &gt;= 7&quot;],</span><br><span class="line">                //node环境</span><br><span class="line">                &quot;node&quot;: &quot;6.10&quot;, //&quot;current&quot;  使用当前版本的node</span><br><span class="line">                </span><br><span class="line">            &#125;,</span><br><span class="line">             //是否将ES6的模块化语法转译成其他类型</span><br><span class="line">             //参数：&quot;amd&quot; | &quot;umd&quot; | &quot;systemjs&quot; | &quot;commonjs&quot; | false，默认为&apos;commonjs&apos;</span><br><span class="line">            &quot;modules&quot;: &apos;commonjs&apos;,</span><br><span class="line">            //是否进行debug操作，会在控制台打印出所有插件中的log，已经插件的版本</span><br><span class="line">            &quot;debug&quot;: false,</span><br><span class="line">            //强制开启某些模块，默认为[]</span><br><span class="line">            &quot;include&quot;: [&quot;transform-es2015-arrow-functions&quot;],</span><br><span class="line">            //禁用某些模块，默认为[]</span><br><span class="line">            &quot;exclude&quot;: [&quot;transform-es2015-for-of&quot;],</span><br><span class="line">            //是否自动引入polyfill，开启此选项必须保证已经安装了babel-polyfill</span><br><span class="line">            //参数：Boolean，默认为false.</span><br><span class="line">            &quot;useBuiltIns&quot;: false</span><br><span class="line">        &#125;]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1273,11 +1675,20 @@
 </tbody>
 </table>
 <ol>
-<li>获取<strong>元素距离视口的坐标</strong>：getBoundingClientRect方法，返回的坐标包括元素的边框和内边距，<strong>不包括外边距</strong>。</li>
-<li>获取<strong>元素距离文档的坐标</strong>：</li>
-<li>获取<strong>视口的大小</strong>，也就是窗口的大小：</li>
+<li><p>获取<strong>元素距离视口的坐标</strong>：getBoundingClientRect方法，返回的坐标包括元素的边框和内边距，<strong>不包括外边距</strong>。</p>
+</li>
+<li><p>获取<strong>元素距离文档的坐标</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function getElePos(ele)&#123;</span><br><span class="line">        var x = 0,y = 0 ;</span><br><span class="line">        while(ele != null )&#123;</span><br><span class="line">            x += ele.offsetLeft;</span><br><span class="line">            y += ele.offsetTop;</span><br><span class="line">            ele = ele.offsetParent;</span><br><span class="line">            console.log(ele);</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;x : x ,y: y &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取<strong>视口的大小</strong>，也就是窗口的大小：</p>
+</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function getViewPortSize(w) &#123;</span><br><span class="line">    var w = w || window;</span><br><span class="line">    if (w.innerWidth != null)</span><br><span class="line">    return &#123; w: w.innerWidth, h: w.innerHeight &#125;;</span><br><span class="line">    var d = w.document;</span><br><span class="line">    if (document.compatMode == &quot;CSS1Compat&quot;) </span><br><span class="line">    // 标准模式返回CSS1Compat，通过document.documentElement访问文档根元素</span><br><span class="line">    // 混杂模式返回backcompat，通过documnet.body访问文档根元素</span><br><span class="line">    return &#123; w: d.documentElement.clientWidth, h: d.documentElement.clientHeight &#125;;</span><br><span class="line">    return &#123; w: d.body.clientWidth, h: d.body.clientHeight &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getClient()&#123;</span><br><span class="line">  return &#123;</span><br><span class="line">  	width : window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,</span><br><span class="line">  	height : window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight</span><br><span class="line">	 &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>获取<strong>文档滚动高度</strong>，也就是窗口滚动条高度</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getSCroll()&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      left : window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,</span><br><span class="line">      top : window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -2006,330 +2417,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/12/关于图片的开发总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/12/关于图片的开发总结/" itemprop="url">关于图片的开发总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-12T17:52:17+08:00">
-                2018-09-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>设置图片有两种方法，一种是只用&lt;img /&gt; 标签，另一种是给div或者其他元素设置背景background-image。</p>
-<p>前者可以理解为前景图，后者理解为背景图。</p>
-<p>下面我们来对两者进行分析。</p>
-<h4 id="一：background-image方式"><a href="#一：background-image方式" class="headerlink" title="一：background-image方式"></a>一：background-image方式</h4><p>列出background-image的几个属性帮助理解：</p>
-<ol>
-<li><p>background-size: <strong>设置整个背景图片的大小</strong></p>
-<p>background-size: 100px 100px; </p>
-<p>是指把背景图片的大小设置为宽100px 高100px；</p>
-<p>background-size: cover/contain</p>
-<p>cover是指将图片按图片原本比例放大，让图片覆盖住div容器，多出来的部分裁剪。</p>
-<p>contain是指在保持原比例的情况下，尽量撑满容器的情况下不超出容器，所以这种情况下，如果容器宽高比和图片宽高比不一致的话，图片不会填满容器，容器会留白。</p>
-</li>
-<li><p>background-position: <strong>设置背景图片左上角相对于div左上角的位置</strong></p>
-<p>（1）background-position: -10px -10px;    </p>
-<p>是指以div左上角为（0，0）起始点，图片向左移动10px，向上移动10px。此时div的（0，0）就和背景图的（10，10）重合，所以在div内只能看到背景图（10，10）位置开始的图像</p>
-<p>反之 background-position: 10px 10px;    </p>
-<p>是指以div左上角为（0，0）起始点，图片向右移动10px，向下移动10px。此时背景图的（0，0）就和div的（10，10）重合，所以背景图起始点在div的（10，10）位置，这时候div的（10，10）才出现背景图，（5，5），（0，0）等位置是没有背景图的</p>
-<p> (2)  background-position：50% 0%</p>
-<p>positionX = (容器的宽度 - 背景图片宽度) * 百分比</p>
-<p>positionY = (容器的高度 - 背景图片高度) * 百分比</p>
-<p>(3)  background-position：center top</p>
-<p>与background-position：50% 0% 效果一致。</p>
-<p>关键字：left或者top，bottom，center等值可以对应到百分比，和百分比的处理方式一致。</p>
-</li>
-<li><p>background-attachment：scroll/local/fixed   </p>
-<p>这个属性是在<strong>内容很多，出现滚动条的时候，用来确定背景图和内容之间的滚动关系的</strong></p>
-<p>可以参考这个来理解：<a href="https://codepen.io/Chokcoco/pen/xJJorg" target="_blank" rel="noopener">https://codepen.io/Chokcoco/pen/xJJorg</a></p>
-<p>scroll: 背景相对于元素本身固定，不随内容滚动。（默认值）</p>
-<p>local: 背景相对于元素内容固定，内容很多时，背景岁随着内容滚动。</p>
-<p>fixed: 背景相对于视口固定。即使一个元素拥有滚动机制，背景也不会随着元素的内容滚动。</p>
-</li>
-</ol>
-<h4 id="二-lt-img-gt-和background-image区别"><a href="#二-lt-img-gt-和background-image区别" class="headerlink" title="二. &lt;img&gt; 和background-image区别"></a>二. &lt;img&gt; 和background-image区别</h4><ol>
-<li><p>是否占位</p>
-<p>img是html标签 ，占位；background-image是css样式，不占位；</p>
-<p>但是使用img的时候如果我们希望宽度百分百，高度由图片宽高比例还确定的时候，就会出现高度不确定，导致图片在加载完之后，网页布局发生变化的情况。</p>
-<p>使用background-image的时候我们一般会将容器大小确定，所以图片是否加载完成不会影响容器大小，所以网页布局不会 变化。</p>
-</li>
-<li><p>加载顺序</p>
-<p>img是html元素，是网页结构的一部分，所以会在加载结构的过程中加载，而background-image是css样式，会等到结构加载完成（网页内容全部显示以后）才开始加载。所以img的图片会比background-image先加载。</p>
-</li>
-</ol>
-<h4 id="三-图片居中问题"><a href="#三-图片居中问题" class="headerlink" title="三. 图片居中问题"></a>三. 图片居中问题</h4><p>第一种情况：图片本身比例不变（即不能让图片变形），让图片固定宽高比4：3的方式显示。</p>
-<ol>
-<li><p>使用background-image很简单</p>
-<p>设置容器宽高比为4：3，再给图片设置</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.bg-img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">background-size</span>: cover;</span><br><span class="line">    <span class="attribute">background-position</span>: center center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>所以重点就在于怎么让容器比例为4：3。如果 容器宽度确定，那么直接写死宽度和高度就可以了。如果容器宽度不确定(根据屏幕宽度来决定)，那么可以用这些方式来保证容器宽高比</p>
-<p><a href="https://yangxiagithub.github.io/2018/03/18/%E5%85%B3%E4%BA%8Ecss%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" target="_blank" rel="noopener">https://yangxiagithub.github.io/2018/03/18/%E5%85%B3%E4%BA%8Ecss%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</a></p>
-<p>里面的第3点讲到了如何保证容器宽高比。</p>
-</li>
-<li><p>使用img</p>
-<p>1️⃣ 我们让img外层套一个容器div，这个容器是图片要显示的范围。首先比较容器<strong>宽高比</strong>boxRate和图片<strong>宽高比</strong>imgRate。(注意我使用的是宽高比，即<strong>宽/高</strong>)</p>
-<p>如果picRate &gt; boxRate ，说明图片偏宽，那么让图片高度设置为容器高度，用此高度和picRate相乘得出来图片的宽度。这样图片宽度 就会大于容器宽度，再将图片宽度 宽出来的部分裁剪，就达到 将图片等比例扩大之后盖住容器的效果了，也就是cover的效果。</p>
-<p>反之，如果picRate &lt; boxRate,说明图片偏高，那么让图片宽度等于容器宽度，用此宽度除以picRate来得到图片高度，这样得到的图片高度会比容器高度大，再将图片高出来的部分 裁剪 。</p>
-<p>2️⃣  设置好图片宽度和高度之后 ，第二步是将图片 挪动到容器中间，让图片 显示中间部分，将两边多出来的部分裁剪掉。</p>
-<p>第一种方式：可以通过 计算图片宽度和高度来计算margin-left或者margin-top。</p>
-<p>代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;img @load=<span class="string">"adaptImg"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">img</span>&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">adaptImg</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> currentTarget = event.currentTarget;</span><br><span class="line">    <span class="comment">// 使用jquery</span></span><br><span class="line">    <span class="keyword">const</span> picWidth = currentTarget.naturalWidth;</span><br><span class="line">    <span class="keyword">const</span> picHeigt = currentTarget.naturalHeight;</span><br><span class="line">    <span class="keyword">const</span> picRate = picWidth / picHeigt;</span><br><span class="line">    <span class="keyword">const</span> box = $(currentTarget).parent();</span><br><span class="line">    <span class="keyword">const</span> boxHeight = $(box).height();</span><br><span class="line">    <span class="keyword">const</span> boxWidth = $(box).width();</span><br><span class="line">    <span class="keyword">const</span> boxRate = boxWidth / boxHeight;</span><br><span class="line">    <span class="comment">// 不使用 jquery</span></span><br><span class="line">    <span class="comment">// const picWidth = currentTarget.naturalWidth;</span></span><br><span class="line">    <span class="comment">// const picHeigt = currentTarget.naturalHeight;</span></span><br><span class="line">    <span class="comment">// const picRate = picWidth / picHeigt;</span></span><br><span class="line">    <span class="comment">// const box = currentTarget.parentNode;</span></span><br><span class="line">    <span class="comment">// const boxHeight = box.clientHeight;</span></span><br><span class="line">    <span class="comment">// const boxWidth = box.clientWidth;</span></span><br><span class="line">    <span class="comment">// const boxRate = boxWidth / boxHeight;</span></span><br><span class="line">    <span class="keyword">let</span> finalWidth = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> finalHeight = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> marginLeft = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> marginTop = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (picRate &gt; boxRate) &#123;</span><br><span class="line">        <span class="comment">// asHeight</span></span><br><span class="line">        finalHeight = boxHeight;</span><br><span class="line">        finalWidth = picRate * boxHeight;</span><br><span class="line">        marginLeft = -(finalWidth - boxWidth) / <span class="number">2</span>;</span><br><span class="line">        currentTarget.style.height = <span class="string">'100%'</span>;</span><br><span class="line">        currentTarget.style.marginLeft = marginLeft + <span class="string">'px'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// asWidth</span></span><br><span class="line">        finalWidth = boxWidth;</span><br><span class="line">        finalHeight = boxWidth / picRate;</span><br><span class="line">        marginTop = -(finalHeight - boxHeight) / <span class="number">2</span>;</span><br><span class="line">        currentTarget.style.width = <span class="string">'100%'</span>;</span><br><span class="line">        currentTarget.style.marginTop = marginTop + <span class="string">'px'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第二种方式：可以通过position：absolute配合margin: auto; 再设置left，top，right，bottom4个值来达到图片和 容器居中的效果。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center-img-container</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line">// 下面的是重点</span><br><span class="line"><span class="selector-class">.center-img-container</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">right</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">top</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line">// 当设置left: -9999px;right: -9999px;right: -9999px;top: -9999px; bottom: -9999px;</span><br><span class="line">// 四个数值要一样。记得margin要设置成auto</span><br><span class="line">// 当四个值都设置成-9999px作用于图片比容器大的时候。</span><br><span class="line">// 当四个值都设置成0作用于图片比容器小的时候。</span><br></pre></td></tr></table></figure>
-<h4 id="四-图片模糊加载问题"><a href="#四-图片模糊加载问题" class="headerlink" title="四. 图片模糊加载问题"></a>四. 图片模糊加载问题</h4><p>思路:  一开始的时候，将img的src赋值为一个尺寸比较小的图片地址，并在img元素上添加一个data-src属性（清晰图片的地址），当元素处于视图中时，创建一个新的图片元素，将此新图片元素src赋值为之前img的data-src值，当新建的图片加载完成的时候，对之前img的src进行替换，这样就将模糊图片替换成了清晰图片</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> lazyLoadImg = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 滚动加载出来的元素可以懒加载</span></span><br><span class="line">    $(<span class="built_in">window</span>).on(<span class="string">'scroll'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        clearTimeout(loadInterval);</span><br><span class="line">        <span class="keyword">var</span> loadInterval = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="string">'.lazy-image'</span>).each(<span class="function">(<span class="params">index, item</span>) =&gt;</span> &#123;</span><br><span class="line">                isElementInViewport(item) &amp;&amp; loadImg(item);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;, <span class="number">100</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    $(<span class="string">'.lazy-image'</span>).each(<span class="function">(<span class="params">index, item</span>) =&gt;</span> &#123;</span><br><span class="line">        loadImg(item);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadImg</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> $item = $(item);</span><br><span class="line">    <span class="keyword">if</span> ($item.data(<span class="string">'status'</span>) === <span class="string">'loading'</span> || $item.data(<span class="string">'status'</span>) === <span class="string">'loaded'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $item.data(<span class="string">'status'</span>, <span class="string">'loading'</span>);</span><br><span class="line">    <span class="keyword">const</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">    <span class="keyword">const</span> dataSrc = $item.attr(<span class="string">'data-src'</span>);</span><br><span class="line">    img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        $item</span><br><span class="line">            .attr(<span class="string">'src'</span>, dataSrc)</span><br><span class="line">            .removeClass(<span class="string">'lazy-image'</span>)</span><br><span class="line">            .data(<span class="string">'status'</span>, <span class="string">'loaded'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    img.src = dataSrc;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isElementInViewport</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> rect = el.getBoundingClientRect();</span><br><span class="line">    <span class="keyword">var</span> threshold_x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> threshold_y = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">return</span> rect.top &gt;= <span class="number">0</span> - threshold_y &amp;&amp; rect.left &gt;= <span class="number">0</span> - threshold_x &amp;&amp; rect.top &lt;= <span class="built_in">window</span>.innerHeight + threshold_y &amp;&amp; rect.left &lt;= <span class="built_in">window</span>.innerWidth + threshold_x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/20/dataURL-canvas-file-Blob-objectURL之间的转化关系/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/20/dataURL-canvas-file-Blob-objectURL之间的转化关系/" itemprop="url">dataURL,canvas,file(Blob),objectURL之间的转化关系</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-20T10:51:29+08:00">
-                2018-08-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="一：四者之间的关系"><a href="#一：四者之间的关系" class="headerlink" title="一：四者之间的关系"></a>一：四者之间的关系</h4><p><img src="/image/relation.png" alt=""></p>
-<h4 id="二：解释四者之间的关系"><a href="#二：解释四者之间的关系" class="headerlink" title="二：解释四者之间的关系"></a>二：解释四者之间的关系</h4><ol>
-<li><p>从File或者Blob转化为ObjectURL</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objectURL = URL.createObjectURL(object);</span><br><span class="line">// object:A File, Blob or MediaSource object to create an object URL for.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>从ObjectURL转Blob</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(&apos;GET&apos;, &apos;blob:http%3A//your.blob.url.here&apos;, true);</span><br><span class="line">xhr.responseType = &apos;blob&apos;;</span><br><span class="line">xhr.onload = function(e) &#123;</span><br><span class="line">  if (this.status == 200) &#123;</span><br><span class="line">    var myBlob = this.response;</span><br><span class="line">    // myBlob is now the blob that the object URL pointed to.</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">xhr.send();</span><br><span class="line">// 或者利用其他发请求的库也可以，主要是上面的xhr.responseType = &apos;blob&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>从 File转dataURL</p>
-<p>使用 fileReader</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function previewFile() &#123;</span><br><span class="line">  var preview = document.querySelector(&apos;img&apos;);</span><br><span class="line">  var file    = document.querySelector(&apos;input[type=file]&apos;).files[0];</span><br><span class="line">  var reader  = new FileReader();</span><br><span class="line"></span><br><span class="line">  reader.addEventListener(&quot;load&quot;, function () &#123;</span><br><span class="line">    preview.src = reader.result;</span><br><span class="line">  &#125;, false);</span><br><span class="line"></span><br><span class="line">  if (file) &#123;</span><br><span class="line">    reader.readAsDataURL(file);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>从dataURL转File（Blob）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function dataURItoBlob(dataURI) &#123;</span><br><span class="line">    // convert base64/URLEncoded data component to raw binary data held in a string</span><br><span class="line">    var byteString;</span><br><span class="line">    if (dataURI.split(&apos;,&apos;)[0].indexOf(&apos;base64&apos;) &gt;= 0)</span><br><span class="line">        byteString = atob(dataURI.split(&apos;,&apos;)[1]);</span><br><span class="line">    else</span><br><span class="line">        byteString = unescape(dataURI.split(&apos;,&apos;)[1]);</span><br><span class="line"></span><br><span class="line">    // separate out the mime component</span><br><span class="line">    var mimeString = dataURI.split(&apos;,&apos;)[0].split(&apos;:&apos;)[1].split(&apos;;&apos;)[0];</span><br><span class="line"></span><br><span class="line">    // write the bytes of the string to a typed array</span><br><span class="line">    var ia = new Uint8Array(byteString.length);</span><br><span class="line">    for (var i = 0; i &lt; byteString.length; i++) &#123;</span><br><span class="line">        ia[i] = byteString.charCodeAt(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return new Blob([ia], &#123;type:mimeString&#125;);</span><br><span class="line">&#125;</span><br><span class="line">// 使用方法如下</span><br><span class="line">var dataURL = canvas.toDataURL(&apos;image/jpeg&apos;, 0.5);</span><br><span class="line">var blob = dataURItoBlob(dataURL);</span><br><span class="line">var fd = new FormData(document.forms[0]);</span><br><span class="line">fd.append(&quot;canvasImage&quot;, blob);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>dataURL和canvas之间的转换比较简单，如图所示</p>
-</li>
-<li><p>canvas和File之间的转换需要经过dataRUL做中间人，暂时无法直接转化</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2380,7 +2467,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2402,7 +2489,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
