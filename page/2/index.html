@@ -239,6 +239,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/13/关于浏览器的进程和线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/13/关于浏览器的进程和线程/" itemprop="url">关于浏览器的进程和线程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T12:00:01+08:00">
+                2018-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://segmentfault.com/a/1190000012925872" target="_blank" rel="noopener">参考链接</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/12/关于图片的开发总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -368,7 +488,7 @@
 <p>2️⃣  设置好图片宽度和高度之后 ，第二步是将图片 挪动到容器中间，让图片 显示中间部分，将两边多出来的部分裁剪掉。</p>
 <p>第一种方式：可以通过 计算图片宽度和高度来计算margin-left或者margin-top。</p>
 <p>代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;img @load=<span class="string">"adaptImg"</span>&gt;&lt;/img&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">adaptImg</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> currentTarget = event.currentTarget;</span><br><span class="line">    <span class="comment">// 使用jquery</span></span><br><span class="line">    <span class="keyword">const</span> picWidth = currentTarget.naturalWidth;</span><br><span class="line">    <span class="keyword">const</span> picHeigt = currentTarget.naturalHeight;</span><br><span class="line">    <span class="keyword">const</span> picRate = picWidth / picHeigt;</span><br><span class="line">    <span class="keyword">const</span> box = $(currentTarget).parent();</span><br><span class="line">    <span class="keyword">const</span> boxHeight = $(box).height();</span><br><span class="line">    <span class="keyword">const</span> boxWidth = $(box).width();</span><br><span class="line">    <span class="keyword">const</span> boxRate = boxWidth / boxHeight;</span><br><span class="line">    <span class="comment">// 不使用 jquery</span></span><br><span class="line">    <span class="comment">// const picWidth = currentTarget.naturalWidth;</span></span><br><span class="line">    <span class="comment">// const picHeigt = currentTarget.naturalHeight;</span></span><br><span class="line">    <span class="comment">// const picRate = picWidth / picHeigt;</span></span><br><span class="line">    <span class="comment">// const box = currentTarget.parentNode;</span></span><br><span class="line">    <span class="comment">// const boxHeight = box.clientHeight;</span></span><br><span class="line">    <span class="comment">// const boxWidth = box.clientWidth;</span></span><br><span class="line">    <span class="comment">// const boxRate = boxWidth / boxHeight;</span></span><br><span class="line">    <span class="keyword">let</span> finalWidth = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> finalHeight = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> marginLeft = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> marginTop = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (picRate &gt; boxRate) &#123;</span><br><span class="line">        <span class="comment">// asHeight</span></span><br><span class="line">        finalHeight = boxHeight;</span><br><span class="line">        finalWidth = picRate * boxHeight;</span><br><span class="line">        marginLeft = -(finalWidth - boxWidth) / <span class="number">2</span>;</span><br><span class="line">        currentTarget.style.height = <span class="string">'100%'</span>;</span><br><span class="line">        currentTarget.style.marginLeft = marginLeft + <span class="string">'px'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// asWidth</span></span><br><span class="line">        finalWidth = boxWidth;</span><br><span class="line">        finalHeight = boxWidth / picRate;</span><br><span class="line">        marginTop = -(finalHeight - boxHeight) / <span class="number">2</span>;</span><br><span class="line">        currentTarget.style.width = <span class="string">'100%'</span>;</span><br><span class="line">        currentTarget.style.marginTop = marginTop + <span class="string">'px'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;img @load=<span class="string">"adaptImg"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">img</span>&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">adaptImg</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> currentTarget = event.currentTarget;</span><br><span class="line">    <span class="comment">// 使用jquery</span></span><br><span class="line">    <span class="keyword">const</span> picWidth = currentTarget.naturalWidth;</span><br><span class="line">    <span class="keyword">const</span> picHeigt = currentTarget.naturalHeight;</span><br><span class="line">    <span class="keyword">const</span> picRate = picWidth / picHeigt;</span><br><span class="line">    <span class="keyword">const</span> box = $(currentTarget).parent();</span><br><span class="line">    <span class="keyword">const</span> boxHeight = $(box).height();</span><br><span class="line">    <span class="keyword">const</span> boxWidth = $(box).width();</span><br><span class="line">    <span class="keyword">const</span> boxRate = boxWidth / boxHeight;</span><br><span class="line">    <span class="comment">// 不使用 jquery</span></span><br><span class="line">    <span class="comment">// const picWidth = currentTarget.naturalWidth;</span></span><br><span class="line">    <span class="comment">// const picHeigt = currentTarget.naturalHeight;</span></span><br><span class="line">    <span class="comment">// const picRate = picWidth / picHeigt;</span></span><br><span class="line">    <span class="comment">// const box = currentTarget.parentNode;</span></span><br><span class="line">    <span class="comment">// const boxHeight = box.clientHeight;</span></span><br><span class="line">    <span class="comment">// const boxWidth = box.clientWidth;</span></span><br><span class="line">    <span class="comment">// const boxRate = boxWidth / boxHeight;</span></span><br><span class="line">    <span class="keyword">let</span> finalWidth = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> finalHeight = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> marginLeft = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> marginTop = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (picRate &gt; boxRate) &#123;</span><br><span class="line">        <span class="comment">// asHeight</span></span><br><span class="line">        finalHeight = boxHeight;</span><br><span class="line">        finalWidth = picRate * boxHeight;</span><br><span class="line">        marginLeft = -(finalWidth - boxWidth) / <span class="number">2</span>;</span><br><span class="line">        currentTarget.style.height = <span class="string">'100%'</span>;</span><br><span class="line">        currentTarget.style.marginLeft = marginLeft + <span class="string">'px'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// asWidth</span></span><br><span class="line">        finalWidth = boxWidth;</span><br><span class="line">        finalHeight = boxWidth / picRate;</span><br><span class="line">        marginTop = -(finalHeight - boxHeight) / <span class="number">2</span>;</span><br><span class="line">        currentTarget.style.width = <span class="string">'100%'</span>;</span><br><span class="line">        currentTarget.style.marginTop = marginTop + <span class="string">'px'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>第二种方式：可以通过position：absolute配合margin: auto; 再设置left，top，right，bottom4个值来达到图片和 容器居中的效果。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center-img-container</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line">// 下面的是重点</span><br><span class="line"><span class="selector-class">.center-img-container</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">right</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">top</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line">// 当设置left: -9999px;right: -9999px;right: -9999px;top: -9999px; bottom: -9999px;</span><br><span class="line">// 四个数值要一样。记得margin要设置成auto</span><br><span class="line">// 当四个值都设置成-9999px作用于图片比容器大的时候。</span><br><span class="line">// 当四个值都设置成0作用于图片比容器小的时候。</span><br></pre></td></tr></table></figure>
 <h4 id="四-图片模糊加载问题"><a href="#四-图片模糊加载问题" class="headerlink" title="四. 图片模糊加载问题"></a>四. 图片模糊加载问题</h4><p>思路:  一开始的时候，将img的src赋值为一个尺寸比较小的图片地址，并在img元素上添加一个data-src属性（清晰图片的地址），当元素处于视图中时，创建一个新的图片元素，将此新图片元素src赋值为之前img的data-src值，当新建的图片加载完成的时候，对之前img的src进行替换，这样就将模糊图片替换成了清晰图片</p>
@@ -1645,193 +1765,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/04/svg和canvas的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/04/svg和canvas的区别/" itemprop="url">svg和canvas的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-04T11:55:19+08:00">
-                2018-06-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">前端开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <table>
-<thead>
-<tr>
-<th>canvas</th>
-<th>svg</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>通过javascript来绘制2D图形</td>
-<td>使用XML描述2D图形的</td>
-</tr>
-<tr>
-<td>位图</td>
-<td>矢量图</td>
-</tr>
-<tr>
-<td>可以使用.jpg和.png格式图片</td>
-<td>使用现有的图片作为<image>标签 的link的话，放大会模糊</image></td>
-</tr>
-<tr>
-<td>不支持事件处理器  (addHitRegion这个api兼容性暂时不够)</td>
-<td>可以为某个元素添加事件(把元素当成dom使用)</td>
-</tr>
-<tr>
-<td>不能够改变大小，只能缩放显示</td>
-<td>能够很好的处理图形大小的改变</td>
-</tr>
-<tr>
-<td>用户交互到像素点(x, y)</td>
-<td>用户交互到图形元素(rect, path)</td>
-</tr>
-<tr>
-<td>最适合图像密集型的游戏，其中的许多对象会被频繁重绘</td>
-<td>复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）</td>
-</tr>
-<tr>
-<td>Canvas提供的功能更原始，适合像素处理，动态渲染和大数据量绘制</td>
-<td></td>
-</tr>
-<tr>
-<td>webkitBackingStorePixelRatio会影响图片和成的模糊程度</td>
-</tr>
-</tbody>
-</table>
-<p>webGL是canvas+openGL，功能是可以做3D展示。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1882,7 +1815,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1904,7 +1837,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
