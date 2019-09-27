@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="前端," />
 
 
 
@@ -80,13 +80,14 @@
 
 
 <meta name="description" content="一. 为什么要使用babel由于有些浏览器不支持es6+ 语法，而我们在写代码的时候又希望能使用es6语法，享受其带来的简单方便。这时候我们需要babel来对我们的代码进行转换，将es6+ 语法转换成es5语法，让浏览器能识别。 二. 什么是babelbabel是一个转译器，感觉相对于编译器compiler，叫转译器transpiler更准确，因为它只是把同种语言的高版本规则翻译成低版本规则，而不">
+<meta name="keywords" content="前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于babel的一些理解">
 <meta property="og:url" content="http://yoursite.com/2018/12/12/关于babel的一些理解/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="一. 为什么要使用babel由于有些浏览器不支持es6+ 语法，而我们在写代码的时候又希望能使用es6语法，享受其带来的简单方便。这时候我们需要babel来对我们的代码进行转换，将es6+ 语法转换成es5语法，让浏览器能识别。 二. 什么是babelbabel是一个转译器，感觉相对于编译器compiler，叫转译器transpiler更准确，因为它只是把同种语言的高版本规则翻译成低版本规则，而不">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-06T08:20:07.708Z">
+<meta property="og:updated_time" content="2019-06-03T12:21:40.487Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于babel的一些理解">
 <meta name="twitter:description" content="一. 为什么要使用babel由于有些浏览器不支持es6+ 语法，而我们在写代码的时候又希望能使用es6语法，享受其带来的简单方便。这时候我们需要babel来对我们的代码进行转换，将es6+ 语法转换成es5语法，让浏览器能识别。 二. 什么是babelbabel是一个转译器，感觉相对于编译器compiler，叫转译器transpiler更准确，因为它只是把同种语言的高版本规则翻译成低版本规则，而不">
@@ -385,6 +386,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var Set       = require(&apos;core-js/library/fn/set&apos;);</span><br><span class="line">var from      = require(&apos;core-js/library/fn/array/from&apos;);</span><br><span class="line">var findIndex = require(&apos;core-js/library/fn/array/find-index&apos;);</span><br><span class="line"></span><br><span class="line">from(new Set([1, 2, 3, 2, 1]));      // =&gt; [1, 2, 3]</span><br><span class="line">findIndex([1, 2, NaN, 3, 4], isNaN); // =&gt; 2</span><br></pre></td></tr></table></figure>
 <p>所以，我理解的babel-polyfill这个包对core-js的引用方式应该是第一种，而babel-runtime对core-js的引用方式是第二种</p>
 <p>###总结：babel的难点在于理解polyfill，runtime和core-js，通过本文理解清楚三者之间的关系和区别</p>
+<p>babel-polyfill 与 babel-runtime 的一大区别:  前者改造目标浏览器，让你的浏览器拥有本来不支持的特性；后者改造你的代码，让你的代码能在所有目标浏览器上运行，但不改造浏览器。</p>
 <p><a href="https://www.jianshu.com/p/3b27dfc6785c" target="_blank" rel="noopener">参考链接</a></p>
 
       
@@ -400,6 +402,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+        </div>
       
 
       
@@ -499,7 +507,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -510,7 +518,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -521,7 +529,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

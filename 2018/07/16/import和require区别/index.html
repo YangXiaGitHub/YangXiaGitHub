@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="前端," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="一. import 得到的变量是只读的，require得到的变量可以修改。 Import  12345678// a.jsconst a = 1;setTimeout(() =&amp;gt; &amp;#123;    console.log(&amp;apos;在a文件里&amp;apos;, a);&amp;#125;, 1000);export &amp;#123;    a&amp;#125; 12345// test.jsimport &amp;#">
+<meta name="description" content="先总结一下区别，之后再细聊：  require是动态编译的，import是静态编译的。所以require后面的地址可以通过计算获取，import不能。 require不会进行变量提升，import会。 require导出的是一个拷贝值，import导入的是一个引用值(每个属性定义了getter)。 require得到的变量可以修改,import得到的变量无法修改（因为es6里对于导出数据做了只读限">
+<meta name="keywords" content="前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="import和require区别">
 <meta property="og:url" content="http://yoursite.com/2018/07/16/import和require区别/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一. import 得到的变量是只读的，require得到的变量可以修改。 Import  12345678// a.jsconst a = 1;setTimeout(() =&amp;gt; &amp;#123;    console.log(&amp;apos;在a文件里&amp;apos;, a);&amp;#125;, 1000);export &amp;#123;    a&amp;#125; 12345// test.jsimport &amp;#">
+<meta property="og:description" content="先总结一下区别，之后再细聊：  require是动态编译的，import是静态编译的。所以require后面的地址可以通过计算获取，import不能。 require不会进行变量提升，import会。 require导出的是一个拷贝值，import导入的是一个引用值(每个属性定义了getter)。 require得到的变量可以修改,import得到的变量无法修改（因为es6里对于导出数据做了只读限">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-09T04:08:43.869Z">
+<meta property="og:updated_time" content="2019-02-21T07:40:24.238Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="import和require区别">
-<meta name="twitter:description" content="一. import 得到的变量是只读的，require得到的变量可以修改。 Import  12345678// a.jsconst a = 1;setTimeout(() =&amp;gt; &amp;#123;    console.log(&amp;apos;在a文件里&amp;apos;, a);&amp;#125;, 1000);export &amp;#123;    a&amp;#125; 12345// test.jsimport &amp;#">
+<meta name="twitter:description" content="先总结一下区别，之后再细聊：  require是动态编译的，import是静态编译的。所以require后面的地址可以通过计算获取，import不能。 require不会进行变量提升，import会。 require导出的是一个拷贝值，import导入的是一个引用值(每个属性定义了getter)。 require得到的变量可以修改,import得到的变量无法修改（因为es6里对于导出数据做了只读限">
 
 
 
@@ -309,15 +310,18 @@
       
 
       
-        <h4 id="一-import-得到的变量是只读的，require得到的变量可以修改。"><a href="#一-import-得到的变量是只读的，require得到的变量可以修改。" class="headerlink" title="一. import 得到的变量是只读的，require得到的变量可以修改。"></a>一. import 得到的变量是只读的，require得到的变量可以修改。</h4><ol>
-<li>Import</li>
+        <p>先总结一下区别，之后再细聊：</p>
+<ol>
+<li>require是动态编译的，import是静态编译的。所以require后面的地址可以通过计算获取，import不能。</li>
+<li>require不会进行变量提升，import会。</li>
+<li>require导出的是一个拷贝值，import导入的是一个引用值(每个属性定义了getter)。</li>
+<li>require得到的变量可以修改,import得到的变量无法修改（因为es6里对于导出数据做了只读限制）</li>
 </ol>
+<h4 id="一-import-得到的变量是只读的，require得到的变量可以修改。"><a href="#一-import-得到的变量是只读的，require得到的变量可以修改。" class="headerlink" title="一. import 得到的变量是只读的，require得到的变量可以修改。"></a>一. import 得到的变量是只读的，require得到的变量可以修改。</h4><p>(1) Import</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// a.js</span><br><span class="line">const a = 1;</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    console.log(&apos;在a文件里&apos;, a);</span><br><span class="line">&#125;, 1000);</span><br><span class="line">export &#123;</span><br><span class="line">    a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// test.js</span><br><span class="line">import &#123; a &#125; from &apos;./a&apos;;  </span><br><span class="line">console.log(&apos;a======111&apos;, a);</span><br><span class="line">a = 3;</span><br><span class="line">console.log(&apos;a=====222&apos;, a);</span><br></pre></td></tr></table></figure>
 <p>运行之后会得到：<strong>“a” is read-only</strong></p>
-<ol>
-<li>require</li>
-</ol>
+<p>(2) require</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// test.js</span><br><span class="line">let a = require(&apos;./a&apos;);</span><br><span class="line">console.log(&apos;a======&apos;, a);</span><br><span class="line">a = 3;</span><br><span class="line">console.log(&apos;a&apos;, a);</span><br></pre></td></tr></table></figure>
 <p>运行之后得到：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a====== &#123; a: 1 &#125;</span><br><span class="line">a 3</span><br><span class="line">在a文件里 1</span><br></pre></td></tr></table></figure>
@@ -330,24 +334,21 @@
 <p>Import url 直接报错了</p>
 <p>require(url)不会报错</p>
 <p>所以require都会用在动态加载的时候。</p>
-<h4 id="四-require-输出的是一个值的拷贝："><a href="#四-require-输出的是一个值的拷贝：" class="headerlink" title="四. require 输出的是一个值的拷贝："></a>四. require 输出的是一个值的拷贝：</h4><h4 id="如果是基本类型，则得到的是一个值，如果是对象，则得到的是一个地址的引用"><a href="#如果是基本类型，则得到的是一个值，如果是对象，则得到的是一个地址的引用" class="headerlink" title="(如果是基本类型，则得到的是一个值，如果是对象，则得到的是一个地址的引用)"></a>(如果是基本类型，则得到的是一个值，如果是对象，则得到的是一个地址的引用)</h4><h4 id="export-模块输出的是值的引用："><a href="#export-模块输出的是值的引用：" class="headerlink" title="export 模块输出的是值的引用："></a>export 模块输出的是值的引用：</h4><h4 id="给module-exports上的每一个属性比如’name’，定义了一个属性描述对象Object-defineProperty-exports-‘name’-enumerable-true-get-getter-，属性描述对象有一个getter，所以每次获取这个属性的时候其实都执行了函数getter，而不是像require对应的输出一样每次使用的都是缓存值"><a href="#给module-exports上的每一个属性比如’name’，定义了一个属性描述对象Object-defineProperty-exports-‘name’-enumerable-true-get-getter-，属性描述对象有一个getter，所以每次获取这个属性的时候其实都执行了函数getter，而不是像require对应的输出一样每次使用的都是缓存值" class="headerlink" title="(给module.exports上的每一个属性比如’name’，定义了一个属性描述对象Object.defineProperty(exports, ‘name’, { enumerable: true, get: getter }，属性描述对象有一个getter，所以每次获取这个属性的时候其实都执行了函数getter，而不是像require对应的输出一样每次使用的都是缓存值)"></a>(给module.exports上的每一个属性比如’name’，定义了一个属性描述对象Object.defineProperty(exports, ‘name’, { enumerable: true, get: getter }，属性描述对象有一个getter，所以每次获取这个属性的时候其实都执行了函数getter，而不是像require对应的输出一样每次使用的都是缓存值)</h4><p>参考资料：<a href="http://es6.ruanyifeng.com/#docs/module-loader#ES6-%E6%A8%A1%E5%9D%97%E4%B8%8E-CommonJS-%E6%A8%A1%E5%9D%97%E7%9A%84%E5%B7%AE%E5%BC%82" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/module-loader#ES6-%E6%A8%A1%E5%9D%97%E4%B8%8E-CommonJS-%E6%A8%A1%E5%9D%97%E7%9A%84%E5%B7%AE%E5%BC%82</a></p>
+<h4 id="四-require-输出的是一个值的拷贝-export-模块输出的是值的引用"><a href="#四-require-输出的是一个值的拷贝-export-模块输出的是值的引用" class="headerlink" title="四. require 输出的是一个值的拷贝, export 模块输出的是值的引用"></a>四. require 输出的是一个值的拷贝, export 模块输出的是值的引用</h4><p>对于require：如果导出的是基本类型，则得到的是一个值; 如果是对象，则得到的是一个对象地址的引用，总之就是拷贝了这个导出的值。</p>
+<p>对于export：给module.exports上的每一个属性比如’name’，定义了一个属性描述对象Object.defineProperty(exports, ‘name’, { enumerable: true, get: getter }，属性描述对象有一个getter，所以每次获取这个属性的时候其实都执行了函数getter，而不是像require对应的输出一样每次使用的都是缓存值</p>
+<p><a href="http://es6.ruanyifeng.com/#docs/module-loader#ES6-%E6%A8%A1%E5%9D%97%E4%B8%8E-CommonJS-%E6%A8%A1%E5%9D%97%E7%9A%84%E5%B7%AE%E5%BC%82" target="_blank" rel="noopener">参考资料</a></p>
 <p>1️⃣rquire会对引入进来的数据进行缓存</p>
 <p>在test.js里面require(‘’./a’)之后再修改a则只会修改a文件内的数据，（如果a是导出一个对象，则都会修改，因为是地址引用，test和a所指向的是一个内存。如果a导出的是基本数据类型，则test里面拥有的是一个副本，也就是前面说的对数据做缓存）</p>
 <p>2️⃣import之后对数据做修改会同时影响test和a里面的数据</p>
 <p>注意不能 import a from ‘a’; a = 1;</p>
 <p>上面已经说了import 是只读的。</p>
 <p>但是  import a from ‘a’;      a.theProp = 1;  是可以的，因为这并没有改a的引用地址，只是加一个属性</p>
-<h4 id="五-require和import-对于-a文件都是只执行一次"><a href="#五-require和import-对于-a文件都是只执行一次" class="headerlink" title="五. require和import 对于 a文件都是只执行一次"></a>五. require和import 对于 a文件都是只执行一次</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// a.js</span><br><span class="line">function a() &#123;</span><br><span class="line">    console.log(&apos;aaaa&apos;);</span><br><span class="line">&#125;</span><br><span class="line">const instance = new a();</span><br><span class="line">module.exports = instance;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// b.js</span><br><span class="line">function a() &#123;</span><br><span class="line">    console.log(&apos;aaaa&apos;);</span><br><span class="line">&#125;</span><br><span class="line">const instance = new a();</span><br><span class="line">module.exports = instance;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// test.js</span><br><span class="line">require(&apos;./a&apos;);</span><br><span class="line">require(&apos;./b&apos;);</span><br></pre></td></tr></table></figure>
-<p>babel-node test.js </p>
-<p>运行结果   aaaa</p>
-<p>说明a文件只执行一次。</p>
-<p>在爱这个方面import 和require都是一样的，a文件都是只执行一次。</p>
-<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><p>其实一个文件就是对应一个module对象，module对象里面有个属性是module.exports.</p>
+<h4 id="五-多次引用同一个文件，require和import-对于-都是只执行一次"><a href="#五-多次引用同一个文件，require和import-对于-都是只执行一次" class="headerlink" title="五. 多次引用同一个文件，require和import 对于 都是只执行一次"></a>五. 多次引用同一个文件，require和import 对于 都是只执行一次</h4><p>在这个方面import 和require都是一样的，引用相同文件都是只执行一次。</p>
+<p>注意：在查看了webpack打包结果之后发现</p>
+<p>其实一个文件就是对应一个module对象，module对象里面有个属性是module.exports.</p>
 <p>每个文件在最终都会变成一个函数的执行体，这个函数有三个入参：</p>
 <p>module, module.exports, webpack_require</p>
-<p>(1)在commonjs（也就是上面说的require）模块里，有两种导出方式：</p>
+<h4 id="导入和导出方式"><a href="#导入和导出方式" class="headerlink" title="导入和导出方式"></a>导入和导出方式</h4><p>(1)在commonjs（也就是上面说的require）模块里，有两种导出方式：</p>
 <ol>
 <li><p>module.exports = {a: 1, b:2}</p>
 </li>
@@ -387,6 +388,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+        </div>
       
 
       
@@ -486,7 +493,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -497,7 +504,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -508,7 +515,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -541,7 +548,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-import-得到的变量是只读的，require得到的变量可以修改。"><span class="nav-number">1.</span> <span class="nav-text">一. import 得到的变量是只读的，require得到的变量可以修改。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-import-会进行提升，Import-are-hoisted。Require不会。"><span class="nav-number">2.</span> <span class="nav-text">二. import 会进行提升，Import are hoisted。Require不会。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-import静态编译，import的地址不能通过计算。require就可以。"><span class="nav-number">3.</span> <span class="nav-text">三. import静态编译，import的地址不能通过计算。require就可以。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-require-输出的是一个值的拷贝："><span class="nav-number">4.</span> <span class="nav-text">四. require 输出的是一个值的拷贝：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果是基本类型，则得到的是一个值，如果是对象，则得到的是一个地址的引用"><span class="nav-number">5.</span> <span class="nav-text">(如果是基本类型，则得到的是一个值，如果是对象，则得到的是一个地址的引用)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#export-模块输出的是值的引用："><span class="nav-number">6.</span> <span class="nav-text">export 模块输出的是值的引用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#给module-exports上的每一个属性比如’name’，定义了一个属性描述对象Object-defineProperty-exports-‘name’-enumerable-true-get-getter-，属性描述对象有一个getter，所以每次获取这个属性的时候其实都执行了函数getter，而不是像require对应的输出一样每次使用的都是缓存值"><span class="nav-number">7.</span> <span class="nav-text">(给module.exports上的每一个属性比如’name’，定义了一个属性描述对象Object.defineProperty(exports, ‘name’, { enumerable: true, get: getter }，属性描述对象有一个getter，所以每次获取这个属性的时候其实都执行了函数getter，而不是像require对应的输出一样每次使用的都是缓存值)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五-require和import-对于-a文件都是只执行一次"><span class="nav-number">8.</span> <span class="nav-text">五. require和import 对于 a文件都是只执行一次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意："><span class="nav-number">9.</span> <span class="nav-text">注意：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-import-得到的变量是只读的，require得到的变量可以修改。"><span class="nav-number">1.</span> <span class="nav-text">一. import 得到的变量是只读的，require得到的变量可以修改。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-import-会进行提升，Import-are-hoisted。Require不会。"><span class="nav-number">2.</span> <span class="nav-text">二. import 会进行提升，Import are hoisted。Require不会。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-import静态编译，import的地址不能通过计算。require就可以。"><span class="nav-number">3.</span> <span class="nav-text">三. import静态编译，import的地址不能通过计算。require就可以。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-require-输出的是一个值的拷贝-export-模块输出的是值的引用"><span class="nav-number">4.</span> <span class="nav-text">四. require 输出的是一个值的拷贝, export 模块输出的是值的引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五-多次引用同一个文件，require和import-对于-都是只执行一次"><span class="nav-number">5.</span> <span class="nav-text">五. 多次引用同一个文件，require和import 对于 都是只执行一次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#导入和导出方式"><span class="nav-number">6.</span> <span class="nav-text">导入和导出方式</span></a></li></ol></div>
             
 
           </div>

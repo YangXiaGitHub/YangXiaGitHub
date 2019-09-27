@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="前端," />
 
 
 
@@ -80,13 +80,14 @@
 
 
 <meta name="description" content="定义：BFC:  块级格式化上下文，他决定了块级元素如何对他的内容进行布局，以及与其他元素关系及相对关系。BFC里面的元素与外面的元素不会发生影响。   1⃣️触发BFC的方式（一下任意一条就可以） ​       1.float的值不为none ​        2.overflow的值不为visible ​        3.display的值为table-cell、tabble-captio">
+<meta name="keywords" content="前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BFC">
 <meta property="og:url" content="http://yoursite.com/2018/05/04/BFC/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="定义：BFC:  块级格式化上下文，他决定了块级元素如何对他的内容进行布局，以及与其他元素关系及相对关系。BFC里面的元素与外面的元素不会发生影响。   1⃣️触发BFC的方式（一下任意一条就可以） ​       1.float的值不为none ​        2.overflow的值不为visible ​        3.display的值为table-cell、tabble-captio">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-04T11:58:51.486Z">
+<meta property="og:updated_time" content="2019-05-31T08:47:38.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BFC">
 <meta name="twitter:description" content="定义：BFC:  块级格式化上下文，他决定了块级元素如何对他的内容进行布局，以及与其他元素关系及相对关系。BFC里面的元素与外面的元素不会发生影响。   1⃣️触发BFC的方式（一下任意一条就可以） ​       1.float的值不为none ​        2.overflow的值不为visible ​        3.display的值为table-cell、tabble-captio">
@@ -340,12 +341,12 @@
 <p>2⃣️BFC布局与普通文档流布局的区别：</p>
 <p>普通文档流布局规则：</p>
 <p>​    A.浮动元素不会被父元素计算高度。</p>
-<p>​    B.非浮动元素会覆盖浮动元素的位置。</p>
+<p>​    B.浮动元素会覆盖非浮动元素的位置。</p>
 <p>​    C.margin会传递给父级。</p>
 <p>​    D.相邻元素margin会重叠。</p>
 <p>BFC布局规则：</p>
 <p>​    A.浮动元素会被父级元素计算高度。（父级触发BFC）    </p>
-<p>​    B.非浮动元素不会覆盖浮动元素位置。（非浮动元素触发BFC）</p>
+<p>​    B.浮动元素不会覆盖非浮动元素位置。（非浮动元素触发BFC）</p>
 <p>​    C.margin 不会传递给父级。（父级触发BFC）</p>
 <p>​    D.相邻元素margin不会重叠（给其中一个元素增加一个父级，让他的父级触发BFC）</p>
 
@@ -362,6 +363,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+        </div>
       
 
       
@@ -452,7 +459,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -463,7 +470,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -474,7 +481,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

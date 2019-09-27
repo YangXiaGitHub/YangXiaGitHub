@@ -239,6 +239,1731 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/19/关于正则表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/19/关于正则表达式/" itemprop="url">关于正则表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-19T20:04:32+08:00">
+                2018-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文内容是参照菜鸟教程写的</p>
+<h3 id="一-对元字符分类"><a href="#一-对元字符分类" class="headerlink" title="一.  对元字符分类"></a>一.  对元字符分类</h3><p>正则表达式里面可以分为普通字符和元字符。</p>
+<p>普通字符没有特殊含义，比如’a’ 就是代表 ‘a’ 字符；而元字符具有特殊含义，下面我们将元字符进行简单归类，便于记忆。（只列出平时使用较多的一些字符，不常使用的没有列出）<br>由于hexo对于表格渲染有点问题，所以有些表格显示不太好。</p>
+<ol>
+<li>非打印字符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">元字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\s</td>
+<td>匹配任何空白字符，包括空格，制表符，换页符等等。</td>
+</tr>
+<tr>
+<td style="text-align:left">\S</td>
+<td>匹配任何非空白字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\n</td>
+<td>匹配一个换行符</td>
+</tr>
+<tr>
+<td style="text-align:left">\r</td>
+<td>匹配一个回车符</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>特殊含义元字符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$</td>
+<td>匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $$ 也匹配 ‘\n’ 或 ‘\r’。要匹配 \$ 字符本身，请使用’\\$’。</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配输入字符串的开始位置，除非在方括号表达式中使用，此时它表示不接受该字符集合。要匹配 ^ 字符本身，请使用 \^。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配前面的子表达式<strong>0</strong>次或<strong>多</strong>次。要匹配 <em> 字符，请使用\ \</em>。</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前面的子表达式一次或多次。要匹配 + 字符，请使用\ +。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用\ . 。</td>
+</tr>
+<tr>
+<td>{</td>
+<td>标记限定符表达式的开始。要匹配 {，请使用\ {。</td>
+</tr>
+<tr>
+<td>[</td>
+<td>标记一个中括号表达式的开始。要匹配 [，请使用\ [。</td>
+</tr>
+<tr>
+<td>\</td>
+<td>将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘\\’ 匹配 “\”，而 ‘\(‘ 则匹配 “(“。</td>
+</tr>
+<tr>
+<td>\</td>
+<td></td>
+<td>指明两项之间的一个选择。要匹配 \</td>
+<td>，请使用\\</td>
+<td>。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>和转义相关的元字符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\d</td>
+<td>匹配一个数字字符。等价于 [0-9]。</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配一个非数字字符。等价于 [^0-9]。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母、数字、下划线。等价于[A-Za-z0-9_]。</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配非字母、数字、下划线。等价于[^A-Za-z0-9]。</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td>\num</td>
+<td>匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，’(.)\1’ 匹配两个连续的相同字符。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>限定符</li>
+</ol>
+<p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。比如 * 或 + 或 ? 或 {n} 或 {n,} 或 {n,m}。</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>匹配前面的子表达式零次或多次。例如，zo<em> 能匹配 “z” 以及 “zoo”。</em> 等价于{0,}。</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 、 “does” 中的 “does” 、 “doxy” 中的 “do” 。? 等价于 {0,1}。</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*’。</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>*、+限定符都是贪婪的，因为它们会尽可能多的匹配文字，只有在它们的后面加上一个?就可以实现非贪婪或最小匹配。</strong></p>
+<p>eg： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;&lt;H1&gt;Chapter 1 - 介绍正则表达式&lt;/H1&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>贪婪：</strong>下面的表达式匹配从开始小于符号 (&lt;) 到关闭 H1 标记的大于符号 (&gt;) 之间的所有内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/&lt;.*&gt;/</span><br></pre></td></tr></table></figure>
+<p><strong>非贪婪</strong>: 下面的表达式只匹配开始的 H1 标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/&lt;.*?&gt;/</span><br><span class="line">/&lt;\w+?&gt;/</span><br></pre></td></tr></table></figure>
+<p>通过在 *、+ 或 ? 限定符之后放置 ?，该表达式从”贪心”表达式转换为”非贪心”表达式或者最小匹配。</p>
+<ol>
+<li>定位符</li>
+</ol>
+<p>定位符使您能够将正则表达式固定到行首或行尾。它们还使您能够创建这样的正则表达式，这些正则表达式出现在一个单词内、在一个单词的开头或者一个单词的结尾。</p>
+<p>定位符用来描述字符串或单词的边界，^ 和 $ 分别指字符串的开始与结束，\b 描述单词的前或后边界，\B 表示非单词边界。</p>
+<p>正则表达式的定位符有：</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>匹配输入字符串开始的位置。如果设置了 RegExp 对象的 Multiline 属性，^ 还会与 \n 或 \r 之后的位置匹配。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配输入字符串结尾的位置。如果设置了 RegExp 对象的 Multiline 属性，$ 还会与 \n 或 \r 之前的位置匹配。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配一个单词边界，即字与空格间的位置。</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>非单词边界匹配。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>选择</li>
+</ol>
+<p>用圆括号将所有选择项括起来，相邻的选择项之间用|分隔。但用圆括号会有一个副作用，使相关的匹配会被缓存，此时可用?:放在第一个选项前来消除这种副作用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var reg = /a(\w)+(f|g)/</span><br><span class="line">var str = &apos;aef&apos;</span><br><span class="line">str.match(reg)  // [&quot;aef&quot;, &quot;e&quot;, &quot;f&quot;, index: 0, input: &quot;aef&quot;, groups: undefined]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var reg = /a(?:\w)+(f|g)/</span><br><span class="line">var str = &apos;aef&apos;</span><br><span class="line">str.match(reg)  // [&quot;aef&quot;, &quot;f&quot;, index: 0, input: &quot;aef&quot;, groups: undefined]</span><br></pre></td></tr></table></figure>
+<p>第一个例子和第二个例子相比，str.match(reg)返回的结果不包括”e”</p>
+<ol>
+<li>反向引用</li>
+</ol>
+<p>对一个正则表达式模式或部分模式两边添加圆括号将导致相关匹配存储到一个临时缓冲区中，所捕获的每个子匹配都按照在正则表达式模式中从左到右出现的顺序存储。缓冲区编号从 1 开始，最多可存储 99 个捕获的子表达式。每个缓冲区都可以使用 \n 访问，其中 n 为一个标识特定缓冲区的一位或两位十进制数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;Is is the cost of of gasoline going up up&quot;;</span><br><span class="line">var patt1 = /\b([a-z]+) \1\b/ig;</span><br><span class="line">str.match(patt1) // [&quot;Is is&quot;, &quot;of of&quot;, &quot;up up&quot;]</span><br></pre></td></tr></table></figure>
+<ol>
+<li>非捕获元字符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字符</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">(?:pattern)</td>
+<td style="text-align:left">匹配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 “或” 字符 (\</td>
+<td>) 来组合一个模式的各个部分是很有用。例如， ‘industr(?:y\</td>
+<td>ies) 就是一个比 ‘industry\</td>
+<td>industries’ 更简略的表达式。</td>
+</tr>
+<tr>
+<td style="text-align:left">(?=patt)</td>
+<td style="text-align:left"><strong>正向肯定预测</strong>（look ahead positive assert），在任何匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如，”Windows(?=95\</td>
+<td>98\</td>
+<td>NT\</td>
+<td>2000)”能匹配”Windows2000”中的”Windows”，但不能匹配”Windows3.1”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+</tr>
+<tr>
+<td style="text-align:left">(?!patt)</td>
+<td style="text-align:left"><strong>正向否定预测</strong>(negative assert)，在任何不匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如”Windows(?!95\</td>
+<td>98\</td>
+<td>NT\</td>
+<td>2000)”能匹配”Windows3.1”中的”Windows”，但不能匹配”Windows2000”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+</tr>
+<tr>
+<td style="text-align:left">(?&lt;=patt)</td>
+<td style="text-align:left"><strong>反向(look behind)肯定预测</strong>，与正向肯定预查类似，只是方向相反。例如，”`(?&lt;=95</td>
+<td>98</td>
+<td>NT</td>
+<td>2000)Windows<code>&quot;能匹配&quot;</code>2000Windows<code>&quot;中的&quot;</code>Windows<code>&quot;，但不能匹配&quot;</code>3.1Windows<code>&quot;中的&quot;</code>Windows`”。</td>
+</tr>
+<tr>
+<td style="text-align:left">(?&lt;!patt)</td>
+<td style="text-align:left"><strong>反向否定预测</strong>，与正向否定预查类似，只是方向相反。例如”`(?&lt;!95</td>
+<td>98</td>
+<td>NT</td>
+<td>2000)Windows<code>&quot;能匹配&quot;</code>3.1Windows<code>&quot;中的&quot;</code>Windows<code>&quot;，但不能匹配&quot;</code>2000Windows<code>&quot;中的&quot;</code>Windows`”。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="二-对元字符进行归总"><a href="#二-对元字符进行归总" class="headerlink" title="二. 对元字符进行归总"></a>二. 对元字符进行归总</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\</td>
+<td>将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。例如，’n’ 匹配字符 “n”。’\n’ 匹配一个换行符。序列 ‘\‘ 匹配 “\” 而 “(“ 则匹配 “(“。</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 ‘\n’ 或 ‘\r’ 之后的位置。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 ‘\n’ 或 ‘\r’ 之前的位置。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配前面的子表达式零次或多次。例如，zo<em> 能匹配 “z” 以及 “zoo”。</em> 等价于{0,}。</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 或 “does” 。? 等价于 {0,1}。</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*’。</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>当该字符紧跟在任何一个其他限制符 (*, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 “oooo”，’o+?’ 将匹配单个 “o”，而 ‘o+’ 将匹配所有 ‘o’。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配除换行符（\n、\r）之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用像”**(.\</td>
+<td>\n)**”的模式。</td>
+</tr>
+<tr>
+<td>(pattern)</td>
+<td>匹配 pattern 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，在VBScript 中使用 SubMatches 集合，在JScript 中则使用 $0…$9 属性。要匹配圆括号字符，请使用 ‘(‘ 或 ‘)‘。</td>
+</tr>
+<tr>
+<td>(?:pattern)</td>
+<td>匹配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 “或” 字符 (\</td>
+<td>) 来组合一个模式的各个部分是很有用。例如， ‘industr(?:y\</td>
+<td>ies) 就是一个比 ‘industry\</td>
+<td>industries’ 更简略的表达式。</td>
+</tr>
+<tr>
+<td>(?=pattern)</td>
+<td>正向肯定预查（look ahead positive assert），在任何匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如，”Windows(?=95\</td>
+<td>98\</td>
+<td>NT\</td>
+<td>2000)”能匹配”Windows2000”中的”Windows”，但不能匹配”Windows3.1”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+</tr>
+<tr>
+<td>(?!pattern)</td>
+<td>正向否定预查(negative assert)，在任何不匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如”Windows(?!95\</td>
+<td>98\</td>
+<td>NT\</td>
+<td>2000)”能匹配”Windows3.1”中的”Windows”，但不能匹配”Windows2000”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+</tr>
+<tr>
+<td>(?&lt;=pattern)</td>
+<td>反向(look behind)肯定预查，与正向肯定预查类似，只是方向相反。例如，”`(?&lt;=95</td>
+<td>98</td>
+<td>NT</td>
+<td>2000)Windows<code>&quot;能匹配&quot;</code>2000Windows<code>&quot;中的&quot;</code>Windows<code>&quot;，但不能匹配&quot;</code>3.1Windows<code>&quot;中的&quot;</code>Windows`”。</td>
+</tr>
+<tr>
+<td>(?&lt;!pattern)</td>
+<td>反向否定预查，与正向否定预查类似，只是方向相反。例如”`(?&lt;!95</td>
+<td>98</td>
+<td>NT</td>
+<td>2000)Windows<code>&quot;能匹配&quot;</code>3.1Windows<code>&quot;中的&quot;</code>Windows<code>&quot;，但不能匹配&quot;</code>2000Windows<code>&quot;中的&quot;</code>Windows`”。</td>
+</tr>
+<tr>
+<td>x\</td>
+<td>y</td>
+<td>匹配 x 或 y。例如，’z\</td>
+<td>food’ 能匹配 “z” 或 “food”。’(z\</td>
+<td>f)ood’ 则匹配 “zood” 或 “food”。</td>
+</tr>
+<tr>
+<td>[xyz]</td>
+<td>字符集合。匹配所包含的任意一个字符。例如， ‘[abc]’ 可以匹配 “plain” 中的 ‘a’。</td>
+</tr>
+<tr>
+<td>[^xyz]</td>
+<td>负值字符集合。匹配未包含的任意字符。例如， ‘[^abc]’ 可以匹配 “plain” 中的’p’、’l’、’i’、’n’。</td>
+</tr>
+<tr>
+<td>[a-z]</td>
+<td>字符范围。匹配指定范围内的任意字符。例如，’[a-z]’ 可以匹配 ‘a’ 到 ‘z’ 范围内的任意小写字母字符。</td>
+</tr>
+<tr>
+<td>[^a-z]</td>
+<td>负值字符范围。匹配任何不在指定范围内的任意字符。例如，’[^a-z]’ 可以匹配任何不在 ‘a’ 到 ‘z’ 范围内的任意字符。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td>\cx</td>
+<td>匹配由 x 指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配一个数字字符。等价于 [0-9]。</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配一个非数字字符。等价于 [^0-9]。</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>匹配一个换页符。等价于 \x0c 和 \cL。</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>匹配一个换行符。等价于 \x0a 和 \cJ。</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>匹配一个回车符。等价于 \x0d 和 \cM。</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>匹配一个制表符。等价于 \x09 和 \cI。</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母、数字、下划线。等价于’[A-Za-z0-9_]’。</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配非字母、数字、下划线。等价于 ‘[^A-Za-z0-9_]‘。</td>
+</tr>
+<tr>
+<td>\xn</td>
+<td>匹配 n，其中 n 为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，’\x41’ 匹配 “A”。’\x041’ 则等价于 ‘\x04’ &amp; “1”。正则表达式中可以使用 ASCII 编码。</td>
+</tr>
+<tr>
+<td>\num</td>
+<td>匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，’(.)\1’ 匹配两个连续的相同字符。</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>标识一个八进制转义值或一个向后引用。如果 \n 之前至少 n 个获取的子表达式，则 n 为向后引用。否则，如果 n 为八进制数字 (0-7)，则 n 为一个八进制转义值。</td>
+</tr>
+<tr>
+<td>\nm</td>
+<td>标识一个八进制转义值或一个向后引用。如果 \nm 之前至少有 nm 个获得子表达式，则 nm 为向后引用。如果 \nm 之前至少有 n 个获取，则 n 为一个后跟文字 m 的向后引用。如果前面的条件都不满足，若 n 和 m 均为八进制数字 (0-7)，则 \nm 将匹配八进制转义值 nm。</td>
+</tr>
+<tr>
+<td>\nml</td>
+<td>如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml。</td>
+</tr>
+<tr>
+<td>\un</td>
+<td>匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三-获取字符串中匹配正则的部分"><a href="#三-获取字符串中匹配正则的部分" class="headerlink" title="三. 获取字符串中匹配正则的部分"></a>三. 获取字符串中匹配正则的部分</h3><p>可以使用正则的方法，或者字符串的方法</p>
+<ol>
+<li><p>正则实例的方法：</p>
+<p>(1) exec方法（获取匹配正则部分）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var reg = /\d+/;</span><br><span class="line">var str = &apos;11245f&apos;;</span><br><span class="line">reg.exec(str);    //[&quot;11245&quot;, index: 0, input: &quot;11245f&quot;, groups: undefined]</span><br></pre></td></tr></table></figure>
+<p>(2)test方法（测试是否匹配正则）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg.exec(str);  // true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串的方法</p>
+<p>（1）match方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var reg = /(\d+)(f|g)/;</span><br><span class="line">var str = &apos;11245f&apos;;</span><br><span class="line">str.match(reg) </span><br><span class="line">//  [&quot;11245f&quot;, &quot;11245&quot;, &quot;f&quot;, index: 0, input: &quot;11245f&quot;, groups: undefined]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var reg = /\d+/g;</span><br><span class="line">var str = &apos;11245f11111&apos;;</span><br><span class="line">str.match(reg) // [&quot;11245&quot;, &quot;11111&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：正则的exec方法和字符串的match方法功能一样，但是<strong>正则的exec永远只返回第一个匹配字符串及其子模式</strong>。而字符串的match方法在正则<strong>不设置g时和exec一致</strong>，<strong>如果设置了g，那么返回的是所有匹配的字符串，并且不包括子模式</strong>。</p>
+</li>
+</ol>
+<h3 id="四-返回结果中正则子模式的顺序"><a href="#四-返回结果中正则子模式的顺序" class="headerlink" title="四. 返回结果中正则子模式的顺序"></a>四. 返回结果中正则子模式的顺序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">reg = /a((\w)+)(f|g)/</span><br><span class="line">str=&apos;a123g&apos;</span><br><span class="line">result = str.match(reg)   </span><br><span class="line">// [&quot;a123g&quot;, &quot;123&quot;, &quot;3&quot;, &quot;g&quot;, index: 0, input: &quot;a123g&quot;, groups: undefined]</span><br></pre></td></tr></table></figure>
+<p>result[0] 是整个匹配到的模式</p>
+<p>result[1]是第一个匹配到的子模式</p>
+<p>result[2]是第一个子模式里面的匹配到的子模式</p>
+<p>result[3]是第二个匹配到的子模式</p>
+<p>所以这个返回数组排列是按照<strong>类似深度遍历</strong>的模式来排列匹配数组的</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/12/关于babel的一些理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/12/关于babel的一些理解/" itemprop="url">关于babel的一些理解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-12T14:27:03+08:00">
+                2018-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一-为什么要使用babel"><a href="#一-为什么要使用babel" class="headerlink" title="一. 为什么要使用babel"></a>一. 为什么要使用babel</h3><p>由于有些浏览器不支持es6+ 语法，而我们在写代码的时候又希望能使用es6语法，享受其带来的简单方便。这时候我们需要babel来对我们的代码进行转换，将es6+ 语法转换成es5语法，让浏览器能识别。</p>
+<h3 id="二-什么是babel"><a href="#二-什么是babel" class="headerlink" title="二. 什么是babel"></a>二. 什么是babel</h3><p>babel是一个转译器，感觉相对于编译器compiler，叫转译器transpiler更准确，因为它只是把同种语言的高版本规则翻译成低版本规则，而不像编译器那样，输出的是另一种更低级的语言代码。</p>
+<p>(1) babel的编译过程可以分成三个步骤：</p>
+<ul>
+<li>The parser: <a href="https://github.com/babel/babel/blob/master/packages/babel-parser" target="_blank" rel="noopener"><code>@babel/parser</code></a></li>
+<li>The transformer[s]: All the plugins/presets<ul>
+<li>These all use <a href="https://github.com/babel/babel/blob/master/packages/babel-traverse" target="_blank" rel="noopener"><code>@babel/traverse</code></a> to traverse through the AST</li>
+</ul>
+</li>
+<li>The generator: <a href="https://github.com/babel/babel/blob/master/packages/babel-generator" target="_blank" rel="noopener"><code>@babel/generator</code></a></li>
+</ul>
+<p>(2) babel工作流：nput string -&gt; <code>@babel/parser</code> parser -&gt; <code>AST</code> -&gt; transformer[s] -&gt; <code>AST</code> -&gt; <code>@babel/generator</code> -&gt; output string</p>
+<p>(3) babel包的构成：</p>
+<h5 id="核心包"><a href="#核心包" class="headerlink" title="核心包"></a>核心包</h5><ol>
+<li>babel-core： babel转译器本身，提供了babel的转译API，如babel.transform等，用于对代码进行转译。像webpack的babel-loader就是调用这些API来完成转译过程的。</li>
+<li>babel-parser：babel的词法解析器</li>
+<li>babel-traverse：用于对AST抽象语法树的遍历，主要给plugin用</li>
+<li>babel-generator：根据AST生成代码</li>
+</ol>
+<h5 id="工具包"><a href="#工具包" class="headerlink" title="工具包"></a>工具包</h5><ol>
+<li>babel-cli：babel的命令工具，通过命令对js代码进行转译</li>
+<li>babel-register：通过修改nodejs的require来自动转译require引用的js代码文件</li>
+</ol>
+<h5 id="功能包"><a href="#功能包" class="headerlink" title="功能包"></a>功能包</h5><ol>
+<li>babel-type: 用于检验，构建和改变AST树的节点</li>
+<li>babel-template：辅助函数，用于从字符串形式的代码来构建AST树的节点</li>
+<li>babel-helpers: 一系列预制的babel-template函数，英语提供给一些plugins用</li>
+<li>babel-code-frames：用于生成错误信息，指出错误位置</li>
+<li><strong>babel-plugin-xxx</strong>：bable转译过程中用到的插件。其中babel-plugin-transform-xxx是transform步骤中使用到的</li>
+<li><strong>babel-preset-xxx</strong>：transform阶段使用到的一系列plugin</li>
+<li><strong>babel-polyfill</strong>：js标准新增的原生对象和API的shim，实现上仅仅是对<strong>core-js</strong>和<strong>gennerator-runtime</strong>两个包的封装</li>
+<li><strong>babel-runtime</strong>：功能类似于babel-polyfill，一般用于library或plugin中，因为他不会污染全局作用域</li>
+</ol>
+<p>preset其实就是一些plugin的集合</p>
+<h3 id="三-polyfill和runtime"><a href="#三-polyfill和runtime" class="headerlink" title="三. polyfill和runtime"></a>三. polyfill和runtime</h3><p>由于babel默认只是转译新标准引入的语法，比如ES6的箭头函数转译成ES5的函数；而<strong>新标准引入的新的原生对象，部分原生对象新增的原型方法，新增的API（如</strong>Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象<strong>等）</strong>以及一些定义在全局对象上的方法（比如Object.assign<strong>)，这些babel是不会转译的。需要用户自行引入polyfill来解决</strong></p>
+<p>引入垫片（polyfill）有几种方式，其中他们各有优缺点：</p>
+<p><strong>方法一：使用babel-polyfill</strong></p>
+<p>​    1. 先安装包： npm install –save babel-polyfill</p>
+<p>​    2. 要确保<strong>在入口处导入polyfill</strong>，因为polyfill代码需要在所有其他代码前先被调用<br>​    代码方式： <code>import &quot;babel-polyfill&quot;</code><br>​    或者webpack配置： <code>module.exports = { entry: [&quot;babel-polyfill&quot;, &quot;./app/js&quot;] };</code></p>
+<p>优点：引入之后可以放心使用es6语法，他对所有的方法都进行了polyfill</p>
+<p>缺点：这种方式是改变的全局作用域，也就是说污染了全局（比如在Array的prototype上添加includes方法等）</p>
+<p>打出来的包也会比较大。</p>
+<p><strong>方法二：使用transform-runtime</strong></p>
+<p>让重复定义变成重复引用，解决babel代码重复问题</p>
+<p>babel-plugin-transform-runtime插件依赖babel-runtime，babel-runtime是真正提供runtime环境的包；也就是说transform-runtime插件是把js代码中使用到的新原生对象和静态方法转换成对runtime实现包的引用，举个例子如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 输入的ES6代码</span><br><span class="line">var sym = Symbol();</span><br><span class="line">// 通过transform-runtime转换后的ES5+runtime代码 </span><br><span class="line">var _symbol = require(&quot;babel-runtime/core-js/symbol&quot;); </span><br><span class="line">// 另外，这里我们也可以隐约发现，babel-runtime其实也不是真正的实现代码所在，真正的代码实现是在core-js中</span><br><span class="line">var sym = (0, _symbol.default)();</span><br></pre></td></tr></table></figure>
+<p>优点：从上面这个例子可见，原本代码中使用的ES6新原生对象Symbol被transform-runtime插件转换成了babel-runtime的实现，既保持了Symbol的功能，同时又没有像polyfill那样污染全局环境（因为最终生成的代码中，并没有对Symbol的引用）</p>
+<p>缺点：但是由于他不能污染全局环境，所以对于实例上的方法则无法使用，比如[].includes()</p>
+<p>不过对于有些类上的静态方法可以使用，比如Array.from方法</p>
+<p><strong>方法三：使用babel-preset-env插件</strong></p>
+<p>这款preset能灵活决定加载哪些插件和polyfill，不过还是得开发者手动进行一些配置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// cnpm install -D babel-preset -env</span><br><span class="line">&#123;</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">        [&quot;env&quot;, &#123;</span><br><span class="line">            &quot;targets&quot;: &#123; //指定要转译到哪个环境</span><br><span class="line">                //浏览器环境</span><br><span class="line">                &quot;browsers&quot;: [&quot;last 2 versions&quot;, &quot;safari &gt;= 7&quot;],</span><br><span class="line">                //node环境</span><br><span class="line">                &quot;node&quot;: &quot;6.10&quot;, //&quot;current&quot;  使用当前版本的node</span><br><span class="line">                </span><br><span class="line">            &#125;,</span><br><span class="line">             //是否将ES6的模块化语法转译成其他类型</span><br><span class="line">             //参数：&quot;amd&quot; | &quot;umd&quot; | &quot;systemjs&quot; | &quot;commonjs&quot; | false，默认为&apos;commonjs&apos;</span><br><span class="line">            &quot;modules&quot;: &apos;commonjs&apos;,</span><br><span class="line">            //是否进行debug操作，会在控制台打印出所有插件中的log，已经插件的版本</span><br><span class="line">            &quot;debug&quot;: false,</span><br><span class="line">            //强制开启某些模块，默认为[]</span><br><span class="line">            &quot;include&quot;: [&quot;transform-es2015-arrow-functions&quot;],</span><br><span class="line">            //禁用某些模块，默认为[]</span><br><span class="line">            &quot;exclude&quot;: [&quot;transform-es2015-for-of&quot;],</span><br><span class="line">            //是否自动引入polyfill，开启此选项必须保证已经安装了babel-polyfill</span><br><span class="line">            //参数：Boolean，默认为false.</span><br><span class="line">            &quot;useBuiltIns&quot;: false</span><br><span class="line">        &#125;]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于最后一个参数<code>useBuiltIns</code>，有两点必须要注意：</p>
+<ol>
+<li>如果useBuiltIns为true，项目中必须引入babel-polyfill。</li>
+<li>babel-polyfill只能被引入一次，如果多次引入会造成全局作用域的冲突。</li>
+</ol>
+<h3 id="四-core-js介绍"><a href="#四-core-js介绍" class="headerlink" title="四. core-js介绍"></a>四. core-js介绍</h3><p>core-js包才上述的babel-polyfill、babel-plugin-transform-runtime、bable-runtime的核心，因为polyfill和runtime其实都只是对core-js和regenerator的再封装，方便使用而已。</p>
+<p>但是polyfill和runtime都是整体引入的，不能做细粒度的调整，如果我们的代码只是用到了小部分ES6而导致需要使用polyfill和runtime的话，会造成代码体积不必要的增大（runtime的影响较小）。所以，按需引入的需求就自然而然产生了，这个时候就得依靠core-js来实现了。</p>
+<h4 id="core-js的组织结构"><a href="#core-js的组织结构" class="headerlink" title="core-js的组织结构"></a>core-js的组织结构</h4><p>首先，core-js有三种使用方式：</p>
+<ul>
+<li><p>默认方式：require(‘core-js’)<br>这种方式包括全部特性，标准的和非标准的</p>
+</li>
+<li><p>库的形式： var core = require(‘core-js/library’)<br>这种方式也包括全部特性，只是它不会污染全局名字空间</p>
+<p><strong>注意文件路径里面有library的就代表是用于类库，不会污染全局作用域的</strong></p>
+<p><strong>默认方式和库的形式一个是直接require让其执行而对全局产生影响，另一个是对执行结果赋值（里面的代码不对全局产生影响，只导出一个结果让外部使用）</strong></p>
+</li>
+<li><p>只是shim： require(‘core-js/shim’)或var shim = require(‘core-js/library/shim’)<br>这种方式只包括标准特性（就是只有polyfill功能，没有扩展的特性）</p>
+</li>
+</ul>
+<h4 id="core-js的按需使用"><a href="#core-js的按需使用" class="headerlink" title="core-js的按需使用"></a>core-js的按需使用</h4><p>1、类似polyfill，直接把特性添加到全局环境，这种方式体验最完整</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">require(&apos;core-js/fn/set&apos;);</span><br><span class="line">require(&apos;core-js/fn/array/from&apos;);</span><br><span class="line">require(&apos;core-js/fn/array/find-index&apos;);</span><br><span class="line"></span><br><span class="line">Array.from(new Set([1, 2, 3, 2, 1])); // =&gt; [1, 2, 3]</span><br><span class="line">[1, 2, NaN, 3, 4].findIndex(isNaN);   // =&gt; 2</span><br></pre></td></tr></table></figure>
+<p>2、类似runtime一样，以库的形式来使用特性，这种方式不会污染全局名字空间，但是不能使用实例方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var Set       = require(&apos;core-js/library/fn/set&apos;);</span><br><span class="line">var from      = require(&apos;core-js/library/fn/array/from&apos;);</span><br><span class="line">var findIndex = require(&apos;core-js/library/fn/array/find-index&apos;);</span><br><span class="line"></span><br><span class="line">from(new Set([1, 2, 3, 2, 1]));      // =&gt; [1, 2, 3]</span><br><span class="line">findIndex([1, 2, NaN, 3, 4], isNaN); // =&gt; 2</span><br></pre></td></tr></table></figure>
+<p>所以，我理解的babel-polyfill这个包对core-js的引用方式应该是第一种，而babel-runtime对core-js的引用方式是第二种</p>
+<p>###总结：babel的难点在于理解polyfill，runtime和core-js，通过本文理解清楚三者之间的关系和区别</p>
+<p>babel-polyfill 与 babel-runtime 的一大区别:  前者改造目标浏览器，让你的浏览器拥有本来不支持的特性；后者改造你的代码，让你的代码能在所有目标浏览器上运行，但不改造浏览器。</p>
+<p><a href="https://www.jianshu.com/p/3b27dfc6785c" target="_blank" rel="noopener">参考链接</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/10/关于javascript宽高的记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/10/关于javascript宽高的记录/" itemprop="url">关于javascript宽高的记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-10T15:07:54+08:00">
+                2018-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table>
+<thead>
+<tr>
+<th>client类</th>
+<th>offset类</th>
+<th>scroll类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientWidth:  <strong>元素尺寸</strong> (注意不是内容尺寸)+内边距</td>
+<td>offsetWidth:  <strong>元素尺寸</strong>+内边距+边框</td>
+<td>scrollWidth: <strong>元素尺寸</strong> + 内边距 + <strong>内容</strong>超出元素尺寸和内边距的部分</td>
+</tr>
+<tr>
+<td>clientHeight：<strong>元素尺寸</strong> (注意不是内容尺寸)+内边距</td>
+<td>offsetHeight: <strong>元素尺寸</strong>+内边距+边框</td>
+<td>scrollHeight: <strong>元素尺寸</strong> + 内边距 + <strong>内容</strong>超出元素尺寸和内边距的部分</td>
+</tr>
+<tr>
+<td>clientLeft: border-left的宽度，也就是 border-left厚度</td>
+<td>offsetLeft: 定位祖先元素的<strong>外padding</strong>到当前元素的<strong>外border</strong>之间的距离</td>
+<td>scrollLeft: 当元素内容超过元素尺寸的时候，内容被卷起来的宽度，可以理解为滚动条的宽度   <strong>可读可写</strong></td>
+</tr>
+<tr>
+<td>clientTop: border-top的宽度，也就是border-top厚度</td>
+<td>offsetTop:定位祖先元素的<strong>外padding</strong>到当前元素的<strong>外border</strong>之间的距离</td>
+<td>scrollTop: 当元素内容超过元素尺寸的时候， 内容被卷起来的高度，可以理解为滚动条的高度     <strong>可读可写</strong></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p>获取<strong>元素距离视口的坐标</strong>：getBoundingClientRect方法，返回的坐标包括元素的边框和内边距，<strong>不包括外边距</strong>。</p>
+</li>
+<li><p>获取<strong>元素距离文档的坐标</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function getElePos(ele)&#123;</span><br><span class="line">        var x = 0,y = 0 ;</span><br><span class="line">        while(ele != null )&#123;</span><br><span class="line">            x += ele.offsetLeft;</span><br><span class="line">            y += ele.offsetTop;</span><br><span class="line">            ele = ele.offsetParent;</span><br><span class="line">            console.log(ele);</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;x : x ,y: y &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取<strong>视口的大小</strong>，也就是窗口的大小：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getClient()&#123;</span><br><span class="line">  return &#123;</span><br><span class="line">  	width : window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,</span><br><span class="line">  	height : window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight</span><br><span class="line">	 &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>获取<strong>文档滚动高度</strong>，也就是窗口滚动条高度</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getSCroll()&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      left : window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,</span><br><span class="line">      top : window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/07/js判断数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/07/js判断数据类型/" itemprop="url">js判断数据类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T11:00:43+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Js判断数据类型一般用的方法有：typeof     Object.prototype.toString  instance     </p>
+<ol>
+<li><p>typeof 用来判断基本数据类型.</p>
+<p>返回值包括: boolean, number, string , function , undefined, object, symbol</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typeof true ;  typeof Boolean(true) // &quot;boolean&quot;</span><br><span class="line">typeof 4 ;     typeof Number (4)    // &quot;number&quot;</span><br><span class="line">typeof &apos;abc&apos;   typeof String(&apos;abc&apos;) // &quot;string&quot;</span><br><span class="line">typeof (function a()&#123;&#125;)             // &quot;function&quot; </span><br><span class="line">typeof undefined                    // &quot;undefined&quot;</span><br><span class="line">typeof null ; typeof &#123;&#125; ; typeof &#123;a: 1&#125; //&quot;object&quot;</span><br><span class="line">typeof Symbol(1)                    //&quot;symbol&quot;</span><br></pre></td></tr></table></figure>
+<p>可以使用如下函数判断是否是基本类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export function isPrimitive &#123;</span><br><span class="line">  return (</span><br><span class="line">    typeof value === &apos;string&apos; ||</span><br><span class="line">    typeof value === &apos;number&apos; ||</span><br><span class="line">    typeof value === &apos;symbol&apos; ||</span><br><span class="line">    typeof value === &apos;boolean&apos;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，所有new出来的对象返回都是’object’。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof(new Number(1))  // &quot;object&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当用typeof 判断出类型不是基本类型(即返回object时)，用Object.prototype.toString判断对象构造函数。</p>
+<p>可以使用如下函数：</p>
+<p>（返回function 和 undefined也可以判断出值得类型了）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 判断是否是一个对象(包括用其他构造函数生成的对象)</span><br><span class="line">export function isObject(obj) &#123;</span><br><span class="line">  return obj !== null &amp;&amp; typeof obj === &apos;object&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 判断对象是否是纯对象(也就是构造函数是Object)</span><br><span class="line">export function isPlainObject(obj) &#123;</span><br><span class="line">  return Object.prototype.toString.call(obj) === &apos;[object Object]&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const test = &#123;a: 1&#125;;</span><br><span class="line">const date = new Date();</span><br><span class="line">isObject(test)  // true</span><br><span class="line">isObject(date)  // true</span><br><span class="line">isPlainObject(test)  // true</span><br><span class="line">isPlainObject(date)  // false</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如上面的date对象，得到isPlainObject(date)为false ，可以用instanceof 判断date是否是某个构造函数的实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date instance Date // true</span><br></pre></td></tr></table></figure>
+<p>或者使用下面代码来获取某个实例的构造函数是什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date.constructor.name // &quot;Date&quot;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/12/关于视频的一些总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/12/关于视频的一些总结/" itemprop="url">关于视频的一些总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-12T15:29:18+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一-视频事件"><a href="#一-视频事件" class="headerlink" title="一. 视频事件"></a>一. 视频事件</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">事件名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">abort</td>
+<td>播放终止时触发。 如视频正在播放，这时拖到开始位置重新播放，就会触发 <code>abort</code> 事件</td>
+</tr>
+<tr>
+<td style="text-align:left">canplay</td>
+<td>当 ready state 变为 <strong>HAVE_ENOUGH_DATA</strong> 时触发， 这表示有足够的数据可播放</td>
+</tr>
+<tr>
+<td style="text-align:left">canplaythrough</td>
+<td>当 ready state 变为 <strong>CAN_PLAY_THROUGH</strong> 时触发，这表示下载速度在保持当前状态不变的情况下，整个媒体文件可以没有中断的进行播放。注意：在 Firefox 中，手动设置 <strong>currentTime</strong> 还会触发 <code>canplaythrough</code> 事件</td>
+</tr>
+<tr>
+<td style="text-align:left">durationchange</td>
+<td>当 metadata 加载结束或修改结束时触发，这表示媒体文件的 duration 发生了变化</td>
+</tr>
+<tr>
+<td style="text-align:left">emptied</td>
+<td>媒体文件变成空时触发。如媒体文件已经全部或部分加载完，这时调用 <strong>load()</strong> 去重新加载会触发 <code>emptied</code> 事件</td>
+</tr>
+<tr>
+<td style="text-align:left">ended</td>
+<td>播放结束时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">error</td>
+<td>发生错误时触发。元素的 error 属性包含了详细信息。</td>
+</tr>
+<tr>
+<td style="text-align:left">interruptbegin</td>
+<td>在 Firefox OS 设备，播放的 audio 被中断，或者在 app 中，正在播放 audio 的 app 转为后台运行，或是有更高优先级的 audio 开始播放，都会触发 <code>interruptbegin</code> 事件</td>
+</tr>
+<tr>
+<td style="text-align:left">interruptend</td>
+<td>在 Firefox OS 设备中，之前中断的 audio 又开始重新播放，或者在 app 中，后台运行的 app 转为前台运行，或当更高优先级的 audio 播放结束，都会触发 <code>interruptend</code> 事件</td>
+</tr>
+<tr>
+<td style="text-align:left">loadeddata</td>
+<td>媒体文件的第一帧加载完成时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">loadedmetadata</td>
+<td>媒体文件的 metadata 加载完成时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">loadstart</td>
+<td>媒体文件开始加载时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">pause</td>
+<td>播放暂停时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">play</td>
+<td>暂停之后重新播放时触发。也就是说，先得触发一个 <code>pause</code> 事件，然后重新播放才会触发 <code>play</code> 事件，需要注意的是，这只是一个动作，并不表示立即就会开始播放</td>
+</tr>
+<tr>
+<td style="text-align:left">playing</td>
+<td>当媒体文件暂停或停止缓冲后，开始播放时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">progress</td>
+<td>媒体文件正在下载时触发。通过元素的 <strong>buffered</strong> 属性可以获取已下载的可用的数据</td>
+</tr>
+<tr>
+<td style="text-align:left">ratechange</td>
+<td>播放速度改变时触发，  即playbackRate属性改变时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">seeked</td>
+<td>seek 操作完成时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">seeking</td>
+<td>seek 操作开始时触发, 拖动进度条的时候会触发seeking事件</td>
+</tr>
+<tr>
+<td style="text-align:left">stalled</td>
+<td>当 user agent 尝试去拉取数据，但是数据没有传过来时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">suspend</td>
+<td>媒体文件加载暂停时触发。可能的原因是下载已完成，或是其他原因导致的暂停</td>
+</tr>
+<tr>
+<td style="text-align:left">timeupdate</td>
+<td>元素的 <strong>currentTime</strong> 属性发生改变时触发</td>
+</tr>
+<tr>
+<td style="text-align:left">volumechange</td>
+<td>音量发生改变时触发，可能是设置音量，也可能是修改了 <strong>muted</strong> 属性</td>
+</tr>
+<tr>
+<td style="text-align:left">waiting</td>
+<td>当请求的操作（比如播放）因为另一个操作而阻塞时触发（比如 seek）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="loadeddata-VS-canplay-VS-canplaythrough"><a href="#loadeddata-VS-canplay-VS-canplaythrough" class="headerlink" title="loadeddata VS canplay VS canplaythrough"></a>loadeddata VS canplay VS canplaythrough</h2><ul>
+<li>loadeddata：加载了一些数据</li>
+<li>canplay：加载了足够的数据，这些数据足够开始播放</li>
+<li>canplaythrough：加载了足够的数据，这些数据不仅足够开始播放，也足够结束播放</li>
+</ul>
+<h2 id="play-VS-playing-progress"><a href="#play-VS-playing-progress" class="headerlink" title="play VS playing progress"></a>play VS playing progress</h2><p>假设我们要播放一个视频，当点击 play 按钮（或调用 play 方法），video.paused 会置为 <strong>false</strong>，并触发 <strong>play</strong> 事件，但这并不保证 video 会立即开始播放，它只是尝试去播放。</p>
+<p>如果在任意时间点，video 没有足够的数据可用了，它就会暂停（同样的，video.paused 置为 <strong>false</strong>），并触发 <strong>waiting</strong> 事件。一旦有了足够的数据（readyState &gt;= HAVE_FUTURE_DATA），就会触发 <strong>playing</strong> 事件，这时视频会重新开始播放。</p>
+<p>因此，<strong>play</strong> 适合获取动作状态，<strong>playing</strong> 适合获取播放状态。比如，当触发 <strong>waiting</strong> 事件时，显示 loading，当触发 <strong>playing</strong> 事件时，移除 loading。</p>
+<p>当用户拖拉进度条的时候，会触发事件 seeking——— play——— wating——— seeked——— playing</p>
+<p>所以play事件触发时候可能视频还不能播放，只代表用户的操作；但是playing事件触发的时候，代表视频处于可播放状态</p>
+<h2 id="progress"><a href="#progress" class="headerlink" title="progress"></a>progress</h2><p>通过元素的 buffered 属性可以获取缓冲数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">progressEvent ($event) &#123;</span><br><span class="line"></span><br><span class="line">    let video = $event.currentTarget;</span><br><span class="line"></span><br><span class="line">    // 如果还没有buffer不要取，不然会抛异常</span><br><span class="line"></span><br><span class="line">    // Failed to execute &apos;end&apos; on &apos;TimeRanges&apos;: The index provided (4294967295) is greater than the maximum bound (0).</span><br><span class="line"></span><br><span class="line">    if (video.buffered.length) &#123;</span><br><span class="line"></span><br><span class="line">        let bufferedEnd = video.buffered.end(video.buffered.length - 1);</span><br><span class="line"></span><br><span class="line">        let duration =  video.duration;</span><br><span class="line"></span><br><span class="line">        this.videoBufferRate = bufferedEnd / duration;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="二-视频属性"><a href="#二-视频属性" class="headerlink" title="二. 视频属性"></a>二. 视频属性</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement" target="_blank" rel="noopener">可以查看MDN上的HTMLMediaElement元素的属性</a></p>
+<p>error, currentSrc, preload, seeking, paused, played, autoplay, volume, audioTracks, width,height， videoHeight(视频原本的高度)，videoWidth（视频原本的高宽度）,  buffered, currentTime, loop, muted, poster, srcObject(这是一个mediaStream对象),  readyState, networkState, duration, playbackRate, ended,controls 等等</p>
+<h3 id="三-视频全屏"><a href="#三-视频全屏" class="headerlink" title="三. 视频全屏"></a>三. 视频全屏</h3><ol>
+<li><p>视频全屏</p>
+<p>判断是否是在全屏状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">isInFullscreen () &#123;</span><br><span class="line">     return (document.fullscreenElement || document.mozFullScreenElement ||   		  document.webkitFullscreenElement || document.msFullscreenElement) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>进入全屏：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">requestFullScreen (element) &#123;</span><br><span class="line">            if (element.requestFullscreen) &#123;</span><br><span class="line">                element.requestFullscreen();</span><br><span class="line">            &#125; else if (element.mozRequestFullScreen) &#123;</span><br><span class="line">                element.mozRequestFullScreen();</span><br><span class="line">            &#125; else if (element.msRequestFullscreen) &#123;</span><br><span class="line">                element.msRequestFullscreen();</span><br><span class="line">            &#125; else if (element.webkitRequestFullscreen) &#123;</span><br><span class="line">                element.webkitRequestFullScreen();</span><br><span class="line">            &#125;</span><br><span class="line">            this.fullScreen = 1;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>退出全屏：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">exitFullscreen (element) &#123;</span><br><span class="line">            // 普通div 需要使用document才能exitFullscreen</span><br><span class="line">            // video 可以使用元素本身的exitFullscreen</span><br><span class="line">            if (element.exitFullscreen) &#123;</span><br><span class="line">                element.exitFullscreen();</span><br><span class="line">            &#125; else if (element.msExitFullscreen) &#123;</span><br><span class="line">                element.msExitFullscreen();</span><br><span class="line">            &#125; else if (element.mozCancelFullScreen) &#123;</span><br><span class="line">                element.mozCancelFullScreen();</span><br><span class="line">            &#125; else if (element.webkitCancelFullScreen) &#123;</span><br><span class="line">                element.webkitCancelFullScreen();</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>普通div全屏</p>
+<p>普通div（假设为container）全屏时注意两个点：</p>
+<p>（1）如果container包含video标签和其他div标签，那么在全屏之后video的z-index会特别高，以至于全屏之后只会显示video，其他元素会被隐藏。</p>
+<p>解决方法，将需要与video一同全屏显示的标签加上<strong><em>z-indx:2147483647</em></strong></p>
+<p>（2）在调用上面requestFullScreen的时候传入需要全屏的div，但是调用exitFullscreen的时候需要传入document对象才可以退出全屏</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/我理解的base64编码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/18/我理解的base64编码/" itemprop="url">我理解的base64编码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-18T14:48:13+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一-为什么需要base64编码"><a href="#一-为什么需要base64编码" class="headerlink" title="一.  为什么需要base64编码"></a>一.  为什么需要base64编码</h4><p>ASCII表里面0到32是控制字符，33开始的才是可见字符。一些只支持纯文本的协议（比如smtp协议）在传输不可见字符的过程中会出现问题，所以为了保险起见，将所有的字符转化成可见字符，这样就不会出错了。</p>
+<p>注意：使用命令  man ascii 可以在终端查看ascii码表</p>
+<h4 id="二-base64编码的过程"><a href="#二-base64编码的过程" class="headerlink" title="二. base64编码的过程"></a>二. base64编码的过程</h4><p>​    举一个具体的实例，演示英语单词Man如何转成Base64编码。<br>​    <img src="/image/base64.png" alt=""></p>
+<p>A. 步骤： </p>
+<p>第一步，”M”、”a”、”n”的ASCII值分别是77、97、110，对应的二进制值是01001101、01100001、01101110，将它们连成一个24位的二进制字符串010011010110000101101110。</p>
+<p>第二步，将这个24位的二进制字符串分成4组，每组6个二进制位：010011、010110、000101、101110。</p>
+<p>第三步，在每组前面加两个00，扩展成32个二进制位，即四个字节：00010011、00010110、00000101、00101110。它们的十进制值分别是19、22、5、46。</p>
+<p>第四步，根据下表，得到每个值对应Base64编码，即T、W、F、u。</p>
+<p><img src="/image/base64-table.png" alt=""></p>
+<p>在传输的时候，传输的是T、W、F、u所对应的ascii码，而不是man所对应的ascii码。</p>
+<p>B. 字节不能整除3的时候：</p>
+<p>如果要编码的字节数不能被3整除，最后会多出1个或2个字节，那么可以使用下面的方法进行处理：先使用0字节值在末尾补足，使其能够被3整除，然后再进行Base64的编码。在编码后的Base64文本后加上一个或两个<code>=</code>号，代表补足的字节数。也就是说，当最后剩余两个八位字节（2个byte）时，最后一个6位的Base64字节块有四位是0值，最后附加上两个等号；如果最后剩余一个八位字节（1个byte）时，最后一个6位的base字节块有两位是0值，最后附加一个等号。 参考下表</p>
+<p><img src="/image/base64-0.png" alt=""></p>
+<p>综上所述：</p>
+<p>缺点：base64编码会让原本3个字节的字符变成4个字节来存储，加大了33%的存储空间。</p>
+<p>优点：让原本不能传输二进制，只能传输文本字符的协议能够传输二进制数据（比如文件，图片等）。</p>
+<h4 id="三-和base64编码相关的使用场景"><a href="#三-和base64编码相关的使用场景" class="headerlink" title="三. 和base64编码相关的使用场景"></a>三. 和base64编码相关的使用场景</h4><p>场景1：给后端上传一个文件</p>
+<p>第一种方法:  给后端发送base64编码的字符串。</p>
+<p>将文件利用fileRader的readAsDataUrl函数来将文件内容进行base64编码，然后将这个base64字符串发送给后端。</p>
+<p>第二种方法：给后端传送一个File文件。</p>
+<p>其实这种方法就是将选中的文件里面的内容每8位（1个字节）读取为一个ascii字符（因为一个ascii字符占一个字节），最后得到一个字符串（比如文件内容的二进制总共有24位，3个字节，那么读取得到的就是3个ascii字符组成的字符串），然后将这个字符串就可以代表文件内容（将这三个字符所对应的二进制还原一下，就可以得到真正的原始二进制数据）。前面所说的这个过程可以通过formData自动实现。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// const file = event.target.files[0]; </span></span><br><span class="line"><span class="comment">// 假设我们在type=file 的 input元素  的onchange 事件里面已经拿到了file文件，注意这个file变量其实只是</span></span><br><span class="line"><span class="comment">// 一个内存指针，里面并没有真正的文件内容。</span></span><br><span class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">formData.append(<span class="string">'fileObj'</span>, file); </span><br><span class="line"><span class="comment">// 之后我们就可以直接把这个formData传递给后端。注意前面的file变量里面没有真正的文件内容，</span></span><br><span class="line"><span class="comment">// 是因为formData帮我们将文件内容读取出来，类似于filereader.readAsBinaryString()的操作</span></span><br><span class="line"><span class="comment">// 将二进制按照上面所说的每8位读成一个ascii字符。http传输的时候就传读取出来的字符串，到了服务端之后就可以</span></span><br><span class="line"><span class="comment">// 拿到这个字符串所代表的二进制，也就是拿到了文件内容.</span></span><br><span class="line"><span class="comment">// 所以这个字符串本身没有意义，只是利用这个字符串来传输二进制。</span></span><br><span class="line"><span class="comment">// 因为http是基于ascii码传输文本的协议。我们使用这种方式让传输文本的http协议也可以传输二进制了。</span></span><br></pre></td></tr></table></figure>
+<p>场景2： 读取本地图片并且显示</p>
+<p>利用fileReader将图片读成base64编码，然后将这个base64编码直接赋值给img的src，就可以显示这张图片了</p>
+<p>场景3:</p>
+<p>window.atob   把base64字符串进行解码</p>
+<p>window.btoa   对字符串进行base64编码</p>
+<p>上面两个函数的结果都是字符串。</p>
+<p>我理解的这两个过程就是利用base64的编码表（也就是本文第二张图）来进行字符间的映射。</p>
+<p><a href="https://yangxiagithub.github.io/2018/08/20/dataURL-canvas-file-Blob-objectURL%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E5%8C%96%E5%85%B3%E7%B3%BB/" target="_blank" rel="noopener">https://yangxiagithub.github.io/2018/08/20/dataURL-canvas-file-Blob-objectURL%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E5%8C%96%E5%85%B3%E7%B3%BB/</a></p>
+<p>上面的文章中说到了将dataurl变成blob的函数，需要用到window.atob函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function dataURItoBlob(dataURI) &#123;</span><br><span class="line">    // convert base64/URLEncoded data component to raw binary data held in a string</span><br><span class="line">    var byteString;</span><br><span class="line">    if (dataURI.split(&apos;,&apos;)[0].indexOf(&apos;base64&apos;) &gt;= 0)</span><br><span class="line">    	// atob解码之后获取到每8位对应的字符串，但不一定是原始字符串。</span><br><span class="line">        byteString = atob(dataURI.split(&apos;,&apos;)[1]);</span><br><span class="line">    else</span><br><span class="line">        byteString = unescape(dataURI.split(&apos;,&apos;)[1]);</span><br><span class="line"></span><br><span class="line">    // separate out the mime component</span><br><span class="line">    var mimeString = dataURI.split(&apos;,&apos;)[0].split(&apos;:&apos;)[1].split(&apos;;&apos;)[0];</span><br><span class="line"></span><br><span class="line">    // write the bytes of the string to a typed array</span><br><span class="line">    var ia = new Uint8Array(byteString.length);</span><br><span class="line">    for (var i = 0; i &lt; byteString.length; i++) &#123;</span><br><span class="line">        ia[i] = byteString.charCodeAt(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return new Blob([ia], &#123;type:mimeString&#125;);</span><br><span class="line">&#125;</span><br><span class="line">// 使用方法如下</span><br><span class="line">var dataURL = canvas.toDataURL(&apos;image/jpeg&apos;, 0.5);</span><br><span class="line">var blob = dataURItoBlob(dataURL);</span><br><span class="line">var fd = new FormData(document.forms[0]);</span><br><span class="line">fd.append(&quot;canvasImage&quot;, blob);</span><br></pre></td></tr></table></figure>
+<p>如果原始文本只是英文的话，那么上面得的byteString就是原始字符串。</p>
+<p>如果原始文本包含中文的话，那么我们需要将byteString所对应的二进制数据还原，然后再通过二进制数据得到原始文本。因为中文在utf8里面是3个字节表示，不是像英文字符那样一个字节表示。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/13/关于js宽高的记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/13/关于js宽高的记录/" itemprop="url">关于js宽高的记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T19:01:41+08:00">
+                2018-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table>
+<thead>
+<tr>
+<th>client类</th>
+<th>offset类</th>
+<th>scroll类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientWidth:  <strong>元素尺寸</strong> (注意不是内容尺寸)+内边距</td>
+<td>offsetWidth:  <strong>元素尺寸</strong>+内边距+边框</td>
+<td>scrollWidth: <strong>元素尺寸</strong> + 内边距 + <strong>内容</strong>超出元素尺寸和内边距的部分</td>
+</tr>
+<tr>
+<td>clientHeight：<strong>元素尺寸</strong> (注意不是内容尺寸)+内边距</td>
+<td>offsetHeight: <strong>元素尺寸</strong>+内边距+边框</td>
+<td>scrollHeight: <strong>元素尺寸</strong> + 内边距 + <strong>内容</strong>超出元素尺寸和内边距的部分</td>
+</tr>
+<tr>
+<td>clientLeft: border-left的宽度，也就是 border-left厚度</td>
+<td>offsetLeft: 定位祖先元素的<strong>外padding</strong>到当前元素的<strong>外border</strong>之间的距离</td>
+<td>scrollLeft: 当元素内容超过元素尺寸的时候，内容被卷起来的宽度，可以理解为滚动条的宽度   <strong>可读可写</strong></td>
+</tr>
+<tr>
+<td>clientTop: border-top的宽度，也就是border-top厚度</td>
+<td>offsetTop:定位祖先元素的<strong>外padding</strong>到当前元素的<strong>外border</strong>之间的距离</td>
+<td>scrollTop: 当元素内容超过元素尺寸的时候， 内容被卷起来的高度，可以理解为滚动条的高度     <strong>可读可写</strong></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>获取<strong>元素距离视口的坐标</strong>：getBoundingClientRect方法，返回的坐标包括元素的边框和内边距，<strong>不包括外边距</strong>。</li>
+<li>获取<strong>元素距离文档的坐标</strong>：</li>
+<li>获取<strong>视口的大小</strong>，也就是窗口的大小：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getViewPortSize</span>(<span class="params">w</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> w = w || <span class="built_in">window</span>;</span><br><span class="line">	<span class="keyword">if</span> (w.innerWidth != <span class="literal">null</span>)</span><br><span class="line">	<span class="keyword">return</span> &#123; <span class="attr">w</span>: w.innerWidth, <span class="attr">h</span>: w.innerHeight &#125;;</span><br><span class="line">	<span class="keyword">var</span> d = w.document;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">document</span>.compatMode == <span class="string">"CSS1Compat"</span>) </span><br><span class="line">    <span class="comment">// 标准模式返回CSS1Compat，通过document.documentElement访问文档根元素</span></span><br><span class="line">    <span class="comment">// 混杂模式返回backcompat，通过documnet.body访问文档根元素</span></span><br><span class="line">	<span class="keyword">return</span> &#123; <span class="attr">w</span>: d.documentElement.clientWidth, <span class="attr">h</span>: d.documentElement.clientHeight &#125;;</span><br><span class="line">	<span class="keyword">return</span> &#123; <span class="attr">w</span>: d.body.clientWidth, <span class="attr">h</span>: d.body.clientHeight &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/13/关于浏览器的进程和线程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -586,6 +2311,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -670,1106 +2417,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/16/https建立过程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/16/https建立过程/" itemprop="url">https建立过程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-16T19:58:58+08:00">
-                2018-08-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">前端开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://www.cnblogs.com/zhuqil/archive/2012/07/23/2604572.html" target="_blank" rel="noopener">参考链接</a></p>
-<p><a href="http://blog.51cto.com/wwdhks/2137261?source=dra" target="_blank" rel="noopener">参考链接</a></p>
-<p>我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。</p>
-<h3 id="HTTPS简介"><a href="#HTTPS简介" class="headerlink" title="HTTPS简介"></a>HTTPS简介</h3><p>HTTPS其实是有两部分组成：HTTP + SSL / TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据。具体是如何进行加密，解密，验证的，且看下图。</p>
-<p><img src="/image/https.png" alt=""></p>
-<h3 id="1-客户端发起HTTPS请求"><a href="#1-客户端发起HTTPS请求" class="headerlink" title="1. 客户端发起HTTPS请求"></a>1. 客户端发起HTTPS请求</h3><p>这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。</p>
-<h3 id="2-服务端的配置"><a href="#2-服务端的配置" class="headerlink" title="2. 服务端的配置"></a>2. 服务端的配置</h3><p>采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以向组织申请。区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面(startssl就是个不错的选择，有1年的免费服务)。这套证书其实就是一对公钥和私钥。如果对公钥和私钥不太理解，可以想象成一把钥匙和一个锁头，只是全世界只有你一个人有这把钥匙，你可以把锁头给别人，别人可以用这个锁把重要的东西锁起来，然后发给你，因为只有你一个人有这把钥匙，所以只有你才能看到被这把锁锁起来的东西。</p>
-<h3 id="3-传送证书"><a href="#3-传送证书" class="headerlink" title="3. 传送证书"></a>3. 传送证书</h3><p>这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等等。</p>
-<h3 id="4-客户端解析证书"><a href="#4-客户端解析证书" class="headerlink" title="4. 客户端解析证书"></a>4. 客户端解析证书</h3><p>这部分工作是有客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题。</p>
-<p><strong>接下来使用服务器证书里面的公钥进行服务器身份的验证。</strong> 客户端生成一个随机数给到服务器。 服务器对随机数进行签名（加密），并回传给到客户端。 客户端用服务器证书的公钥对随机数的签名进行验证，<strong>若验证通过，则说明对应的服务器确实拥有对应服务器证书的私钥</strong>，因此判断服务器的身份正常。否则，则任务服务器身份被伪造。这些都没问题才说明服务器是可信的。</p>
-<p>如果<strong>证书和服务器身份</strong> 都没有问题，那么就生成一个随即值。然后用证书对该随机值进行加密。就好像上面说的，把随机值用锁头锁起来，这样除非有钥匙，不然看不到被锁住的内容。</p>
-<h3 id="5-传送加密信息"><a href="#5-传送加密信息" class="headerlink" title="5. 传送加密信息"></a>5. 传送加密信息</h3><p>这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了。</p>
-<h3 id="6-服务段解密信息"><a href="#6-服务段解密信息" class="headerlink" title="6. 服务段解密信息"></a>6. 服务段解密信息</h3><p>服务端用私钥解密后，得到了客户端传过来的随机值(私钥)，然后把内容通过该值进行对称加密。所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全。</p>
-<h3 id="7-传输加密后的信息"><a href="#7-传输加密后的信息" class="headerlink" title="7. 传输加密后的信息"></a>7. 传输加密后的信息</h3><p>这部分信息是服务段用私钥加密后的信息，可以在客户端被还原</p>
-<h3 id="8-客户端解密信息"><a href="#8-客户端解密信息" class="headerlink" title="8. 客户端解密信息"></a>8. 客户端解密信息</h3><p>客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容。整个过程第三方即使监听到了数据，也束手无策。</p>
-<p>总而言之，就是：客户端利用有效证书确认服务器身份之后，将一个密钥 传给服务端，之后客户端和服务端利用这个密钥来加密数据。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/关于date的一些记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/关于date的一些记录/" itemprop="url">关于date的一些记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T18:52:11+08:00">
-                2018-08-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="一-关于GMT时间和UTC时间"><a href="#一-关于GMT时间和UTC时间" class="headerlink" title="一. 关于GMT时间和UTC时间"></a>一. 关于GMT时间和UTC时间</h4><ol>
-<li><p>GMT即「格林威治标准时间」(Greenwich Mean Time，简称G.M.T.)，指位于英国伦敦郊区的皇家格林威治天文台的标准时间，因为本初子午线被定义为通过那里的经线。然而由于地球的不规则自转，导致GMT时间有误差，因此目前已不被当作标准时间使用。</p>
-</li>
-<li><p>UTC比GMT来得更加精准。其误差值必须保持在0.9秒以内，若大于0.9秒则由位于巴黎的国际地球自转事务中央局发布闰秒，使UTC与地球自转周期一致。不过日常使用中，GMT与UTC的功能与精确度是没有差别的。</p>
-<p>协调世界时区会使用“Z”来表示</p>
-</li>
-</ol>
-<h4 id="二-关于时间戳"><a href="#二-关于时间戳" class="headerlink" title="二. 关于时间戳"></a>二. 关于时间戳</h4><p>Unix时间戳表示的是当前时间到1970年1月1日00:00:00 UTC对应的<strong>秒数</strong>。</p>
-<p>javascript时间戳指的是1970年1月1日00:00:00 UTC对应的<strong>毫秒数</strong>。</p>
-<h4 id="三-时间数字字符串格式"><a href="#三-时间数字字符串格式" class="headerlink" title="三. 时间数字字符串格式"></a>三. 时间数字字符串格式</h4><ol>
-<li><p>RFC2822</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">YYYY/MM/DD HH:MM:SS ± timezone(时区用4位数字表示)</span><br><span class="line">// eg 1992/02/12 12:23:22+0800</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ISO 8601</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">YYYY-MM-DDThh:mm:ss ± timezone(时区用HH:MM表示)</span><br><span class="line">1997-07-16T08:20:30Z</span><br><span class="line">// “Z”表示UTC标准时区，即&quot;00:00&quot;,所以这里表示零时区的`1997年7月16日08时20分30秒`</span><br><span class="line">//转换成位于东八区的北京时间则为`1997年7月17日16时20分30秒`</span><br><span class="line"></span><br><span class="line">1997-07-16T19:20:30+01:00</span><br><span class="line">// 表示东一区的1997年7月16日19时20秒30分，转换成UTC标准时间的话是1997-07-16T18:20:30Z</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="四-Date"><a href="#四-Date" class="headerlink" title="四. Date"></a>四. Date</h4><ol>
-<li><p>返回结果为字符串————— Date 构造函数 </p>
-<p>① Date() 直接返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Date()</span><br><span class="line">// &quot;Thu Aug 09 2018 19:09:07 GMT+0800 (中国标准时间)&quot;</span><br><span class="line">// Date()直接返回当前时间字符串，不管参数是什么</span><br></pre></td></tr></table></figure>
-<p>② new Date()</p>
-<p>而new Date()则是会根据参数来返回对应的值，无参数的时候，返回当前时间的字符串形式；有参数的时候返回参数所对应时间的字符串。</p>
-<p>new Date()对参数不管是格式还是内容都要求,且只返回字符串</p>
-<p>这里需要注意的是，<strong>月份month参数，其计数方式从0开始，而天day参数，其计数方式从1开始</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">new Date(); // 什么都不传</span><br><span class="line">//&quot;Thu Aug 09 2018 19:09:07 GMT+0800 (中国标准时间)&quot;</span><br><span class="line">new Date(1293879600000);  // 传时间戳</span><br><span class="line">new Date(&apos;2011-01-01T11:00:00&apos;) // 2011-01-01T11:00:00</span><br><span class="line">new Date(&apos;2011/01/01 11:00:00&apos;) // 2011/01/01 11:00:00</span><br><span class="line">new Date(&apos;jan 01 2011,11 11:00:00&apos;)</span><br><span class="line">new Date(&apos;Sat Jan 01 2011 11:00:00&apos;)</span><br><span class="line"></span><br><span class="line">// 代表年、月、日、小时、分钟、秒、毫秒</span><br><span class="line">new Date(2013, 0, 1, 0, 0, 0, 0)</span><br><span class="line"></span><br><span class="line">// 所有能被Date.parse()方法解析的字符串，都可以当作参数。</span><br><span class="line">new Date(&apos;2013-2-15&apos;)</span><br><span class="line">new Date(&apos;2013/2/15&apos;)</span><br><span class="line">new Date(&apos;02/15/2013&apos;)</span><br><span class="line">new Date(&apos;2013-FEB-15&apos;)</span><br><span class="line">new Date(&apos;FEB, 15, 2013&apos;)</span><br><span class="line">new Date(&apos;FEB 15, 2013&apos;)</span><br><span class="line">new Date(&apos;Feberuary, 15, 2013&apos;)</span><br><span class="line">new Date(&apos;Feberuary 15, 2013&apos;)</span><br><span class="line">new Date(&apos;15 Feb 2013&apos;)</span><br><span class="line">new Date(&apos;15, Feberuary, 2013&apos;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Invalid Date</span><br><span class="line">new Date(&apos;sss&apos;);</span><br><span class="line">new Date(&apos;2011/01/01T11:00:00&apos;);</span><br><span class="line">new Date(&apos;2011-01-01-11:00:00&apos;)</span><br><span class="line">new Date(&apos;1293879600000&apos;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>返回结果为时间戳</p>
-</li>
-</ol>
-<p>​      ① new Date().getTime()</p>
-<p>​      ② new Date().valueOf()</p>
-<p>​      ③ Date.UTC()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 参数代表 年、月、日、时、分、秒、毫秒</span><br><span class="line">console.log(Date.UTC(1970));//NaN</span><br><span class="line">console.log(Date.UTC(1970,0));//0</span><br><span class="line">console.log(Date.UTC(1970,0,2));//86400000</span><br><span class="line">console.log(Date.UTC(1970,0,1,1));//3600000</span><br><span class="line">console.log(Date.UTC(1970,0,1,1,59));//714000</span><br><span class="line">console.log(Date.UTC(1970,0,1,1,59,30));//717000</span><br></pre></td></tr></table></figure>
-<p>​    ④ Date.parse()</p>
-<p>​    上面new Date()里面有 Date.parse()使用案例</p>
-<ol>
-<li><p>时间对象操作</p>
-<p>① get类 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">getTime()：返回实例距离1970年1月1日00:00:00的毫秒数，等同于valueOf方法。</span><br><span class="line">getDate()：返回实例对象对应每个月的几号（从1开始）。</span><br><span class="line">getDay()：返回星期几，星期日为0，星期一为1，以此类推。</span><br><span class="line">getYear()：返回距离1900的年数。</span><br><span class="line">getFullYear()：返回四位的年份。</span><br><span class="line">getMonth()：返回月份（0表示1月，11表示12月）。</span><br><span class="line">getHours()：返回小时（0-23）。</span><br><span class="line">getMilliseconds()：返回毫秒（0-999）。</span><br><span class="line">getMinutes()：返回分钟（0-59）。</span><br><span class="line">getSeconds()：返回秒（0-59）。</span><br><span class="line">getTimezoneOffset()：返回当前时间与 UTC 的时区差异，以分钟表示，返回结果考虑到了夏令时因素。</span><br></pre></td></tr></table></figure>
-<p>② set类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">setDate(date)：设置实例对象对应的每个月的几号（1-31），返回改变后毫秒时间戳。</span><br><span class="line">setYear(year): 设置距离1900年的年数。</span><br><span class="line">setFullYear(year [, month, date])：设置四位年份。</span><br><span class="line">setHours(hour [, min, sec, ms])：设置小时（0-23）。</span><br><span class="line">setMilliseconds()：设置毫秒（0-999）。</span><br><span class="line">setMinutes(min [, sec, ms])：设置分钟（0-59）。</span><br><span class="line">setMonth(month [, date])：设置月份（0-11）。</span><br><span class="line">setSeconds(sec [, ms])：设置秒（0-59）。</span><br><span class="line">setTime(milliseconds)：设置毫秒时间戳。</span><br></pre></td></tr></table></figure>
-<p><code>set*</code>方法的参数都会自动折算。以<code>setDate</code>为例，如果参数超过当月的最大天数，则向下一个月顺延，如果参数是负数，表示从上个月的最后一天开始减去的天数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var d = new Date (&apos;January 6, 2013&apos;);</span><br><span class="line"></span><br><span class="line">d // Sun Jan 06 2013 00:00:00 GMT+0800 (CST)</span><br><span class="line">d.setDate(9) // 1357660800000</span><br><span class="line">d // Wed Jan 09 2013 00:00:00 GMT+0800 (CST)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var d1 = new Date(&apos;January 6, 2013&apos;);</span><br><span class="line"></span><br><span class="line">d1.setDate(32) // 1359648000000</span><br><span class="line">d1 // Fri Feb 01 2013 00:00:00 GMT+0800 (CST)</span><br><span class="line"></span><br><span class="line">var d2 = new Date (&apos;January 6, 2013&apos;);</span><br><span class="line"></span><br><span class="line">d.setDate(-1) // 1356796800000</span><br><span class="line">d // Sun Dec 30 2012 00:00:00 GMT+0800 (CST)</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// set类方法和get类方法，可以结合使用，得到相对时间。</span></span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将日期向后推1000天</span></span><br><span class="line">d.setDate(d.getDate() + <span class="number">1000</span>);</span><br><span class="line"><span class="comment">// 将时间设为6小时后</span></span><br><span class="line">d.setHours(d.getHours() + <span class="number">6</span>);</span><br><span class="line"><span class="comment">// 将年份设为去年</span></span><br><span class="line">d.setFullYear(d.getFullYear() - <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-<p><a href="http://javascript.ruanyifeng.com/stdlib/date.html#toc4" target="_blank" rel="noopener">参考链接1</a>       </p>
-</li>
-</ol>
-<p>​      <a href="https://juejin.im/entry/5835b54cc4c9710054a6093c" target="_blank" rel="noopener">参考链接2</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/用canvas画烟花/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/05/用canvas画烟花/" itemprop="url">用canvas画烟花</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T17:50:32+08:00">
-                2018-08-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;canvas&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">         background: #000;</span><br><span class="line">    &#125;</span><br><span class="line">    canvas &#123;</span><br><span class="line">        display: block;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var CONFIG =  &#123;</span><br><span class="line">        ShrinkCircleRadius: 5,</span><br><span class="line">        ShrinkCircleRadiusSpeed: 0.1,</span><br><span class="line">        ShrinkCircleLineWidth: 2,</span><br><span class="line"></span><br><span class="line">        biuSpeed: 2,</span><br><span class="line">        biuAcceleration: 1.02,</span><br><span class="line">        biuLineWidth: 3,</span><br><span class="line"></span><br><span class="line">        boomSpeed: 10,</span><br><span class="line">        boomAcceleration: 0.95,</span><br><span class="line">        boomTargetCount: 100,</span><br><span class="line">        boomGradient: 0.015,</span><br><span class="line">        boomGravity: 0.98,</span><br><span class="line">        boomLineWidth: 3,</span><br><span class="line"></span><br><span class="line">        animateTimerTarget: 50</span><br><span class="line">    &#125;</span><br><span class="line">    var canvas = document.querySelector(&apos;canvas&apos;)</span><br><span class="line">    var context = canvas.getContext(&apos;2d&apos;);</span><br><span class="line">    var cw = canvas.width = window.innerWidth;</span><br><span class="line">    var ch = canvas.height = window.innerHeight;</span><br><span class="line">    function  randomColor () &#123;</span><br><span class="line">        // 返回一个0-255的数值，三个随机组合为一起可定位一种rgb颜色</span><br><span class="line">        var color = [];</span><br><span class="line">        var num = 3;</span><br><span class="line">        while(num--) &#123;</span><br><span class="line">            color.push(Math.random() * 255);</span><br><span class="line">        &#125;</span><br><span class="line">        return color.join(&apos;,&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    function  getDistance (x1,y1,x2,y2) &#123;</span><br><span class="line">        return Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2))</span><br><span class="line">    &#125;</span><br><span class="line">    // 闪烁的圆圈</span><br><span class="line">    class ShrinkCircle &#123;</span><br><span class="line">        /**</span><br><span class="line">        * x: 圆点x轴坐标</span><br><span class="line">        * y: 圆点y轴坐标</span><br><span class="line">        */</span><br><span class="line">        constructor (x, y) &#123;</span><br><span class="line">            this.x = x;</span><br><span class="line">            this.y = y;</span><br><span class="line">            this.radius = CONFIG.ShrinkCircleRadius</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        draw () &#123;</span><br><span class="line">            </span><br><span class="line">            context.beginPath();</span><br><span class="line">            context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);</span><br><span class="line">            context.lineWidth = 2;</span><br><span class="line">            context.strokeStyle = `rgb($&#123;randomColor()&#125;)`;</span><br><span class="line">            context.stroke();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        update() &#123;</span><br><span class="line">            // 让圆进行扩张，实现闪烁效果</span><br><span class="line">            if (this.radius &lt; CONFIG.ShrinkCircleRadius) &#123;</span><br><span class="line">                this.radius += CONFIG.ShrinkCircleRadiusSpeed;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                this.radius = 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        init () &#123;</span><br><span class="line">            this.draw();</span><br><span class="line">            this.update();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 射线</span><br><span class="line">    class Biubiubiu &#123;</span><br><span class="line">        constructor (startX, startY, targetX, targetY) &#123;</span><br><span class="line">            this.startLocation = &#123;</span><br><span class="line">                x: startX,</span><br><span class="line">                y: startY</span><br><span class="line">            &#125;;</span><br><span class="line">            this.targetLocation = &#123;</span><br><span class="line">                x: targetX,</span><br><span class="line">                y: targetY</span><br><span class="line">            &#125;;</span><br><span class="line">            // 运动当前的坐标，初始默认为起点坐标</span><br><span class="line">            this.nowLocation = &#123;</span><br><span class="line">                x: startX,</span><br><span class="line">                y: startY</span><br><span class="line">            &#125;,</span><br><span class="line">            this.preLocation = &#123;</span><br><span class="line">                x: startX,</span><br><span class="line">                y: startY</span><br><span class="line">            &#125;</span><br><span class="line">            // 角度</span><br><span class="line">            this.angle =  Math.atan2(this.targetLocation.y - this.startLocation.y, this.targetLocation.x - this.startLocation.x);</span><br><span class="line">            // 速度</span><br><span class="line">            this.speed = CONFIG.biuSpeed;</span><br><span class="line">            // 加速度</span><br><span class="line">            this.acceleration = CONFIG.biuAcceleration;</span><br><span class="line">            // 到目标点的距离</span><br><span class="line">            this.targetDistance = getDistance(this.startLocation.x, this.startLocation.y, this.targetLocation.x, this.targetLocation.y);</span><br><span class="line">            // 是否达到目标点</span><br><span class="line">            this.arrived = false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        draw () &#123;</span><br><span class="line">            context.beginPath();</span><br><span class="line">            context.moveTo(this.preLocation.x, this.preLocation.y);</span><br><span class="line">            context.lineWidth = CONFIG.biuLineWidth;</span><br><span class="line">            context.lineCap = &apos;round&apos;;</span><br><span class="line">            context.lineTo(this.nowLocation.x, this.nowLocation.y);</span><br><span class="line">            context.strokeStyle = `rgb($&#123;randomColor()&#125;)`;</span><br><span class="line">            context.stroke();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        update () &#123;</span><br><span class="line">            this.preLocation.x = this.nowLocation.x;</span><br><span class="line">            this.preLocation.y = this.nowLocation.y;</span><br><span class="line">            this.speed *= this.acceleration;</span><br><span class="line">            var vx = Math.cos(this.angle) * this.speed;</span><br><span class="line">            var vy = Math.sin(this.angle) * this.speed;</span><br><span class="line"></span><br><span class="line">            var nowDistance = getDistance(this.startLocation.x, this.startLocation.y, this.nowLocation.x, this.nowLocation.y);</span><br><span class="line">            if (nowDistance &gt;= this.targetDistance) &#123;</span><br><span class="line">                this.arrived = true;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                this.nowLocation.x += vx</span><br><span class="line">                this.nowLocation.y += vy;</span><br><span class="line">                this.arrived = false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        init () &#123;</span><br><span class="line">            this.draw();</span><br><span class="line">            this.update();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 爆炸类(其实就是爆炸之后的每根线条)</span><br><span class="line">    class Boom &#123;</span><br><span class="line">        constructor (startX, startY) &#123;</span><br><span class="line">            this.startLocation = &#123; x: startX, y: startY &#125;</span><br><span class="line">            this.nowLocation = &#123; x: startX, y: startY &#125;</span><br><span class="line">            // 速度</span><br><span class="line">            this.speed = Math.random() * CONFIG.boomSpeed + 2</span><br><span class="line">            // 加速度</span><br><span class="line">            this.acceleration = CONFIG.boomAcceleration</span><br><span class="line">            // 没有确定的结束点，所以没有固定的角度，可以随机角度扩散</span><br><span class="line">            this.angle = Math.random() * Math.PI * 2;</span><br><span class="line">            // 这里设置阀值为100, 大于这个值，将线条渐渐隐藏 </span><br><span class="line">            this.targetCount = CONFIG.boomTargetCount;</span><br><span class="line">            // 当前计算为1，用于判断是否会超出阀值</span><br><span class="line">            this.nowNum = 1;</span><br><span class="line">            // 透明度</span><br><span class="line">            this.alpha = 1;</span><br><span class="line">            // 透明度减少梯度</span><br><span class="line">            this.gradient = CONFIG.boomGradient;</span><br><span class="line">            // 重力系数</span><br><span class="line">            this.gravity = CONFIG.boomGravity;</span><br><span class="line">            // 是否到达目标点</span><br><span class="line">            this.arrived = false</span><br><span class="line">            this.preLocation = &#123;x: startX, y: startY&#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        draw () &#123;</span><br><span class="line">            context.beginPath()</span><br><span class="line">            context.moveTo(this.preLocation.x, this.preLocation.y)</span><br><span class="line">            context.lineWidth = CONFIG.boomLineWidth</span><br><span class="line">            context.lineCap = &apos;round&apos;</span><br><span class="line">            context.lineTo(this.nowLocation.x, this.nowLocation.y)</span><br><span class="line">            // 设置由透明度减小产生的渐隐效果，看起来没这么突兀</span><br><span class="line">            context.strokeStyle = `rgba($&#123;randomColor()&#125;, $&#123;this.alpha&#125;)`</span><br><span class="line">            context.stroke()</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        update () &#123;</span><br><span class="line">            this.preLocation.x = this.nowLocation.x;</span><br><span class="line">            this.preLocation.y = this.nowLocation.y;</span><br><span class="line">            this.speed *= this.acceleration;</span><br><span class="line"></span><br><span class="line">            let vx = Math.cos(this.angle) * this.speed</span><br><span class="line">            // 加上重力系数，运动轨迹会趋向下</span><br><span class="line">            let vy = Math.sin(this.angle) * this.speed + this.gravity;</span><br><span class="line"></span><br><span class="line">            // 当前计算大于阀值的时候的时候，开始进行渐隐处理</span><br><span class="line">            if (this.nowNum &gt;= this.targetCount) &#123;</span><br><span class="line">                this.alpha -= this.gradient</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                this.nowLocation.x += vx</span><br><span class="line">                this.nowLocation.y += vy</span><br><span class="line">                this.nowNum++</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            // 透明度为0的话，可以进行移除处理，释放空间</span><br><span class="line">            if (this.alpha &lt;= 0) &#123;</span><br><span class="line">                this.arrived = true</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        init() &#123;</span><br><span class="line">            this.draw()</span><br><span class="line">            this.update()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 动画类，程序入口</span><br><span class="line">    class Animate &#123;</span><br><span class="line">        constructor () &#123;</span><br><span class="line">            // 定义一个数组做为闪烁球的集合</span><br><span class="line">            this.shrinkCircles = [];</span><br><span class="line">            // 定义一个数组做为射线类的集合</span><br><span class="line">            this.bius = [];</span><br><span class="line">            // 定义一个数组做为爆炸类的集合</span><br><span class="line">            this.booms = [];</span><br><span class="line">            // 避免每帧都进行绘制导致的过量绘制，设置阀值，到达阀值的时候再进行绘制</span><br><span class="line">            this.timerTarget = CONFIG.animateTimerTarget;</span><br><span class="line">            this.timerNum = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        // 一个爆炸点</span><br><span class="line">        pushBoom (x, y) &#123;</span><br><span class="line">            // 每个爆炸点20条线</span><br><span class="line">            for (var i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">                this.booms.push(new Boom(x, y));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        initAnimate (target, cb) &#123;</span><br><span class="line">            target.map((item, index) =&gt; &#123;</span><br><span class="line">                if (!(item instanceof Object)) &#123;</span><br><span class="line">                    console.log(&apos;数组值错&apos;);</span><br><span class="line">                    return false;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    item.init();</span><br><span class="line">                    if (typeof cb === &apos;function&apos;) &#123;</span><br><span class="line">                        cb(index);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        run () &#123;</span><br><span class="line">            window.requestAnimationFrame(this.run.bind(this));</span><br><span class="line">            context.clearRect(0,0,cw,ch);</span><br><span class="line"></span><br><span class="line">            // 触发射线动画</span><br><span class="line">            this.initAnimate(this.bius, (i) =&gt; &#123;</span><br><span class="line">                // 同时开始绘制闪烁圆</span><br><span class="line">                this.shrinkCircles[i].init();</span><br><span class="line">                if (this.bius[i].arrived) &#123;</span><br><span class="line">                    // 到达目标后，可以开始绘制爆炸效果, 当前线条的目标点则是爆炸实例的起始点</span><br><span class="line">                    this.pushBoom(this.bius[i].nowLocation.x, this.bius[i].nowLocation.y);</span><br><span class="line">                    // 到达目标后，把当前类给移除，释放空间 </span><br><span class="line">                    this.bius.splice(i, 1);</span><br><span class="line">                    this.shrinkCircles.splice(i, 1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            // 当爆炸数组内有数据时， 触发爆炸动画；当爆炸数据arrivaed时，去掉爆炸线条</span><br><span class="line">            this.initAnimate(this.booms, (i) =&gt; &#123;</span><br><span class="line">                if(this.booms[i].arrived) &#123;</span><br><span class="line">                    // 到达目标透明度后，把炸点给移除，释放空间</span><br><span class="line">                    this.booms.splice(i, 1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            if (this.timerNum &gt;= this.timerTarget) &#123;</span><br><span class="line">                // 到达阀值后开始绘制实例化射线</span><br><span class="line">                var startX = Math.random() * (cw / 2);</span><br><span class="line">                var startY = ch;</span><br><span class="line">                var targetX = Math.random() * cw;</span><br><span class="line">                var targetY = Math.random() * (ch / 2);</span><br><span class="line">                // 射线实例化，并入合集中</span><br><span class="line">                let exBiu = new Biubiubiu(startX, startY, targetX, targetY);</span><br><span class="line">                this.bius.push(exBiu);</span><br><span class="line">                // 闪烁球实例化，并入合集中</span><br><span class="line">                let exshrinkCircle = new ShrinkCircle(targetX, targetY);</span><br><span class="line">                this.shrinkCircles.push(exshrinkCircle);</span><br><span class="line">                // 到达阀值后把当前计数重置一下</span><br><span class="line">                this.timerNum = 0</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                this.timerNum++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    let a = new Animate();</span><br><span class="line">    a.run();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p> <a href="https://juejin.im/post/5b587f59e51d45191e0d04ae" target="_blank" rel="noopener">参考链接</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/使用canvas画一个雷达图/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/05/使用canvas画一个雷达图/" itemprop="url">使用canvas画一个雷达图</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T14:07:22+08:00">
-                2018-08-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="一-代码"><a href="#一-代码" class="headerlink" title="一. 代码"></a>一. 代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;canvas class=&quot;radar&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    canvas &#123;</span><br><span class="line">        display: block;</span><br><span class="line">        width: 500px;</span><br><span class="line">        height: 500px;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    const times = (n, cb) =&gt; &#123;</span><br><span class="line">        if (typeof n !== &apos;number&apos;) &#123;</span><br><span class="line">            throw new TypeError(&apos;times必须传入数字类型参数！&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        let result = []</span><br><span class="line">        let i</span><br><span class="line">        try &#123;</span><br><span class="line">            for (i = 0; i &lt; n; i++) &#123;</span><br><span class="line">                result.push(cb(i))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">            console.log(`执行第$&#123;i&#125;个时，回调函数错误！`)</span><br><span class="line">            console.log(e)</span><br><span class="line">        &#125;</span><br><span class="line">        return result</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var canvas = document.getElementsByClassName(&apos;radar&apos;)[0];</span><br><span class="line">    var ctx = canvas.getContext(&apos;2d&apos;);</span><br><span class="line">    var data = &#123;</span><br><span class="line">        &apos;人际交往&apos;: 65,</span><br><span class="line">        &apos;逻辑数理&apos;: 77,</span><br><span class="line">        &apos;空间感知&apos;: 78,</span><br><span class="line">        &apos;自我认知&apos;: 55,</span><br><span class="line">        &apos;自然观察&apos;: 60,</span><br><span class="line">        &apos;情感判断&apos;: 85</span><br><span class="line">    &#125;</span><br><span class="line">    // 图形边数</span><br><span class="line">    var sideNumber = 6;</span><br><span class="line">    // 顶点坐标</span><br><span class="line">    var lineArr = [];</span><br><span class="line">    // 分数坐标</span><br><span class="line">    var scoreArr = [];</span><br><span class="line">    // 分阶数目</span><br><span class="line">    var demensionNum = 5;</span><br><span class="line">    canvas.width = 500;</span><br><span class="line">    canvas.height = 500;</span><br><span class="line">    var rCenter = 250;</span><br><span class="line">    var curR = 100;</span><br><span class="line">    var rAngle = Math.PI * 2 / sideNumber;</span><br><span class="line">    ctx.save();</span><br><span class="line"></span><br><span class="line">    // 第一步：画6边型</span><br><span class="line">    ctx.strokeStyle = &apos;#888888&apos;;</span><br><span class="line">    ctx.beginPath();</span><br><span class="line">    for(var i = 0; i &lt; sideNumber; i++) &#123;</span><br><span class="line">        // 固定水平向右的角（第一象限和第四象限的相交轴）</span><br><span class="line">        lineArr[i] = &#123;&#125;;</span><br><span class="line">        lineArr[i].x = rCenter + curR * Math.cos(rAngle * i);</span><br><span class="line">        lineArr[i].y = rCenter - curR * Math.sin(rAngle * i);</span><br><span class="line">        ctx.lineTo(lineArr[i].x, lineArr[i].y);</span><br><span class="line">        ctx.strokeStyle = &apos;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.closePath();</span><br><span class="line">    ctx.stroke();</span><br><span class="line">    ctx.restore();</span><br><span class="line">    ctx.save();</span><br><span class="line"></span><br><span class="line">    // 第二步：画对角线</span><br><span class="line">    ctx.strokeStyle = &apos;#e8ddc7&apos;;</span><br><span class="line">    ctx.beginPath();</span><br><span class="line">    var crossLineNumber = sideNumber / 2</span><br><span class="line">    for(var i = 0; i &lt; crossLineNumber; i++) &#123;</span><br><span class="line">        ctx.moveTo(lineArr[i].x, lineArr[i].y);</span><br><span class="line">        ctx.lineTo(lineArr[i + crossLineNumber].x, lineArr[i + crossLineNumber].y);</span><br><span class="line">        ctx.stroke();</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.closePath();</span><br><span class="line">   </span><br><span class="line">    // 另一种画 对角线的方法</span><br><span class="line">    // ctx.strokeStyle = &apos;#e8ddc7&apos;;</span><br><span class="line">    // ctx.beginPath();</span><br><span class="line">    // for (var i =  0; i &lt; sideNumber; i++) &#123;</span><br><span class="line">    //     ctx.moveTo(250, 250);</span><br><span class="line">    //     ctx.lineTo(lineArr[i].x, lineArr[i].y);</span><br><span class="line">    //     ctx.stroke();</span><br><span class="line">    // &#125;</span><br><span class="line">    // ctx.closePath();</span><br><span class="line"></span><br><span class="line">    // 第三步：画分阶</span><br><span class="line">    var gradient = ctx.createRadialGradient(rCenter, rCenter, curR, rCenter, rCenter, 0);</span><br><span class="line">    gradient.addColorStop(0, &quot;#ff960c&quot;);</span><br><span class="line">    gradient.addColorStop(1, &quot;#ff4690&quot;);</span><br><span class="line">    ctx.fillStyle = gradient;</span><br><span class="line">    for (var i = 0; i &lt; demensionNum; i++) &#123;</span><br><span class="line">        var x = rCenter + curR * Math.cos(rAngle * 0) * (i + 1) / demensionNum;</span><br><span class="line">        var y = rCenter - curR * Math.sin(rAngle * 0) * (i + 1) / demensionNum;</span><br><span class="line">        // 注意beginPath和closePath成对出现</span><br><span class="line">        ctx.beginPath();</span><br><span class="line">        ctx.moveTo(x, y);</span><br><span class="line">        for (var j = 1; j &lt; sideNumber; j++) &#123;</span><br><span class="line">            // 注意这里的括号，之前括号搞错，折腾了好久</span><br><span class="line">            ctx.lineTo(rCenter + curR * Math.cos(rAngle * j) * (i + 1) / demensionNum, rCenter - curR * Math.sin(rAngle * j) * (i + 1) / demensionNum);</span><br><span class="line">        &#125;</span><br><span class="line">        ctx.closePath();</span><br><span class="line">        ctx.globalAlpha = 0.04 * (i + 1);</span><br><span class="line">        ctx.fill();</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.restore();</span><br><span class="line">    ctx.save();</span><br><span class="line">    // 第四步：数据 填充区域</span><br><span class="line">    var keys = Object.keys(data);</span><br><span class="line">    ctx.beginPath();</span><br><span class="line">    ctx.fillStyle = &apos;rgba(255, 0, 0, 0.5)&apos;;</span><br><span class="line">    ctx.strokeStyle = &apos;#dd3f26&apos;;</span><br><span class="line">    ctx.lineWidth = 2;</span><br><span class="line">    times(sideNumber, (i) =&gt; &#123;</span><br><span class="line">        let x = rCenter + curR * Math.cos(rAngle * i) * (data[keys[i]]/100) ;</span><br><span class="line">        let y = rCenter - curR * Math.sin(rAngle * i) * (data[keys[i]]/100);</span><br><span class="line">        scoreArr.push(&#123; x: x, y: y &#125;);</span><br><span class="line">        i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);</span><br><span class="line">    &#125;)</span><br><span class="line">    ctx.globalAlpha = 0.5;</span><br><span class="line">    ctx.closePath();</span><br><span class="line">    ctx.fill();</span><br><span class="line">    ctx.stroke();</span><br><span class="line">    ctx.restore();</span><br><span class="line">    ctx.save();</span><br><span class="line"></span><br><span class="line">    //第五步：绘制小圆点</span><br><span class="line">    ctx.fillStyle = &apos;rgba(255, 0, 0, 0.5)&apos;;</span><br><span class="line">    times(sideNumber, (i) =&gt; &#123;</span><br><span class="line">        ctx.beginPath();</span><br><span class="line">        ctx.arc(scoreArr[i].x, scoreArr[i].y, 3, 0, 2 * Math.PI);</span><br><span class="line">        ctx.fill();</span><br><span class="line">    &#125;)</span><br><span class="line">    ctx.restore();</span><br><span class="line">    ctx.save();</span><br><span class="line"></span><br><span class="line">    // 第六步：绘制文字---能力级别</span><br><span class="line">    ctx.fillStyle = &apos;#000&apos;;</span><br><span class="line">    ctx.font = &apos;16px Microsoft Yahei&apos;;</span><br><span class="line">    keys.forEach((item, i) =&gt; &#123;</span><br><span class="line">        var m_width = ctx.measureText(item).width;</span><br><span class="line">        if (lineArr[i].x === rCenter) &#123;</span><br><span class="line">            if (lineArr[i].y &gt; rCenter) &#123;</span><br><span class="line">                ctx.fillText(item, lineArr[i].x, lineArr[i].y - m_width / 2);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                 ctx.fillText(item, lineArr[i].x, lineArr[i].y + m_width / 2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else if (lineArr[i].x &gt; rCenter) &#123;</span><br><span class="line">            ctx.fillText(item, lineArr[i].x + m_width / 2, lineArr[i].y);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            ctx.fillText(item, lineArr[i].x - m_width * 1.5, lineArr[i].y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    ctx.restore();</span><br><span class="line">    ctx.save();</span><br><span class="line"></span><br><span class="line">    // 第七步：绘制文字---分数</span><br><span class="line">    ctx.fillStyle = &apos;#fe333e&apos;;</span><br><span class="line">    ctx.font = &apos;12px Microsoft Yahei&apos;;</span><br><span class="line">    keys.forEach((item, i) =&gt; &#123;</span><br><span class="line">        const score = data[item];</span><br><span class="line">        var m_width = ctx.measureText(score).width;</span><br><span class="line">        if (scoreArr[i].x === rCenter) &#123;</span><br><span class="line">            if (scoreArr[i].y &gt; rCenter) &#123;</span><br><span class="line">                ctx.fillText(score, [i].x, scoreArr[i].y - m_width / 2);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                ctx.fillText(score, scoreArr[i].x, scoreArr[i].y + m_width / 2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else if (scoreArr[i].x &gt; rCenter) &#123;</span><br><span class="line">            ctx.fillText(score, scoreArr[i].x + m_width / 2, scoreArr[i].y);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            ctx.fillText(score, scoreArr[i].x - m_width * 1.5, scoreArr[i].y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="二-效果"><a href="#二-效果" class="headerlink" title="二. 效果"></a>二. 效果</h4><p><img src="/image/radar.png" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/16/import和require区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/16/import和require区别/" itemprop="url">import和require区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T11:54:54+08:00">
-                2018-07-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="一-import-得到的变量是只读的，require得到的变量可以修改。"><a href="#一-import-得到的变量是只读的，require得到的变量可以修改。" class="headerlink" title="一. import 得到的变量是只读的，require得到的变量可以修改。"></a>一. import 得到的变量是只读的，require得到的变量可以修改。</h4><ol>
-<li>Import</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// a.js</span><br><span class="line">const a = 1;</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    console.log(&apos;在a文件里&apos;, a);</span><br><span class="line">&#125;, 1000);</span><br><span class="line">export &#123;</span><br><span class="line">    a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// test.js</span><br><span class="line">import &#123; a &#125; from &apos;./a&apos;;  </span><br><span class="line">console.log(&apos;a======111&apos;, a);</span><br><span class="line">a = 3;</span><br><span class="line">console.log(&apos;a=====222&apos;, a);</span><br></pre></td></tr></table></figure>
-<p>运行之后会得到：<strong>“a” is read-only</strong></p>
-<ol>
-<li>require</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// test.js</span><br><span class="line">let a = require(&apos;./a&apos;);</span><br><span class="line">console.log(&apos;a======&apos;, a);</span><br><span class="line">a = 3;</span><br><span class="line">console.log(&apos;a&apos;, a);</span><br></pre></td></tr></table></figure>
-<p>运行之后得到：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a====== &#123; a: 1 &#125;</span><br><span class="line">a 3</span><br><span class="line">在a文件里 1</span><br></pre></td></tr></table></figure>
-<p>只修改了test.js里面的数据</p>
-<h4 id="二-import-会进行提升，Import-are-hoisted。Require不会。"><a href="#二-import-会进行提升，Import-are-hoisted。Require不会。" class="headerlink" title="二. import 会进行提升，Import are hoisted。Require不会。"></a>二. import 会进行提升，Import are hoisted。Require不会。</h4><p>比如这个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// a.js</span><br><span class="line">global.log = (str) =&gt; console.log(str);</span><br><span class="line">import &apos;./b&apos;;</span><br><span class="line"></span><br><span class="line">// b.js</span><br><span class="line">global.log(&apos;hello world&apos;);</span><br></pre></td></tr></table></figure>
-<p>由于 import 被提升所以这个例子会报 log undefined，用 babel 转义一下会得到：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// a.js</span><br><span class="line"></span><br><span class="line">&apos;use strict&apos;;</span><br><span class="line"></span><br><span class="line">require(&apos;./b&apos;);</span><br><span class="line"></span><br><span class="line">global.log = function (str) &#123;</span><br><span class="line"></span><br><span class="line">  return console.log(str);</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// b.js</span><br><span class="line"></span><br><span class="line">&apos;use strict&apos;;</span><br><span class="line"></span><br><span class="line">global.log(&apos;hello world&apos;);</span><br></pre></td></tr></table></figure>
-<h4 id="三-import静态编译，import的地址不能通过计算。require就可以。"><a href="#三-import静态编译，import的地址不能通过计算。require就可以。" class="headerlink" title="三. import静态编译，import的地址不能通过计算。require就可以。"></a>三. import静态编译，import的地址不能通过计算。require就可以。</h4><p>例如 const url = “a” + “b”;</p>
-<p>Import url 直接报错了</p>
-<p>require(url)不会报错</p>
-<p>所以require都会用在动态加载的时候。</p>
-<h4 id="四-require-输出的是一个值的拷贝："><a href="#四-require-输出的是一个值的拷贝：" class="headerlink" title="四. require 输出的是一个值的拷贝："></a>四. require 输出的是一个值的拷贝：</h4><h4 id="如果是基本类型，则得到的是一个值，如果是对象，则得到的是一个地址的引用"><a href="#如果是基本类型，则得到的是一个值，如果是对象，则得到的是一个地址的引用" class="headerlink" title="(如果是基本类型，则得到的是一个值，如果是对象，则得到的是一个地址的引用)"></a>(如果是基本类型，则得到的是一个值，如果是对象，则得到的是一个地址的引用)</h4><h4 id="export-模块输出的是值的引用："><a href="#export-模块输出的是值的引用：" class="headerlink" title="export 模块输出的是值的引用："></a>export 模块输出的是值的引用：</h4><h4 id="给module-exports上的每一个属性比如’name’，定义了一个属性描述对象Object-defineProperty-exports-‘name’-enumerable-true-get-getter-，属性描述对象有一个getter，所以每次获取这个属性的时候其实都执行了函数getter，而不是像require对应的输出一样每次使用的都是缓存值"><a href="#给module-exports上的每一个属性比如’name’，定义了一个属性描述对象Object-defineProperty-exports-‘name’-enumerable-true-get-getter-，属性描述对象有一个getter，所以每次获取这个属性的时候其实都执行了函数getter，而不是像require对应的输出一样每次使用的都是缓存值" class="headerlink" title="(给module.exports上的每一个属性比如’name’，定义了一个属性描述对象Object.defineProperty(exports, ‘name’, { enumerable: true, get: getter }，属性描述对象有一个getter，所以每次获取这个属性的时候其实都执行了函数getter，而不是像require对应的输出一样每次使用的都是缓存值)"></a>(给module.exports上的每一个属性比如’name’，定义了一个属性描述对象Object.defineProperty(exports, ‘name’, { enumerable: true, get: getter }，属性描述对象有一个getter，所以每次获取这个属性的时候其实都执行了函数getter，而不是像require对应的输出一样每次使用的都是缓存值)</h4><p>参考资料：<a href="http://es6.ruanyifeng.com/#docs/module-loader#ES6-%E6%A8%A1%E5%9D%97%E4%B8%8E-CommonJS-%E6%A8%A1%E5%9D%97%E7%9A%84%E5%B7%AE%E5%BC%82" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/module-loader#ES6-%E6%A8%A1%E5%9D%97%E4%B8%8E-CommonJS-%E6%A8%A1%E5%9D%97%E7%9A%84%E5%B7%AE%E5%BC%82</a></p>
-<p>1️⃣rquire会对引入进来的数据进行缓存</p>
-<p>在test.js里面require(‘’./a’)之后再修改a则只会修改a文件内的数据，（如果a是导出一个对象，则都会修改，因为是地址引用，test和a所指向的是一个内存。如果a导出的是基本数据类型，则test里面拥有的是一个副本，也就是前面说的对数据做缓存）</p>
-<p>2️⃣import之后对数据做修改会同时影响test和a里面的数据</p>
-<p>注意不能 import a from ‘a’; a = 1;</p>
-<p>上面已经说了import 是只读的。</p>
-<p>但是  import a from ‘a’;      a.theProp = 1;  是可以的，因为这并没有改a的引用地址，只是加一个属性</p>
-<h4 id="五-require和import-对于-a文件都是只执行一次"><a href="#五-require和import-对于-a文件都是只执行一次" class="headerlink" title="五. require和import 对于 a文件都是只执行一次"></a>五. require和import 对于 a文件都是只执行一次</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// a.js</span><br><span class="line">function a() &#123;</span><br><span class="line">    console.log(&apos;aaaa&apos;);</span><br><span class="line">&#125;</span><br><span class="line">const instance = new a();</span><br><span class="line">module.exports = instance;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// b.js</span><br><span class="line">function a() &#123;</span><br><span class="line">    console.log(&apos;aaaa&apos;);</span><br><span class="line">&#125;</span><br><span class="line">const instance = new a();</span><br><span class="line">module.exports = instance;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// test.js</span><br><span class="line">require(&apos;./a&apos;);</span><br><span class="line">require(&apos;./b&apos;);</span><br></pre></td></tr></table></figure>
-<p>babel-node test.js </p>
-<p>运行结果   aaaa</p>
-<p>说明a文件只执行一次。</p>
-<p>在爱这个方面import 和require都是一样的，a文件都是只执行一次。</p>
-<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><p>其实一个文件就是对应一个module对象，module对象里面有个属性是module.exports.</p>
-<p>每个文件在最终都会变成一个函数的执行体，这个函数有三个入参：</p>
-<p>module, module.exports, webpack_require</p>
-<p>(1)在commonjs（也就是上面说的require）模块里，有两种导出方式：</p>
-<ol>
-<li><p>module.exports = {a: 1, b:2}</p>
-</li>
-<li><p>exports.a = 1; exports.b = 2;</p>
-<p>这两种是完全等价的。之所以不能写成exports = {a:1, b:2}是因为exports作为形参传进来之后，如果执行的是exports = {a:1, b:2z}这样的赋值语句，是不会改变传入的实参的。而我们的目的是改变传入的实参，所以需要写成上面的两种方式之一，这两种方式都是可以改变实参的。</p>
-</li>
-</ol>
-<p>require的时候可以直接拿到module.exports的值，然后再分别取出里面的属性。</p>
-<p>（2）在ES（也就是上面说的import）模块里，有很多种导出方式:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const a = &#123;a1: 1; a2: 2&#125;;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>export { a }; // 在module.exports 上定义一个a属性,属性值是a;</p>
-<p>import  { a } ;</p>
-</li>
-<li><p>exports const a = a；// 在module.exports 上定义一个a属性,属性值是a;</p>
-<p>Import { a };</p>
-</li>
-<li><p>exports default a; // 在module.exports 上定义一个default属性, 属性值是a；</p>
-<p>Import  a;</p>
-</li>
-</ol>
-<p>对上面3种情况进行解释： import  的时候，如果不是对象结构赋值的话（也就是{ a }），会默认是import default，就像第3种情况，import  a 会解析成import default as a，其实就是取出了module.exports的default属性。</p>
-<p>现在假如这么写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// a.js</span><br><span class="line">export &#123; a &#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> a <span class="keyword">from</span> <span class="string">'./a'</span>; <span class="comment">// a 得到的值是undefined。因为这句话会被解析成</span></span><br><span class="line"><span class="comment">// import default as a from './a'；</span></span><br><span class="line"><span class="comment">// 而我们在导出的时候是没有定义default的，只定义了a属性，所以会返回undefined.</span></span><br><span class="line"><span class="comment">// 在ES模块中，我们是没有办法获取到整个module.exports对象的，因为只要你写的不是对象解构赋值的形式，</span></span><br><span class="line"><span class="comment">// webpack 就会解析成default形式，所以要拿到整个module.exports对象，需要这样写：</span></span><br><span class="line"><span class="comment">// import * as Req from './ajax.js'; 这样取得的Req就是整个module导出的对象。【他是一个Module类的</span></span><br><span class="line"><span class="comment">// 实例】</span></span><br><span class="line"><span class="comment">// 而在commonjs模块里面直接require('./ajax.js')能拿到module.exports对象，【他是没经过处理的原对象】</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/02/记录一次官网开发/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/02/记录一次官网开发/" itemprop="url">记录一次官网开发</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-02T10:39:21+08:00">
-                2018-07-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近开发了一个官网首页，遇到几个问题，现在做一下记录，方便以后回顾。</p>
-<h4 id="一：宽高相关参数"><a href="#一：宽高相关参数" class="headerlink" title="一：宽高相关参数"></a>一：宽高相关参数</h4><ol>
-<li>#####window.innerWidth与window.innerHeight</li>
-</ol>
-<p><code>window.innerWidth</code>与<code>window.innerHeight</code>：获得的是可视区域的宽高，但是window.innerWidth宽度包含了纵向滚动条的宽度，window.innerHeight高度<strong>包含了横向滚动条的高度</strong>(IE8以及低版本浏览器不支持)。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.innerWidth = width + padding + border + 纵向滚动条宽度</span><br><span class="line">window.innerHeight = height + padding + border + 横向滚动条高度</span><br></pre></td></tr></table></figure>
-<p>由于本次开发中，可视区没有滚动条，所以他们就代表了窗口可视区宽高。</p>
-<ol>
-<li><h5 id="window-outerWidth与window-outerHeight"><a href="#window-outerWidth与window-outerHeight" class="headerlink" title="window.outerWidth与window.outerHeight"></a>window.outerWidth与window.outerHeight</h5></li>
-</ol>
-<p>window.outerWidth<code>与</code>window.outerHeight：获得的是<strong>加上工具条与滚动条窗口的宽度与高度</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.outerWidth = width + padding + border + 纵向滚动条宽度</span><br><span class="line">window.outerHeight = height + padding + border + 横向滚动条高度 + 工具条高度</span><br></pre></td></tr></table></figure>
-<ol>
-<li><h5 id="document-documentElement-clientWidth与document-documentElement-clientHeight"><a href="#document-documentElement-clientWidth与document-documentElement-clientHeight" class="headerlink" title="document.documentElement.clientWidth与document.documentElement.clientHeight"></a>document.documentElement.clientWidth与document.documentElement.clientHeight</h5></li>
-</ol>
-<p><code>document.documentElement.clientWidth</code>与<code>document.documentElement.clientHeight</code>：获得的是屏幕可视区域的宽高，<strong>不包括滚动条与工具条</strong>，跟jquery的(window).width()与(window).height()获得的结果是一样的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.documentElement.clientWidth = width + padding</span><br><span class="line">document.documentElement.clientHeight = height + padding</span><br></pre></td></tr></table></figure>
-<p>在本次开发中，本来想用这两个数据，但是发现在vue的mounted时候还不能获取到这个数据，所以最后用window.innerWidth和window.innerHeight代替了。</p>
-<ol>
-<li><h5 id="document-body-clientWidth与document-body-clientHeight"><a href="#document-body-clientWidth与document-body-clientHeight" class="headerlink" title="document.body.clientWidth与document.body.clientHeight"></a>document.body.clientWidth与document.body.clientHeight</h5></li>
-</ol>
-<p><code>document.body.clientWidth</code>与<code>document.body.clientHeight</code>：document.body.clientWidth获得的也是<strong>可视区域的宽度</strong>，但是document.body.clientHeight获得的是<strong>body内容的高度</strong>，如果内容只有200px，那么这个高度也是200px,如果想通过它得到屏幕可视区域的宽高，需要样式设置，如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span>, <span class="selector-tag">div</span>, <span class="selector-tag">p</span>, <span class="selector-tag">ul</span> &#123;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最关键的是：body的height:100%影响document.body.clientHeight的值。<br>body的margin:0,padding:0影响document.body.clientWidth的值。</p>
-<h4 id="二-将一张与屏幕宽高不一致的图片，在不拉伸图片的情况下，作为屏幕的背景图"><a href="#二-将一张与屏幕宽高不一致的图片，在不拉伸图片的情况下，作为屏幕的背景图" class="headerlink" title="二:  将一张与屏幕宽高不一致的图片，在不拉伸图片的情况下，作为屏幕的背景图"></a>二:  将一张与屏幕宽高不一致的图片，在不拉伸图片的情况下，作为屏幕的背景图</h4><p>如果图片可以拉伸，那直接设置width：100%；height：100%；就可以了。但是这样就拉伸了图片不美观，设计师也不允许。如果不拉伸图片，可以用如下方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">getPageStyle () &#123;</span><br><span class="line">    <span class="keyword">const</span> windowRate = <span class="built_in">window</span>.innerWidth / <span class="built_in">window</span>.innerHeight;</span><br><span class="line">    <span class="keyword">const</span> imgWidth = <span class="number">1440</span>;</span><br><span class="line">    <span class="keyword">const</span> imgHeight = <span class="number">1024</span>;</span><br><span class="line">    <span class="keyword">const</span> imgRate = imgWidth / imgHeight;</span><br><span class="line">    <span class="keyword">let</span> realWidth = <span class="number">0</span>, </span><br><span class="line">    realHeight = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (windowRate &gt;= imgRate) &#123;</span><br><span class="line">    <span class="comment">// 屏幕偏宽，在保持图片比例情况下，将背景图宽度设为和屏幕一致，这时候算出的图片高度一定比屏幕高，多出的部分隐藏</span></span><br><span class="line">        realHeight = <span class="built_in">window</span>.innerWidth / imgRate;</span><br><span class="line">        realWidth = <span class="built_in">window</span>.innerWidth;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 屏幕偏高，在保持图片比例情况下，将背景图高度设为和屏幕一致，这时候算出的图片宽度一定比屏幕高，多出的部分隐藏</span></span><br><span class="line">        realWidth = <span class="built_in">window</span>.innerHeight * imgRate;</span><br><span class="line">        realHeight = <span class="built_in">window</span>.innerHeight;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 背景图的宽度和高度</span></span><br><span class="line">    <span class="keyword">this</span>.realWidth = realWidth;</span><br><span class="line">    <span class="keyword">this</span>.realHeight = realHeight;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>设置图片backgroundSize：this.realWidth， this.realHeight</p>
-<h4 id="三-transfrom-scale-2-translateX-100px-其实他会平移100-2px"><a href="#三-transfrom-scale-2-translateX-100px-其实他会平移100-2px" class="headerlink" title="三:   transfrom: scale(2) translateX(100px). 其实他会平移100*2px"></a>三:   transfrom: scale(2) translateX(100px). 其实他会平移100*2px</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 除以this.blockMoveXRate</span></span><br><span class="line"><span class="keyword">let</span> leftSpace = (blockLeftDistance - (blockFinalWidth - blockWidth) * <span class="number">0.5</span>) /</span><br></pre></td></tr></table></figure>
-<h4 id="四-reset-3d的css样式的时候，不设置成0而是0-00001，为了解决safari闪烁问题"><a href="#四-reset-3d的css样式的时候，不设置成0而是0-00001，为了解决safari闪烁问题" class="headerlink" title="四:  reset 3d的css样式的时候，不设置成0而是0.00001，为了解决safari闪烁问题"></a>四:  reset 3d的css样式的时候，不设置成0而是0.00001，为了解决safari闪烁问题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.$page.css(&#123;</span><br><span class="line">	transform: &apos;rotateX(&apos; + 0.00001 + &apos;deg) rotateY(&apos; + 0.00001 + &apos;deg) &apos;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="五-火狐perspective不继承，需要给每个3d元素设置"><a href="#五-火狐perspective不继承，需要给每个3d元素设置" class="headerlink" title="五:  火狐perspective不继承，需要给每个3d元素设置"></a>五:  火狐perspective不继承，需要给每个3d元素设置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.section &#123;</span><br><span class="line">    * &#123;</span><br><span class="line">        // 为火狐设置的（如果只在外层设置perspective的话，在火狐里面没用)</span><br><span class="line">		perspective: 800px;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="六-设置transition-transform-0-1s-的3d效果的时候，需要把时间设置的很短，不然会出现元素自己缓慢移动的效果，无法形成3D视觉"><a href="#六-设置transition-transform-0-1s-的3d效果的时候，需要把时间设置的很短，不然会出现元素自己缓慢移动的效果，无法形成3D视觉" class="headerlink" title="六:   设置transition: transform   0.1s    的3d效果的时候，需要把时间设置的很短，不然会出现元素自己缓慢移动的效果，无法形成3D视觉"></a>六:   设置transition: transform   0.1s    的3d效果的时候，需要把时间设置的很短，不然会出现元素自己缓慢移动的效果，无法形成3D视觉</h4><p><a href="http://www.jq22.com/yanshi6472" target="_blank" rel="noopener">http://www.jq22.com/yanshi6472</a></p>
-<p>通过外层元素的旋转，内容元素的平移达到3d效果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: transform 0.1s ease;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xPer = e.clientX / WIDTH;</span><br><span class="line"><span class="keyword">const</span> yPer = e.clientY / HEIGHT;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rotateX = (<span class="number">5</span> - (yPer * <span class="number">10</span>)) * <span class="number">0.3</span>;</span><br><span class="line"><span class="keyword">const</span> rotateY = (<span class="number">-5</span> + (xPer * <span class="number">10</span>)) * <span class="number">0.3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> translateX = (<span class="number">-5</span> + (xPer * <span class="number">10</span>));</span><br><span class="line"><span class="keyword">const</span> translateY = (<span class="number">-5</span> + (yPer * <span class="number">10</span>));</span><br><span class="line"><span class="comment">// 外层  旋转</span></span><br><span class="line">waiceng.css(&#123;</span><br><span class="line">	transform: <span class="string">`rotateX(<span class="subst">$&#123;rotateX&#125;</span>deg) rotateY(<span class="subst">$&#123;rotateY&#125;</span>deg) translateY(<span class="subst">$&#123;rotateX&#125;</span>px)`</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 内层  平移</span></span><br><span class="line">neiceng.css(&#123;</span><br><span class="line">	transform: <span class="string">'translateX('</span> + -translateX + <span class="string">'px) translateY('</span> + -translateY + <span class="string">'px)'</span>,</span><br><span class="line">	transition: <span class="string">'transform 0.1s'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/13/网络原理知识记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/13/网络原理知识记录/" itemprop="url">网络原理知识记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-13T13:43:36+08:00">
-                2018-06-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="一：路由器"><a href="#一：路由器" class="headerlink" title="一：路由器"></a>一：路由器</h4><p> <a href="https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&amp;mid=2665513173&amp;idx=1&amp;sn=6ec5281b12ed5195070fa4df22383595&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">参考链接</a></p>
-<p>路由器也就是<strong>网关路由器</strong>, 在网络中的位置如下</p>
-<p><img src="/image/router.webp" alt=""></p>
-<p>电脑想要上网，就需要经过网关。网关直接和ISP(联通)的网络相连，假如某台路由器有一个外网地址：61.52.247.112。</p>
-<p>由于只有一个外网地址，如果都使用这个ip，局域网内部的电脑不能同时上网。所以需要一个办法让局域网内部的电脑能同时上网：<strong>NAT（网络地址转换）</strong></p>
-<h5 id="1-网络地址转换"><a href="#1-网络地址转换" class="headerlink" title="1.网络地址转换"></a>1.网络地址转换</h5><p>现在的路由器不仅仅是一个路由器，同时是一个DHCP服务器，DHCP也就是动态主机配置协议，其实就是给局域网内部的电脑分配ip用的。</p>
-<p>现在这台路由器所在局域网内有一台电脑TP-Link 7954想要上网，路由器给他分配了一个ip是192.168.1.2 ，这是一个内网ip，所以这个ip本身是无法上网的。（每个路由器都可以给自己局域网内的电脑分配192.168.1.2的ip）。</p>
-<p>注意：我们需要知道内网IP段有哪些</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A类：10.0.0.0-10.255.255.255</span><br><span class="line">B类：172.16.0.0-172.31.255.255 </span><br><span class="line">C类：192.168.0.0-192.168.255.255</span><br></pre></td></tr></table></figure>
-<p>电脑TP-Link 7954想要上网必须经过这个路由器。现在电脑TP-Link 7954想要访问百度，他通过交换机发来一个数据帧：</p>
-<p><img src="/image/frame1.webp" alt=""></p>
-<p>路由器把数据链路层的外衣去掉，发现数据包的目标地址是115.239.211.112，路由器就知道这是要向外网发出请求了。于是路由器开始干下面的事情：</p>
-<p>1️⃣路由器把IP数据包的源地址192.168.1.2替换成路由器从联通那里拿到的外网地址61.52.247.112。</p>
-<p>2️⃣这还不够，路由器会创建一个新的端口号2001，把TCP数据包中的源端口也替换掉，数据包变成了这样：</p>
-<p><img src="/image/frame2.webp" alt=""></p>
-<p>所以路由器就是把TCP层的端口号和IP层的源地址IP号替换掉，目的是让外部认为这是路由器自身发出的消息，外界根本不知道TP-Link 7954这台电脑。</p>
-<p>然后路由器再给这个IP数据包穿上数据链路层的外衣，把数据包发送给联通的网络剩下的事情就不管了。</p>
-<p><img src="/image/frame3.webp" alt=""></p>
-<p>注意：以太网帧的mac地址，源地址已经是路由器的地址了，而不再是TP-Link 7954了， 因为路由器是我和联通网络之间的数据链路。</p>
-<p>像上面那样替换源地址（包括源IP地址和源mac地址）和端口号就叫做网络地址转换，也就是<strong>NAT</strong></p>
-<p>当然不止TP-Link7954通过这个路由器上网，还有很多别的电脑也通过这个路由器上网，路由器需要把这些信息记录下来，形成这张表：</p>
-<p><img src="/image/nat-table.webp" alt=""></p>
-<p>过了不久，百度网站的回复信息就会通过别的路由器转到这个路由器来，这个路由器需要反过来处理一下。</p>
-<p>首先去掉数据链路层的外衣，发现TCP和IP数据包包含这样的消息：</p>
-<p>目的地IP : 61.52.247.112 , 端口 2001</p>
-<p>这时候去查表，找到192.168.1.2:3345，这就表明是发给TP-Link 7954的信了。</p>
-<p>那就再次把数据报表中的IP地址和端口号改了，让TP-Link 7954 认为这个数据包就是路由器给他的。</p>
-<p>就这样， 路由器成功的用区区一个外网的IP就支持了局域网内多个电脑的上网需求， 并且局域网内的电脑根本就不知道是怎么回事！</p>
-<p>（在我看来，路由器就是一个代理功能）</p>
-<h5 id="2-路由器和交换机的区别"><a href="#2-路由器和交换机的区别" class="headerlink" title="2.路由器和交换机的区别"></a>2.路由器和交换机的区别</h5><p>工作层次不同：</p>
-<p>​    交换机工作在数据链路层（第二层）</p>
-<p>​    路由器工作在网络层（第三层）</p>
-<p>转发依据不同：</p>
-<p>​    交换机转发所依据的对象：MAC地址（物理地址）</p>
-<p>​    路由器转发所依据的对象：IP地址（网络地址）</p>
-<p>主要功能不同：</p>
-<p>​    交换机主要是用于组件局域网，在局域网内部使用</p>
-<p>​    路由器主要是将交换机组建好的局域网连接起来，或者接入Internet</p>
-<p>​    交换机能做的，路由器都能做，交换机不能分割广播域，路由器可以。路由还可以提供发防火墙的功能。</p>
-<p>通俗的说：</p>
-<p>​    交换机：转发数据</p>
-<p>​    路由器：找路</p>
-<p>​    交换机是连接一个局域网内的设备的，路由器是连接不同网络的设备</p>
-<p>​    </p>
-<h5 id="3-特殊IP地址"><a href="#3-特殊IP地址" class="headerlink" title="3. 特殊IP地址"></a>3. 特殊IP地址</h5><p>1️⃣ 上面提到的内网IP段</p>
-<p>2️⃣ 广播地址：255.255.255.255 。用于向局域网内广播信息</p>
-<p>主机号全部为1的地址是子网广播地址，如：192.168.1.255</p>
-<p>主机号全部为0的地址是代表该子网的网络地址，如：192.168.1.0</p>
-<p>3️⃣ 0.0.0.0：所有未知的主机和目的网络（类似于默认匹配）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1815,7 +2467,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1826,7 +2478,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1837,7 +2489,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

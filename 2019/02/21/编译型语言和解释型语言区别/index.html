@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="基础知识," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="参考链接 一. 编译型语言和解释型语言计算机编程语言种类非常多，根据与计算机硬件贴近程度和抽象程度大致可分为3类，自顶向下分别是  高级语言（抽象层次更高的便于记忆和表示的英文代码）​      |​      |汇编语言（抽象层次较高的对应机器硬件的cpu指令集，英文缩的助记符号代码）​      |​      |机器语言（抽像层次最低的由0、1序列所表示的机器码）  ​      众所周知，">
+<meta name="keywords" content="基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译型语言和解释型语言区别">
+<meta property="og:url" content="http://yoursite.com/2019/02/21/编译型语言和解释型语言区别/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="参考链接 一. 编译型语言和解释型语言计算机编程语言种类非常多，根据与计算机硬件贴近程度和抽象程度大致可分为3类，自顶向下分别是  高级语言（抽象层次更高的便于记忆和表示的英文代码）​      |​      |汇编语言（抽象层次较高的对应机器硬件的cpu指令集，英文缩的助记符号代码）​      |​      |机器语言（抽像层次最低的由0、1序列所表示的机器码）  ​      众所周知，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-21T07:31:16.202Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编译型语言和解释型语言区别">
+<meta name="twitter:description" content="参考链接 一. 编译型语言和解释型语言计算机编程语言种类非常多，根据与计算机硬件贴近程度和抽象程度大致可分为3类，自顶向下分别是  高级语言（抽象层次更高的便于记忆和表示的英文代码）​      |​      |汇编语言（抽象层次较高的对应机器硬件的cpu指令集，英文缩的助记符号代码）​      |​      |机器语言（抽像层次最低的由0、1序列所表示的机器码）  ​      众所周知，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/21/编译型语言和解释型语言区别/"/>
+
+
+
+
+
+  <title>编译型语言和解释型语言区别 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/编译型语言和解释型语言区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">编译型语言和解释型语言区别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-21T11:52:56+08:00">
+                2019-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://blog.csdn.net/danpi1hao/article/details/64121610" target="_blank" rel="noopener">参考链接</a></p>
+<h3 id="一-编译型语言和解释型语言"><a href="#一-编译型语言和解释型语言" class="headerlink" title="一. 编译型语言和解释型语言"></a>一. 编译型语言和解释型语言</h3><p>计算机编程语言种类非常多，根据与计算机硬件贴近程度和抽象程度大致可分为3类，自顶向下分别是 </p>
+<p>高级语言（抽象层次更高的便于记忆和表示的英文代码）<br>​      |<br>​      |<br>汇编语言（抽象层次较高的对应机器硬件的cpu指令集，英文缩的助记符号代码）<br>​      |<br>​      |<br>机器语言（抽像层次最低的由0、1序列所表示的机器码） </p>
+<p>​      众所周知，计算机底层只能识别（并执行）0、1序列的机器码，这表示所有的高级编程语言所编写的代码，最终都要以某种方式被转换成能被计算机识别的0、1序列机器码，方可被计算机接受并执行。这种将代码转换为机器码的方式可分为编译型和解释型这2类： </p>
+<ol>
+<li>编译型：<strong>运行前</strong>先由编译器将高级语言代码编译为对应机器的cpu汇编指令集，再由汇编器汇编为目标机器码，生成可执行文件，然最后运行生成的可执行文件。最典型的代表语言为C/C++，一般生成的可执行文件及.exe文件。 </li>
+<li>解释型：<strong>在运行时</strong>由翻译器将高级语言代码翻译成易于执行的中间代码，并由解释器（例如浏览器、虚拟机）逐一将该中间代码解释成机器码并执行（可看做是将编译、运行合二为一了）。最典型的代表语言为JavaScript、Python、Ruby和Perl等 </li>
+</ol>
+<p>两种方式的异同之处： </p>
+<p><1>转换为机器码的时机和运行效率<br>​      两种转换为机器码的方式，最大不同之处是处理转换为机器码的时机不同。编译型是在运行前（且只编译一次），需要做转换工作，并生成一个可执行的机器码文件，用户每次运行该可执行文件执行即可，效率、执行速度要比解释型的快。因为解释型是在运行时做转换工作，并不生成可执行文件，所以每次运行都需要做一下转换工作，然后再执行，效率自然就低了。</1></p>
+<p><2>可移植性<br>​      编译型在编译后生成的可执行文件，是相对与本机机器指令集的，所生成的可执行文件移植到不同机器指令集的机器上，势必不一定能正常运行。而解释型的，尽管在不同配置的机器上，也是最终会解释成基于当前机器指令集的机器码并执行，故解释型的可移植性相对来说还是强于编译型的。 </2></p>
+<p><3>纠错排查<br>​      编译型语言，在编译阶段即可发现常见的语法或者链接等错误，此机制可在运行前帮助程序员排查出可能潜在的语法、语义和类型转换错误，编译型语言一般都有明确的变量类型检测，也被称作强类型语言，即编译型语言至少能确保所生成的可执行文件肯定是可运行的，至于执行的逻辑不对则属于程序员业务逻辑错误范畴了。<br>​      而对于解释型语言，代码中的错误必须直到运行阶段方可发现，由此造成的困惑是：往往一段程序看不出问题但却在运行阶段错误连连且需要一个个排查：变量拼写错误、方法不存在等。</3></p>
+<p>但也正是基于解释是在运行期执行转化的特性，一般的解释型语言通常都有自己的shell，可以在不确定某些执行结果时立即“动手执行”试一下，这就比每次都需要编译后才能运行并看到结果省去不少时间，鱼和熊掌不可兼得的理念再一次被验证了。</p>
+<h3 id="二-鱼和熊掌可兼得吗？"><a href="#二-鱼和熊掌可兼得吗？" class="headerlink" title="二. 鱼和熊掌可兼得吗？"></a>二. <strong>鱼和熊掌可兼得吗？</strong></h3><p> 综上所述，既然编译型与解释型各有优缺点又相互对立，所以一些语言都有把两者折衷起来的趋势： </p>
+<p>​      Java为了实现跨平台的特性，专门在从高级语言代码转换至机器码过程的中间加入了一层中间层JVM（java虚拟机），<strong>Java首先依赖编译器将代码（.java）编译成JVM能识别的字节码文件（.class），然后由JVM解释并执行字节码</strong>，也可结合JIT（即时编译）技术，将解释生成的机器码转换为更高效的本地机器码，且该机器码可被缓存，来提高重复执行的效率。这样的结合，令程序员在使用Java时即可享受编译带来的<strong>强类型编译检查</strong>的好处，又能在执行时享受<strong>代码执行的高效性和跨平台性</strong>，何乐而不为呢？ </p>
+<p>​      Python是解释型语言，但为了效率上的考虑，也提供了编译方式，编译后生成的也是字节码的文件形式，并由Python的的VM（虚拟机）的去执行，这点可以说和Java的编译执行方式类似。不同点在于，Python的编译并非强制执行的操作，确切来说Python的编译是自动的，通常发生在对某个模块（module）的调用过程中，编译成字节码的可以节省加载模块的时间，以此达到提高效率的目的。可见，某些先进的高级语言在对编译和解释方面的拿捏舍去，都采取了一种：两手抓，两手都要硬的态度哦:)</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/基础知识/" rel="tag"># 基础知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/09/看源码学习的技巧/" rel="next" title="看源码学习的技巧">
+                <i class="fa fa-chevron-left"></i> 看源码学习的技巧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/21/node学习/" rel="prev" title="node学习">
+                node学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">yangXia</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-编译型语言和解释型语言"><span class="nav-number">1.</span> <span class="nav-text">一. 编译型语言和解释型语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-鱼和熊掌可兼得吗？"><span class="nav-number">2.</span> <span class="nav-text">二. 鱼和熊掌可兼得吗？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yangXia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

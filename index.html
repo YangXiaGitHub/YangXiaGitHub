@@ -239,6 +239,1006 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/23/网络原理知识记录-二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/23/网络原理知识记录-二/" itemprop="url">网络原理知识记录(二)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-23T14:57:22+08:00">
+                2019-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h4><p>一：域名服务器层级结构</p>
+<p>根域名服务器（全球只有13台）  顶级域名服务器   二级域名服务器 主机名</p>
+<p><a href="http://www.gogokid.com" target="_blank" rel="noopener">www.gogokid.com</a>  </p>
+<p>Com：顶级域名</p>
+<p>gogokid：二级域名</p>
+<p>www：主机名</p>
+<p>域名解析请求发送到根域名服务器之后，根域名服务器将.com这个顶级域名地址返回，然后顶级域名服务器.com将.gogokid这个二级域名服务器地址返回，然后.gogokid这个二级域名服务器返回了www主机的ip，这个ip就是<a href="http://www.gogokid.com" target="_blank" rel="noopener">www.gogokid.com</a>  域名对应的ip地址</p>
+<p>二. 递归查询和迭代查询</p>
+<p>递归查询和迭代查询的区别</p>
+<p>（1）递归查询</p>
+<p>递归查询是一种DNS 服务器的查询模式，在该模式下DNS 服务器接收到客户机请求，必须使用一个准确的查询结果回复客户机。如果DNS 服务器本地没有存储查询DNS 信息，那么该服务器会询问其他服务器，并将返回的查询结果提交给客户机。</p>
+<p>（2）迭代查询</p>
+<p>DNS 服务器另外一种查询方式为迭代查询，DNS 服务器会向客户机提供其他能够解析查询请求的DNS 服务器地址，当客户机发送查询请求时，DNS 服务器并不直接回复查询结果，而是告诉客户机另一台DNS 服务器地址，客户机再向这台DNS 服务器提交请求，依次循环直到返回查询的结果</p>
+<p>为止。</p>
+<p><img src="/image/domain.png" alt=""></p>
+<p>从客户端到本地DNS服务器是属于递归查询，而DNS服务器之间就是迭代查询</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/15/javascript基础总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/15/javascript基础总结/" itemprop="url">javascript基础总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-15T11:26:35+08:00">
+                2019-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一-继承"><a href="#一-继承" class="headerlink" title="一. 继承"></a>一. 继承</h4><h4 id="二-lazyMan-笔试题-题目自行上网搜索"><a href="#二-lazyMan-笔试题-题目自行上网搜索" class="headerlink" title="二. lazyMan 笔试题(题目自行上网搜索)"></a>二. lazyMan 笔试题(题目自行上网搜索)</h4><p><a href="https://github.com/fi3ework/blog/issues/36" target="_blank" rel="noopener">参考链接</a></p>
+<ol>
+<li>使用队列和next调用下一个任务（同步方式处理）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazyMan</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.tasks = [];</span><br><span class="line">        <span class="keyword">const</span> task = <span class="function"><span class="params">name</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`Hi! This is <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">this</span>.next();</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">this</span>.tasks.push(task);</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.next();</span><br><span class="line">        &#125;, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    eat(food) &#123;</span><br><span class="line">        <span class="keyword">const</span> task = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'eat '</span> + food);</span><br><span class="line">            <span class="keyword">this</span>.next();</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">this</span>.tasks.push(task);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sleep(time) &#123;</span><br><span class="line">        <span class="keyword">const</span> task = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'Wake up after '</span> + time + <span class="string">'ms'</span>);</span><br><span class="line">                <span class="keyword">this</span>.next();</span><br><span class="line">            &#125;, time);</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">this</span>.tasks.push(task);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sleepFirst(time) &#123;</span><br><span class="line">        <span class="keyword">const</span> task = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'Wake up after '</span> + time + <span class="string">'ms'</span>);</span><br><span class="line">                <span class="keyword">this</span>.next();</span><br><span class="line">            &#125;, time);</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">this</span>.tasks.unshift(task);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    next() &#123;</span><br><span class="line">        <span class="keyword">const</span> task = <span class="keyword">this</span>.tasks.shift();</span><br><span class="line">        task &amp;&amp; task.apply(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lazyMan</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> LazyMan(name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">lazyMan(<span class="string">'ff'</span>)</span><br><span class="line">    .eat(<span class="string">'food'</span>)</span><br><span class="line">    .sleep(<span class="number">2000</span>)</span><br><span class="line">    .eat(<span class="string">'lunch'</span>)</span><br><span class="line">    .sleepFirst(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过next函数掉起下一个函数，实现sleep。如果使用promise实现sleep的话，返回的是一个promise对象而不是this</span></span><br><span class="line"><span class="comment">// 用一个队列存储函数，可以随意变化函数的执行顺序</span></span><br><span class="line"><span class="comment">// 每次调用eat或者sleep函数的时候只是将函数存入队列，而constructor里面的setTimeout才是开始从队列里面取出函数来执行。有的方式是通过一个end()函数来作为标志，开始从队列里面取出函数执行</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>使用promise（异步方式处理）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazyMan</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>._preSleepTime = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.sayName = <span class="keyword">this</span>.sayName.bind(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">this</span>.p = <span class="built_in">Promise</span>.resolve()</span><br><span class="line">            .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>._preSleepTime &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">this</span>.holdOn(<span class="keyword">this</span>._preSleepTime);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            .then(<span class="keyword">this</span>.sayName);</span><br><span class="line">    &#125;</span><br><span class="line">    holdOn(time) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'Wake up after '</span> + time + <span class="string">'ms'</span>);</span><br><span class="line">                resolve();</span><br><span class="line">            &#125;, time);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    sayName() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`Hi! This is <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    eat(meal) &#123;</span><br><span class="line">        <span class="keyword">this</span>.p = <span class="keyword">this</span>.p.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'eat '</span> + meal);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sleep(time) &#123;</span><br><span class="line">        <span class="keyword">this</span>.p = <span class="keyword">this</span>.p.then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.holdOn(time));</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sleepFirst(time) &#123;</span><br><span class="line">        <span class="keyword">this</span>._preSleepTime = time;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> LazyMan(<span class="string">'ff'</span>)</span><br><span class="line">    .eat(<span class="string">'food'</span>)</span><br><span class="line">    .sleep(<span class="number">2000</span>)</span><br><span class="line">    .eat(<span class="string">'lunch'</span>)</span><br><span class="line">    .sleepFirst(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意promise then函数是微任务，所以会先执行eat sleep sleepFirst 再执行.then里面对_preSleepTime的判断</span></span><br><span class="line"><span class="comment">// 注意holdOn函数需要返回一个promise，否则sleep不会停留几秒钟，会立刻执行下面的eat函数</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>使用队列 + promise + setTimeout/async await (异步方式)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazyMan</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.queue = [];</span><br><span class="line">        <span class="keyword">this</span>.sayName();</span><br><span class="line">        <span class="comment">// 下面这行和setTimeout功能类似：用来触发调用队列里面的函数</span></span><br><span class="line">        <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.callByOrder(<span class="keyword">this</span>.queue));</span><br><span class="line">        <span class="comment">// 或者这样写</span></span><br><span class="line">        <span class="comment">// setTimeout(async () =&gt; &#123;</span></span><br><span class="line">        <span class="comment">//     for (let todo of this.queue) &#123;</span></span><br><span class="line">        <span class="comment">//         await todo()</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">// &#125;, 0)</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    callByOrder(queue) &#123;</span><br><span class="line">        <span class="keyword">let</span> sequence = <span class="built_in">Promise</span>.resolve();</span><br><span class="line">        <span class="keyword">this</span>.queue.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            sequence = sequence.then(item);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sayName() &#123;</span><br><span class="line">        <span class="keyword">this</span>.queue.push(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`Hi! this is <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>!`</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    holdOn(time) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span></span><br><span class="line">            <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">                setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">`Wake up after <span class="subst">$&#123;time&#125;</span> second`</span>);</span><br><span class="line">                    resolve();</span><br><span class="line">                &#125;, time * <span class="number">1000</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sleep(time) &#123;</span><br><span class="line">        <span class="keyword">this</span>.queue.push(<span class="keyword">this</span>.holdOn(time));</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    eat(meal) &#123;</span><br><span class="line">        <span class="keyword">this</span>.queue.push(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`eat <span class="subst">$&#123;meal&#125;</span>`</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sleepFirst(time) &#123;</span><br><span class="line">        <span class="keyword">this</span>.queue.unshift(<span class="keyword">this</span>.holdOn(time));</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> LazyMan(<span class="string">'ff'</span>)</span><br><span class="line">    .eat(<span class="string">'food'</span>)</span><br><span class="line">    .sleep(<span class="number">2</span>)</span><br><span class="line">    .eat(<span class="string">'lunch'</span>)</span><br><span class="line">    .sleepFirst(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>总结：</p>
+<ol>
+<li>维护顺序可以用队列，可以用promise.then</li>
+<li>触发队列(promise.then)内事件执行可以用setTimeout或者promise.then</li>
+<li>如果队列内函数全部是同步处理的话，直接可以用一个next函数来触发下一个函数。</li>
+</ol>
+<p>​    如果队列内函数有异步操作的话，需要将队列内函数分装成async await 函数以保证执行顺序。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/09/关于Element和Node/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/09/关于Element和Node/" itemprop="url">关于Element和Node</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-09T20:05:41+08:00">
+                2019-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一-Element和Node的关系"><a href="#一-Element和Node的关系" class="headerlink" title="一. Element和Node的关系"></a>一. Element和Node的关系</h4><p>EventTarget &lt;=== Node &lt;==== Elememt &lt;==== HTMLElement &lt;===== HTMLDivElement</p>
+<p>上图显示的是继承关系，Node继承了EventTarget，Elememt继承了Node，等等。</p>
+<p>由此可见Node是Element的父类。</p>
+<p>Element的集合叫ElementCollection，Node的集合叫NodeList，他们都是类数组。</p>
+<h4 id="二-继承Node的还有哪些？"><a href="#二-继承Node的还有哪些？" class="headerlink" title="二. 继承Node的还有哪些？"></a>二. 继承Node的还有哪些？</h4><p>继承Node类的除了Element还有TextNode，CommentNode等等。</p>
+<p>简单的说就是<code>Node</code>是一个基类，DOM中的<code>Element</code>，<code>Text</code>和<code>Comment</code>都继承于它。<br>换句话说，<code>Element</code>，<code>Text</code>和<code>Comment</code>是三种特殊的<code>Node</code>，它们分别叫做<code>ELEMENT_NODE</code>,<br><code>TEXT_NODE</code>和<code>COMMENT_NODE</code>。</p>
+<p><strong>所以我们平时使用的html上的元素，即Element是类型为ELEMENT_NODE的Node。</strong></p>
+<p>Node实例node有一个属性是<strong>nodeType</strong>，node.nodeType属性返回节点类型的常数值。不同的类型对应不同的常数值，12种类型分别对应1到12的常数值,他们都是继承了Node的某种特定Node类型。</p>
+<p>元素节点            　　Node.ELEMENT_NODE(1)<br>属性节点            　　Node.ATTRIBUTE_NODE(2)<br>文本节点            　　Node.TEXT_NODE(3)<br>CDATA节点                   Node.CDATA_SECTION_NODE(4)<br>实体引用名称节点    Node.ENTRY_REFERENCE_NODE(5)<br>实体名称节点        　Node.ENTITY_NODE(6)<br>处理指令节点        　Node.PROCESSING_INSTRUCTION_NODE(7)<br>注释节点            　   Node.COMMENT_NODE(8)<br>文档节点            　   Node.DOCUMENT_NODE(9)<br>文档类型节点        　Node.DOCUMENT_TYPE_NODE(10)<br>文档片段节点        　Node.DOCUMENT_FRAGMENT_NODE(11)<br>DTD声明节点            Node.NOTATION_NODE(12)</p>
+<h4 id="三-Node和Element的应用"><a href="#三-Node和Element的应用" class="headerlink" title="三. Node和Element的应用"></a>三. Node和Element的应用</h4><p><strong>1 方法名字里面有element的一般是返回的Element</strong></p>
+<p>比如 document.getElementById(‘main’);</p>
+<p><strong>2 children() 和 childNodes()区别</strong></p>
+<p>注意： $0 为 浏览器里面选中的dom元素</p>
+<p>（1）$0.children 返回的是 子节点中element 元素的集合（不包括text和comment类型的node）<br>HTMLCollection(2)  长度为2 的HTMLCollection</p>
+<p>（2）$0.childNodes 返回的是  所有子节点（包括element，text和comment等类型node）</p>
+<p>NodeList(5) 长度为5的NodeList</p>
+<p><strong>3  firstChild() lastChild()  返回的是Node(不一定是Element，可能是Text或者Comment)</strong></p>
+<p><strong>4 创建不同节点类型</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var div = document.createElement(&apos;div&apos;);</span><br><span class="line">var text = document.createTextNode(&apos;测试&apos;);</span><br><span class="line"></span><br><span class="line">var attr = document.createAttribute(&apos;data-a&apos;);</span><br><span class="line">attr.value = &apos;eeeee&apos;;</span><br><span class="line">$0.setAttributeNode(attr); // 等效于 $0.setAttribute(&apos;data-a&apos;, &apos;eeeee&apos;);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/09/关于javascript数字类型的底层表示和位运算/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/09/关于javascript数字类型的底层表示和位运算/" itemprop="url">关于javascript数字类型的底层表示和位运算</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-09T11:10:26+08:00">
+                2019-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一-前言"><a href="#一-前言" class="headerlink" title="一. 前言"></a>一. 前言</h4><p>javascript有6种基本类型（String，Number，Boolean，Null， Undefined，Symbol）。</p>
+<p>其中Number是表示数字的唯一类型。C++有int，float，double， unsigned等各种数字类型，但是js只有一种数字类型，那就是Number。</p>
+<p>在js中所有的数字都是双倍精度的浮点数类型，也就是c++中的double类型，每个数字使用64位（8个字节）<strong>存储</strong>。但是<strong>做有些运算</strong>的时候（位运算，parseInt()等 ），是以32位带符号的整数进行运算的，并且返回值也是一个32位带符号的整数。</p>
+<h4 id="二-浮点型数字表示"><a href="#二-浮点型数字表示" class="headerlink" title="二. 浮点型数字表示"></a>二. 浮点型数字表示</h4><p><a href="https://harttle.land/2018/06/29/javascript-numbers.html#header-4" target="_blank" rel="noopener">查看浮点型数字存储表示</a></p>
+<p>理解js 里面的 <strong>MAX_VALUE </strong>  <strong>MIN_VALUE</strong>  <strong>MAX_SAFE_INTEGER</strong>  <strong>MIN_SAFE_INTEGER</strong></p>
+<p>注意：这些整数中可以<strong>连续、准确地表示</strong>的那些整数称为 <strong>安全的整数</strong></p>
+<h4 id="三-位运算-32位有符号整数"><a href="#三-位运算-32位有符号整数" class="headerlink" title="三. 位运算(32位有符号整数)"></a>三. 位运算(32位有符号整数)</h4><p>位运算会先把数字（不管是2.1这样的小数， 还是2这样的整数）转换成32位有符号整数，然后再做操作，返回的也是32位有符号整数。</p>
+<p>所有的按位操作运算符都会被转成补码（正数的补码和原码相同，负数的补码是原码除符号位取反之后再+1）</p>
+<p>用二进制表示一个数字，一般我们习惯用原码表示。但是在运算的时候计算机会使用每个数字的补码表示来做运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a&gt;&gt;b 有符号右移: 右移过程中保留符号位，左侧填充符号位，右侧被移出的位被丢弃。</span><br><span class="line">	效果：正数返回正数，负数返回负数。效果类似于除以2或者4或者8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a&gt;&gt;&gt;b 无符号右移: 右移过程中不管符号位是什么，左侧填充0，右侧被移出的位被丢弃。</span><br><span class="line">	效果：返回的都是正数。(对于正数效果是除以2/4/8，对于负数返回了一个正数，不知道这个正数有啥用)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a&lt;&lt;b 左移: 左移不区分是否有符号，右侧填充0，左侧被移出的位被丢弃。</span><br><span class="line">	效果：正数返回正数，负数返回负数。效果类似于乘以2或者4或者8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~a 按位非（NOT）:对数字的补码每一位取反(0变1，1变0)</span><br><span class="line">	效果：结果是a+1之后的相反数，比如~(-2) === 1,~(-1) === 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a^b 按位异或(XOR): 按位将 0和1作用时， 不一样的得到1， 一样的得到0</span><br><span class="line">	效果：将任一数值 x 与 0 进行异或操作，其结果为 x。将任一数值 x 与 -1 进行异或操作，其结果为 ~x。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a | b 按位或(OR): 按位将 0和1作用时， 只要有一个1则返回1，否则返回0</span><br><span class="line">	效果：将任一数值 x 与 0 进行按位或操作，其结果都是 x。将任一数值x与-1进行按位或操作，其结果为 -1。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &amp; b 按位与(AND): 按位将 0和1作用时， 必须两个都为1才返回1，否则返回0</span><br><span class="line">	效果：将任一数值x与0执行按位与操作，其结果都为 0。将任一数值 x 与 -1 执行按位与操作，其结果都为 x。</span><br></pre></td></tr></table></figure>
+<p>上面操作之所以很多都与0和-1操作，是因为0在内存的补码表示全部是0，-1在内存的补码表示全部都是1。</p>
+<p>0在内存的补码表示全部是0：00000000</p>
+<p>-1在内存的补码表示全部都是1： 11111111</p>
+<h4 id="四-位运算在前端中的运用"><a href="#四-位运算在前端中的运用" class="headerlink" title="四. 位运算在前端中的运用"></a>四. 位运算在前端中的运用</h4><p>1 使用 &amp; 运算判断 奇数偶数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 偶数 &amp; 1 = 0</span><br><span class="line">// 奇数 &amp; 1 = 1</span><br><span class="line">console.log(2 &amp; 1)    // 0</span><br><span class="line">console.log(3 &amp; 1)    // 1</span><br><span class="line">console.log(-2 &amp; 1)    // 0</span><br><span class="line">console.log(-3 &amp; 1)    // 1</span><br></pre></td></tr></table></figure>
+<p>2 使用 ~, &gt;&gt; , &gt;&gt;&gt; , &lt;&lt; , | 来取整</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(6.83 &gt;&gt; 0)  // 6</span><br><span class="line">console.log(6.83 &lt;&lt; 0)  // 6</span><br><span class="line">console.log(-6.83 &lt;&lt; 0)  // 6</span><br><span class="line">console.log(-6.83 &gt;&gt; 0)  // 6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// &gt;&gt;&gt;不可对负数取整</span><br><span class="line">console.log(6.83 &gt;&gt;&gt; 0)   // 6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(~~ 6.83)    // 6</span><br><span class="line">console.log(~~ -6.83)    // 6</span><br></pre></td></tr></table></figure>
+<p>这里都是利用了运算会把数字变成32位有符号整数的特点</p>
+<p>3  使用<code>^</code>来完成值交换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a = 5</span><br><span class="line">var b = 8</span><br><span class="line">a ^= b</span><br><span class="line">b ^= a</span><br><span class="line">a ^= b</span><br><span class="line">console.log(a)   // 8</span><br><span class="line">console.log(b)   // 5</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/08/https证书/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/08/https证书/" itemprop="url">https证书</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-08T17:12:02+08:00">
+                2019-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/http/" itemprop="url" rel="index">
+                    <span itemprop="name">http</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://blog.csdn.net/liuchunming033/article/details/48470575" target="_blank" rel="noopener">参考链接1</a></p>
+<p><a href="http://www.voidcn.com/article/p-kzssypus-xq.html" target="_blank" rel="noopener">参考链接2</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/node学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/21/node学习/" itemprop="url">node学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-21T15:26:22+08:00">
+                2019-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/编译型语言和解释型语言区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/21/编译型语言和解释型语言区别/" itemprop="url">编译型语言和解释型语言区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-21T11:52:56+08:00">
+                2019-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://blog.csdn.net/danpi1hao/article/details/64121610" target="_blank" rel="noopener">参考链接</a></p>
+<h3 id="一-编译型语言和解释型语言"><a href="#一-编译型语言和解释型语言" class="headerlink" title="一. 编译型语言和解释型语言"></a>一. 编译型语言和解释型语言</h3><p>计算机编程语言种类非常多，根据与计算机硬件贴近程度和抽象程度大致可分为3类，自顶向下分别是 </p>
+<p>高级语言（抽象层次更高的便于记忆和表示的英文代码）<br>​      |<br>​      |<br>汇编语言（抽象层次较高的对应机器硬件的cpu指令集，英文缩的助记符号代码）<br>​      |<br>​      |<br>机器语言（抽像层次最低的由0、1序列所表示的机器码） </p>
+<p>​      众所周知，计算机底层只能识别（并执行）0、1序列的机器码，这表示所有的高级编程语言所编写的代码，最终都要以某种方式被转换成能被计算机识别的0、1序列机器码，方可被计算机接受并执行。这种将代码转换为机器码的方式可分为编译型和解释型这2类： </p>
+<ol>
+<li>编译型：<strong>运行前</strong>先由编译器将高级语言代码编译为对应机器的cpu汇编指令集，再由汇编器汇编为目标机器码，生成可执行文件，然最后运行生成的可执行文件。最典型的代表语言为C/C++，一般生成的可执行文件及.exe文件。 </li>
+<li>解释型：<strong>在运行时</strong>由翻译器将高级语言代码翻译成易于执行的中间代码，并由解释器（例如浏览器、虚拟机）逐一将该中间代码解释成机器码并执行（可看做是将编译、运行合二为一了）。最典型的代表语言为JavaScript、Python、Ruby和Perl等 </li>
+</ol>
+<p>两种方式的异同之处： </p>
+<p><1>转换为机器码的时机和运行效率<br>​      两种转换为机器码的方式，最大不同之处是处理转换为机器码的时机不同。编译型是在运行前（且只编译一次），需要做转换工作，并生成一个可执行的机器码文件，用户每次运行该可执行文件执行即可，效率、执行速度要比解释型的快。因为解释型是在运行时做转换工作，并不生成可执行文件，所以每次运行都需要做一下转换工作，然后再执行，效率自然就低了。</1></p>
+<p><2>可移植性<br>​      编译型在编译后生成的可执行文件，是相对与本机机器指令集的，所生成的可执行文件移植到不同机器指令集的机器上，势必不一定能正常运行。而解释型的，尽管在不同配置的机器上，也是最终会解释成基于当前机器指令集的机器码并执行，故解释型的可移植性相对来说还是强于编译型的。 </2></p>
+<p><3>纠错排查<br>​      编译型语言，在编译阶段即可发现常见的语法或者链接等错误，此机制可在运行前帮助程序员排查出可能潜在的语法、语义和类型转换错误，编译型语言一般都有明确的变量类型检测，也被称作强类型语言，即编译型语言至少能确保所生成的可执行文件肯定是可运行的，至于执行的逻辑不对则属于程序员业务逻辑错误范畴了。<br>​      而对于解释型语言，代码中的错误必须直到运行阶段方可发现，由此造成的困惑是：往往一段程序看不出问题但却在运行阶段错误连连且需要一个个排查：变量拼写错误、方法不存在等。</3></p>
+<p>但也正是基于解释是在运行期执行转化的特性，一般的解释型语言通常都有自己的shell，可以在不确定某些执行结果时立即“动手执行”试一下，这就比每次都需要编译后才能运行并看到结果省去不少时间，鱼和熊掌不可兼得的理念再一次被验证了。</p>
+<h3 id="二-鱼和熊掌可兼得吗？"><a href="#二-鱼和熊掌可兼得吗？" class="headerlink" title="二. 鱼和熊掌可兼得吗？"></a>二. <strong>鱼和熊掌可兼得吗？</strong></h3><p> 综上所述，既然编译型与解释型各有优缺点又相互对立，所以一些语言都有把两者折衷起来的趋势： </p>
+<p>​      Java为了实现跨平台的特性，专门在从高级语言代码转换至机器码过程的中间加入了一层中间层JVM（java虚拟机），<strong>Java首先依赖编译器将代码（.java）编译成JVM能识别的字节码文件（.class），然后由JVM解释并执行字节码</strong>，也可结合JIT（即时编译）技术，将解释生成的机器码转换为更高效的本地机器码，且该机器码可被缓存，来提高重复执行的效率。这样的结合，令程序员在使用Java时即可享受编译带来的<strong>强类型编译检查</strong>的好处，又能在执行时享受<strong>代码执行的高效性和跨平台性</strong>，何乐而不为呢？ </p>
+<p>​      Python是解释型语言，但为了效率上的考虑，也提供了编译方式，编译后生成的也是字节码的文件形式，并由Python的的VM（虚拟机）的去执行，这点可以说和Java的编译执行方式类似。不同点在于，Python的编译并非强制执行的操作，确切来说Python的编译是自动的，通常发生在对某个模块（module）的调用过程中，编译成字节码的可以节省加载模块的时间，以此达到提高效率的目的。可见，某些先进的高级语言在对编译和解释方面的拿捏舍去，都采取了一种：两手抓，两手都要硬的态度哦:)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/09/看源码学习的技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -745,1735 +1745,11 @@ getChild (key) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/19/关于正则表达式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/19/关于正则表达式/" itemprop="url">关于正则表达式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-19T20:04:32+08:00">
-                2018-12-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本文内容是参照菜鸟教程写的</p>
-<h3 id="一-对元字符分类"><a href="#一-对元字符分类" class="headerlink" title="一.  对元字符分类"></a>一.  对元字符分类</h3><p>正则表达式里面可以分为普通字符和元字符。</p>
-<p>普通字符没有特殊含义，比如’a’ 就是代表 ‘a’ 字符；而元字符具有特殊含义，下面我们将元字符进行简单归类，便于记忆。（只列出平时使用较多的一些字符，不常使用的没有列出）<br>由于hexo对于表格渲染有点问题，所以有些表格显示不太好。</p>
-<ol>
-<li>非打印字符</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">元字符</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">\s</td>
-<td>匹配任何空白字符，包括空格，制表符，换页符等等。</td>
-</tr>
-<tr>
-<td style="text-align:left">\S</td>
-<td>匹配任何非空白字符</td>
-</tr>
-<tr>
-<td style="text-align:left">\n</td>
-<td>匹配一个换行符</td>
-</tr>
-<tr>
-<td style="text-align:left">\r</td>
-<td>匹配一个回车符</td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>特殊含义元字符</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>元字符</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$</td>
-<td>匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $$ 也匹配 ‘\n’ 或 ‘\r’。要匹配 \$ 字符本身，请使用’\\$’。</td>
-</tr>
-<tr>
-<td>^</td>
-<td>匹配输入字符串的开始位置，除非在方括号表达式中使用，此时它表示不接受该字符集合。要匹配 ^ 字符本身，请使用 \^。</td>
-</tr>
-<tr>
-<td>*</td>
-<td>匹配前面的子表达式<strong>0</strong>次或<strong>多</strong>次。要匹配 <em> 字符，请使用\ \</em>。</td>
-</tr>
-<tr>
-<td>+</td>
-<td>匹配前面的子表达式一次或多次。要匹配 + 字符，请使用\ +。</td>
-</tr>
-<tr>
-<td>?</td>
-<td>匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。</td>
-</tr>
-<tr>
-<td>.</td>
-<td>匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用\ . 。</td>
-</tr>
-<tr>
-<td>{</td>
-<td>标记限定符表达式的开始。要匹配 {，请使用\ {。</td>
-</tr>
-<tr>
-<td>[</td>
-<td>标记一个中括号表达式的开始。要匹配 [，请使用\ [。</td>
-</tr>
-<tr>
-<td>\</td>
-<td>将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘\\’ 匹配 “\”，而 ‘\(‘ 则匹配 “(“。</td>
-</tr>
-<tr>
-<td>\</td>
-<td></td>
-<td>指明两项之间的一个选择。要匹配 \</td>
-<td>，请使用\\</td>
-<td>。</td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>和转义相关的元字符</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>\d</td>
-<td>匹配一个数字字符。等价于 [0-9]。</td>
-</tr>
-<tr>
-<td>\D</td>
-<td>匹配一个非数字字符。等价于 [^0-9]。</td>
-</tr>
-<tr>
-<td>\w</td>
-<td>匹配字母、数字、下划线。等价于[A-Za-z0-9_]。</td>
-</tr>
-<tr>
-<td>\W</td>
-<td>匹配非字母、数字、下划线。等价于[^A-Za-z0-9]。</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td>\S</td>
-<td>匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
-</tr>
-<tr>
-<td>\B</td>
-<td>匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
-</tr>
-<tr>
-<td>\num</td>
-<td>匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，’(.)\1’ 匹配两个连续的相同字符。</td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>限定符</li>
-</ol>
-<p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。比如 * 或 + 或 ? 或 {n} 或 {n,} 或 {n,m}。</p>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>*</td>
-<td>匹配前面的子表达式零次或多次。例如，zo<em> 能匹配 “z” 以及 “zoo”。</em> 等价于{0,}。</td>
-</tr>
-<tr>
-<td>+</td>
-<td>匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
-</tr>
-<tr>
-<td>?</td>
-<td>匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 、 “does” 中的 “does” 、 “doxy” 中的 “do” 。? 等价于 {0,1}。</td>
-</tr>
-<tr>
-<td>{n}</td>
-<td>n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
-</tr>
-<tr>
-<td>{n,}</td>
-<td>n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*’。</td>
-</tr>
-<tr>
-<td>{n,m}</td>
-<td>m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。</td>
-</tr>
-</tbody>
-</table>
-<p><strong>*、+限定符都是贪婪的，因为它们会尽可能多的匹配文字，只有在它们的后面加上一个?就可以实现非贪婪或最小匹配。</strong></p>
-<p>eg： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;&lt;H1&gt;Chapter 1 - 介绍正则表达式&lt;/H1&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>贪婪：</strong>下面的表达式匹配从开始小于符号 (&lt;) 到关闭 H1 标记的大于符号 (&gt;) 之间的所有内容。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/&lt;.*&gt;/</span><br></pre></td></tr></table></figure>
-<p><strong>非贪婪</strong>: 下面的表达式只匹配开始的 H1 标签</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/&lt;.*?&gt;/</span><br><span class="line">/&lt;\w+?&gt;/</span><br></pre></td></tr></table></figure>
-<p>通过在 *、+ 或 ? 限定符之后放置 ?，该表达式从”贪心”表达式转换为”非贪心”表达式或者最小匹配。</p>
-<ol>
-<li>定位符</li>
-</ol>
-<p>定位符使您能够将正则表达式固定到行首或行尾。它们还使您能够创建这样的正则表达式，这些正则表达式出现在一个单词内、在一个单词的开头或者一个单词的结尾。</p>
-<p>定位符用来描述字符串或单词的边界，^ 和 $ 分别指字符串的开始与结束，\b 描述单词的前或后边界，\B 表示非单词边界。</p>
-<p>正则表达式的定位符有：</p>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>^</td>
-<td>匹配输入字符串开始的位置。如果设置了 RegExp 对象的 Multiline 属性，^ 还会与 \n 或 \r 之后的位置匹配。</td>
-</tr>
-<tr>
-<td>$</td>
-<td>匹配输入字符串结尾的位置。如果设置了 RegExp 对象的 Multiline 属性，$ 还会与 \n 或 \r 之前的位置匹配。</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>匹配一个单词边界，即字与空格间的位置。</td>
-</tr>
-<tr>
-<td>\B</td>
-<td>非单词边界匹配。</td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>选择</li>
-</ol>
-<p>用圆括号将所有选择项括起来，相邻的选择项之间用|分隔。但用圆括号会有一个副作用，使相关的匹配会被缓存，此时可用?:放在第一个选项前来消除这种副作用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var reg = /a(\w)+(f|g)/</span><br><span class="line">var str = &apos;aef&apos;</span><br><span class="line">str.match(reg)  // [&quot;aef&quot;, &quot;e&quot;, &quot;f&quot;, index: 0, input: &quot;aef&quot;, groups: undefined]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var reg = /a(?:\w)+(f|g)/</span><br><span class="line">var str = &apos;aef&apos;</span><br><span class="line">str.match(reg)  // [&quot;aef&quot;, &quot;f&quot;, index: 0, input: &quot;aef&quot;, groups: undefined]</span><br></pre></td></tr></table></figure>
-<p>第一个例子和第二个例子相比，str.match(reg)返回的结果不包括”e”</p>
-<ol>
-<li>反向引用</li>
-</ol>
-<p>对一个正则表达式模式或部分模式两边添加圆括号将导致相关匹配存储到一个临时缓冲区中，所捕获的每个子匹配都按照在正则表达式模式中从左到右出现的顺序存储。缓冲区编号从 1 开始，最多可存储 99 个捕获的子表达式。每个缓冲区都可以使用 \n 访问，其中 n 为一个标识特定缓冲区的一位或两位十进制数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;Is is the cost of of gasoline going up up&quot;;</span><br><span class="line">var patt1 = /\b([a-z]+) \1\b/ig;</span><br><span class="line">str.match(patt1) // [&quot;Is is&quot;, &quot;of of&quot;, &quot;up up&quot;]</span><br></pre></td></tr></table></figure>
-<ol>
-<li>非捕获元字符</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">字符</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">(?:pattern)</td>
-<td style="text-align:left">匹配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 “或” 字符 (\</td>
-<td>) 来组合一个模式的各个部分是很有用。例如， ‘industr(?:y\</td>
-<td>ies) 就是一个比 ‘industry\</td>
-<td>industries’ 更简略的表达式。</td>
-</tr>
-<tr>
-<td style="text-align:left">(?=patt)</td>
-<td style="text-align:left"><strong>正向肯定预测</strong>（look ahead positive assert），在任何匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如，”Windows(?=95\</td>
-<td>98\</td>
-<td>NT\</td>
-<td>2000)”能匹配”Windows2000”中的”Windows”，但不能匹配”Windows3.1”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
-</tr>
-<tr>
-<td style="text-align:left">(?!patt)</td>
-<td style="text-align:left"><strong>正向否定预测</strong>(negative assert)，在任何不匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如”Windows(?!95\</td>
-<td>98\</td>
-<td>NT\</td>
-<td>2000)”能匹配”Windows3.1”中的”Windows”，但不能匹配”Windows2000”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
-</tr>
-<tr>
-<td style="text-align:left">(?&lt;=patt)</td>
-<td style="text-align:left"><strong>反向(look behind)肯定预测</strong>，与正向肯定预查类似，只是方向相反。例如，”`(?&lt;=95</td>
-<td>98</td>
-<td>NT</td>
-<td>2000)Windows<code>&quot;能匹配&quot;</code>2000Windows<code>&quot;中的&quot;</code>Windows<code>&quot;，但不能匹配&quot;</code>3.1Windows<code>&quot;中的&quot;</code>Windows`”。</td>
-</tr>
-<tr>
-<td style="text-align:left">(?&lt;!patt)</td>
-<td style="text-align:left"><strong>反向否定预测</strong>，与正向否定预查类似，只是方向相反。例如”`(?&lt;!95</td>
-<td>98</td>
-<td>NT</td>
-<td>2000)Windows<code>&quot;能匹配&quot;</code>3.1Windows<code>&quot;中的&quot;</code>Windows<code>&quot;，但不能匹配&quot;</code>2000Windows<code>&quot;中的&quot;</code>Windows`”。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="二-对元字符进行归总"><a href="#二-对元字符进行归总" class="headerlink" title="二. 对元字符进行归总"></a>二. 对元字符进行归总</h3><table>
-<thead>
-<tr>
-<th>字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>\</td>
-<td>将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。例如，’n’ 匹配字符 “n”。’\n’ 匹配一个换行符。序列 ‘\‘ 匹配 “\” 而 “(“ 则匹配 “(“。</td>
-</tr>
-<tr>
-<td>^</td>
-<td>匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 ‘\n’ 或 ‘\r’ 之后的位置。</td>
-</tr>
-<tr>
-<td>$</td>
-<td>匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 ‘\n’ 或 ‘\r’ 之前的位置。</td>
-</tr>
-<tr>
-<td>*</td>
-<td>匹配前面的子表达式零次或多次。例如，zo<em> 能匹配 “z” 以及 “zoo”。</em> 等价于{0,}。</td>
-</tr>
-<tr>
-<td>+</td>
-<td>匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
-</tr>
-<tr>
-<td>?</td>
-<td>匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 或 “does” 。? 等价于 {0,1}。</td>
-</tr>
-<tr>
-<td>{n}</td>
-<td>n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
-</tr>
-<tr>
-<td>{n,}</td>
-<td>n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*’。</td>
-</tr>
-<tr>
-<td>{n,m}</td>
-<td>m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。</td>
-</tr>
-<tr>
-<td>?</td>
-<td>当该字符紧跟在任何一个其他限制符 (*, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 “oooo”，’o+?’ 将匹配单个 “o”，而 ‘o+’ 将匹配所有 ‘o’。</td>
-</tr>
-<tr>
-<td>.</td>
-<td>匹配除换行符（\n、\r）之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用像”**(.\</td>
-<td>\n)**”的模式。</td>
-</tr>
-<tr>
-<td>(pattern)</td>
-<td>匹配 pattern 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，在VBScript 中使用 SubMatches 集合，在JScript 中则使用 $0…$9 属性。要匹配圆括号字符，请使用 ‘(‘ 或 ‘)‘。</td>
-</tr>
-<tr>
-<td>(?:pattern)</td>
-<td>匹配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 “或” 字符 (\</td>
-<td>) 来组合一个模式的各个部分是很有用。例如， ‘industr(?:y\</td>
-<td>ies) 就是一个比 ‘industry\</td>
-<td>industries’ 更简略的表达式。</td>
-</tr>
-<tr>
-<td>(?=pattern)</td>
-<td>正向肯定预查（look ahead positive assert），在任何匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如，”Windows(?=95\</td>
-<td>98\</td>
-<td>NT\</td>
-<td>2000)”能匹配”Windows2000”中的”Windows”，但不能匹配”Windows3.1”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
-</tr>
-<tr>
-<td>(?!pattern)</td>
-<td>正向否定预查(negative assert)，在任何不匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如”Windows(?!95\</td>
-<td>98\</td>
-<td>NT\</td>
-<td>2000)”能匹配”Windows3.1”中的”Windows”，但不能匹配”Windows2000”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
-</tr>
-<tr>
-<td>(?&lt;=pattern)</td>
-<td>反向(look behind)肯定预查，与正向肯定预查类似，只是方向相反。例如，”`(?&lt;=95</td>
-<td>98</td>
-<td>NT</td>
-<td>2000)Windows<code>&quot;能匹配&quot;</code>2000Windows<code>&quot;中的&quot;</code>Windows<code>&quot;，但不能匹配&quot;</code>3.1Windows<code>&quot;中的&quot;</code>Windows`”。</td>
-</tr>
-<tr>
-<td>(?&lt;!pattern)</td>
-<td>反向否定预查，与正向否定预查类似，只是方向相反。例如”`(?&lt;!95</td>
-<td>98</td>
-<td>NT</td>
-<td>2000)Windows<code>&quot;能匹配&quot;</code>3.1Windows<code>&quot;中的&quot;</code>Windows<code>&quot;，但不能匹配&quot;</code>2000Windows<code>&quot;中的&quot;</code>Windows`”。</td>
-</tr>
-<tr>
-<td>x\</td>
-<td>y</td>
-<td>匹配 x 或 y。例如，’z\</td>
-<td>food’ 能匹配 “z” 或 “food”。’(z\</td>
-<td>f)ood’ 则匹配 “zood” 或 “food”。</td>
-</tr>
-<tr>
-<td>[xyz]</td>
-<td>字符集合。匹配所包含的任意一个字符。例如， ‘[abc]’ 可以匹配 “plain” 中的 ‘a’。</td>
-</tr>
-<tr>
-<td>[^xyz]</td>
-<td>负值字符集合。匹配未包含的任意字符。例如， ‘[^abc]’ 可以匹配 “plain” 中的’p’、’l’、’i’、’n’。</td>
-</tr>
-<tr>
-<td>[a-z]</td>
-<td>字符范围。匹配指定范围内的任意字符。例如，’[a-z]’ 可以匹配 ‘a’ 到 ‘z’ 范围内的任意小写字母字符。</td>
-</tr>
-<tr>
-<td>[^a-z]</td>
-<td>负值字符范围。匹配任何不在指定范围内的任意字符。例如，’[^a-z]’ 可以匹配任何不在 ‘a’ 到 ‘z’ 范围内的任意字符。</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
-</tr>
-<tr>
-<td>\B</td>
-<td>匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
-</tr>
-<tr>
-<td>\cx</td>
-<td>匹配由 x 指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>匹配一个数字字符。等价于 [0-9]。</td>
-</tr>
-<tr>
-<td>\D</td>
-<td>匹配一个非数字字符。等价于 [^0-9]。</td>
-</tr>
-<tr>
-<td>\f</td>
-<td>匹配一个换页符。等价于 \x0c 和 \cL。</td>
-</tr>
-<tr>
-<td>\n</td>
-<td>匹配一个换行符。等价于 \x0a 和 \cJ。</td>
-</tr>
-<tr>
-<td>\r</td>
-<td>匹配一个回车符。等价于 \x0d 和 \cM。</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td>\S</td>
-<td>匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td>\t</td>
-<td>匹配一个制表符。等价于 \x09 和 \cI。</td>
-</tr>
-<tr>
-<td>\v</td>
-<td>匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
-</tr>
-<tr>
-<td>\w</td>
-<td>匹配字母、数字、下划线。等价于’[A-Za-z0-9_]’。</td>
-</tr>
-<tr>
-<td>\W</td>
-<td>匹配非字母、数字、下划线。等价于 ‘[^A-Za-z0-9_]‘。</td>
-</tr>
-<tr>
-<td>\xn</td>
-<td>匹配 n，其中 n 为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，’\x41’ 匹配 “A”。’\x041’ 则等价于 ‘\x04’ &amp; “1”。正则表达式中可以使用 ASCII 编码。</td>
-</tr>
-<tr>
-<td>\num</td>
-<td>匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，’(.)\1’ 匹配两个连续的相同字符。</td>
-</tr>
-<tr>
-<td>\n</td>
-<td>标识一个八进制转义值或一个向后引用。如果 \n 之前至少 n 个获取的子表达式，则 n 为向后引用。否则，如果 n 为八进制数字 (0-7)，则 n 为一个八进制转义值。</td>
-</tr>
-<tr>
-<td>\nm</td>
-<td>标识一个八进制转义值或一个向后引用。如果 \nm 之前至少有 nm 个获得子表达式，则 nm 为向后引用。如果 \nm 之前至少有 n 个获取，则 n 为一个后跟文字 m 的向后引用。如果前面的条件都不满足，若 n 和 m 均为八进制数字 (0-7)，则 \nm 将匹配八进制转义值 nm。</td>
-</tr>
-<tr>
-<td>\nml</td>
-<td>如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml。</td>
-</tr>
-<tr>
-<td>\un</td>
-<td>匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="三-获取字符串中匹配正则的部分"><a href="#三-获取字符串中匹配正则的部分" class="headerlink" title="三. 获取字符串中匹配正则的部分"></a>三. 获取字符串中匹配正则的部分</h3><p>可以使用正则的方法，或者字符串的方法</p>
-<ol>
-<li><p>正则实例的方法：</p>
-<p>(1) exec方法（获取匹配正则部分）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var reg = /\d+/;</span><br><span class="line">var str = &apos;11245f&apos;;</span><br><span class="line">reg.exec(str);    //[&quot;11245&quot;, index: 0, input: &quot;11245f&quot;, groups: undefined]</span><br></pre></td></tr></table></figure>
-<p>(2)test方法（测试是否匹配正则）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg.exec(str);  // true</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>字符串的方法</p>
-<p>（1）match方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var reg = /(\d+)(f|g)/;</span><br><span class="line">var str = &apos;11245f&apos;;</span><br><span class="line">str.match(reg) </span><br><span class="line">//  [&quot;11245f&quot;, &quot;11245&quot;, &quot;f&quot;, index: 0, input: &quot;11245f&quot;, groups: undefined]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var reg = /\d+/g;</span><br><span class="line">var str = &apos;11245f11111&apos;;</span><br><span class="line">str.match(reg) // [&quot;11245&quot;, &quot;11111&quot;]</span><br></pre></td></tr></table></figure>
-<p><strong>注意</strong>：正则的exec方法和字符串的match方法功能一样，但是<strong>正则的exec永远只返回第一个匹配字符串及其子模式</strong>。而字符串的match方法在正则<strong>不设置g时和exec一致</strong>，<strong>如果设置了g，那么返回的是所有匹配的字符串，并且不包括子模式</strong>。</p>
-</li>
-</ol>
-<h3 id="四-返回结果中正则子模式的顺序"><a href="#四-返回结果中正则子模式的顺序" class="headerlink" title="四. 返回结果中正则子模式的顺序"></a>四. 返回结果中正则子模式的顺序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">reg = /a((\w)+)(f|g)/</span><br><span class="line">str=&apos;a123g&apos;</span><br><span class="line">result = str.match(reg)   </span><br><span class="line">// [&quot;a123g&quot;, &quot;123&quot;, &quot;3&quot;, &quot;g&quot;, index: 0, input: &quot;a123g&quot;, groups: undefined]</span><br></pre></td></tr></table></figure>
-<p>result[0] 是整个匹配到的模式</p>
-<p>result[1]是第一个匹配到的子模式</p>
-<p>result[2]是第一个子模式里面的匹配到的子模式</p>
-<p>result[3]是第二个匹配到的子模式</p>
-<p>所以这个返回数组排列是按照<strong>类似深度遍历</strong>的模式来排列匹配数组的</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/12/关于babel的一些理解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/12/关于babel的一些理解/" itemprop="url">关于babel的一些理解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-12T14:27:03+08:00">
-                2018-12-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一-为什么要使用babel"><a href="#一-为什么要使用babel" class="headerlink" title="一. 为什么要使用babel"></a>一. 为什么要使用babel</h3><p>由于有些浏览器不支持es6+ 语法，而我们在写代码的时候又希望能使用es6语法，享受其带来的简单方便。这时候我们需要babel来对我们的代码进行转换，将es6+ 语法转换成es5语法，让浏览器能识别。</p>
-<h3 id="二-什么是babel"><a href="#二-什么是babel" class="headerlink" title="二. 什么是babel"></a>二. 什么是babel</h3><p>babel是一个转译器，感觉相对于编译器compiler，叫转译器transpiler更准确，因为它只是把同种语言的高版本规则翻译成低版本规则，而不像编译器那样，输出的是另一种更低级的语言代码。</p>
-<p>(1) babel的编译过程可以分成三个步骤：</p>
-<ul>
-<li>The parser: <a href="https://github.com/babel/babel/blob/master/packages/babel-parser" target="_blank" rel="noopener"><code>@babel/parser</code></a></li>
-<li>The transformer[s]: All the plugins/presets<ul>
-<li>These all use <a href="https://github.com/babel/babel/blob/master/packages/babel-traverse" target="_blank" rel="noopener"><code>@babel/traverse</code></a> to traverse through the AST</li>
-</ul>
-</li>
-<li>The generator: <a href="https://github.com/babel/babel/blob/master/packages/babel-generator" target="_blank" rel="noopener"><code>@babel/generator</code></a></li>
-</ul>
-<p>(2) babel工作流：nput string -&gt; <code>@babel/parser</code> parser -&gt; <code>AST</code> -&gt; transformer[s] -&gt; <code>AST</code> -&gt; <code>@babel/generator</code> -&gt; output string</p>
-<p>(3) babel包的构成：</p>
-<h5 id="核心包"><a href="#核心包" class="headerlink" title="核心包"></a>核心包</h5><ol>
-<li>babel-core： babel转译器本身，提供了babel的转译API，如babel.transform等，用于对代码进行转译。像webpack的babel-loader就是调用这些API来完成转译过程的。</li>
-<li>babel-parser：babel的词法解析器</li>
-<li>babel-traverse：用于对AST抽象语法树的遍历，主要给plugin用</li>
-<li>babel-generator：根据AST生成代码</li>
-</ol>
-<h5 id="工具包"><a href="#工具包" class="headerlink" title="工具包"></a>工具包</h5><ol>
-<li>babel-cli：babel的命令工具，通过命令对js代码进行转译</li>
-<li>babel-register：通过修改nodejs的require来自动转译require引用的js代码文件</li>
-</ol>
-<h5 id="功能包"><a href="#功能包" class="headerlink" title="功能包"></a>功能包</h5><ol>
-<li>babel-type: 用于检验，构建和改变AST树的节点</li>
-<li>babel-template：辅助函数，用于从字符串形式的代码来构建AST树的节点</li>
-<li>babel-helpers: 一系列预制的babel-template函数，英语提供给一些plugins用</li>
-<li>babel-code-frames：用于生成错误信息，指出错误位置</li>
-<li><strong>babel-plugin-xxx</strong>：bable转译过程中用到的插件。其中babel-plugin-transform-xxx是transform步骤中使用到的</li>
-<li><strong>babel-preset-xxx</strong>：transform阶段使用到的一系列plugin</li>
-<li><strong>babel-polyfill</strong>：js标准新增的原生对象和API的shim，实现上仅仅是对<strong>core-js</strong>和<strong>gennerator-runtime</strong>两个包的封装</li>
-<li><strong>babel-runtime</strong>：功能类似于babel-polyfill，一般用于library或plugin中，因为他不会污染全局作用域</li>
-</ol>
-<p>preset其实就是一些plugin的集合</p>
-<h3 id="三-polyfill和runtime"><a href="#三-polyfill和runtime" class="headerlink" title="三. polyfill和runtime"></a>三. polyfill和runtime</h3><p>由于babel默认只是转译新标准引入的语法，比如ES6的箭头函数转译成ES5的函数；而<strong>新标准引入的新的原生对象，部分原生对象新增的原型方法，新增的API（如</strong>Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象<strong>等）</strong>以及一些定义在全局对象上的方法（比如Object.assign<strong>)，这些babel是不会转译的。需要用户自行引入polyfill来解决</strong></p>
-<p>引入垫片（polyfill）有几种方式，其中他们各有优缺点：</p>
-<p><strong>方法一：使用babel-polyfill</strong></p>
-<p>​    1. 先安装包： npm install –save babel-polyfill</p>
-<p>​    2. 要确保<strong>在入口处导入polyfill</strong>，因为polyfill代码需要在所有其他代码前先被调用<br>​    代码方式： <code>import &quot;babel-polyfill&quot;</code><br>​    或者webpack配置： <code>module.exports = { entry: [&quot;babel-polyfill&quot;, &quot;./app/js&quot;] };</code></p>
-<p>优点：引入之后可以放心使用es6语法，他对所有的方法都进行了polyfill</p>
-<p>缺点：这种方式是改变的全局作用域，也就是说污染了全局（比如在Array的prototype上添加includes方法等）</p>
-<p>打出来的包也会比较大。</p>
-<p><strong>方法二：使用transform-runtime</strong></p>
-<p>让重复定义变成重复引用，解决babel代码重复问题</p>
-<p>babel-plugin-transform-runtime插件依赖babel-runtime，babel-runtime是真正提供runtime环境的包；也就是说transform-runtime插件是把js代码中使用到的新原生对象和静态方法转换成对runtime实现包的引用，举个例子如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 输入的ES6代码</span><br><span class="line">var sym = Symbol();</span><br><span class="line">// 通过transform-runtime转换后的ES5+runtime代码 </span><br><span class="line">var _symbol = require(&quot;babel-runtime/core-js/symbol&quot;); </span><br><span class="line">// 另外，这里我们也可以隐约发现，babel-runtime其实也不是真正的实现代码所在，真正的代码实现是在core-js中</span><br><span class="line">var sym = (0, _symbol.default)();</span><br></pre></td></tr></table></figure>
-<p>优点：从上面这个例子可见，原本代码中使用的ES6新原生对象Symbol被transform-runtime插件转换成了babel-runtime的实现，既保持了Symbol的功能，同时又没有像polyfill那样污染全局环境（因为最终生成的代码中，并没有对Symbol的引用）</p>
-<p>缺点：但是由于他不能污染全局环境，所以对于实例上的方法则无法使用，比如[].includes()</p>
-<p>不过对于有些类上的静态方法可以使用，比如Array.from方法</p>
-<p><strong>方法三：使用babel-preset-env插件</strong></p>
-<p>这款preset能灵活决定加载哪些插件和polyfill，不过还是得开发者手动进行一些配置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// cnpm install -D babel-preset -env</span><br><span class="line">&#123;</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">        [&quot;env&quot;, &#123;</span><br><span class="line">            &quot;targets&quot;: &#123; //指定要转译到哪个环境</span><br><span class="line">                //浏览器环境</span><br><span class="line">                &quot;browsers&quot;: [&quot;last 2 versions&quot;, &quot;safari &gt;= 7&quot;],</span><br><span class="line">                //node环境</span><br><span class="line">                &quot;node&quot;: &quot;6.10&quot;, //&quot;current&quot;  使用当前版本的node</span><br><span class="line">                </span><br><span class="line">            &#125;,</span><br><span class="line">             //是否将ES6的模块化语法转译成其他类型</span><br><span class="line">             //参数：&quot;amd&quot; | &quot;umd&quot; | &quot;systemjs&quot; | &quot;commonjs&quot; | false，默认为&apos;commonjs&apos;</span><br><span class="line">            &quot;modules&quot;: &apos;commonjs&apos;,</span><br><span class="line">            //是否进行debug操作，会在控制台打印出所有插件中的log，已经插件的版本</span><br><span class="line">            &quot;debug&quot;: false,</span><br><span class="line">            //强制开启某些模块，默认为[]</span><br><span class="line">            &quot;include&quot;: [&quot;transform-es2015-arrow-functions&quot;],</span><br><span class="line">            //禁用某些模块，默认为[]</span><br><span class="line">            &quot;exclude&quot;: [&quot;transform-es2015-for-of&quot;],</span><br><span class="line">            //是否自动引入polyfill，开启此选项必须保证已经安装了babel-polyfill</span><br><span class="line">            //参数：Boolean，默认为false.</span><br><span class="line">            &quot;useBuiltIns&quot;: false</span><br><span class="line">        &#125;]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>关于最后一个参数<code>useBuiltIns</code>，有两点必须要注意：</p>
-<ol>
-<li>如果useBuiltIns为true，项目中必须引入babel-polyfill。</li>
-<li>babel-polyfill只能被引入一次，如果多次引入会造成全局作用域的冲突。</li>
-</ol>
-<h3 id="四-core-js介绍"><a href="#四-core-js介绍" class="headerlink" title="四. core-js介绍"></a>四. core-js介绍</h3><p>core-js包才上述的babel-polyfill、babel-plugin-transform-runtime、bable-runtime的核心，因为polyfill和runtime其实都只是对core-js和regenerator的再封装，方便使用而已。</p>
-<p>但是polyfill和runtime都是整体引入的，不能做细粒度的调整，如果我们的代码只是用到了小部分ES6而导致需要使用polyfill和runtime的话，会造成代码体积不必要的增大（runtime的影响较小）。所以，按需引入的需求就自然而然产生了，这个时候就得依靠core-js来实现了。</p>
-<h4 id="core-js的组织结构"><a href="#core-js的组织结构" class="headerlink" title="core-js的组织结构"></a>core-js的组织结构</h4><p>首先，core-js有三种使用方式：</p>
-<ul>
-<li><p>默认方式：require(‘core-js’)<br>这种方式包括全部特性，标准的和非标准的</p>
-</li>
-<li><p>库的形式： var core = require(‘core-js/library’)<br>这种方式也包括全部特性，只是它不会污染全局名字空间</p>
-<p><strong>注意文件路径里面有library的就代表是用于类库，不会污染全局作用域的</strong></p>
-<p><strong>默认方式和库的形式一个是直接require让其执行而对全局产生影响，另一个是对执行结果赋值（里面的代码不对全局产生影响，只导出一个结果让外部使用）</strong></p>
-</li>
-<li><p>只是shim： require(‘core-js/shim’)或var shim = require(‘core-js/library/shim’)<br>这种方式只包括标准特性（就是只有polyfill功能，没有扩展的特性）</p>
-</li>
-</ul>
-<h4 id="core-js的按需使用"><a href="#core-js的按需使用" class="headerlink" title="core-js的按需使用"></a>core-js的按需使用</h4><p>1、类似polyfill，直接把特性添加到全局环境，这种方式体验最完整</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">require(&apos;core-js/fn/set&apos;);</span><br><span class="line">require(&apos;core-js/fn/array/from&apos;);</span><br><span class="line">require(&apos;core-js/fn/array/find-index&apos;);</span><br><span class="line"></span><br><span class="line">Array.from(new Set([1, 2, 3, 2, 1])); // =&gt; [1, 2, 3]</span><br><span class="line">[1, 2, NaN, 3, 4].findIndex(isNaN);   // =&gt; 2</span><br></pre></td></tr></table></figure>
-<p>2、类似runtime一样，以库的形式来使用特性，这种方式不会污染全局名字空间，但是不能使用实例方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var Set       = require(&apos;core-js/library/fn/set&apos;);</span><br><span class="line">var from      = require(&apos;core-js/library/fn/array/from&apos;);</span><br><span class="line">var findIndex = require(&apos;core-js/library/fn/array/find-index&apos;);</span><br><span class="line"></span><br><span class="line">from(new Set([1, 2, 3, 2, 1]));      // =&gt; [1, 2, 3]</span><br><span class="line">findIndex([1, 2, NaN, 3, 4], isNaN); // =&gt; 2</span><br></pre></td></tr></table></figure>
-<p>所以，我理解的babel-polyfill这个包对core-js的引用方式应该是第一种，而babel-runtime对core-js的引用方式是第二种</p>
-<p>###总结：babel的难点在于理解polyfill，runtime和core-js，通过本文理解清楚三者之间的关系和区别</p>
-<p><a href="https://www.jianshu.com/p/3b27dfc6785c" target="_blank" rel="noopener">参考链接</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/10/关于javascript宽高的记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/10/关于javascript宽高的记录/" itemprop="url">关于javascript宽高的记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-10T15:07:54+08:00">
-                2018-12-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <table>
-<thead>
-<tr>
-<th>client类</th>
-<th>offset类</th>
-<th>scroll类</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>clientWidth:  <strong>元素尺寸</strong> (注意不是内容尺寸)+内边距</td>
-<td>offsetWidth:  <strong>元素尺寸</strong>+内边距+边框</td>
-<td>scrollWidth: <strong>元素尺寸</strong> + 内边距 + <strong>内容</strong>超出元素尺寸和内边距的部分</td>
-</tr>
-<tr>
-<td>clientHeight：<strong>元素尺寸</strong> (注意不是内容尺寸)+内边距</td>
-<td>offsetHeight: <strong>元素尺寸</strong>+内边距+边框</td>
-<td>scrollHeight: <strong>元素尺寸</strong> + 内边距 + <strong>内容</strong>超出元素尺寸和内边距的部分</td>
-</tr>
-<tr>
-<td>clientLeft: border-left的宽度，也就是 border-left厚度</td>
-<td>offsetLeft: 定位祖先元素的<strong>外padding</strong>到当前元素的<strong>外border</strong>之间的距离</td>
-<td>scrollLeft: 当元素内容超过元素尺寸的时候，内容被卷起来的宽度，可以理解为滚动条的宽度   <strong>可读可写</strong></td>
-</tr>
-<tr>
-<td>clientTop: border-top的宽度，也就是border-top厚度</td>
-<td>offsetTop:定位祖先元素的<strong>外padding</strong>到当前元素的<strong>外border</strong>之间的距离</td>
-<td>scrollTop: 当元素内容超过元素尺寸的时候， 内容被卷起来的高度，可以理解为滚动条的高度     <strong>可读可写</strong></td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li><p>获取<strong>元素距离视口的坐标</strong>：getBoundingClientRect方法，返回的坐标包括元素的边框和内边距，<strong>不包括外边距</strong>。</p>
-</li>
-<li><p>获取<strong>元素距离文档的坐标</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function getElePos(ele)&#123;</span><br><span class="line">        var x = 0,y = 0 ;</span><br><span class="line">        while(ele != null )&#123;</span><br><span class="line">            x += ele.offsetLeft;</span><br><span class="line">            y += ele.offsetTop;</span><br><span class="line">            ele = ele.offsetParent;</span><br><span class="line">            console.log(ele);</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;x : x ,y: y &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取<strong>视口的大小</strong>，也就是窗口的大小：</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getClient()&#123;</span><br><span class="line">  return &#123;</span><br><span class="line">  	width : window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,</span><br><span class="line">  	height : window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight</span><br><span class="line">	 &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>获取<strong>文档滚动高度</strong>，也就是窗口滚动条高度</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getSCroll()&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      left : window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,</span><br><span class="line">      top : window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/07/js判断数据类型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/07/js判断数据类型/" itemprop="url">js判断数据类型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T11:00:43+08:00">
-                2018-12-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Js判断数据类型一般用的方法有：typeof     Object.prototype.toString  instance     </p>
-<ol>
-<li><p>typeof 用来判断基本数据类型.</p>
-<p>返回值包括: boolean, number, string , function , undefined, object, symbol</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typeof true ;  typeof Boolean(true) // &quot;boolean&quot;</span><br><span class="line">typeof 4 ;     typeof Number (4)    // &quot;number&quot;</span><br><span class="line">typeof &apos;abc&apos;   typeof String(&apos;abc&apos;) // &quot;string&quot;</span><br><span class="line">typeof (function a()&#123;&#125;)             // &quot;function&quot; </span><br><span class="line">typeof undefined                    // &quot;undefined&quot;</span><br><span class="line">typeof null ; typeof &#123;&#125; ; typeof &#123;a: 1&#125; //&quot;object&quot;</span><br><span class="line">typeof Symbol(1)                    //&quot;symbol&quot;</span><br></pre></td></tr></table></figure>
-<p>可以使用如下函数判断是否是基本类型：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export function isPrimitive &#123;</span><br><span class="line">  return (</span><br><span class="line">    typeof value === &apos;string&apos; ||</span><br><span class="line">    typeof value === &apos;number&apos; ||</span><br><span class="line">    typeof value === &apos;symbol&apos; ||</span><br><span class="line">    typeof value === &apos;boolean&apos;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意，所有new出来的对象返回都是’object’。 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof(new Number(1))  // &quot;object&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当用typeof 判断出类型不是基本类型(即返回object时)，用Object.prototype.toString判断对象构造函数。</p>
-<p>可以使用如下函数：</p>
-<p>（返回function 和 undefined也可以判断出值得类型了）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 判断是否是一个对象(包括用其他构造函数生成的对象)</span><br><span class="line">export function isObject(obj) &#123;</span><br><span class="line">  return obj !== null &amp;&amp; typeof obj === &apos;object&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 判断对象是否是纯对象(也就是构造函数是Object)</span><br><span class="line">export function isPlainObject(obj) &#123;</span><br><span class="line">  return Object.prototype.toString.call(obj) === &apos;[object Object]&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const test = &#123;a: 1&#125;;</span><br><span class="line">const date = new Date();</span><br><span class="line">isObject(test)  // true</span><br><span class="line">isObject(date)  // true</span><br><span class="line">isPlainObject(test)  // true</span><br><span class="line">isPlainObject(date)  // false</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如上面的date对象，得到isPlainObject(date)为false ，可以用instanceof 判断date是否是某个构造函数的实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date instance Date // true</span><br></pre></td></tr></table></figure>
-<p>或者使用下面代码来获取某个实例的构造函数是什么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date.constructor.name // &quot;Date&quot;</span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/12/关于视频的一些总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/12/关于视频的一些总结/" itemprop="url">关于视频的一些总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-12T15:29:18+08:00">
-                2018-11-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一-视频事件"><a href="#一-视频事件" class="headerlink" title="一. 视频事件"></a>一. 视频事件</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">事件名</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">abort</td>
-<td>播放终止时触发。 如视频正在播放，这时拖到开始位置重新播放，就会触发 <code>abort</code> 事件</td>
-</tr>
-<tr>
-<td style="text-align:left">canplay</td>
-<td>当 ready state 变为 <strong>HAVE_ENOUGH_DATA</strong> 时触发， 这表示有足够的数据可播放</td>
-</tr>
-<tr>
-<td style="text-align:left">canplaythrough</td>
-<td>当 ready state 变为 <strong>CAN_PLAY_THROUGH</strong> 时触发，这表示下载速度在保持当前状态不变的情况下，整个媒体文件可以没有中断的进行播放。注意：在 Firefox 中，手动设置 <strong>currentTime</strong> 还会触发 <code>canplaythrough</code> 事件</td>
-</tr>
-<tr>
-<td style="text-align:left">durationchange</td>
-<td>当 metadata 加载结束或修改结束时触发，这表示媒体文件的 duration 发生了变化</td>
-</tr>
-<tr>
-<td style="text-align:left">emptied</td>
-<td>媒体文件变成空时触发。如媒体文件已经全部或部分加载完，这时调用 <strong>load()</strong> 去重新加载会触发 <code>emptied</code> 事件</td>
-</tr>
-<tr>
-<td style="text-align:left">ended</td>
-<td>播放结束时触发</td>
-</tr>
-<tr>
-<td style="text-align:left">error</td>
-<td>发生错误时触发。元素的 error 属性包含了详细信息。</td>
-</tr>
-<tr>
-<td style="text-align:left">interruptbegin</td>
-<td>在 Firefox OS 设备，播放的 audio 被中断，或者在 app 中，正在播放 audio 的 app 转为后台运行，或是有更高优先级的 audio 开始播放，都会触发 <code>interruptbegin</code> 事件</td>
-</tr>
-<tr>
-<td style="text-align:left">interruptend</td>
-<td>在 Firefox OS 设备中，之前中断的 audio 又开始重新播放，或者在 app 中，后台运行的 app 转为前台运行，或当更高优先级的 audio 播放结束，都会触发 <code>interruptend</code> 事件</td>
-</tr>
-<tr>
-<td style="text-align:left">loadeddata</td>
-<td>媒体文件的第一帧加载完成时触发</td>
-</tr>
-<tr>
-<td style="text-align:left">loadedmetadata</td>
-<td>媒体文件的 metadata 加载完成时触发</td>
-</tr>
-<tr>
-<td style="text-align:left">loadstart</td>
-<td>媒体文件开始加载时触发</td>
-</tr>
-<tr>
-<td style="text-align:left">pause</td>
-<td>播放暂停时触发</td>
-</tr>
-<tr>
-<td style="text-align:left">play</td>
-<td>暂停之后重新播放时触发。也就是说，先得触发一个 <code>pause</code> 事件，然后重新播放才会触发 <code>play</code> 事件，需要注意的是，这只是一个动作，并不表示立即就会开始播放</td>
-</tr>
-<tr>
-<td style="text-align:left">playing</td>
-<td>当媒体文件暂停或停止缓冲后，开始播放时触发</td>
-</tr>
-<tr>
-<td style="text-align:left">progress</td>
-<td>媒体文件正在下载时触发。通过元素的 <strong>buffered</strong> 属性可以获取已下载的可用的数据</td>
-</tr>
-<tr>
-<td style="text-align:left">ratechange</td>
-<td>播放速度改变时触发，  即playbackRate属性改变时触发</td>
-</tr>
-<tr>
-<td style="text-align:left">seeked</td>
-<td>seek 操作完成时触发</td>
-</tr>
-<tr>
-<td style="text-align:left">seeking</td>
-<td>seek 操作开始时触发, 拖动进度条的时候会触发seeking事件</td>
-</tr>
-<tr>
-<td style="text-align:left">stalled</td>
-<td>当 user agent 尝试去拉取数据，但是数据没有传过来时触发</td>
-</tr>
-<tr>
-<td style="text-align:left">suspend</td>
-<td>媒体文件加载暂停时触发。可能的原因是下载已完成，或是其他原因导致的暂停</td>
-</tr>
-<tr>
-<td style="text-align:left">timeupdate</td>
-<td>元素的 <strong>currentTime</strong> 属性发生改变时触发</td>
-</tr>
-<tr>
-<td style="text-align:left">volumechange</td>
-<td>音量发生改变时触发，可能是设置音量，也可能是修改了 <strong>muted</strong> 属性</td>
-</tr>
-<tr>
-<td style="text-align:left">waiting</td>
-<td>当请求的操作（比如播放）因为另一个操作而阻塞时触发（比如 seek）</td>
-</tr>
-</tbody>
-</table>
-<h2 id="loadeddata-VS-canplay-VS-canplaythrough"><a href="#loadeddata-VS-canplay-VS-canplaythrough" class="headerlink" title="loadeddata VS canplay VS canplaythrough"></a>loadeddata VS canplay VS canplaythrough</h2><ul>
-<li>loadeddata：加载了一些数据</li>
-<li>canplay：加载了足够的数据，这些数据足够开始播放</li>
-<li>canplaythrough：加载了足够的数据，这些数据不仅足够开始播放，也足够结束播放</li>
-</ul>
-<h2 id="play-VS-playing-progress"><a href="#play-VS-playing-progress" class="headerlink" title="play VS playing progress"></a>play VS playing progress</h2><p>假设我们要播放一个视频，当点击 play 按钮（或调用 play 方法），video.paused 会置为 <strong>false</strong>，并触发 <strong>play</strong> 事件，但这并不保证 video 会立即开始播放，它只是尝试去播放。</p>
-<p>如果在任意时间点，video 没有足够的数据可用了，它就会暂停（同样的，video.paused 置为 <strong>false</strong>），并触发 <strong>waiting</strong> 事件。一旦有了足够的数据（readyState &gt;= HAVE_FUTURE_DATA），就会触发 <strong>playing</strong> 事件，这时视频会重新开始播放。</p>
-<p>因此，<strong>play</strong> 适合获取动作状态，<strong>playing</strong> 适合获取播放状态。比如，当触发 <strong>waiting</strong> 事件时，显示 loading，当触发 <strong>playing</strong> 事件时，移除 loading。</p>
-<p>当用户拖拉进度条的时候，会触发事件 seeking——— play——— wating——— seeked——— playing</p>
-<p>所以play事件触发时候可能视频还不能播放，只代表用户的操作；但是playing事件触发的时候，代表视频处于可播放状态</p>
-<h2 id="progress"><a href="#progress" class="headerlink" title="progress"></a>progress</h2><p>通过元素的 buffered 属性可以获取缓冲数据。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">progressEvent ($event) &#123;</span><br><span class="line"></span><br><span class="line">    let video = $event.currentTarget;</span><br><span class="line"></span><br><span class="line">    // 如果还没有buffer不要取，不然会抛异常</span><br><span class="line"></span><br><span class="line">    // Failed to execute &apos;end&apos; on &apos;TimeRanges&apos;: The index provided (4294967295) is greater than the maximum bound (0).</span><br><span class="line"></span><br><span class="line">    if (video.buffered.length) &#123;</span><br><span class="line"></span><br><span class="line">        let bufferedEnd = video.buffered.end(video.buffered.length - 1);</span><br><span class="line"></span><br><span class="line">        let duration =  video.duration;</span><br><span class="line"></span><br><span class="line">        this.videoBufferRate = bufferedEnd / duration;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="二-视频属性"><a href="#二-视频属性" class="headerlink" title="二. 视频属性"></a>二. 视频属性</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement" target="_blank" rel="noopener">可以查看MDN上的HTMLMediaElement元素的属性</a></p>
-<p>error, currentSrc, preload, seeking, paused, played, autoplay, volume, audioTracks, width,height， videoHeight(视频原本的高度)，videoWidth（视频原本的高宽度）,  buffered, currentTime, loop, muted, poster, srcObject(这是一个mediaStream对象),  readyState, networkState, duration, playbackRate, ended,controls 等等</p>
-<h3 id="三-视频全屏"><a href="#三-视频全屏" class="headerlink" title="三. 视频全屏"></a>三. 视频全屏</h3><ol>
-<li><p>视频全屏</p>
-<p>判断是否是在全屏状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">isInFullscreen () &#123;</span><br><span class="line">     return (document.fullscreenElement || document.mozFullScreenElement ||   		  document.webkitFullscreenElement || document.msFullscreenElement) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>进入全屏：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">requestFullScreen (element) &#123;</span><br><span class="line">            if (element.requestFullscreen) &#123;</span><br><span class="line">                element.requestFullscreen();</span><br><span class="line">            &#125; else if (element.mozRequestFullScreen) &#123;</span><br><span class="line">                element.mozRequestFullScreen();</span><br><span class="line">            &#125; else if (element.msRequestFullscreen) &#123;</span><br><span class="line">                element.msRequestFullscreen();</span><br><span class="line">            &#125; else if (element.webkitRequestFullscreen) &#123;</span><br><span class="line">                element.webkitRequestFullScreen();</span><br><span class="line">            &#125;</span><br><span class="line">            this.fullScreen = 1;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>退出全屏：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">exitFullscreen (element) &#123;</span><br><span class="line">            // 普通div 需要使用document才能exitFullscreen</span><br><span class="line">            // video 可以使用元素本身的exitFullscreen</span><br><span class="line">            if (element.exitFullscreen) &#123;</span><br><span class="line">                element.exitFullscreen();</span><br><span class="line">            &#125; else if (element.msExitFullscreen) &#123;</span><br><span class="line">                element.msExitFullscreen();</span><br><span class="line">            &#125; else if (element.mozCancelFullScreen) &#123;</span><br><span class="line">                element.mozCancelFullScreen();</span><br><span class="line">            &#125; else if (element.webkitCancelFullScreen) &#123;</span><br><span class="line">                element.webkitCancelFullScreen();</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>普通div全屏</p>
-<p>普通div（假设为container）全屏时注意两个点：</p>
-<p>（1）如果container包含video标签和其他div标签，那么在全屏之后video的z-index会特别高，以至于全屏之后只会显示video，其他元素会被隐藏。</p>
-<p>解决方法，将需要与video一同全屏显示的标签加上<strong><em>z-indx:2147483647</em></strong></p>
-<p>（2）在调用上面requestFullScreen的时候传入需要全屏的div，但是调用exitFullscreen的时候需要传入document对象才可以退出全屏</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/我理解的base64编码/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/18/我理解的base64编码/" itemprop="url">我理解的base64编码</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-18T14:48:13+08:00">
-                2018-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="一-为什么需要base64编码"><a href="#一-为什么需要base64编码" class="headerlink" title="一.  为什么需要base64编码"></a>一.  为什么需要base64编码</h4><p>ASCII表里面0到32是控制字符，33开始的才是可见字符。一些只支持纯文本的协议（比如smtp协议）在传输不可见字符的过程中会出现问题，所以为了保险起见，将所有的字符转化成可见字符，这样就不会出错了。</p>
-<p>注意：使用命令  man ascii 可以在终端查看ascii码表</p>
-<h4 id="二-base64编码的过程"><a href="#二-base64编码的过程" class="headerlink" title="二. base64编码的过程"></a>二. base64编码的过程</h4><p>​    举一个具体的实例，演示英语单词Man如何转成Base64编码。<br>​    <img src="/image/base64.png" alt=""></p>
-<p>A. 步骤： </p>
-<p>第一步，”M”、”a”、”n”的ASCII值分别是77、97、110，对应的二进制值是01001101、01100001、01101110，将它们连成一个24位的二进制字符串010011010110000101101110。</p>
-<p>第二步，将这个24位的二进制字符串分成4组，每组6个二进制位：010011、010110、000101、101110。</p>
-<p>第三步，在每组前面加两个00，扩展成32个二进制位，即四个字节：00010011、00010110、00000101、00101110。它们的十进制值分别是19、22、5、46。</p>
-<p>第四步，根据下表，得到每个值对应Base64编码，即T、W、F、u。</p>
-<p><img src="/image/base64-table.png" alt=""></p>
-<p>在传输的时候，传输的是T、W、F、u所对应的ascii码，而不是man所对应的ascii码。</p>
-<p>B. 字节不能整除3的时候：</p>
-<p>如果要编码的字节数不能被3整除，最后会多出1个或2个字节，那么可以使用下面的方法进行处理：先使用0字节值在末尾补足，使其能够被3整除，然后再进行Base64的编码。在编码后的Base64文本后加上一个或两个<code>=</code>号，代表补足的字节数。也就是说，当最后剩余两个八位字节（2个byte）时，最后一个6位的Base64字节块有四位是0值，最后附加上两个等号；如果最后剩余一个八位字节（1个byte）时，最后一个6位的base字节块有两位是0值，最后附加一个等号。 参考下表</p>
-<p><img src="/image/base64-0.png" alt=""></p>
-<p>综上所述：</p>
-<p>缺点：base64编码会让原本3个字节的字符变成4个字节来存储，加大了33%的存储空间。</p>
-<p>优点：让原本不能传输二进制，只能传输文本字符的协议能够传输二进制数据（比如文件，图片等）。</p>
-<h4 id="三-和base64编码相关的使用场景"><a href="#三-和base64编码相关的使用场景" class="headerlink" title="三. 和base64编码相关的使用场景"></a>三. 和base64编码相关的使用场景</h4><p>场景1：给后端上传一个文件</p>
-<p>第一种方法:  给后端发送base64编码的字符串。</p>
-<p>将文件利用fileRader的readAsDataUrl函数来将文件内容进行base64编码，然后将这个base64字符串发送给后端。</p>
-<p>第二种方法：给后端传送一个File文件。</p>
-<p>其实这种方法就是将选中的文件里面的内容每8位（1个字节）读取为一个ascii字符（因为一个ascii字符占一个字节），最后得到一个字符串（比如文件内容的二进制总共有24位，3个字节，那么读取得到的就是3个ascii字符组成的字符串），然后将这个字符串就可以代表文件内容（将这三个字符所对应的二进制还原一下，就可以得到真正的原始二进制数据）。前面所说的这个过程可以通过formData自动实现。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// const file = event.target.files[0]; </span></span><br><span class="line"><span class="comment">// 假设我们在type=file 的 input元素  的onchange 事件里面已经拿到了file文件，注意这个file变量其实只是</span></span><br><span class="line"><span class="comment">// 一个内存指针，里面并没有真正的文件内容。</span></span><br><span class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">formData.append(<span class="string">'fileObj'</span>, file); </span><br><span class="line"><span class="comment">// 之后我们就可以直接把这个formData传递给后端。注意前面的file变量里面没有真正的文件内容，</span></span><br><span class="line"><span class="comment">// 是因为formData帮我们将文件内容读取出来，类似于filereader.readAsBinaryString()的操作</span></span><br><span class="line"><span class="comment">// 将二进制按照上面所说的每8位读成一个ascii字符。http传输的时候就传读取出来的字符串，到了服务端之后就可以</span></span><br><span class="line"><span class="comment">// 拿到这个字符串所代表的二进制，也就是拿到了文件内容.</span></span><br><span class="line"><span class="comment">// 所以这个字符串本身没有意义，只是利用这个字符串来传输二进制。</span></span><br><span class="line"><span class="comment">// 因为http是基于ascii码传输文本的协议。我们使用这种方式让传输文本的http协议也可以传输二进制了。</span></span><br></pre></td></tr></table></figure>
-<p>场景2： 读取本地图片并且显示</p>
-<p>利用fileReader将图片读成base64编码，然后将这个base64编码直接赋值给img的src，就可以显示这张图片了</p>
-<p>场景3:</p>
-<p>window.atob   把base64字符串进行解码</p>
-<p>window.btoa   对字符串进行base64编码</p>
-<p>上面两个函数的结果都是字符串。</p>
-<p>我理解的这两个过程就是利用base64的编码表（也就是本文第二张图）来进行字符间的映射。</p>
-<p><a href="https://yangxiagithub.github.io/2018/08/20/dataURL-canvas-file-Blob-objectURL%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E5%8C%96%E5%85%B3%E7%B3%BB/" target="_blank" rel="noopener">https://yangxiagithub.github.io/2018/08/20/dataURL-canvas-file-Blob-objectURL%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E5%8C%96%E5%85%B3%E7%B3%BB/</a></p>
-<p>上面的文章中说到了将dataurl变成blob的函数，需要用到window.atob函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function dataURItoBlob(dataURI) &#123;</span><br><span class="line">    // convert base64/URLEncoded data component to raw binary data held in a string</span><br><span class="line">    var byteString;</span><br><span class="line">    if (dataURI.split(&apos;,&apos;)[0].indexOf(&apos;base64&apos;) &gt;= 0)</span><br><span class="line">    	// atob解码之后获取到每8位对应的字符串，但不一定是原始字符串。</span><br><span class="line">        byteString = atob(dataURI.split(&apos;,&apos;)[1]);</span><br><span class="line">    else</span><br><span class="line">        byteString = unescape(dataURI.split(&apos;,&apos;)[1]);</span><br><span class="line"></span><br><span class="line">    // separate out the mime component</span><br><span class="line">    var mimeString = dataURI.split(&apos;,&apos;)[0].split(&apos;:&apos;)[1].split(&apos;;&apos;)[0];</span><br><span class="line"></span><br><span class="line">    // write the bytes of the string to a typed array</span><br><span class="line">    var ia = new Uint8Array(byteString.length);</span><br><span class="line">    for (var i = 0; i &lt; byteString.length; i++) &#123;</span><br><span class="line">        ia[i] = byteString.charCodeAt(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return new Blob([ia], &#123;type:mimeString&#125;);</span><br><span class="line">&#125;</span><br><span class="line">// 使用方法如下</span><br><span class="line">var dataURL = canvas.toDataURL(&apos;image/jpeg&apos;, 0.5);</span><br><span class="line">var blob = dataURItoBlob(dataURL);</span><br><span class="line">var fd = new FormData(document.forms[0]);</span><br><span class="line">fd.append(&quot;canvasImage&quot;, blob);</span><br></pre></td></tr></table></figure>
-<p>如果原始文本只是英文的话，那么上面得的byteString就是原始字符串。</p>
-<p>如果原始文本包含中文的话，那么我们需要将byteString所对应的二进制数据还原，然后再通过二进制数据得到原始文本。因为中文在utf8里面是3个字节表示，不是像英文字符那样一个字节表示。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/13/关于js宽高的记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/13/关于js宽高的记录/" itemprop="url">关于js宽高的记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T19:01:41+08:00">
-                2018-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <table>
-<thead>
-<tr>
-<th>client类</th>
-<th>offset类</th>
-<th>scroll类</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>clientWidth:  <strong>元素尺寸</strong> (注意不是内容尺寸)+内边距</td>
-<td>offsetWidth:  <strong>元素尺寸</strong>+内边距+边框</td>
-<td>scrollWidth: <strong>元素尺寸</strong> + 内边距 + <strong>内容</strong>超出元素尺寸和内边距的部分</td>
-</tr>
-<tr>
-<td>clientHeight：<strong>元素尺寸</strong> (注意不是内容尺寸)+内边距</td>
-<td>offsetHeight: <strong>元素尺寸</strong>+内边距+边框</td>
-<td>scrollHeight: <strong>元素尺寸</strong> + 内边距 + <strong>内容</strong>超出元素尺寸和内边距的部分</td>
-</tr>
-<tr>
-<td>clientLeft: border-left的宽度，也就是 border-left厚度</td>
-<td>offsetLeft: 定位祖先元素的<strong>外padding</strong>到当前元素的<strong>外border</strong>之间的距离</td>
-<td>scrollLeft: 当元素内容超过元素尺寸的时候，内容被卷起来的宽度，可以理解为滚动条的宽度   <strong>可读可写</strong></td>
-</tr>
-<tr>
-<td>clientTop: border-top的宽度，也就是border-top厚度</td>
-<td>offsetTop:定位祖先元素的<strong>外padding</strong>到当前元素的<strong>外border</strong>之间的距离</td>
-<td>scrollTop: 当元素内容超过元素尺寸的时候， 内容被卷起来的高度，可以理解为滚动条的高度     <strong>可读可写</strong></td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>获取<strong>元素距离视口的坐标</strong>：getBoundingClientRect方法，返回的坐标包括元素的边框和内边距，<strong>不包括外边距</strong>。</li>
-<li>获取<strong>元素距离文档的坐标</strong>：</li>
-<li>获取<strong>视口的大小</strong>，也就是窗口的大小：</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getViewPortSize</span>(<span class="params">w</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> w = w || <span class="built_in">window</span>;</span><br><span class="line">	<span class="keyword">if</span> (w.innerWidth != <span class="literal">null</span>)</span><br><span class="line">	<span class="keyword">return</span> &#123; <span class="attr">w</span>: w.innerWidth, <span class="attr">h</span>: w.innerHeight &#125;;</span><br><span class="line">	<span class="keyword">var</span> d = w.document;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">document</span>.compatMode == <span class="string">"CSS1Compat"</span>) </span><br><span class="line">    <span class="comment">// 标准模式返回CSS1Compat，通过document.documentElement访问文档根元素</span></span><br><span class="line">    <span class="comment">// 混杂模式返回backcompat，通过documnet.body访问文档根元素</span></span><br><span class="line">	<span class="keyword">return</span> &#123; <span class="attr">w</span>: d.documentElement.clientWidth, <span class="attr">h</span>: d.documentElement.clientHeight &#125;;</span><br><span class="line">	<span class="keyword">return</span> &#123; <span class="attr">w</span>: d.body.clientWidth, <span class="attr">h</span>: d.body.clientHeight &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2519,7 +1795,7 @@ getChild (key) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2530,7 +1806,7 @@ getChild (key) {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2541,7 +1817,7 @@ getChild (key) {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
