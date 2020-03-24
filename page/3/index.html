@@ -239,6 +239,352 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/12/关于图片的开发总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/12/关于图片的开发总结/" itemprop="url">关于图片的开发总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-12T17:52:17+08:00">
+                2018-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>设置图片有两种方法，一种是只用&lt;img /&gt; 标签，另一种是给div或者其他元素设置背景background-image。</p>
+<p>前者可以理解为前景图，后者理解为背景图。</p>
+<p>下面我们来对两者进行分析。</p>
+<h4 id="一：background-image方式"><a href="#一：background-image方式" class="headerlink" title="一：background-image方式"></a>一：background-image方式</h4><p>列出background-image的几个属性帮助理解：</p>
+<ol>
+<li><p>background-size: <strong>设置整个背景图片的大小</strong></p>
+<p>background-size: 100px 100px; </p>
+<p>是指把背景图片的大小设置为宽100px 高100px；</p>
+<p>background-size: cover/contain</p>
+<p>cover是指将图片按图片原本比例放大，让图片覆盖住div容器，多出来的部分裁剪。</p>
+<p>contain是指在保持原比例的情况下，尽量撑满容器的情况下不超出容器，所以这种情况下，如果容器宽高比和图片宽高比不一致的话，图片不会填满容器，容器会留白。</p>
+</li>
+<li><p>background-position: <strong>设置背景图片左上角相对于div左上角的位置</strong></p>
+<p>（1）background-position: -10px -10px;    </p>
+<p>是指以div左上角为（0，0）起始点，图片向左移动10px，向上移动10px。此时div的（0，0）就和背景图的（10，10）重合，所以在div内只能看到背景图（10，10）位置开始的图像</p>
+<p>反之 background-position: 10px 10px;    </p>
+<p>是指以div左上角为（0，0）起始点，图片向右移动10px，向下移动10px。此时背景图的（0，0）就和div的（10，10）重合，所以背景图起始点在div的（10，10）位置，这时候div的（10，10）才出现背景图，（5，5），（0，0）等位置是没有背景图的</p>
+<p> (2)  background-position：50% 0%</p>
+<p>positionX = (容器的宽度 - 背景图片宽度) * 百分比</p>
+<p>positionY = (容器的高度 - 背景图片高度) * 百分比</p>
+<p>(3)  background-position：center top</p>
+<p>与background-position：50% 0% 效果一致。</p>
+<p>关键字：left或者top，bottom，center等值可以对应到百分比，和百分比的处理方式一致。</p>
+</li>
+<li><p>background-attachment：scroll/local/fixed   </p>
+<p>这个属性是在<strong>内容很多，出现滚动条的时候，用来确定背景图和内容之间的滚动关系的</strong></p>
+<p>可以参考这个来理解：<a href="https://codepen.io/Chokcoco/pen/xJJorg" target="_blank" rel="noopener">https://codepen.io/Chokcoco/pen/xJJorg</a></p>
+<p>scroll: 背景相对于元素本身固定，不随内容滚动。（默认值）</p>
+<p>local: 背景相对于元素内容固定，内容很多时，背景岁随着内容滚动。</p>
+<p>fixed: 背景相对于视口固定。即使一个元素拥有滚动机制，背景也不会随着元素的内容滚动。</p>
+</li>
+</ol>
+<h4 id="二-lt-img-gt-和background-image区别"><a href="#二-lt-img-gt-和background-image区别" class="headerlink" title="二. &lt;img&gt; 和background-image区别"></a>二. &lt;img&gt; 和background-image区别</h4><ol>
+<li><p>是否占位</p>
+<p>img是html标签 ，占位；background-image是css样式，不占位；</p>
+<p>但是使用img的时候如果我们希望宽度百分百，高度由图片宽高比例还确定的时候，就会出现高度不确定，导致图片在加载完之后，网页布局发生变化的情况。</p>
+<p>使用background-image的时候我们一般会将容器大小确定，所以图片是否加载完成不会影响容器大小，所以网页布局不会 变化。</p>
+</li>
+<li><p>加载顺序</p>
+<p>img是html元素，是网页结构的一部分，所以会在加载结构的过程中加载，而background-image是css样式，会等到结构加载完成（网页内容全部显示以后）才开始加载。所以img的图片会比background-image先加载。</p>
+</li>
+</ol>
+<h4 id="三-图片居中问题"><a href="#三-图片居中问题" class="headerlink" title="三. 图片居中问题"></a>三. 图片居中问题</h4><p>第一种情况：图片本身比例不变（即不能让图片变形），让图片固定宽高比4：3的方式显示。</p>
+<ol>
+<li><p>使用background-image很简单</p>
+<p>设置容器宽高比为4：3，再给图片设置</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.bg-img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">background-size</span>: cover;</span><br><span class="line">    <span class="attribute">background-position</span>: center center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以重点就在于怎么让容器比例为4：3。如果 容器宽度确定，那么直接写死宽度和高度就可以了。如果容器宽度不确定(根据屏幕宽度来决定)，那么可以用这些方式来保证容器宽高比</p>
+<p><a href="https://yangxiagithub.github.io/2018/03/18/%E5%85%B3%E4%BA%8Ecss%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" target="_blank" rel="noopener">https://yangxiagithub.github.io/2018/03/18/%E5%85%B3%E4%BA%8Ecss%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</a></p>
+<p>里面的第3点讲到了如何保证容器宽高比。</p>
+</li>
+<li><p>使用img</p>
+<p>1️⃣ 我们让img外层套一个容器div，这个容器是图片要显示的范围。首先比较容器<strong>宽高比</strong>boxRate和图片<strong>宽高比</strong>imgRate。(注意我使用的是宽高比，即<strong>宽/高</strong>)</p>
+<p>如果picRate &gt; boxRate ，说明图片偏宽，那么让图片高度设置为容器高度，用此高度和picRate相乘得出来图片的宽度。这样图片宽度 就会大于容器宽度，再将图片宽度 宽出来的部分裁剪，就达到 将图片等比例扩大之后盖住容器的效果了，也就是cover的效果。</p>
+<p>反之，如果picRate &lt; boxRate,说明图片偏高，那么让图片宽度等于容器宽度，用此宽度除以picRate来得到图片高度，这样得到的图片高度会比容器高度大，再将图片高出来的部分 裁剪 。</p>
+<p>2️⃣  设置好图片宽度和高度之后 ，第二步是将图片 挪动到容器中间，让图片 显示中间部分，将两边多出来的部分裁剪掉。</p>
+<p>第一种方式：可以通过 计算图片宽度和高度来计算margin-left或者margin-top。</p>
+<p>代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;img @load=<span class="string">"adaptImg"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">img</span>&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">adaptImg</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> currentTarget = event.currentTarget;</span><br><span class="line">    <span class="comment">// 使用jquery</span></span><br><span class="line">    <span class="keyword">const</span> picWidth = currentTarget.naturalWidth;</span><br><span class="line">    <span class="keyword">const</span> picHeigt = currentTarget.naturalHeight;</span><br><span class="line">    <span class="keyword">const</span> picRate = picWidth / picHeigt;</span><br><span class="line">    <span class="keyword">const</span> box = $(currentTarget).parent();</span><br><span class="line">    <span class="keyword">const</span> boxHeight = $(box).height();</span><br><span class="line">    <span class="keyword">const</span> boxWidth = $(box).width();</span><br><span class="line">    <span class="keyword">const</span> boxRate = boxWidth / boxHeight;</span><br><span class="line">    <span class="comment">// 不使用 jquery</span></span><br><span class="line">    <span class="comment">// const picWidth = currentTarget.naturalWidth;</span></span><br><span class="line">    <span class="comment">// const picHeigt = currentTarget.naturalHeight;</span></span><br><span class="line">    <span class="comment">// const picRate = picWidth / picHeigt;</span></span><br><span class="line">    <span class="comment">// const box = currentTarget.parentNode;</span></span><br><span class="line">    <span class="comment">// const boxHeight = box.clientHeight;</span></span><br><span class="line">    <span class="comment">// const boxWidth = box.clientWidth;</span></span><br><span class="line">    <span class="comment">// const boxRate = boxWidth / boxHeight;</span></span><br><span class="line">    <span class="keyword">let</span> finalWidth = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> finalHeight = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> marginLeft = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> marginTop = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (picRate &gt; boxRate) &#123;</span><br><span class="line">        <span class="comment">// asHeight</span></span><br><span class="line">        finalHeight = boxHeight;</span><br><span class="line">        finalWidth = picRate * boxHeight;</span><br><span class="line">        marginLeft = -(finalWidth - boxWidth) / <span class="number">2</span>;</span><br><span class="line">        currentTarget.style.height = <span class="string">'100%'</span>;</span><br><span class="line">        currentTarget.style.marginLeft = marginLeft + <span class="string">'px'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// asWidth</span></span><br><span class="line">        finalWidth = boxWidth;</span><br><span class="line">        finalHeight = boxWidth / picRate;</span><br><span class="line">        marginTop = -(finalHeight - boxHeight) / <span class="number">2</span>;</span><br><span class="line">        currentTarget.style.width = <span class="string">'100%'</span>;</span><br><span class="line">        currentTarget.style.marginTop = marginTop + <span class="string">'px'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第二种方式：可以通过position：absolute配合margin: auto; 再设置left，top，right，bottom4个值来达到图片和 容器居中的效果。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center-img-container</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line">// 下面的是重点</span><br><span class="line"><span class="selector-class">.center-img-container</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">right</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">top</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: -<span class="number">9999px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line">// 当设置left: -9999px;right: -9999px;right: -9999px;top: -9999px; bottom: -9999px;</span><br><span class="line">// 四个数值要一样。记得margin要设置成auto</span><br><span class="line">// 当四个值都设置成-9999px作用于图片比容器大的时候。</span><br><span class="line">// 当四个值都设置成0作用于图片比容器小的时候。</span><br></pre></td></tr></table></figure>
+<h4 id="四-图片模糊加载问题"><a href="#四-图片模糊加载问题" class="headerlink" title="四. 图片模糊加载问题"></a>四. 图片模糊加载问题</h4><p>思路:  一开始的时候，将img的src赋值为一个尺寸比较小的图片地址，并在img元素上添加一个data-src属性（清晰图片的地址），当元素处于视图中时，创建一个新的图片元素，将此新图片元素src赋值为之前img的data-src值，当新建的图片加载完成的时候，对之前img的src进行替换，这样就将模糊图片替换成了清晰图片</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> lazyLoadImg = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 滚动加载出来的元素可以懒加载</span></span><br><span class="line">    $(<span class="built_in">window</span>).on(<span class="string">'scroll'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        clearTimeout(loadInterval);</span><br><span class="line">        <span class="keyword">var</span> loadInterval = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="string">'.lazy-image'</span>).each(<span class="function">(<span class="params">index, item</span>) =&gt;</span> &#123;</span><br><span class="line">                isElementInViewport(item) &amp;&amp; loadImg(item);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;, <span class="number">100</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    $(<span class="string">'.lazy-image'</span>).each(<span class="function">(<span class="params">index, item</span>) =&gt;</span> &#123;</span><br><span class="line">        loadImg(item);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadImg</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> $item = $(item);</span><br><span class="line">    <span class="keyword">if</span> ($item.data(<span class="string">'status'</span>) === <span class="string">'loading'</span> || $item.data(<span class="string">'status'</span>) === <span class="string">'loaded'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $item.data(<span class="string">'status'</span>, <span class="string">'loading'</span>);</span><br><span class="line">    <span class="keyword">const</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">    <span class="keyword">const</span> dataSrc = $item.attr(<span class="string">'data-src'</span>);</span><br><span class="line">    img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        $item</span><br><span class="line">            .attr(<span class="string">'src'</span>, dataSrc)</span><br><span class="line">            .removeClass(<span class="string">'lazy-image'</span>)</span><br><span class="line">            .data(<span class="string">'status'</span>, <span class="string">'loaded'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    img.src = dataSrc;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isElementInViewport</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> rect = el.getBoundingClientRect();</span><br><span class="line">    <span class="keyword">var</span> threshold_x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> threshold_y = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">return</span> rect.top &gt;= <span class="number">0</span> - threshold_y &amp;&amp; rect.left &gt;= <span class="number">0</span> - threshold_x &amp;&amp; rect.top &lt;= <span class="built_in">window</span>.innerHeight + threshold_y &amp;&amp; rect.left &lt;= <span class="built_in">window</span>.innerWidth + threshold_x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/20/dataURL-canvas-file-Blob-objectURL之间的转化关系/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/20/dataURL-canvas-file-Blob-objectURL之间的转化关系/" itemprop="url">dataURL,canvas,file(Blob),objectURL之间的转化关系</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-20T10:51:29+08:00">
+                2018-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一：四者之间的关系"><a href="#一：四者之间的关系" class="headerlink" title="一：四者之间的关系"></a>一：四者之间的关系</h4><p><img src="/image/relation.png" alt=""></p>
+<h4 id="二：解释四者之间的关系"><a href="#二：解释四者之间的关系" class="headerlink" title="二：解释四者之间的关系"></a>二：解释四者之间的关系</h4><ol>
+<li><p>从File或者Blob转化为ObjectURL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objectURL = URL.createObjectURL(object);</span><br><span class="line">// object:A File, Blob or MediaSource object to create an object URL for.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从ObjectURL转Blob</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(&apos;GET&apos;, &apos;blob:http%3A//your.blob.url.here&apos;, true);</span><br><span class="line">xhr.responseType = &apos;blob&apos;;</span><br><span class="line">xhr.onload = function(e) &#123;</span><br><span class="line">  if (this.status == 200) &#123;</span><br><span class="line">    var myBlob = this.response;</span><br><span class="line">    // myBlob is now the blob that the object URL pointed to.</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">xhr.send();</span><br><span class="line">// 或者利用其他发请求的库也可以，主要是上面的xhr.responseType = &apos;blob&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从 File转dataURL</p>
+<p>使用 fileReader</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function previewFile() &#123;</span><br><span class="line">  var preview = document.querySelector(&apos;img&apos;);</span><br><span class="line">  var file    = document.querySelector(&apos;input[type=file]&apos;).files[0];</span><br><span class="line">  var reader  = new FileReader();</span><br><span class="line"></span><br><span class="line">  reader.addEventListener(&quot;load&quot;, function () &#123;</span><br><span class="line">    preview.src = reader.result;</span><br><span class="line">  &#125;, false);</span><br><span class="line"></span><br><span class="line">  if (file) &#123;</span><br><span class="line">    reader.readAsDataURL(file);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从dataURL转File（Blob）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function dataURItoBlob(dataURI) &#123;</span><br><span class="line">    // convert base64/URLEncoded data component to raw binary data held in a string</span><br><span class="line">    var byteString;</span><br><span class="line">    if (dataURI.split(&apos;,&apos;)[0].indexOf(&apos;base64&apos;) &gt;= 0)</span><br><span class="line">        byteString = atob(dataURI.split(&apos;,&apos;)[1]);</span><br><span class="line">    else</span><br><span class="line">        byteString = unescape(dataURI.split(&apos;,&apos;)[1]);</span><br><span class="line"></span><br><span class="line">    // separate out the mime component</span><br><span class="line">    var mimeString = dataURI.split(&apos;,&apos;)[0].split(&apos;:&apos;)[1].split(&apos;;&apos;)[0];</span><br><span class="line"></span><br><span class="line">    // write the bytes of the string to a typed array</span><br><span class="line">    var ia = new Uint8Array(byteString.length);</span><br><span class="line">    for (var i = 0; i &lt; byteString.length; i++) &#123;</span><br><span class="line">        ia[i] = byteString.charCodeAt(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return new Blob([ia], &#123;type:mimeString&#125;);</span><br><span class="line">&#125;</span><br><span class="line">// 使用方法如下</span><br><span class="line">var dataURL = canvas.toDataURL(&apos;image/jpeg&apos;, 0.5);</span><br><span class="line">var blob = dataURItoBlob(dataURL);</span><br><span class="line">var fd = new FormData(document.forms[0]);</span><br><span class="line">fd.append(&quot;canvasImage&quot;, blob);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dataURL和canvas之间的转换比较简单，如图所示</p>
+</li>
+<li><p>canvas和File之间的转换需要经过dataRUL做中间人，暂时无法直接转化</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/16/https建立过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1530,313 +1876,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/css-3D-动画/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/03/css-3D-动画/" itemprop="url">css 3D 动画</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-03T10:33:34+08:00">
-                2018-06-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="一-css-3D动画基本知识"><a href="#一-css-3D动画基本知识" class="headerlink" title="一. css 3D动画基本知识"></a>一. css 3D动画基本知识</h4><h5 id="1-坐标系"><a href="#1-坐标系" class="headerlink" title="1. 坐标系"></a>1. 坐标系</h5><p><img src="/image/css-coordinate.png" alt=""></p>
-<p>注意：旋转的时候，都是以顺时针方向为正</p>
-<h5 id="2-重要属性"><a href="#2-重要属性" class="headerlink" title="2. 重要属性"></a>2. 重要属性</h5><p>1️⃣  <code>perspective: 300px</code></p>
-<p><code>perspective</code> 属性指定了观察者与 <strong>z=0</strong>  平面的距离，使具有三维位置变换的元素产生透视效果。</p>
-<p>当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。</p>
-<p>目前浏览器都不支持 perspective 属性。Chrome 和 Safari 支持替代的 -webkit-perspective 属性。</p>
-<p>2️⃣   <code>perspective-origin: 30% 30%</code></p>
-<p><code>perspective-origin</code> 表示你眼睛看的位置，默认就是所看舞台或元素的中心（即50%， 50%）</p>
-<p>一般我们需要将元素置于舞台中间，否则所看到的就不是元素的正前方了。</p>
-<p>3️⃣  <code>transform-style: preserve-3d</code></p>
-<p>一般而言，该声明应用在3D变换的兄弟元素们的父元素上，也就是舞台元素。</p>
-<p>perspective属性和 transform-style属性最好不要申明在同一级。应该让perspective申明在外层，transform-style申明在下一层，否则无法让包含所有3D元素的最外层div作为一个整体去旋转，而只能让每一个单独的3D元素旋转。（据说safari上即使申明在不同层也无法整体旋转？）</p>
-<p>4️⃣  <code>transform-origin: 50% 40% 30%</code></p>
-<p>更改一个元素变形的原点。默认元素变形中心点是元素自身中心点，如果手动进行设置，则是相对于元素左上角位置。</p>
-<p>注意区分perspective-origin和transform-origin。perspective-origin是指观看视角相对于整个舞台的位置，它只有2个值（x轴位置和y轴位置），z轴距离通过perspective的值来确定。transform-origin是设置元素自身转换时候的中心点，它有3个值（x，y，z三轴的位置）。</p>
-<p>4️⃣  <code>backface-visibility:hidden</code></p>
-<p>是否可以看见3D元素的背面，默认情况下是可以看见，但是在现实世界中，元素的背面是无法看见的，所以一般我们设置成hidden。</p>
-<h4 id="二-动画-demo"><a href="#二-动画-demo" class="headerlink" title="二. 动画 demo"></a>二. 动画 demo</h4><h5 id="1-旋转的八面体"><a href="#1-旋转的八面体" class="headerlink" title="1. 旋转的八面体"></a>1. 旋转的八面体</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;div class=&quot;box&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;block block1&quot;&gt;11111&lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;block block2&quot;&gt;22222&lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;block block3&quot;&gt;3333&lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;block block4&quot;&gt;4444&lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;block block5&quot;&gt;5555&lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;block block6&quot;&gt;6666&lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;block block7&quot;&gt;7777&lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;block block8&quot;&gt;8888&lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    .box &#123;</span><br><span class="line">        perspective: 800px;</span><br><span class="line">    &#125;</span><br><span class="line">    .wrapper &#123;</span><br><span class="line">        margin: 300px;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        transform-style: preserve-3d;</span><br><span class="line">        animation: blockRotate 5s infinite 1s;</span><br><span class="line">    &#125;</span><br><span class="line">    .block &#123;</span><br><span class="line">        position: absolute;</span><br><span class="line">        top: 0px;</span><br><span class="line">        width: 100%;</span><br><span class="line">        height: 100%;</span><br><span class="line">        transition: transform 0.2s;</span><br><span class="line">    &#125;</span><br><span class="line">    .block1 &#123;</span><br><span class="line">        transform: rotateY(0) translateZ(241.4px);</span><br><span class="line">        background: red;</span><br><span class="line">    &#125;</span><br><span class="line">    .block2 &#123;</span><br><span class="line">        transform: rotateY(45deg) translateZ(241.4px);</span><br><span class="line">         background: pink;</span><br><span class="line">    &#125;</span><br><span class="line">    .block3 &#123;</span><br><span class="line">        transform: rotateY(90deg) translateZ(241.4px);</span><br><span class="line">        background: yellow;</span><br><span class="line">    &#125;</span><br><span class="line">    .block4 &#123;</span><br><span class="line">        transform: rotateY(135deg) translateZ(241.4px);</span><br><span class="line">        background: #565656;</span><br><span class="line">    &#125;</span><br><span class="line">    .block5 &#123;</span><br><span class="line">        transform: rotateY(180deg) translateZ(241.4px);</span><br><span class="line">        background: green;</span><br><span class="line">    &#125;</span><br><span class="line">    .block6 &#123;</span><br><span class="line">        transform: rotateY(225deg) translateZ(241.4px);</span><br><span class="line">        background: blue;</span><br><span class="line">    &#125;</span><br><span class="line">    .block7 &#123;</span><br><span class="line">        transform: rotateY(270deg) translateZ(241.4px);</span><br><span class="line">        background: purple;</span><br><span class="line">    &#125;</span><br><span class="line">    .block8 &#123;</span><br><span class="line">        transform: rotateY(315deg) translateZ(241.4px);</span><br><span class="line">        background: #778833;</span><br><span class="line">    &#125;</span><br><span class="line">    @keyframes blockRotate &#123;</span><br><span class="line">        to &#123;</span><br><span class="line">           transform: rotateY(360deg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>注意：先rotate 再 translate 和 先translate 再 rotate得到的结果不一样。因为rotate会改变元素的坐标系的方向。尝试将上面 </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.block2</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(45deg) <span class="built_in">translateZ</span>(241.4px);</span><br><span class="line">    <span class="attribute">background</span>: pink;</span><br><span class="line">&#125;</span><br><span class="line">// 将上面的改成下面的代码，两者结果不一样</span><br><span class="line"><span class="selector-class">.block2</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(241.4px）rotateY(45deg);</span><br><span class="line">    <span class="attribute">background</span>: pink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/手写一款promise的简单实现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/29/手写一款promise的简单实现/" itemprop="url">手写一款promise的简单实现</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T14:56:47+08:00">
-                2018-05-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="一-promise简单实现"><a href="#一-promise简单实现" class="headerlink" title="一. promise简单实现"></a>一. promise简单实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyPromise</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(excutor) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!isFunction(excutor))</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(</span><br><span class="line">                <span class="string">'Pass function object to create a Promise object'</span></span><br><span class="line">            );</span><br><span class="line">        <span class="keyword">this</span>.status = <span class="string">'pending'</span>;</span><br><span class="line">        <span class="keyword">this</span>.value = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.reason = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.onFulfilledCallbacks = [];</span><br><span class="line">        <span class="keyword">this</span>.onRejectedCallbacks = [];</span><br><span class="line">		<span class="comment">// excutor函数有可能出错，所以用try  catch包住</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 需要绑定this</span></span><br><span class="line">            excutor(<span class="keyword">this</span>.resolve.bind(<span class="keyword">this</span>), <span class="keyword">this</span>.reject.bind(<span class="keyword">this</span>));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">            <span class="keyword">this</span>.reject(err);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    resolve(value) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.status === <span class="string">'pending'</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.value = value;</span><br><span class="line">            <span class="keyword">this</span>.status = <span class="string">'fulfilled'</span>;</span><br><span class="line">            <span class="keyword">this</span>.onFulfilledCallbacks.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (isFunction(item)) &#123;</span><br><span class="line">                    item();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    reject(reason) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((<span class="keyword">this</span>.status = <span class="string">'pending'</span>)) &#123;</span><br><span class="line">            <span class="keyword">this</span>.reason = reason;</span><br><span class="line">            <span class="keyword">this</span>.status = <span class="string">'rejected'</span>;</span><br><span class="line">            <span class="keyword">this</span>.onRejectedCallbacks.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (isFunction(item)) &#123;</span><br><span class="line">                    item();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * @param &#123;*&#125; onFulfilled </span></span><br><span class="line"><span class="comment">     * @param &#123;*&#125; onRejected </span></span><br><span class="line"><span class="comment">     * then 函数需要返回一个新的promise</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    then(onFulfilled, onRejected) &#123;</span><br><span class="line">        onFulfilled = isFunction(onFulfilled)</span><br><span class="line">            ? onFulfilled</span><br><span class="line">            : <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">                  <span class="keyword">this</span>.resolve(data);</span><br><span class="line">              &#125;;</span><br><span class="line">        onRejected = isFunction(onRejected)</span><br><span class="line">            ? onRejected</span><br><span class="line">            : <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">                  <span class="keyword">throw</span> err;</span><br><span class="line">              &#125;;</span><br><span class="line">        <span class="keyword">let</span> self = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.status === <span class="string">'fulfilled'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MyPromise(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">let</span> x = onFulfilled(self.value);</span><br><span class="line">                    <span class="keyword">if</span> (x <span class="keyword">instanceof</span> MyPromise) &#123;</span><br><span class="line">                        x.then(resolve, reject);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        resolve(x);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">                    reject(err);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.status === <span class="string">'rejected'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">let</span> x = onRejected(self.reason);</span><br><span class="line">                    <span class="keyword">if</span> (x <span class="keyword">instanceof</span> MyPromise) &#123;</span><br><span class="line">                        x.then(resolve, reject);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        resolve(x);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">                    reject(err);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.status === <span class="string">'pending'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MyPromise(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                self.onFulfilledCallbacks.push(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                    <span class="keyword">let</span> x = onFulfilled(self.value);</span><br><span class="line">                    <span class="keyword">if</span> (x <span class="keyword">instanceof</span> MyPromise) &#123;</span><br><span class="line">                        x.then(resolve, reject);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        resolve(x);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                self.onRejectedCallbacks.push(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                    <span class="keyword">let</span> x = onRejected(self.reason);</span><br><span class="line">                    <span class="keyword">if</span> (x <span class="keyword">instanceof</span> MyPromise) &#123;</span><br><span class="line">                        x.then(resolve, reject);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        resolve(x);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span>(fn) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.then(<span class="literal">null</span>, fn);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 所有的入参promise都resolve之后才返回一个resolve的结果promise</span></span><br><span class="line">    <span class="keyword">static</span> all(arr) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!arr <span class="keyword">instanceof</span> <span class="built_in">Array</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Pass array to create a Promise array'</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyPromise(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> length = arr.length;</span><br><span class="line">            <span class="keyword">const</span> resultArr = [];</span><br><span class="line">            arr.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (item <span class="keyword">instanceof</span> MyPromise) &#123;</span><br><span class="line">                        item.then(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">                            resultArr[index] = value;</span><br><span class="line">                            <span class="keyword">if</span> (--length === <span class="number">0</span>) &#123;</span><br><span class="line">                                resolve(resultArr);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;);</span><br><span class="line">                    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isFunction(item)) &#123;</span><br><span class="line">                        resultArr[index] = item();</span><br><span class="line">                        <span class="keyword">if</span> (--length === <span class="number">0</span>) &#123;</span><br><span class="line">                            resolve(resultArr);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">                    reject(err);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** race方法</span></span><br><span class="line"><span class="comment">     * 只要有一个入参promise被resolve之后，就将返回的promise进行resolve。</span></span><br><span class="line"><span class="comment">     * 注意这种事先方案并不会将返回得比较慢的promise进行取消执行。后面的promise即使resolve或者reject了也无法改变被返回的promise的状态</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> race(promiseArr) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyPromise(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (!promiseArr <span class="keyword">instanceof</span> <span class="built_in">Array</span>)</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Pass array to create a Promise array'</span>);</span><br><span class="line">            promiseArr.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">                item.then(resolve, reject);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isFunction</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> fn === <span class="string">'function'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = MyPromise;</span><br></pre></td></tr></table></figure>
-<h4 id="二-测试代码"><a href="#二-测试代码" class="headerlink" title="二. 测试代码"></a>二. 测试代码</h4><ol>
-<li><p>测试基本功能———测试代码1</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyPromise = <span class="built_in">require</span>(<span class="string">'./my-promise.js'</span>);</span><br><span class="line"><span class="keyword">const</span> ThePromise = MyPromise;</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> test = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> pro = <span class="keyword">new</span> ThePromise(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        fs.readFile(<span class="string">'./a.js'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                <span class="keyword">throw</span> err;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'data111:'</span>, data);</span><br><span class="line">            resolve(data);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'pro'</span>, pro);</span><br><span class="line">    <span class="keyword">const</span> pro2 = pro.then(</span><br><span class="line">        value =&gt; &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'data2222:'</span>, value);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ThePromise(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">                fs.readFile(<span class="string">'./a.js'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">                    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                        <span class="keyword">throw</span> err;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'data3333:'</span>, data);</span><br><span class="line">                    resolve(data);</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">        reason =&gt; &#123;</span><br><span class="line">            <span class="keyword">throw</span> reason;</span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// 注意这里是pro2.then  如果是pro.then 那么执行顺序会不一样</span></span><br><span class="line">    pro2.then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'data4444:'</span>, data);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ThePromise(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">            fs.readFile(<span class="string">'./a.js'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">                <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> err;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'data555:'</span>, data);</span><br><span class="line">                resolve(data);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试promise.all功能——–测试代码2</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyPromise = <span class="built_in">require</span>(<span class="string">'./my-promise.js'</span>);</span><br><span class="line"><span class="keyword">const</span> ThePromise = MyPromise;</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> testAll = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> pro1 = <span class="keyword">new</span> MyPromise(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        fs.readFile(<span class="string">'./a.js'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'a.js:'</span>, data);</span><br><span class="line">            resolve(data);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">const</span> pro2 = <span class="keyword">new</span> MyPromise(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        fs.readFile(<span class="string">'./b.js'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'b.js:'</span>, data);</span><br><span class="line">            resolve(data);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    MyPromise.all([pro1, pro2]).then(<span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'arr[0]:'</span>, arr[<span class="number">0</span>]);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'arr[1]:'</span>, arr[<span class="number">1</span>]);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">testAll();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试promise.race功能———测试代码3</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyPromise = <span class="built_in">require</span>(<span class="string">'./my-promise.js'</span>);</span><br><span class="line"><span class="keyword">const</span> ThePromise = MyPromise;</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> testRace = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> pro1 = <span class="keyword">new</span> MyPromise(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        fs.readFile(<span class="string">'./a.js'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'a.js:'</span>, data);</span><br><span class="line">            resolve(data);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">const</span> pro2 = <span class="keyword">new</span> MyPromise(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        fs.readFile(<span class="string">'./b.js'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'b.js:'</span>, data);</span><br><span class="line">            resolve(data);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    MyPromise.race([pro1, pro2]).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'race-result:'</span>, data);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">testRace();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="三-注意点"><a href="#三-注意点" class="headerlink" title="三. 注意点"></a>三. 注意点</h4><ol>
-<li><p>一个promise在resolve之后，就会按照顺序执行这个promise所有的then函数里所注册的函数。</p>
-<p>注意是这个promise。而不是由then函数重新生成的promise。</p>
-<p>比如</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pro1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;resolve(<span class="string">'aaa'</span>)&#125;)</span><br><span class="line"><span class="keyword">const</span> pro2 = pro1.then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 这是一个异步操作</span></span><br><span class="line">    <span class="comment">// 打印点0</span></span><br><span class="line">    fs.readFile(<span class="string">'./b.js'</span>, <span class="string">'utf-8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">        	<span class="comment">// 打印点1</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'b.js:'</span>, data);</span><br><span class="line">            resolve(data);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;, (reason) =&gt; &#123;<span class="built_in">console</span>.log(reason)&#125;);</span><br><span class="line"><span class="keyword">const</span> pro22 = pro1.then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 打印点2</span></span><br><span class="line">    consolele.log(data);</span><br><span class="line">&#125;, (reason) =&gt; &#123;<span class="built_in">console</span>.log(reason)&#125;);</span><br><span class="line"><span class="keyword">const</span> pro3 = pro2.then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 打印点3</span></span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>打印顺序为：打印点0  打印点2 打印点1 打印点3</p>
-<p>原因：0，1 和2本来都是应该在pro1被resolve之后就会执行，但是打印完0之后，1是在一个异步函数结束之后才会打印，所以pro1.then会先返回一个pending状态的promise，并且继续执行pro1的第二个then函数。而打印点3是必须要pro1的第一个then函数所返回的promise被resolve只有才能执行的，所以会在最后打印。</p>
-</li>
-<li><p>由此可见，promise之所以能够保持异步函数执行顺序，是因为每个promise只有一个then函数，在then函数里面又重新返回一个promise，然后下一个promise是在前一个then函数所返回的promise被resolve之后才执行，也就是这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 可以保证顺序：</span><br><span class="line">pro1.then().then().then()</span><br><span class="line">// 下面两个then之间在有异步操作情况下不可以保证顺序，但是pro1和他对应的then还是可以保证顺序的</span><br><span class="line">pro1.then()</span><br><span class="line">pro1.then()</span><br></pre></td></tr></table></figure>
-<p>也就是说：</p>
-<p>一个promise如果对应了两个then，而这两个then中又有异步操作的话，这两个then是无法保证顺序的。</p>
-<p>只有promise的入参函数里面的操作和这个promise的then函数里面的操作才是保证执行先后顺序的：即promise的入参函数里面的操作先执行，then函数里面的操作后执行。</p>
-<p>而两个并列的then函数之间如果有异步操作则无法保证顺序，同步的话还是可以保证按照顺序执行的。因为从上面实现代码可以看出来，当promise的入参函数返回的promise是pending状态时，then函数里面的操作是被存入一个数组里，等待promise被resolve再拿出来执行；当promise的入参函数返回的promise是resolve或者reject状态时，则直接可以执行相应的then函数里面的操作，不需要存入数组了</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1887,7 +1926,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1909,7 +1948,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1946,7 +1985,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
