@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -115,7 +115,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/4/"/>
+  <link rel="canonical" href="http://yoursite.com/page/4/">
 
 
 
@@ -150,7 +150,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Hexo</span>
         <span class="logo-line-after"><i></i></span>
@@ -180,7 +180,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -190,7 +190,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -200,7 +200,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -239,11 +239,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/04/svg和canvas的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yangXia">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/04/svg和canvas的区别/" itemprop="url">svg和canvas的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-04T11:55:19+08:00">
+                2018-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/canvas/" itemprop="url" rel="index">
+                    <span itemprop="name">canvas</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table>
+<thead>
+<tr>
+<th>canvas</th>
+<th>svg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通过javascript来绘制2D图形</td>
+<td>使用XML描述2D图形的</td>
+</tr>
+<tr>
+<td>位图</td>
+<td>矢量图</td>
+</tr>
+<tr>
+<td>可以使用.jpg和.png格式图片</td>
+<td>使用现有的图片作为<image>标签 的link的话，放大会模糊</image></td>
+</tr>
+<tr>
+<td>不支持事件处理器  (addHitRegion这个api兼容性暂时不够)</td>
+<td>可以为某个元素添加事件(把元素当成dom使用)</td>
+</tr>
+<tr>
+<td>不能够改变大小，只能缩放显示</td>
+<td>能够很好的处理图形大小的改变</td>
+</tr>
+<tr>
+<td>用户交互到像素点(x, y)</td>
+<td>用户交互到图形元素(rect, path)</td>
+</tr>
+<tr>
+<td>最适合图像密集型的游戏，其中的许多对象会被频繁重绘</td>
+<td>复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）</td>
+</tr>
+<tr>
+<td>Canvas提供的功能更原始，适合像素处理，动态渲染和大数据量绘制</td>
+<td></td>
+</tr>
+<tr>
+<td>webkitBackingStorePixelRatio会影响图片和成的模糊程度</td>
+</tr>
+</tbody>
+</table>
+<p>webGL是canvas+openGL，功能是可以做3D展示。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/css-3D-动画/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -310,7 +497,7 @@
       
         
           
-            <h4 id="一-css-3D动画基本知识"><a href="#一-css-3D动画基本知识" class="headerlink" title="一. css 3D动画基本知识"></a>一. css 3D动画基本知识</h4><h5 id="1-坐标系"><a href="#1-坐标系" class="headerlink" title="1. 坐标系"></a>1. 坐标系</h5><p><img src="/image/css-coordinate.png" alt=""></p>
+            <h4 id="一-css-3D动画基本知识"><a href="#一-css-3D动画基本知识" class="headerlink" title="一. css 3D动画基本知识"></a>一. css 3D动画基本知识</h4><h5 id="1-坐标系"><a href="#1-坐标系" class="headerlink" title="1. 坐标系"></a>1. 坐标系</h5><p><img src="/image/css-coordinate.png" alt></p>
 <p>注意：旋转的时候，都是以顺时针方向为正</p>
 <h5 id="2-重要属性"><a href="#2-重要属性" class="headerlink" title="2. 重要属性"></a>2. 重要属性</h5><p>1️⃣  <code>perspective: 300px</code></p>
 <p><code>perspective</code> 属性指定了观察者与 <strong>z=0</strong>  平面的距离，使具有三维位置变换的元素产生透视效果。</p>
@@ -381,7 +568,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -419,7 +606,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -550,7 +737,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -588,7 +775,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -639,7 +826,7 @@
       
         
           
-            <h4 id="一-硬件，核心与shell的关系"><a href="#一-硬件，核心与shell的关系" class="headerlink" title="一. 硬件，核心与shell的关系"></a>一. 硬件，核心与shell的关系</h4><p><img src="/image/shell.jpg" alt=""></p>
+            <h4 id="一-硬件，核心与shell的关系"><a href="#一-硬件，核心与shell的关系" class="headerlink" title="一. 硬件，核心与shell的关系"></a>一. 硬件，核心与shell的关系</h4><p><img src="/image/shell.jpg" alt></p>
 <p>shell是一个程序，他接受从键盘输入的命令，然后把命令传递给操作系统去执行。</p>
 <p>也就是说，我们必须要透过『 Shell 』将我们输入的命令与 Kernel 沟通，好让 Kernel 可以控制硬件来正确无误的工作！</p>
 <h4 id="二-shell相关操作"><a href="#二-shell相关操作" class="headerlink" title="二. shell相关操作"></a>二. shell相关操作</h4><p>1.查看shell的种类： 合法shell的类型放在/etc/shells文件里面</p>
@@ -851,7 +1038,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -889,7 +1076,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1029,7 +1216,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1067,7 +1254,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1123,22 +1310,22 @@
 <p>输出单元：包括屏幕，打印机等。</p>
 <p>主机部分：包括CPU（控制单元与算数逻辑单元)，内存。</p>
 <p>外部存储：硬盘等</p>
-<p><img src="/image/computer.gif" alt=""></p>
+<p><img src="/image/computer.gif" alt></p>
 <h5 id="2-CPU的种类"><a href="#2-CPU的种类" class="headerlink" title="2.CPU的种类"></a>2.CPU的种类</h5><p>①精简指令集(SISC: reduced instruction set computer): 微指令集较为精简，每个指令执行时间都很短，指令的执行效率较好。但是要做复杂的事情，就需要多个指令集来完成。常用与特殊用于某一功能的机器，比如导航系统，网络设备（交换机和路由器）等，他们功能比较单一，不像PC功能复杂。</p>
 <p>②复杂指令集(CISC: complex instruction set computer): 指令数目多而且复杂，每条指令长度不相同。因为指令执行较为复杂所以每条指令花费的时间较长， 但每条个别指令可以处理的工作较为丰富。常用与功能复杂的机器，比如我们的PC机。</p>
-<h5 id="3-操作系统在计算机中的角色和功能"><a href="#3-操作系统在计算机中的角色和功能" class="headerlink" title="3. 操作系统在计算机中的角色和功能"></a>3. 操作系统在计算机中的角色和功能</h5><p><img src="/image/os.gif" alt=""></p>
+<h5 id="3-操作系统在计算机中的角色和功能"><a href="#3-操作系统在计算机中的角色和功能" class="headerlink" title="3. 操作系统在计算机中的角色和功能"></a>3. 操作系统在计算机中的角色和功能</h5><p><img src="/image/os.gif" alt></p>
 <p>①组成：操作系统包括操作系统核心(Kernel)和系统调用(System Call)两部分：操作系统核心功能是管理计算机所有活动以及驱动所有硬件。系统调用是为了保护核心不被改动，而提供的一组开发界面。</p>
 <p>②核心功能：主要负责计算机的资源分配与管理，包括文件管理，内存管理，进程控制，硬件管理等等。</p>
 <p>③角色：操作系统处于硬件之上，应用程序之下，连接硬件和应用程序。</p>
 <h4 id="二：-linux磁盘分区"><a href="#二：-linux磁盘分区" class="headerlink" title="二： linux磁盘分区"></a>二： linux磁盘分区</h4><p>linux系统是安装在计算机组件的那个位置呢？那就是磁盘啦。所以我们先来认识一下磁盘。</p>
-<p><img src="/image/harddisk.jpg" alt=""></p>
+<p><img src="/image/harddisk.jpg" alt></p>
 <h5 id="1-磁盘组成"><a href="#1-磁盘组成" class="headerlink" title="1. 磁盘组成"></a>1. 磁盘组成</h5><p>磁盘有扇区（sector）和磁柱（Cylinder）两种单位。其中扇区是512bytes。</p>
 <p>是否每个扇区都一样重要呢？其实每个磁盘的第一个扇区是很重要的，因为第一个扇区记录了两个重要信息：</p>
 <p>①主引导扇区（Master boot record ：MBR）：安装启动管理程序的地方，有446bytes</p>
 <p>②分割表（partition table）：记录整个硬盘分割状态，有64bytes</p>
 <p>另外2bytes是结束标志  446+64+2=512bytes</p>
 <h5 id="2-磁盘组成之分割表"><a href="#2-磁盘组成之分割表" class="headerlink" title="2. 磁盘组成之分割表"></a>2. 磁盘组成之<strong>分割表</strong></h5><p>一个分割槽就是一个文件系统。前面的图片中有“开始磁柱”和“结束磁柱”，从开始磁柱到结束磁柱就组成一个分割槽，也就是一个文件系统。在分割表的64个字节中，最多有4组记录区，每组记录区记录了这个分割槽的起始磁柱和结束磁柱号码。</p>
-<p><img src="/image/partition.png" alt=""></p>
+<p><img src="/image/partition.png" alt></p>
 <p>有于分割表就只有64 bytes而已，最多只能容纳四笔分割的记录， 这四个分割的记录被称为主要(Primary)或延伸(Extended)分割槽。 根据上面的图示与说明，我们可以得到几个重点资讯：</p>
 <ul>
 <li>其实所谓的『分割』只是针对那个64 bytes的分割表进行配置而已！</li>
@@ -1151,7 +1338,7 @@
 <p>① 数据安全性：一个分割槽的数据损坏不会影响另一个分割槽</p>
 <p>②读写磁盘更高效：如果不分割，那么每次都是从第一个磁柱开始搜索或读写，性能很低。</p>
 <p>虽然分割表只有记录4组数据的空间，但是不代表我们的硬盘只能分割出4个分割槽，因为我们可以利用拓展分配进行逻辑分割：扩展分配的想法是： 既然第一个磁区所在的分割表只能记录四笔数据， 那我可否利用额外的磁区来记录更多的分割资讯？实际上图示有点像底下这样：</p>
-<p><img src="/image/partition-2.png" alt=""></p>
+<p><img src="/image/partition-2.png" alt></p>
 <h5 id="3-启动流程与主要启动扇区（MBR）"><a href="#3-启动流程与主要启动扇区（MBR）" class="headerlink" title="3. 启动流程与主要启动扇区（MBR）"></a>3. 启动流程与主要启动扇区（MBR）</h5><p>既然操作系统也是软件，那么我的计算机又是如何认识这个操作系统软件并且运行他的？ 明明启动时我的计算机还没有任何软件系统，那他要如何读取硬盘内的操作系统文件啊？嘿嘿！这就得要牵涉到计算机的启动程序了！ 底下就让我们来谈一谈这个启动程序吧！</p>
 <ol>
 <li><p>首先主板上有一个存储器CMOS，上面有一个软件程序BIOS，在计算机系统启动的时候，会主动启动这个BIOS，注意BIOS是主板上的一个程序，每个主板都有的，不需要我们去载入他。</p>
@@ -1172,7 +1359,7 @@
 <li><p><strong>转交其他loader</strong>：将启动管理功能转交给其他loader负责。</p>
 <p>上面前两点还容易理解，但是第三点很有趣喔！那表示你的计算机系统里面可能具有两个以上的启动管理程序呢！ 有可能吗？我们的硬盘不是只有一个MBR而已？是没错啦！但是启动管理程序除了可以安装在MBR之外， 还可以安装在每个分割槽的启动磁区(boot sector)喔！瞎密？分割槽还有各别的启动磁区喔？ 没错啊！这个特色才能造就『多重启动』的功能啊！</p>
 <p>我们举一个例子来说，假设你的个人计算机只有一个硬盘，里面切成四个分割槽，其中第一、二分割槽分别安装了Windows及Linux， 你要如何在启动的时候选择用Windows还是Linux启动呢？假设MBR内安装的是可同时认识Windows/Linux操作系统的启动管理程序， 那么整个流程可以图示如下</p>
-<p><img src="/image/loader.gif" alt=""></p>
+<p><img src="/image/loader.gif" alt></p>
 </li>
 </ul>
 <p>在上图中我们可以发现，MBR的启动管理程序提供两个菜单，菜单一(M1)可以直接加载Windows的核心文件来启动； 菜单二(M2)则是将启动管理工作交给第二个分割槽的启动磁区(boot sector)。当使用者在启动的时候选择菜单二时， 那么整个启动管理工作就会交给第二分割槽的启动管理程序了。 当第二个启动管理程序启动后，该启动管理程序内(上图中)仅有一个启动菜单，因此就能够使用Linux的核心文件来启动罗。 这就是多重启动的工作情况啦！我们将上图作个总结：</p>
@@ -1186,9 +1373,9 @@
 <h4 id="三-linux-文件系统"><a href="#三-linux-文件系统" class="headerlink" title="三. linux 文件系统"></a>三. linux 文件系统</h4><h5 id="1-linux文件权限与目录配置"><a href="#1-linux文件权限与目录配置" class="headerlink" title="1. linux文件权限与目录配置"></a>1. linux文件权限与目录配置</h5><ol>
 <li>介绍文件权限与属性</li>
 </ol>
-<p><img src="/image/ls-a.png" alt=""></p>
+<p><img src="/image/ls-a.png" alt></p>
 <p>上图每一列所代表的意义如下：</p>
-<p><img src="/image/ls-a-info.gif" alt=""></p>
+<p><img src="/image/ls-a-info.gif" alt></p>
 <p> 这部分知识比较简单，这里不做过多解释，需要注意的点如下：</p>
 <p>①第一栏代表这个文件的类型与权限，其中第一个代表这个文件是『目录、文件或链接文件等等』</p>
 <ul>
@@ -1297,7 +1484,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1448,7 +1635,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1486,7 +1673,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1610,7 +1797,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1648,7 +1835,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1768,7 +1955,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1806,7 +1993,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1892,256 +2079,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/学习nginx/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/23/学习nginx/" itemprop="url">学习nginx</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-23T17:10:41+08:00">
-                2018-04-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/nginx/" itemprop="url" rel="index">
-                    <span itemprop="name">nginx</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考链接</p>
-<p><a href="https://blog.csdn.net/hzsunshine/article/details/63687054" target="_blank" rel="noopener">https://blog.csdn.net/hzsunshine/article/details/63687054</a></p>
-<p><a href="http://seanlook.com/2015/05/17/nginx-location-rewrite/" target="_blank" rel="noopener">http://seanlook.com/2015/05/17/nginx-location-rewrite/</a></p>
-<p><a href="http://seanlook.com/2015/05/17/nginx-install-and-config/" target="_blank" rel="noopener">http://seanlook.com/2015/05/17/nginx-install-and-config/</a></p>
-<h4 id="一-简介"><a href="#一-简介" class="headerlink" title="一 简介"></a>一 简介</h4><p>nginx是一个高性能的http和反向代理服务器，同时也是一个IMAP/POP3/SMTP代理服务器。</p>
-<p>nginx作为http服务器，有以下几项基本特征：（还有很多其他的特征，由于本文只是基础知识学习，还未体验过其他高端特征）</p>
-<ol>
-<li>处理静态文件，索引文件以及自动索引</li>
-<li>反向代理加速（无缓存），简单的负载均衡和容错。</li>
-</ol>
-<h4 id="二-基础"><a href="#二-基础" class="headerlink" title="二 基础"></a>二 基础</h4><ol>
-<li><p>启动和停止命令</p>
-<p>启动：nginx </p>
-<p>关闭：nginx -s stop</p>
-<p>重启： nginx -s reload</p>
-</li>
-<li><p>配置：nginx的配置可以通过<code>./configration</code>命令来配置，也可以通过配置文件来配置。nginx配置文件存放在/usr/local/etc/nginx文件夹下。</p>
-</li>
-<li><p>nginx配置文件结构</p>
-<p><img src="/image/nginx.png" alt=""></p>
-<p>nginx内层配置可以覆盖外层配置。</p>
-</li>
-</ol>
-<h4 id="三-nginx配置具体讲解"><a href="#三-nginx配置具体讲解" class="headerlink" title="三 nginx配置具体讲解"></a>三 nginx配置具体讲解</h4><p>location匹配规则</p>
-<ul>
-<li>以<code>=</code>开头表示精确匹配</li>
-<li><code>^~</code> 开头表示uri以某个常规字符串开头，不是正则匹配</li>
-<li>~ 开头表示区分大小写的正则匹配;</li>
-<li>~* 开头表示不区分大小写的正则匹配</li>
-<li>/ 通用匹配, 如果没有其它匹配,任何请求都会匹配到</li>
-</ul>
-<p>优先级:</p>
-<p>(location =) &gt; (location 完整路径) &gt; (location ^~ 路径) &gt; (location ~,~* 正则顺序) &gt; (location 部分起始路径) &gt; (/)</p>
-<h4 id="四-rewrite规则"><a href="#四-rewrite规则" class="headerlink" title="四 rewrite规则"></a>四 rewrite规则</h4><ol>
-<li><p>功能：rewrite的功能是使用nginx提供的全局变量或者自己设置的变量，结合正则表达式和标志位实现url重写和重定向。</p>
-</li>
-<li><p>作用范围：rewrite只能放在server{}，location{}，if{}中，并且只能对域名后边的出去参数外的字符串起作用。</p>
-<p>例如 <code>http://seanlook.com/a/we/index.php?id=1&amp;u=str</code> 只对/a/we/index.php重写。语法`rewrite regex replacement [flag];</p>
-<p>如果想对域名或者参数起作用，可以使用全局变量匹配，或者使用proxy—pass作反向代理</p>
-</li>
-<li><p>rewrite和location区别和联系</p>
-<p>联系：都能实现跳转</p>
-<p>区别：rewrite是在统一域名内更改获取资源的路径，location是对一类路径做控制访问或反向代理，可以proxy_pass到其他机器。</p>
-<p>很多情况rewrite也会写在location里面，他的执行顺序是：</p>
-<ol>
-<li>执行server块的rewrite指令</li>
-<li>执行location匹配</li>
-<li>执行选定的location中的rewrite指令</li>
-</ol>
-</li>
-<li><p>rewrite之flag标志位</p>
-<ul>
-<li><p><code>last</code> : 相当于Apache的[L]标记，表示完成rewrite</p>
-</li>
-<li><p><code>break</code> : 停止执行当前虚拟主机的后续rewrite指令集</p>
-</li>
-<li><p><code>redirect</code> : 返回302临时重定向，地址栏会显示跳转后的地址</p>
-</li>
-<li><p><code>permanent</code> : 返回301永久重定向，地址栏会显示跳转后的地址</p>
-<p>因为301和302不能简单的只返回状态码，还必须有重定向的URL，这就是return指令无法返回301,302的原因了。</p>
-<p>理解last和break的区别：(last和break都会阻止后续erwrite指令的执行)</p>
-<p>last：</p>
-<p>​    重新将rewrite后的地址在server标签中执行</p>
-<p>break：</p>
-<p>​    将rewrite后的地址在当前location标签中执行</p>
-</li>
-</ul>
-</li>
-<li><p>rewrite之if指令与全局变量</p>
-<h5 id="if"><a href="#if" class="headerlink" title="if"></a>if</h5><p>语法为<code>if(condition){...}</code>，对给定的条件condition进行判断。如果为真，大括号内的rewrite指令将被执行，if条件(conditon)可以是如下任何内容：</p>
-<ul>
-<li>当表达式只是一个变量时，如果值为空或任何以0开头的字符串都会当做false</li>
-<li>直接比较变量和内容时，使用<code>=</code>或<code>!=</code></li>
-<li><code>~</code>正则表达式匹配，<code>~*</code>不区分大小写的匹配，<code>!~</code>区分大小写的不匹配</li>
-</ul>
-<p><code>-f</code>和<code>!-f</code>用来判断是否存在文件<br><code>-d</code>和<code>!-d</code>用来判断是否存在目录<br><code>-e</code>和<code>!-e</code>用来判断是否存在文件或目录<br><code>-x</code>和<code>!-x</code>用来判断文件是否可执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">if ($http_user_agent ~ MSIE) &#123;</span><br><span class="line">    rewrite ^(.*)$ /msie/$1 break;</span><br><span class="line">&#125; //如果UA包含&quot;MSIE&quot;，rewrite请求到/msid/目录下</span><br><span class="line"></span><br><span class="line">if ($http_cookie ~* &quot;id=([^;]+)(?:;|$)&quot;) &#123;</span><br><span class="line">    set $id $1;</span><br><span class="line"> &#125; //如果cookie匹配正则，设置变量$id等于正则引用部分</span><br><span class="line"></span><br><span class="line">if ($request_method = POST) &#123;</span><br><span class="line">    return 405;</span><br><span class="line">&#125; //如果提交方法为POST，则返回状态405（Method not allowed）。return不能返回301,302</span><br><span class="line"></span><br><span class="line">if ($slow) &#123;</span><br><span class="line">    limit_rate 10k;</span><br><span class="line">&#125; //限速，$slow可以通过 set 指令设置</span><br><span class="line"></span><br><span class="line">if (!-f $request_filename)&#123;</span><br><span class="line">    break;</span><br><span class="line">    proxy_pass  http://127.0.0.1;</span><br><span class="line">&#125; //如果请求的文件名不存在，则反向代理到localhost 。这里的break也是停止rewrite检查</span><br><span class="line"></span><br><span class="line">if ($args ~ post=140)&#123;</span><br><span class="line">    rewrite ^ http://example.com/ permanent;</span><br><span class="line">&#125; //如果query string中包含&quot;post=140&quot;，永久重定向到example.com</span><br><span class="line"></span><br><span class="line">location ~* \.(gif|jpg|png|swf|flv)$ &#123;</span><br><span class="line">    valid_referers none blocked www.jefflei.com www.leizhenfang.com;</span><br><span class="line">    if ($invalid_referer) &#123;</span><br><span class="line">        return 404;</span><br><span class="line">    &#125; //防盗链</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h5><ul>
-<li><code>$args</code> ： #这个变量等于请求行中的参数，同<code>$query_string</code></li>
-<li><code>$content_length</code> ： 请求头中的Content-length字段。</li>
-<li><code>$content_type</code> ： 请求头中的Content-Type字段。</li>
-<li><code>$document_root</code> ： 当前请求在root指令中指定的值。</li>
-<li><code>$host</code> ： 请求主机头字段，否则为服务器名称。</li>
-<li><code>$http_user_agent</code> ： 客户端agent信息</li>
-<li><code>$http_cookie</code> ： 客户端cookie信息</li>
-<li><code>$limit_rate</code> ： 这个变量可以限制连接速率。</li>
-<li><code>$request_method</code> ： 客户端请求的动作，通常为GET或POST。</li>
-<li><code>$remote_addr</code> ： 客户端的IP地址。</li>
-<li><code>$remote_port</code> ： 客户端的端口。</li>
-<li><code>$remote_user</code> ： 已经经过Auth Basic Module验证的用户名。</li>
-<li><code>$request_filename</code> ： 当前请求的文件路径，由root或alias指令与URI请求生成。</li>
-<li><code>$scheme</code> ： HTTP方法（如http，https）。</li>
-<li><code>$server_protocol</code> ： 请求使用的协议，通常是HTTP/1.0或HTTP/1.1。</li>
-<li><code>$server_addr</code> ： 服务器地址，在完成一次系统调用后可以确定这个值。</li>
-<li><code>$server_name</code> ： 服务器名称。</li>
-<li><code>$server_port</code> ： 请求到达服务器的端口号。</li>
-<li><code>$request_uri</code> ： 包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。</li>
-<li><code>$uri</code> ： 不带请求参数的当前URI，$uri不包含主机名，如”/foo/bar.html”。</li>
-<li><code>$document_uri</code> ： 与$uri相同。</li>
-</ul>
-</li>
-</ol>
-<h4 id="五-try-file指令可以替代rewrite"><a href="#五-try-file指令可以替代rewrite" class="headerlink" title="五 try_file指令可以替代rewrite"></a>五 try_file指令可以替代rewrite</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">try_files $uri $uri/ /index.php?q=$uri&amp;$args;</span><br></pre></td></tr></table></figure>
-<p>按顺序检查文件是否存在，返回第一个找到的文件。结尾的斜线表示为文件夹 -$uri/。如果所有的文件都找不到，会进行一个内部重定向到最后一个参数。</p>
-<p>务必确认只有最后一个参数可以引起一个内部重定向，之前的参数只设置内部URI的指向。 最后一个参数是回退URI且必须存在，否则将会出现内部500错误。</p>
-<p>命名的location也可以使用在最后一个参数中。与rewrite指令不同，如果回退URI不是命名的location那么$args不会自动保留，如果你想保留​$args，必须明确声明。</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">try_files /app/cache/ $uri @fallback;</span><br><span class="line">index index.php index.html;</span><br><span class="line"># 它将检测$document_root/app/cache/index.php,$document_root/app/cache/index.html 和 </span><br><span class="line"># $document_root$uri是否存在，如果不存在着内部重定向到 @fallback 。</span><br></pre></td></tr></table></figure>
-<p>需要明确的是处最后一个参数外 try_files 本身不会因为任何原因产生内部重定向。 </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2192,7 +2129,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2214,7 +2151,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

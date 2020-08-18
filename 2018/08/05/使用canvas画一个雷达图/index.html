@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="前端," />
+  <meta name="keywords" content="前端,">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/05/使用canvas画一个雷达图/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/05/使用canvas画一个雷达图/">
 
 
 
@@ -156,7 +156,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Hexo</span>
         <span class="logo-line-after"><i></i></span>
@@ -186,7 +186,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -196,7 +196,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -206,7 +206,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -249,7 +249,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yangXia">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -313,7 +313,7 @@
 
       
         <h4 id="一-代码"><a href="#一-代码" class="headerlink" title="一. 代码"></a>一. 代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;canvas class=&quot;radar&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    canvas &#123;</span><br><span class="line">        display: block;</span><br><span class="line">        width: 500px;</span><br><span class="line">        height: 500px;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    const times = (n, cb) =&gt; &#123;</span><br><span class="line">        if (typeof n !== &apos;number&apos;) &#123;</span><br><span class="line">            throw new TypeError(&apos;times必须传入数字类型参数！&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        let result = []</span><br><span class="line">        let i</span><br><span class="line">        try &#123;</span><br><span class="line">            for (i = 0; i &lt; n; i++) &#123;</span><br><span class="line">                result.push(cb(i))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">            console.log(`执行第$&#123;i&#125;个时，回调函数错误！`)</span><br><span class="line">            console.log(e)</span><br><span class="line">        &#125;</span><br><span class="line">        return result</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var canvas = document.getElementsByClassName(&apos;radar&apos;)[0];</span><br><span class="line">    var ctx = canvas.getContext(&apos;2d&apos;);</span><br><span class="line">    var data = &#123;</span><br><span class="line">        &apos;人际交往&apos;: 65,</span><br><span class="line">        &apos;逻辑数理&apos;: 77,</span><br><span class="line">        &apos;空间感知&apos;: 78,</span><br><span class="line">        &apos;自我认知&apos;: 55,</span><br><span class="line">        &apos;自然观察&apos;: 60,</span><br><span class="line">        &apos;情感判断&apos;: 85</span><br><span class="line">    &#125;</span><br><span class="line">    // 图形边数</span><br><span class="line">    var sideNumber = 6;</span><br><span class="line">    // 顶点坐标</span><br><span class="line">    var lineArr = [];</span><br><span class="line">    // 分数坐标</span><br><span class="line">    var scoreArr = [];</span><br><span class="line">    // 分阶数目</span><br><span class="line">    var demensionNum = 5;</span><br><span class="line">    canvas.width = 500;</span><br><span class="line">    canvas.height = 500;</span><br><span class="line">    var rCenter = 250;</span><br><span class="line">    var curR = 100;</span><br><span class="line">    var rAngle = Math.PI * 2 / sideNumber;</span><br><span class="line">    ctx.save();</span><br><span class="line"></span><br><span class="line">    // 第一步：画6边型</span><br><span class="line">    ctx.strokeStyle = &apos;#888888&apos;;</span><br><span class="line">    ctx.beginPath();</span><br><span class="line">    for(var i = 0; i &lt; sideNumber; i++) &#123;</span><br><span class="line">        // 固定水平向右的角（第一象限和第四象限的相交轴）</span><br><span class="line">        lineArr[i] = &#123;&#125;;</span><br><span class="line">        lineArr[i].x = rCenter + curR * Math.cos(rAngle * i);</span><br><span class="line">        lineArr[i].y = rCenter - curR * Math.sin(rAngle * i);</span><br><span class="line">        ctx.lineTo(lineArr[i].x, lineArr[i].y);</span><br><span class="line">        ctx.strokeStyle = &apos;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.closePath();</span><br><span class="line">    ctx.stroke();</span><br><span class="line">    ctx.restore();</span><br><span class="line">    ctx.save();</span><br><span class="line"></span><br><span class="line">    // 第二步：画对角线</span><br><span class="line">    ctx.strokeStyle = &apos;#e8ddc7&apos;;</span><br><span class="line">    ctx.beginPath();</span><br><span class="line">    var crossLineNumber = sideNumber / 2</span><br><span class="line">    for(var i = 0; i &lt; crossLineNumber; i++) &#123;</span><br><span class="line">        ctx.moveTo(lineArr[i].x, lineArr[i].y);</span><br><span class="line">        ctx.lineTo(lineArr[i + crossLineNumber].x, lineArr[i + crossLineNumber].y);</span><br><span class="line">        ctx.stroke();</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.closePath();</span><br><span class="line">   </span><br><span class="line">    // 另一种画 对角线的方法</span><br><span class="line">    // ctx.strokeStyle = &apos;#e8ddc7&apos;;</span><br><span class="line">    // ctx.beginPath();</span><br><span class="line">    // for (var i =  0; i &lt; sideNumber; i++) &#123;</span><br><span class="line">    //     ctx.moveTo(250, 250);</span><br><span class="line">    //     ctx.lineTo(lineArr[i].x, lineArr[i].y);</span><br><span class="line">    //     ctx.stroke();</span><br><span class="line">    // &#125;</span><br><span class="line">    // ctx.closePath();</span><br><span class="line"></span><br><span class="line">    // 第三步：画分阶</span><br><span class="line">    var gradient = ctx.createRadialGradient(rCenter, rCenter, curR, rCenter, rCenter, 0);</span><br><span class="line">    gradient.addColorStop(0, &quot;#ff960c&quot;);</span><br><span class="line">    gradient.addColorStop(1, &quot;#ff4690&quot;);</span><br><span class="line">    ctx.fillStyle = gradient;</span><br><span class="line">    for (var i = 0; i &lt; demensionNum; i++) &#123;</span><br><span class="line">        var x = rCenter + curR * Math.cos(rAngle * 0) * (i + 1) / demensionNum;</span><br><span class="line">        var y = rCenter - curR * Math.sin(rAngle * 0) * (i + 1) / demensionNum;</span><br><span class="line">        // 注意beginPath和closePath成对出现</span><br><span class="line">        ctx.beginPath();</span><br><span class="line">        ctx.moveTo(x, y);</span><br><span class="line">        for (var j = 1; j &lt; sideNumber; j++) &#123;</span><br><span class="line">            // 注意这里的括号，之前括号搞错，折腾了好久</span><br><span class="line">            ctx.lineTo(rCenter + curR * Math.cos(rAngle * j) * (i + 1) / demensionNum, rCenter - curR * Math.sin(rAngle * j) * (i + 1) / demensionNum);</span><br><span class="line">        &#125;</span><br><span class="line">        ctx.closePath();</span><br><span class="line">        ctx.globalAlpha = 0.04 * (i + 1);</span><br><span class="line">        ctx.fill();</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.restore();</span><br><span class="line">    ctx.save();</span><br><span class="line">    // 第四步：数据 填充区域</span><br><span class="line">    var keys = Object.keys(data);</span><br><span class="line">    ctx.beginPath();</span><br><span class="line">    ctx.fillStyle = &apos;rgba(255, 0, 0, 0.5)&apos;;</span><br><span class="line">    ctx.strokeStyle = &apos;#dd3f26&apos;;</span><br><span class="line">    ctx.lineWidth = 2;</span><br><span class="line">    times(sideNumber, (i) =&gt; &#123;</span><br><span class="line">        let x = rCenter + curR * Math.cos(rAngle * i) * (data[keys[i]]/100) ;</span><br><span class="line">        let y = rCenter - curR * Math.sin(rAngle * i) * (data[keys[i]]/100);</span><br><span class="line">        scoreArr.push(&#123; x: x, y: y &#125;);</span><br><span class="line">        i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);</span><br><span class="line">    &#125;)</span><br><span class="line">    ctx.globalAlpha = 0.5;</span><br><span class="line">    ctx.closePath();</span><br><span class="line">    ctx.fill();</span><br><span class="line">    ctx.stroke();</span><br><span class="line">    ctx.restore();</span><br><span class="line">    ctx.save();</span><br><span class="line"></span><br><span class="line">    //第五步：绘制小圆点</span><br><span class="line">    ctx.fillStyle = &apos;rgba(255, 0, 0, 0.5)&apos;;</span><br><span class="line">    times(sideNumber, (i) =&gt; &#123;</span><br><span class="line">        ctx.beginPath();</span><br><span class="line">        ctx.arc(scoreArr[i].x, scoreArr[i].y, 3, 0, 2 * Math.PI);</span><br><span class="line">        ctx.fill();</span><br><span class="line">    &#125;)</span><br><span class="line">    ctx.restore();</span><br><span class="line">    ctx.save();</span><br><span class="line"></span><br><span class="line">    // 第六步：绘制文字---能力级别</span><br><span class="line">    ctx.fillStyle = &apos;#000&apos;;</span><br><span class="line">    ctx.font = &apos;16px Microsoft Yahei&apos;;</span><br><span class="line">    keys.forEach((item, i) =&gt; &#123;</span><br><span class="line">        var m_width = ctx.measureText(item).width;</span><br><span class="line">        if (lineArr[i].x === rCenter) &#123;</span><br><span class="line">            if (lineArr[i].y &gt; rCenter) &#123;</span><br><span class="line">                ctx.fillText(item, lineArr[i].x, lineArr[i].y - m_width / 2);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                 ctx.fillText(item, lineArr[i].x, lineArr[i].y + m_width / 2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else if (lineArr[i].x &gt; rCenter) &#123;</span><br><span class="line">            ctx.fillText(item, lineArr[i].x + m_width / 2, lineArr[i].y);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            ctx.fillText(item, lineArr[i].x - m_width * 1.5, lineArr[i].y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    ctx.restore();</span><br><span class="line">    ctx.save();</span><br><span class="line"></span><br><span class="line">    // 第七步：绘制文字---分数</span><br><span class="line">    ctx.fillStyle = &apos;#fe333e&apos;;</span><br><span class="line">    ctx.font = &apos;12px Microsoft Yahei&apos;;</span><br><span class="line">    keys.forEach((item, i) =&gt; &#123;</span><br><span class="line">        const score = data[item];</span><br><span class="line">        var m_width = ctx.measureText(score).width;</span><br><span class="line">        if (scoreArr[i].x === rCenter) &#123;</span><br><span class="line">            if (scoreArr[i].y &gt; rCenter) &#123;</span><br><span class="line">                ctx.fillText(score, [i].x, scoreArr[i].y - m_width / 2);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                ctx.fillText(score, scoreArr[i].x, scoreArr[i].y + m_width / 2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else if (scoreArr[i].x &gt; rCenter) &#123;</span><br><span class="line">            ctx.fillText(score, scoreArr[i].x + m_width / 2, scoreArr[i].y);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            ctx.fillText(score, scoreArr[i].x - m_width * 1.5, scoreArr[i].y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="二-效果"><a href="#二-效果" class="headerlink" title="二. 效果"></a>二. 效果</h4><p><img src="/image/radar.png" alt=""></p>
+<h4 id="二-效果"><a href="#二-效果" class="headerlink" title="二. 效果"></a>二. 效果</h4><p><img src="/image/radar.png" alt></p>
 
       
     </div>
@@ -433,7 +433,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -455,7 +455,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
