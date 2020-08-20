@@ -1388,14 +1388,14 @@ getChild (key) {
 <h3 id="二-什么是babel"><a href="#二-什么是babel" class="headerlink" title="二. 什么是babel"></a>二. 什么是babel</h3><p>babel是一个转译器，感觉相对于编译器compiler，叫转译器transpiler更准确，因为它只是把同种语言的高版本规则翻译成低版本规则，而不像编译器那样，输出的是另一种更低级的语言代码。</p>
 <p>(1) babel的编译过程可以分成三个步骤：</p>
 <ul>
-<li>The parser: <a href="https://github.com/babel/babel/blob/master/packages/babel-parser" target="_blank" rel="noopener"><code>@babel/parser</code></a></li>
-<li>The transformer[s]: All the plugins/presets<ul>
+<li>The parser: <a href="https://github.com/babel/babel/blob/master/packages/babel-parser" target="_blank" rel="noopener"><code>@babel/parser</code></a> (解析：将代码转换成AST)</li>
+<li>The transformer[s]: All the plugins/presets （转换：访问AST几点进行转换生成新的AST）<ul>
 <li>These all use <a href="https://github.com/babel/babel/blob/master/packages/babel-traverse" target="_blank" rel="noopener"><code>@babel/traverse</code></a> to traverse through the AST</li>
 </ul>
 </li>
-<li>The generator: <a href="https://github.com/babel/babel/blob/master/packages/babel-generator" target="_blank" rel="noopener"><code>@babel/generator</code></a></li>
+<li>The generator: <a href="https://github.com/babel/babel/blob/master/packages/babel-generator" target="_blank" rel="noopener"><code>@babel/generator</code></a> （生成：以新的AST为基础生成代码）</li>
 </ul>
-<p>(2) babel工作流：nput string -&gt; <code>@babel/parser</code> parser -&gt; <code>AST</code> -&gt; transformer[s] -&gt; <code>AST</code> -&gt; <code>@babel/generator</code> -&gt; output string</p>
+<p>(2) babel工作流：input string -&gt; <code>@babel/parser</code> parser -&gt; <code>AST</code> -&gt; transformer[s] -&gt; <code>AST</code> -&gt; <code>@babel/generator</code> -&gt; output string</p>
 <p>(3) babel包的构成：</p>
 <h5 id="核心包"><a href="#核心包" class="headerlink" title="核心包"></a>核心包</h5><ol>
 <li>babel-core： babel转译器本身，提供了babel的转译API，如babel.transform等，用于对代码进行转译。像webpack的babel-loader就是调用这些API来完成转译过程的。</li>
